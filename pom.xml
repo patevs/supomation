@@ -14,6 +14,11 @@
     <!-- Set compile to Java 8 -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <!-- versions -->
+    <webdriverex.version>3.10.0</webdriverex.version>
+    <webdriverex.plugin.version>3.1.3</webdriverex.plugin.version>
+    <chromedriver.version>2.35</chromedriver.version>
+    <geckodriver.version>0.19.1</geckodriver.version>
   </properties>
 
   <!-- DEPENDENCIES -->
@@ -23,7 +28,7 @@
     <dependency>
       <groupId>com.github.webdriverextensions</groupId>
         <artifactId>webdriverextensions</artifactId>
-        <version>3.10.0</version>
+        <version>${webdriverex.version}</version>
     </dependency>
   </dependencies>
   
@@ -36,7 +41,7 @@
        <!-- https://mvnrepository.com/artifact/com.github.webdriverextensions/webdriverextensions-maven-plugin -->
          <groupId>com.github.webdriverextensions</groupId>
          <artifactId>webdriverextensions-maven-plugin</artifactId>
-         <version>3.1.3</version>
+         <version>${webdriverex.plugin.version}</version>
          <executions>
            <execution>
              <goals>
@@ -48,11 +53,11 @@
            <drivers>
              <driver>
                <name>chromedriver</name>
-               <version>2.35</version>
+               <version>${chromedriver.version}</version>
              </driver>
              <driver>
                <name>geckodriver</name>
-               <version>0.19.1</version>
+               <version>${geckodriver.version}</version>
                <bit>64</bit>
              </driver>
             </drivers>
