@@ -15,6 +15,83 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+
+  <!-- DEPENDENCIES -->
+  <dependencies>
+	<!-- https://mvnrepository.com/artifact/com.github.webdriverextensions/webdriverextensions -->
+    <!-- WebDriver Extension -->
+    <dependency>
+      <groupId>com.github.webdriverextensions</groupId>
+        <artifactId>webdriverextensions</artifactId>
+        <version>3.10.0</version>
+    </dependency>
+  </dependencies>
+  
+  <!-- BUILD -->
+  <build>
+  	<!-- PLUGINS -->
+    <plugins>
+       <!-- Downloads and installs the drivers -->
+       <plugin>
+       <!-- https://mvnrepository.com/artifact/com.github.webdriverextensions/webdriverextensions-maven-plugin -->
+         <groupId>com.github.webdriverextensions</groupId>
+         <artifactId>webdriverextensions-maven-plugin</artifactId>
+         <version>3.1.3</version>
+         <executions>
+           <execution>
+             <goals>
+               <goal>install-drivers</goal>
+             </goals>
+           </execution>
+         </executions>
+         <configuration>
+           <drivers>
+             <driver>
+               <name>chromedriver</name>
+               <version>2.35</version>
+             </driver>
+             <driver>
+               <name>geckodriver</name>
+               <version>0.19.1</version>
+               <bit>64</bit>
+             </driver>
+            </drivers>
+          </configuration>
+        </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <!--Eclipse m2e settings (can be removed if you are not using eclipse) -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>com.github.webdriverextensions</groupId>
+                    <artifactId>webdriverextensions-maven-plugin</artifactId>
+                    <versionRange>[1.0,)</versionRange>
+                    <goals>
+                      <goal>install-drivers</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute>
+                      <runOnIncremental>true</runOnIncremental>
+                    </execute>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
   
 </project>
 
