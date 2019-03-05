@@ -34,11 +34,13 @@ def main():
 
     print("\n\tNavigate to target...")
     driver.get(mailer)
-                            
+
+    dl_elem = driver.find_element_by_css_selector('a.download-pdf')
+    print(dl_elem.get_attribute('href'))               
     #download_btn_elem = driver.find_element_by_class_name()
     
     print("\n\tClosing Firefox...")
-    #driver.quit()
+    driver.quit()
 
     print("\n  -------- Done. --------\n")
 
