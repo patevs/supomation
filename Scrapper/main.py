@@ -5,9 +5,13 @@
 
 # -------------------------------
 
+# IMPORTS
+
+# -------------------------------
+
 # Main method
 def main():
-    print("Starting Scrapper...")
+    print("\nStarting Scrapper...")
 
 # Application entry point
 if __name__ == "__main__":
