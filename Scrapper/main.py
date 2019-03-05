@@ -20,7 +20,6 @@ gdd = GeckoDriverManager()
 driver = None
 
 target = "https://www.newworld.co.nz/"
-mailer = "savings/virtualmailer/?store=thorndon-1260"
 
 
 # Main method
@@ -33,8 +32,8 @@ def main():
     print("\n\tStarting Firefox...")
     driver = webdriver.Firefox()
 
-    print("\n\tNavigate to virtual mailer...")
-    driver.get(target + mailer)
+    print("\n\tNavigate to target...")
+    driver.get(target)
 
     print("\n\tClosing Firefox...")
     driver.quit()
