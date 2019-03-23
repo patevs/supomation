@@ -10,6 +10,19 @@
 * [Webdriver](https://docs.seleniumhq.org/projects/webdriver/)
 * [SeleniumHQ/selenium](https://github.com/SeleniumHQ/selenium/)
 
+----
+
+### Java/Maven
+
+**GeckoDriver**
+
+  * [mozilla/geckodriver](https://github.com/mozilla/geckodriver)
+  * [geckodriver capabilities](https://firefox-source-docs.mozilla.org/testing/geckodriver/Capabilities.html)
+
+----
+
+### Python
+
 **Selenium Python Bindings**
 
   * [pypi/selenium](https://pypi.org/project/selenium/)
