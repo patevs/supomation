@@ -1,4 +1,4 @@
-package supomation;
+package supomation.main;
 
 /**
  * 

@@ -1,5 +1,6 @@
 package supomation;
 
+import com.github.webdriverextensions.Bot;
 import com.github.webdriverextensions.WebSite;
 
 import supomation.pages.SupoMainPage;
@@ -22,7 +23,7 @@ public class SupoSite extends WebSite {
 
     @Override
     public void assertIsOpen(Object... arguments) throws Error {
-    	//Bot.assertCurrentUrlStartsWith(url);
+    	Bot.assertCurrentUrlStartsWith(url);
         //assertCurrentUrlStartsWith(url);
     }
 }
