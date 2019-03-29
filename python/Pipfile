@@ -1,6 +1,6 @@
 [[source]]
-name = "pypi"
-url = "https://pypi.org/simple"
+name = "supomation"
+url = "https://github.com/patevs/supomation"
 verify_ssl = true
 
 [dev-packages]
