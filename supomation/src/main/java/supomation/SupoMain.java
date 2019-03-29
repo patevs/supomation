@@ -1,4 +1,4 @@
-package supomation.control;
+package supomation;
 
 import supomation.driver.SupoDriver;
 

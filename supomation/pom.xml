@@ -34,14 +34,20 @@
   
   <!-- DEPENDENCIES -->
   <dependencies>
+	<!-- https://mvnrepository.com/artifact/com.github.webdriverextensions/webdriverextensions -->
+	<!-- WebDriver Extension -->
+    <dependency>
+        <groupId>com.github.webdriverextensions</groupId>
+        <artifactId>webdriverextensions</artifactId>
+        <version>3.10.0</version>
+	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver -->
+	<!-- 
 	<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
 			<version>${selenium.version}</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-edge-driver -->
-	<!-- 
 	<dependency>
 	    <groupId>org.seleniumhq.selenium</groupId>
 	    <artifactId>selenium-edge-driver</artifactId>
@@ -49,11 +55,13 @@
 	</dependency>
 	-->
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
+	<!-- 
 	<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
 			<version>${selenium.version}</version>
 	</dependency>		
+	 -->
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
 	<dependency>
 	    <groupId>junit</groupId>
@@ -92,6 +100,22 @@
 			</executions>
 			<configuration>
 				<drivers>
+					<!-- 
+					<driver>
+		                <name>internetexplorerdriver</name>
+		                <version>3.8.0</version>
+		            </driver>
+		            <driver>
+		                <name>chromedriver</name>
+		                <version>2.35</version>
+		            </driver>
+				    <driver>
+				    	<name>phantomjs</name>
+				       	<platform>windows</platform>
+				       	<bit>64</bit>
+				       	<version>2.1.1</version>
+					</driver>
+					-->
 					<driver>
 						<name>geckodriver</name>
 						<platform>windows</platform>
