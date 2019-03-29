@@ -25,7 +25,8 @@
 	<!-- compile with Java 8 -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-	<!-- plugin versions -->
+	<!-- depencency/plugin versions -->
+	<maven.compiler.version>3.8.0</maven.compiler.version>
 	<selenium.version>3.141.59</selenium.version>
 	<junit.version>4.12</junit.version>
 	<geckodriver.version>0.24.0</geckodriver.version>
@@ -64,9 +65,20 @@
 
   <!-- BUILD -->
   <build>
+  
+  	<sourceDirectory>src/main/java</sourceDirectory>
 		
 	<!-- PLUGINS -->
 	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>${maven.compiler.version}</version>
+			<configuration>
+				<source>${maven.compiler.source}</source>
+				<target>${maven.compiler.target}</target>
+			</configuration>
+		</plugin>	
 		<plugin>
 			<groupId>com.github.webdriverextensions</groupId>
 			<artifactId>webdriverextensions-maven-plugin</artifactId>

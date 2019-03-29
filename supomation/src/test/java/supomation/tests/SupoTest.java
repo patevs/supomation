@@ -1,12 +1,10 @@
 package supomation.tests;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import supomation.driver.SupoDriver;
+import supomation.control.SupoMain;
 
 /**
  * 
@@ -18,23 +16,22 @@ import supomation.driver.SupoDriver;
  */
 public class SupoTest {
 	
-	// FIELDS
-	private static SupoDriver driver;
-	
-	@BeforeClass
-	public static void beforeClass() {
-		driver = new SupoDriver();
-	}
-	
-	@AfterClass
-	public static void afterClass() {
-		driver.shutdownWebDriver();
+	//@Test
+	public void failTest() {
+		fail("assert fail Test");
 	}
 	
 	@Test
+	public void supoMainTest() {
+		//SupoMain supoMain = new SupoMain();
+		SupoMain.main(null);
+	}
+	
+	//@Test
+	/*
 	public void supoDriverBasicTest() {
-		driver.gotoUrl("https://www.google.com/");
-		String pageTitle = driver.getPageTitle();
+		supoDriver.gotoUrl("https://www.google.com/");
+		String pageTitle = supoDriver.getPageTitle();
 		boolean titleCorrect = pageTitle.contains("Google");
 		//System.out.println("Title contains google: " + titleCorrect);
 		assertTrue(
@@ -43,12 +40,14 @@ public class SupoTest {
 				titleCorrect
 		);
 	}
+	*/
 	
-	@Test
+	//@Test
+	/*
 	public void newWorldTest() {
 		String url = "https://www.ishopnewworld.co.nz/specials";
-		driver.gotoUrl(url);
-		String pageTitle = driver.getPageTitle();
+		supoDriver.gotoUrl(url);
+		String pageTitle = supoDriver.getPageTitle();
 		//System.out.println("Page title: " + pageTitle);
 		boolean titleCorrect = pageTitle.contains("Specials");
 		assertTrue(
@@ -65,6 +64,7 @@ public class SupoTest {
 		//WebElement cardElem = driver.findElement(By.cssSelector(cardCss));
 		//System.out.println("card elem: " + cardElem.getText());
 	}
+	*/
 
 }
 

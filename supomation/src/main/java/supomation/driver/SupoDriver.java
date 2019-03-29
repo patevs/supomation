@@ -22,15 +22,25 @@ public class SupoDriver {
 	// gecko driver binary
 	private static final String GECKO_RELATIVE_PATH = "\\drivers\\geckodriver-windows-64bit.exe";
 	private static final String GECKO_ABSOLUTE_PATH = System.getProperty("user.dir") + GECKO_RELATIVE_PATH;
-	// WebDriver;
-	private WebDriver driver;
+	
+	// geckodriver capabilities 
+	//DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+	
+	private WebDriver webDriver;
+	
+	public WebDriver getWebDriver() {
+		return webDriver;
+	}
+	private void setWebDriver(WebDriver webDriver) {
+		this.webDriver = webDriver;
+	}
 
-	/**
-	 * CONSTRUCTOR
-	 */
+	// ----------- //
+	// CONSTRUCTOR //
+	// ----------- //
 	public SupoDriver() {
-		System.out.println("Constructing SupoDriver...");
-		driver = createWebDriver();
+		System.out.println("\n\tConstructing SupoDriver using GeckoDriver...");
+		setWebDriver(createWebDriver());
 	}
 	
 	// ------- //
@@ -42,6 +52,8 @@ public class SupoDriver {
 	 * @return WebDriver
 	 */
 	private WebDriver createWebDriver() {
+		System.out.println("\n\tGeckoDriver binary: \n\t\t ~" + GECKO_RELATIVE_PATH + '\n');
+		// return geckodriver
 		return createGeckoDriver(GECKO_ABSOLUTE_PATH);
 	}
 	
@@ -64,10 +76,13 @@ public class SupoDriver {
 	 */
 	public void shutdownWebDriver() {
         //Close the browser
-		System.out.print("Shutting down webdriver... ");
-        //driver.close();
-		driver.quit();
-        System.out.println("Done.");
+		System.out.print("\n\tShutting down webdriver... ");
+        webDriver.quit();
+		// double check driver has closed
+        //if(webDriver != null) {
+		//	webDriver.close();
+		//}
+        System.out.println("\tDone.\n");
 	}
 	
 	/**
@@ -75,7 +90,7 @@ public class SupoDriver {
 	 * @param url
 	 */
 	public void gotoUrl(String url)	{
-		driver.get(url);
+		webDriver.get(url);
 	}
 	
 	/**
@@ -83,7 +98,7 @@ public class SupoDriver {
 	 * 	or null if not set.
 	 */
 	public String getPageTitle() {
-		return driver.getTitle();
+		return webDriver.getTitle();
 	}
 	
 }
