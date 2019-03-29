@@ -1,7 +1,5 @@
 package supomation;
 
-import supomation.driver.SupoDriver;
-
 /**
  * 
  * 	SupoMain class
@@ -14,15 +12,17 @@ import supomation.driver.SupoDriver;
  */
 public class SupoMain {
 	
-	private static SupoDriver supoDriver;
+	//private static SupoDriver supoDriver;
 	
 	// METHODS
+	/*
 	private static SupoDriver initWebDriver() {
 		System.out.println(
 				"\n -> Initializing SupoDriver..."
 		);
 		return new SupoDriver();
 	}
+	*/
 	
 	/**
 	 * 	SupoMain - main method
@@ -31,11 +31,11 @@ public class SupoMain {
 		System.out.println(
 				"\n -> Starting Supomation..."
 		);
-		supoDriver = initWebDriver();
+		//supoDriver = initWebDriver();
 		System.out.println(
 				"\n -> Stopping Supomation..."
 		);
-		supoDriver.shutdownWebDriver();
+		//supoDriver.shutdownWebDriver();
 	}
 
 }

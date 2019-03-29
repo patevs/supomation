@@ -3,9 +3,6 @@ package supomation.tests;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import com.github.webdriverextensions.Bot;
 
 import supomation.SupoSiteTest;
@@ -29,28 +26,36 @@ public class SupoTest extends SupoSiteTest {
         Bot.assertIsOpen(supoMainPage);
     }
 	
-	
-	@Test
-	public void newWorldTest() {
+    @Test
+    public void mainPageCorrectTest() throws Exception {
         Bot.open(supoSite);
         Bot.assertIsOpen(supoMainPage);
 		String pageTitle = Bot.title();
-		//System.out.println("Page title: " + pageTitle);
+		System.out.println("Page title: " + pageTitle);
 		boolean titleCorrect = pageTitle.contains("Specials");
+		System.out.println("Page title correct: " + titleCorrect);
 		assertTrue(
 				"Webpage title should contain 'Specials'."
 				+ " Actual: " + pageTitle, 
 				titleCorrect
 		);
+    }
+    
+    @Test
+    public void mainPageContentTest() throws Exception {
+        Bot.open(supoSite);
+        Bot.assertIsOpen(supoMainPage);
+		String pageTitle = Bot.title();
+		assertTrue(
+				"Webpage title should contain 'Specials'."
+				+ " Actual: " + pageTitle, 
+				pageTitle.contains("Specials")
+		);
 		//String containerCss = ".fs-product-grid > div:nth-child(1) > div:nth-child(1)";
-		String containerCss = ".fs-product-grid";
-		WebElement containerElem = Bot.driver().findElement(By.cssSelector(containerCss));
-		System.out.println("container elem: " + containerElem.getText());	
-		
-		//String cardCss = "div.u-margin-bottom-x2:nth-child(1) > div:nth-child(1)";
-		//WebElement cardElem = driver.findElement(By.cssSelector(cardCss));
-		//System.out.println("card elem: " + cardElem.getText());
-	}
+		//String containerCss = ".fs-product-grid";
+		//WebElement containerElem = Bot.driver().findElement(By.cssSelector(containerCss));
+		//System.out.println("container elem: " + containerElem.getText());	
+    }
 
 }
 
