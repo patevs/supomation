@@ -1,6 +1,6 @@
 
 <!-- 
-		supomation/pom.xml 
+	supomation/pom.xml 
 -->
 
 <project 
@@ -21,13 +21,15 @@
 
   <!-- PROPERTIES -->
   <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- compile with Java 8 -->
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<!-- compile with Java 8 -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-		<!-- plugin versions -->
-		<selenium.version>3.141.59</selenium.version>
-	</properties>
+	<!-- plugin versions -->
+	<selenium.version>3.141.59</selenium.version>
+	<junit.version>4.12</junit.version>
+	<geckodriver.version>0.24.0</geckodriver.version>
+  </properties>
   
   <!-- DEPENDENCIES -->
   <dependencies>
@@ -37,73 +39,88 @@
 			<artifactId>selenium-firefox-driver</artifactId>
 			<version>${selenium.version}</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-edge-driver -->
+	<!-- 
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-edge-driver</artifactId>
+	    <version>${selenium.version}</version>
+	</dependency>
+	-->
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
 	<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
 			<version>${selenium.version}</version>
 	</dependency>		
+	<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>${junit.version}</version>
+	    <scope>test</scope>
+	</dependency>		
   </dependencies>
 
   <!-- BUILD -->
   <build>
 		
-		<!-- PLUGINS -->
-		<plugins>
-			<plugin>
-				<groupId>com.github.webdriverextensions</groupId>
-				<artifactId>webdriverextensions-maven-plugin</artifactId>
-				<version>3.1.3</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>install-drivers</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<drivers>
-						<driver>
-							<name>geckodriver</name>
-							<platform>windows</platform>
-							<bit>64</bit>
-							<version>0.24.0</version>
-						</driver>
-					</drivers>
-				</configuration>
-			</plugin>
-		</plugins>
+	<!-- PLUGINS -->
+	<plugins>
+		<plugin>
+			<groupId>com.github.webdriverextensions</groupId>
+			<artifactId>webdriverextensions-maven-plugin</artifactId>
+			<version>3.1.3</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>install-drivers</goal>
+					</goals>
+				</execution>
+			</executions>
+			<configuration>
+				<drivers>
+					<driver>
+						<name>geckodriver</name>
+						<platform>windows</platform>
+						<bit>64</bit>
+						<version>${geckodriver.version}</version>
+					</driver>
+				</drivers>
+			</configuration>
+		</plugin>
+	</plugins>
 
-		<!-- PLUGIN MANAGEMENT -->
+	<!-- PLUGIN MANAGEMENT -->
     <pluginManagement>
       <plugins>
-				<!--Eclipse m2e settings (can be removed if you are not using eclipse) -->
+		<!--Eclipse m2e settings (can be removed if you are not using eclipse) -->
         <plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>com.github.webdriverextensions</groupId>
-										<artifactId>webdriverextensions-maven-plugin</artifactId>
-										<versionRange>[1.0,)</versionRange>
-										<goals>
-											<goal>install-drivers</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute>
-											<runOnIncremental>true</runOnIncremental>
-										</execute>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
+			<groupId>org.eclipse.m2e</groupId>
+			<artifactId>lifecycle-mapping</artifactId>
+			<version>1.0.0</version>
+			<configuration>
+				<lifecycleMappingMetadata>
+					<pluginExecutions>
+						<pluginExecution>
+							<pluginExecutionFilter>
+								<groupId>com.github.webdriverextensions</groupId>
+								<artifactId>webdriverextensions-maven-plugin</artifactId>
+								<versionRange>[1.0,)</versionRange>
+								<goals>
+									<goal>install-drivers</goal>
+								</goals>
+							</pluginExecutionFilter>
+							<action>
+								<execute>
+									<runOnIncremental>true</runOnIncremental>
+								</execute>
+							</action>
+						</pluginExecution>
+					</pluginExecutions>
+				</lifecycleMappingMetadata>
+			</configuration>
+		</plugin>
       </plugins>
     </pluginManagement>
 

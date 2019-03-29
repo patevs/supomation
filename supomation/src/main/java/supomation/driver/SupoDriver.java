@@ -23,8 +23,16 @@ public class SupoDriver {
 	private static final String GECKO_RELATIVE_PATH = "\\drivers\\geckodriver-windows-64bit.exe";
 	private static final String GECKO_ABSOLUTE_PATH = System.getProperty("user.dir") + GECKO_RELATIVE_PATH;
 	// WebDriver;
-	private static WebDriver driver;
+	private WebDriver driver;
 
+	/**
+	 * CONSTRUCTOR
+	 */
+	public SupoDriver() {
+		System.out.println("Constructing SupoDriver...");
+		driver = createWebDriver();
+	}
+	
 	// ------- //
 	// METHODS //
 	// ------- //
@@ -33,8 +41,7 @@ public class SupoDriver {
 	 * Creates a WebDriver in selenium
 	 * @return WebDriver
 	 */
-	@SuppressWarnings("unused")
-	private static WebDriver createWebDriver() {
+	private WebDriver createWebDriver() {
 		return createGeckoDriver(GECKO_ABSOLUTE_PATH);
 	}
 	
@@ -46,7 +53,7 @@ public class SupoDriver {
 	 * @param execPath path to gecko driver executable
 	 * @return FirefoxDriver WebDriver
 	 */
-	private static FirefoxDriver createGeckoDriver(String execPath) {
+	private FirefoxDriver createGeckoDriver(String execPath) {
 		// setting gecko driver executable location
 		System.setProperty("webdriver.gecko.driver", execPath);
 		return new FirefoxDriver();
@@ -55,11 +62,11 @@ public class SupoDriver {
 	/**
 	 * Shutdown the webdriver.
 	 */
-	@SuppressWarnings("unused")
-	private static void shutdownWebDriver() {
+	public void shutdownWebDriver() {
         //Close the browser
 		System.out.print("Shutting down webdriver... ");
-        driver.quit();
+        //driver.close();
+		driver.quit();
         System.out.println("Done.");
 	}
 	
@@ -67,11 +74,21 @@ public class SupoDriver {
 	 * Navigate the webdriver to a given url
 	 * @param url
 	 */
-	@SuppressWarnings("unused")
-	private static void gotoUrl(String url)	{
-		// navigate to given url
+	public void gotoUrl(String url)	{
 		driver.get(url);
-		System.out.println("Webpage title: " + driver.getTitle());
+	}
+	
+	/**
+	 * @return the current webpage's title
+	 * 	or null if not set.
+	 */
+	public String getPageTitle() {
+		return driver.getTitle();
 	}
 	
 }
+
+
+// EOF
+
+

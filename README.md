@@ -14,6 +14,8 @@
 
 ### Java/Maven
 
+  * [WebDriverExtensions](https://github.com/webdriverextensions/webdriverextensions-maven-plugin)
+
 **GeckoDriver**
 
   * [mozilla/geckodriver](https://github.com/mozilla/geckodriver)
