@@ -5,6 +5,9 @@ import com.github.webdriverextensions.WebSite;
 
 import supomation.pages.SupoMainPage;
 
+/**
+ * Main site page object model
+ */
 public class SupoSite extends WebSite {
     // Logger
     //@SuppressWarnings("unused")
