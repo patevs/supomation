@@ -1,3 +1,5 @@
+package supomation;
+
 /**
  * * Main.java
  *

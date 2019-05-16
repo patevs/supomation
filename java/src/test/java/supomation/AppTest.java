@@ -1,4 +1,4 @@
-package patevs;
+package supomation;
 
 import org.junit.Test;
 
