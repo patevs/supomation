@@ -18,14 +18,19 @@ public class Main {
      * * METHODS *
      *************/
 
-    @Command // One,
-    public String hello() {
-        return "Hello, World!";
+    @Command
+    public String sayHello() {
+        return "Hello!";
     }
 
-    @Command // two,
+    @Command
     public int add(int a, int b) {
         return a + b;
+    }
+
+    @Command
+    public void exit() {
+        // ..
     }
 
     /**
@@ -34,7 +39,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("\n\t-> Starting Supomation...");
         // ..
-        ShellFactory.createConsoleShell("hello", "", new Main()).commandLoop(); // and three.
+        ShellFactory.createConsoleShell("supomation>", "Enter '?list' to list all commands", new Main()).commandLoop();
         // ..
         System.out.println("\n\t-> Stopping Supomation...");
         // ..
