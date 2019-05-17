@@ -12,17 +12,6 @@
 
 ----
 
-### Java/Maven
-
-* [WebDriverExtensions](https://github.com/webdriverextensions/webdriverextensions-maven-plugin)
-
-#### **GeckoDriver**
-
-* [mozilla/geckodriver](https://github.com/mozilla/geckodriver)
-* [geckodriver capabilities](https://firefox-source-docs.mozilla.org/testing/geckodriver/Capabilities.html)
-
-----
-
 ### Python
 
 #### **Selenium Python Bindings**
