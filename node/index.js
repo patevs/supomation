@@ -36,14 +36,8 @@ async function runPuppeteer() {
 
   console.log(chalk.blue("\t * Getting products list...\n"));
 
-  //let numProducts = await page.$$eval('.fs-product-card__description', e => e.length);
-  //console.log(numProducts);
-
-  //let productElems = await page.$$('.fs-product-card__description');
-  //console.log(productElems);
-
-  //let product = await page.$eval('.fs-product-card__description', e => e.textContent);
-  //console.log(product);
+  let products = await page.$$eval('.fs-product-card__description', nodes => nodes.map(node => node.textContent));
+  console.log(products);
 
   //let description = await page.$eval('.fs-product-card__footer-container', e => e.outerHTML);
   //console.log(description);
