@@ -5,7 +5,10 @@
  */
 
 // IMPORTS
-var program = require('commander');
+const program = require('commander');
+const chalk = require('chalk');
+
+console.log(chalk.green.underline.bold('\t--- SUPOMATION ---\n'));
 
 program
   .version('0.0.1')
@@ -16,6 +19,5 @@ program
   .parse(process.argv);
 
 if (!program.args.length) program.help();
-
 
 // EOF //

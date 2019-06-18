@@ -12,6 +12,7 @@
   "author": "PatEvs",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.4.2",
     "commander": "^2.20.0"
   }
 }
