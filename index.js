@@ -13,8 +13,10 @@ require("pretty-error").start();
 const chalk = require("chalk");
 const puppeteer = require("puppeteer");
 //const fs = require("fs");
+const CFonts = require('cfonts');
 
 async function runSupomation() {
+	console.log(chalk.blue("* Running puppeteer...\n"));
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 
@@ -52,10 +54,23 @@ function writeToFile(name, content) {
 }
 */
 
+function printTitle() {
+	CFonts.say('SUPOMATION', {
+		font: 'block',              // define the font face; shade, chrome, simple, simpleBlock, 3d, simple3d, huge
+		align: 'left',              // define text alignment
+		colors: ['green'],         	// define all colors
+		//		background: 'transparent',  // define the background color, you can also use `backgroundColor` here as key
+		//		letterSpacing: 1,           // define letter spacing
+		//		lineHeight: 1,              // define the line height
+		//		space: true,                // define if the output text should have empty lines on top and on the bottom
+		//		maxLength: '0',             // define how many character can be on one line
+	});
+}
+
 function run() {
-	console.log(chalk.green.underline.bold("--- SUPOMATION ---\n"));
-	console.log(chalk.blue("* Running puppeteer...\n"));
-	runSupomation();
+	//console.log(chalk.green.underline.bold("--- SUPOMATION ---\n"));
+	printTitle();
+	//runSupomation();
 }
 
 run();
