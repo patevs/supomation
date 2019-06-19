@@ -3,18 +3,21 @@
 	"version": "0.0.0",
 	"description": "supomation",
 	"license": "MIT",
-	"repository": "PatEvs/supomation",
+	"repository": "github:PatEvs/supomation",
 	"author": {
 		"name": "patevs",
 		"email": "ppevans11@gmail.com",
 		"url": "https://github.com/patevs"
 	},
+	"main": "index.js",
 	"bin": "cli.js",
 	"engines": {
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"clean": "rm -rf node_modules",
+		"start": "node index.js",
+		"test": "xo"
 	},
 	"files": [
 		"index.js",
@@ -25,7 +28,9 @@
 		"cli"
 	],
 	"dependencies": {
-		"meow": "^5.0.0"
+		"chalk": "^2.4.2",
+		"meow": "^5.0.0",
+		"puppeteer": "^1.17.0"
 	},
 	"devDependencies": {
 		"xo": "^0.24.0"
