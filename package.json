@@ -16,8 +16,7 @@
 	},
 	"scripts": {
 		"clean": "rm -rf node_modules",
-		"start": "node index.js",
-		"test": "xo && eslint"
+		"start": "node index.js"
 	},
 	"files": [
 		"index.js",
@@ -35,9 +34,5 @@
 		"ora": "^3.4.0",
 		"pretty-error": "^2.1.1",
 		"puppeteer": "^1.17.0"
-	},
-	"devDependencies": {
-		"eslint": "^5.16.0",
-		"xo": "^0.24.0"
 	}
 }
