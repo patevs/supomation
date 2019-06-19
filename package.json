@@ -17,7 +17,7 @@
 	"scripts": {
 		"clean": "rm -rf node_modules",
 		"start": "node index.js",
-		"test": "xo"
+		"test": "xo && eslint"
 	},
 	"files": [
 		"index.js",
@@ -37,6 +37,7 @@
 		"puppeteer": "^1.17.0"
 	},
 	"devDependencies": {
+		"eslint": "^5.16.0",
 		"xo": "^0.24.0"
 	}
 }

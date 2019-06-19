@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
 require("pretty-error").start();
 
-const meow = require('meow');
-const supomation = require('.');
+const meow = require("meow");
+const supomation = require(".");
 
 const cli = meow(`
 	Usage
@@ -21,4 +21,4 @@ const cli = meow(`
 	  ponies & rainbows
 `);
 
-console.log(supomation(cli.input[0] || 'unicorns'));
+console.log(supomation(cli.input[0] || "unicorns"));
