@@ -1,0 +1,33 @@
+{
+	"name": "supomation",
+	"version": "0.0.0",
+	"description": "supomation",
+	"license": "MIT",
+	"repository": "PatEvs/supomation",
+	"author": {
+		"name": "patevs",
+		"email": "ppevans11@gmail.com",
+		"url": "https://github.com/patevs"
+	},
+	"bin": "cli.js",
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js",
+		"cli.js"
+	],
+	"keywords": [
+		"cli-app",
+		"cli"
+	],
+	"dependencies": {
+		"meow": "^5.0.0"
+	},
+	"devDependencies": {
+		"xo": "^0.24.0"
+	}
+}
