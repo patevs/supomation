@@ -28,8 +28,10 @@
 		"cli"
 	],
 	"dependencies": {
+		"cfonts": "^2.4.3",
 		"chalk": "^2.4.2",
 		"meow": "^5.0.0",
+		"ora": "^3.4.0",
 		"pretty-error": "^2.1.1",
 		"puppeteer": "^1.17.0"
 	},
