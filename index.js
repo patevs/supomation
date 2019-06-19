@@ -16,6 +16,9 @@ module.exports = (input, options = {}) => {
 };
 */
 
+// pretty print error messages
+require("pretty-error").start();
+
 // IMPORTS
 const chalk = require('chalk');
 const puppeteer = require('puppeteer');

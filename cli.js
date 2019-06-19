@@ -1,5 +1,9 @@
 #!/usr/bin/env node
+
 'use strict';
+
+require("pretty-error").start();
+
 const meow = require('meow');
 const supomation = require('.');
 
