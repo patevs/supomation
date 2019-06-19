@@ -16,21 +16,38 @@
 
 ## Libraries & Packages
 
-### Terminal Styling
-
-- [`chalk`](https://github.com/chalk/chalk)
-
-### CLI Interaction
+CLI Interaction:
 
 - [`meow`](https://github.com/sindresorhus/meow)
 - [`commander.js`](https://github.com/tj/commander.js)
 
-### WebDriver Automation
+WebDriver Automation:
 
 - [`puppeteer`](https://github.com/GoogleChrome/puppeteer)
   - [Documentation](https://pptr.dev/)
 
 - [`nightwatch`](https://github.com/nightwatchjs/nightwatch)
   - [Documentation](https://nightwatchjs.org/gettingstarted)
+
+Terminal Styling:
+
+- [`chalk`](https://github.com/chalk/chalk)
+
+ASCII fonts for the console:
+
+- [`cfonts`](https://github.com/dominikwilkowski/cfonts)
+
+Terminal Spinner:
+
+- [`ora`](https://github.com/sindresorhus/ora)
+
+Terminal Unicode Symbols:
+
+- [`figures`](https://github.com/sindresorhus/figures)
+- [`log-symbols`](https://github.com/sindresorhus/log-symbols)
+
+Pretty Error Messages:
+
+- [`pretty-error`](https://github.com/AriaMinaei/pretty-error)
 
 ---
