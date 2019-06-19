@@ -56,7 +56,7 @@ function writeToFile(name, content) {
 
 function printTitle() {
 	CFonts.say('SUPOMATION', {
-		font: 'block',              // define the font face; shade, chrome, simple, simpleBlock, 3d, simple3d, huge
+		font: 'block',              // define the font face; block, shade, chrome, simple, simpleBlock, 3d, simple3d, huge
 		align: 'left',              // define text alignment
 		colors: ['green'],         	// define all colors
 	});
