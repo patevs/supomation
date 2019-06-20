@@ -28,13 +28,20 @@ async function runSupomation() {
 
 	let allProducts = await page.$$(".fs-product-card");
 
+	let productData = [];
+
 	for (let i = 0; i < allProducts.length; i++) {
-		let product = allProducts[i];
-		let pname = await product.$eval(".u-p2", e => e.textContent);
-		console.log(pname);
-		let pdetails = await product.$eval(".fs-product-card__footer-container", e => e.getAttribute("data-options"));
-		console.log(pdetails);
+		let productElem = allProducts[i];
+		let pname = await productElem.$eval(".u-p2", e => e.textContent);
+		let pdata = await productElem.$eval(".fs-product-card__footer-container", e => e.getAttribute("data-options"));
+		let product = {
+			name: pname,
+			data: pdata
+		};
+		productData.push(product);
 	}
+
+	console.log({ productData });
 
 	/*
 	let products = await page.$$eval(".fs-product-card__description", nodes =>
