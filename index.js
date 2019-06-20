@@ -25,36 +25,18 @@ async function runSupomation() {
 	await page.goto(TARGET);
 
 	console.log(chalk.blue("-> Retrieving products list..."));
-	//let product = await page.$eval(".fs-product-card", e => e.innerHTML);
-	//console.log(product);
 	let product = await page.$(".fs-product-card");
 	let pname = await product.$eval(".u-p2", e => e.textContent);
 	console.log(pname);
 	let pdetails = await product.$eval(".fs-product-card__footer-container", e => e.getAttribute("data-options"));
 	console.log(pdetails);
-	//console.log(product);
+
 	/*
 	let products = await page.$$eval(".fs-product-card__description", nodes =>
 		nodes.map(node => node.textContent)
 	);
 	console.log({ products });
 	*/
-
-	//let description = await page.$eval(".fs-product-card__footer-container", e => e.getAttribute("data-options"));
-	//console.log(description);
-	//writeToFile("desc.html", description);
-
-	//let priceInfo = await page.$eval(".fs-product-card", e => e.outerHTML);
-	//console.log(priceInfo);
-
-	//let priceDollars = await page.$eval(".fs-price-lockup__dollars", e => e.innerHTML);
-	//console.log("Dollars: " + priceDollars);
-
-	//let priceCents = await page.$eval(".fs-price-lockup__cents", e => e.innerHTML);
-	//console.log("Cents: " + priceCents);
-
-	// "fs-price-lockup__dollars";
-	// "fs-price-lockup__cents"
 
 	//console.log(chalk.blue("* Saving page contents..."));
 	//let content = await page.content();
