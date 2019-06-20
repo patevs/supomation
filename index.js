@@ -10,7 +10,7 @@
 //const CFonts = require('cfonts');
 const chalk = require("chalk");
 const puppeteer = require("puppeteer");
-const fs = require("fs");
+//const fs = require("fs");
 
 // CONSTANTS
 //let url = "https://www.newworld.co.nz/savings/virtual-mailer";
@@ -26,8 +26,7 @@ async function runSupomation() {
 
 	console.log(chalk.blue("-> Retrieving products list..."));
 	let products = await page.$$eval(".fs-product-card__description", nodes => nodes.map(node => node.textContent));
-
-	//console.log({ products });
+	console.log({ products });
 
 	//let description = await page.$eval('.fs-product-card__footer-container', e => e.outerHTML);
 	//console.log(description);
