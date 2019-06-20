@@ -25,7 +25,9 @@ async function runSupomation() {
 	await page.goto(TARGET);
 
 	console.log(chalk.blue("-> Retrieving products list..."));
-	let products = await page.$$eval(".fs-product-card__description", nodes => nodes.map(node => node.textContent));
+	let products = await page.$$eval(".fs-product-card__description", nodes =>
+		nodes.map(node => node.textContent)
+	);
 	console.log({ products });
 
 	//let description = await page.$eval('.fs-product-card__footer-container', e => e.outerHTML);
@@ -71,6 +73,5 @@ function mainProcess() {
 }
 
 mainProcess();
-
 
 // EOF //
