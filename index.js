@@ -6,14 +6,11 @@
 
 "use strict";
 
-// pretty print error messages
-require("pretty-error").start();
-
 // IMPORTS
 const chalk = require("chalk");
+const CFonts = require('cfonts');
 const puppeteer = require("puppeteer");
 const fs = require("fs");
-const CFonts = require('cfonts');
 
 // CONSTANTS
 //let url = "https://www.newworld.co.nz/savings/virtual-mailer";
@@ -64,7 +61,6 @@ function printTitle() {
 		colors: ['green'],         	// define all colors
 	});
 }
-
 
 function mainProcess() {
 	console.log(chalk.underline.bold.green("SUPOMATION"));

@@ -10,7 +10,6 @@
 		"url": "https://github.com/patevs"
 	},
 	"main": "index.js",
-	"bin": "cli.js",
 	"engines": {
 		"node": ">=8"
 	},
@@ -22,17 +21,11 @@
 		"index.js",
 		"cli.js"
 	],
-	"keywords": [
-		"cli-app",
-		"cli"
-	],
 	"dependencies": {
 		"cfonts": "^2.4.3",
 		"chalk": "^2.4.2",
 		"log-symbols": "^3.0.0",
-		"meow": "^5.0.0",
 		"ora": "^3.4.0",
-		"pretty-error": "^2.1.1",
 		"puppeteer": "^1.17.0"
 	}
 }
