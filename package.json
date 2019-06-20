@@ -1,6 +1,6 @@
 {
 	"name": "supomation",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "supomation",
 	"license": "MIT",
 	"repository": "github:PatEvs/supomation",
@@ -18,8 +18,7 @@
 		"start": "node index.js"
 	},
 	"files": [
-		"index.js",
-		"cli.js"
+		"index.js"
 	],
 	"dependencies": {
 		"chalk": "^2.4.2",

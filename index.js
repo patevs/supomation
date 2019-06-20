@@ -25,11 +25,16 @@ async function runSupomation() {
 	await page.goto(TARGET);
 
 	console.log(chalk.blue("-> Retrieving products list..."));
-	let product = await page.$(".fs-product-card");
-	let pname = await product.$eval(".u-p2", e => e.textContent);
-	console.log(pname);
-	let pdetails = await product.$eval(".fs-product-card__footer-container", e => e.getAttribute("data-options"));
-	console.log(pdetails);
+
+	let allProducts = await page.$$(".fs-product-card");
+
+	for (let i = 0; i < allProducts.length; i++) {
+		let product = allProducts[i];
+		let pname = await product.$eval(".u-p2", e => e.textContent);
+		console.log(pname);
+		let pdetails = await product.$eval(".fs-product-card__footer-container", e => e.getAttribute("data-options"));
+		console.log(pdetails);
+	}
 
 	/*
 	let products = await page.$$eval(".fs-product-card__description", nodes =>
