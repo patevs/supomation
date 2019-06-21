@@ -37,6 +37,7 @@ CLI Interaction:
 - [`commander.js`](https://github.com/tj/commander.js)
 - [`yargs`](https://github.com/yargs/yargs)
 - [`inquirer.js`](https://github.com/SBoudrias/Inquirer.js)
+- [`qoa`](https://github.com/klaussinani/qoa)
 
 String Parsing:
 
