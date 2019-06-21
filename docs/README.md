@@ -74,6 +74,7 @@ Pretty Error Messages:
 Mongo Database:
 
 - [`mongoDB`](https://github.com/mongodb/node-mongodb-native)
+  - [Documentation](https://docs.mongodb.com/)
 - [`mongoose`](https://github.com/Automattic/mongoose)
 
 NodeJS in Browser:
