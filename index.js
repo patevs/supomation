@@ -69,6 +69,8 @@ async function processProducts(allProducts) {
 		let productElem = allProducts[i];
 		// Get product's name
 		let pname = await productElem.$eval(".u-p2", e => e.textContent);
+		// Remove white space
+		pname = pname.trim();
 		// Get products details
 		let pdata = await productElem.$eval(productBaseSelector + "__footer-container", e => e.getAttribute("data-options"));
 		let product = {
@@ -105,9 +107,8 @@ async function runSupomation() {
 	await gotoPage(page, TARGET);
 
 	// Scrap products from page
-	//let scrappedProducts = 
-	await scrapProducts(page);
-	//log({ scrappedProducts });
+	let scrappedProducts = await scrapProducts(page);
+	log({ scrappedProducts });
 
 	// Close the browser instance
 	await browser.close();
