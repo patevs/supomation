@@ -71,4 +71,8 @@ NodeJS in Browser:
 
 - [`RunKit`](https://runkit.com/home)
 
+Prettier & Eslint
+
+- [Linter Intergration](https://prettier.io/docs/en/integrating-with-linters.html)
+
 ---
