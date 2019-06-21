@@ -20,6 +20,9 @@ WebDriver Automation:
 
 - [`puppeteer`](https://github.com/GoogleChrome/puppeteer)
   - [Documentation](https://pptr.dev/)
+    - [Browser](https://pptr.dev/#?product=Puppeteer&version=v1.17.0&show=api-class-browser)
+    - [Page](https://pptr.dev/#?product=Puppeteer&version=v1.17.0&show=api-class-page)
+    - [Element Handle](https://pptr.dev/#?product=Puppeteer&version=v1.17.0&show=api-class-elementhandle)
 
 - [`nightwatch`](https://github.com/nightwatchjs/nightwatch)
   - [Documentation](https://nightwatchjs.org/gettingstarted)

@@ -20,9 +20,12 @@ const TARGET = "https://www.ishopnewworld.co.nz/specials";
 async function runSupomation() {
 	console.log(logSymbols.info, "Launching Puppeteer...");
 	const browser = await puppeteer.launch();
+	const browserVersion = await browser.version();
+	console.log(logSymbols.success, "Browser version: " + chalk.green(browserVersion));
+
 	const page = await browser.newPage();
 
-	console.log(logSymbols.info, "Navigating to: \n\t" + chalk.underline.blue(TARGET));
+	console.log(logSymbols.info, "Navigating page to: \n\t" + chalk.underline.blue(TARGET));
 	await page.goto(TARGET);
 
 	console.log(logSymbols.info, "Enumerating products list...");
