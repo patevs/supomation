@@ -41,7 +41,7 @@ async function runSupomation() {
 		productData.push(product);
 	}
 
-	console.log({ productData });
+	//console.log({ productData });
 
 	/*
 	let products = await page.$$eval(".fs-product-card__description", nodes =>
