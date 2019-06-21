@@ -105,8 +105,9 @@ async function runSupomation() {
 	await gotoPage(page, TARGET);
 
 	// Scrap products from page
-	let scrappedProducts = await scrapProducts(page);
-	log({ scrappedProducts });
+	//let scrappedProducts = 
+	await scrapProducts(page);
+	//log({ scrappedProducts });
 
 	// Close the browser instance
 	await browser.close();
