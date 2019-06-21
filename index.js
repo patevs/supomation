@@ -61,6 +61,7 @@ async function gotoPage(page, url) {
  * @param { all products element } allProducts 
  */
 async function processProducts(allProducts) {
+	log(logSymbols.info, "Processing products data...");
 	// Product data to return
 	let productsData = [];
 	// Iterate over all products
@@ -71,14 +72,28 @@ async function processProducts(allProducts) {
 		let pname = await productElem.$eval(".u-p2", e => e.textContent);
 		// Remove white space
 		pname = pname.trim();
-		// Get products details
+		// Get product data
 		let pdata = await productElem.$eval(productBaseSelector + "__footer-container", e => e.getAttribute("data-options"));
+		// Parse product data as JSON
+		pdata = JSON.parse(pdata);
+		// Get products unique id
+		let pid = pdata.productId;
+		// Get product details
+		let pdetails = pdata.ProductDetails;
+		// Get price info
+		let priceMode = pdetails.PriceMode;
+		let pricePer = pdetails.PricePerItem;
+		// Create product object
 		let product = {
+			uid: pid,
 			name: pname,
-			data: pdata
+			pricePer: pricePer,
+			priceMode: priceMode
 		};
+		// push product object into products data array
 		productsData.push(product);
 	}
+	// return array of all products
 	return productsData;
 }
 
@@ -112,7 +127,7 @@ async function runSupomation() {
 
 	// Close the browser instance
 	await browser.close();
-	log(logSymbols.success, "DONE!");
+	log("\n" + logSymbols.success, green("DONE!"));
 }
 
 /**
@@ -135,7 +150,7 @@ function writeToFile(name, content) {
  * * Application entry point
  */
 (async () => {
-	log(title("\nSUPOMATION"));
+	log(title("\nSUPOMATION\n"));
 	runSupomation();
 })();
 
