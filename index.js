@@ -79,12 +79,11 @@ function printTitle() {
 }
 */
 
-function mainProcess() {
+(async () => {
 	console.log(chalk.underline.bold.green("SUPOMATION"));
 	//printTitle();
 	runSupomation();
-}
+})();
 
-mainProcess();
 
 // EOF //
