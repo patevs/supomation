@@ -16,11 +16,6 @@
 
 ## Libraries & Packages
 
-CLI Interaction:
-
-- [`meow`](https://github.com/sindresorhus/meow)
-- [`commander.js`](https://github.com/tj/commander.js)
-
 WebDriver Automation:
 
 - [`puppeteer`](https://github.com/GoogleChrome/puppeteer)
@@ -28,6 +23,19 @@ WebDriver Automation:
 
 - [`nightwatch`](https://github.com/nightwatchjs/nightwatch)
   - [Documentation](https://nightwatchjs.org/gettingstarted)
+
+- [`simplecrawler`](https://github.com/simplecrawler/simplecrawler)
+
+CLI Interaction:
+
+- [`meow`](https://github.com/sindresorhus/meow)
+- [`commander.js`](https://github.com/tj/commander.js)
+- [`yargs`](https://github.com/yargs/yargs)
+- [`inquirer.js`](https://github.com/SBoudrias/Inquirer.js)
+
+String Parsing:
+
+- [`strip-indent`](https://github.com/sindresorhus/strip-indent)
 
 Terminal Styling:
 
@@ -46,8 +54,21 @@ Terminal Unicode Symbols:
 - [`figures`](https://github.com/sindresorhus/figures)
 - [`log-symbols`](https://github.com/sindresorhus/log-symbols)
 
+Terminal Boxes:
+
+- [`boxen`](https://github.com/sindresorhus/boxen)
+
 Pretty Error Messages:
 
 - [`pretty-error`](https://github.com/AriaMinaei/pretty-error)
+
+Mongo Database:
+
+- [`mongoDB`](https://github.com/mongodb/node-mongodb-native)
+- [`mongoose`](https://github.com/Automattic/mongoose)
+
+NodeJS in Browser:
+
+- [`RunKit`](https://runkit.com/home)
 
 ---
