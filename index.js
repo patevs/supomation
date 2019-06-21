@@ -10,66 +10,85 @@
 const puppeteer = require("puppeteer");
 const logSymbols = require("log-symbols");
 const chalk = require("chalk");
+//const fs = require("fs");
 
-// chalk theme data
+// Chalk theme data
 const log = console.log;
 const title = chalk.bold.underline.green;
 const green = chalk.green;
 const link = chalk.underline.blue;
 
-//const CFonts = require('cfonts');
-//const fs = require("fs");
-
 // CONSTANTS
 const TARGET = "https://www.ishopnewworld.co.nz/specials";
 
-async function runSupomation() {
+/**
+ * Initialize puppeteer browser instance
+ */
+async function initPuppeteer() {
 	log(logSymbols.info, "Launching Puppeteer...");
-
 	const browser = await puppeteer.launch();
 	const browserVersion = await browser.version();
+	log(logSymbols.success, "Browser version: \n\t" + green(browserVersion));
+	return browser;
+}
 
-	log(logSymbols.success, "Browser version: " + green(browserVersion));
+/**
+ * Navigate puppeteer to a given page
+ * @param { puppeteer page instance } page 
+ * @param { url to naviagte to } url 
+ */
+async function gotoPage(page, url) {
+	log(logSymbols.info, "Navigating browser page to: \n\t" + link(url));
+	await page.goto(url);
+}
 
-	const page = await browser.newPage();
-
-	log(logSymbols.info, "Navigating page to: \n\t" + link(TARGET));
-
-	await page.goto(TARGET);
-
+/**
+ * Scrap the product data from a given page
+ * @param { page to scrap } page 
+ */
+async function scrapProducts(page) {
 	log(logSymbols.info, "Scrapping products list...");
-
-	let allProducts = await page.$$(".fs-product-card");
-
-	let productData = [];
-
+	// Product data to return
+	let productsData = [];
+	// Product css selector
+	const baseSelector = ".fs-product-card";
+	// Select all products from page
+	let allProducts = await page.$$(baseSelector);
+	// Iterate over all products
 	for (let i = 0; i < allProducts.length; i++) {
+		// Current product element
 		let productElem = allProducts[i];
+		// Get product's name
 		let pname = await productElem.$eval(".u-p2", e => e.textContent);
-		let pdata = await productElem.$eval(".fs-product-card__footer-container", e => e.getAttribute("data-options"));
+		// Get products details
+		let pdata = await productElem.$eval(baseSelector + "__footer-container", e => e.getAttribute("data-options"));
 		let product = {
 			name: pname,
 			data: pdata
 		};
-		productData.push(product);
+		productsData.push(product);
 	}
+	return productsData;
+}
 
-	//console.log({ productData });
+/**
+ * Run Supomation scrapper
+ */
+async function runSupomation() {
+	// Initialize puppeteer browser
+	const browser = await initPuppeteer();
+	// Create a new page
+	const page = await browser.newPage();
 
-	/*
-	let products = await page.$$eval(".fs-product-card__description", nodes =>
-		nodes.map(node => node.textContent)
-	);
-	console.log({ products });
-	*/
+	// Navigate to url target
+	await gotoPage(page, TARGET);
 
-	//console.log(chalk.blue("* Saving page contents..."));
-	//let content = await page.content();
-	//console.log(content);
-	//writeToFile("contents.html", content);
+	// scrap products from oage
+	let scrappedProducts = await scrapProducts(page);
+	log({ scrappedProducts });
 
+	// Close the browser instance
 	await browser.close();
-
 	log(logSymbols.success, "DONE!");
 }
 
@@ -92,22 +111,6 @@ function writeToFile(name, content) {
 	runSupomation();
 })();
 
-/*
-function printTitle() {
-	CFonts.say('SUPOMATION', {
-		font: 'block',              // define the font face; block, shade, chrome, simple, simpleBlock, 3d, simple3d, huge
-		align: 'left',              // define text alignment
-		colors: ['green'],         	// define all colors
-	});
-}
-*/
-
-/*
-	console.log(logSymbols.info, "INFO!");
-	console.log(logSymbols.success, "SUCCESS!");
-	console.log(logSymbols.warning, "WARNING!");
-	console.log(logSymbols.error, "ERROR!");
-*/
-
 
 // EOF //
+
