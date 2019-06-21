@@ -6,21 +6,34 @@
 
 "use strict";
 
-// IMPORTS
+/*************
+ * * IMPORTS *
+ *************/
 const puppeteer = require("puppeteer");
 const logSymbols = require("log-symbols");
 const chalk = require("chalk");
 //const fs = require("fs");
 
-// Chalk theme data
+/***********
+ * * THEME *
+ ***********/
 const log = console.log;
 const title = chalk.bold.underline.green;
 const link = chalk.underline.blue;
 const green = chalk.green;
 //const red = chalk.red;
 
-// CONSTANTS
+/***************
+ * * CONSTANTS *
+ ***************/
+// Target URL
 const TARGET = "https://www.ishopnewworld.co.nz/specials";
+// Product CSS selector
+const productBaseSelector = ".fs-product-card";
+
+/***************
+ * * FUNCTIONS *
+ ***************/
 
 /**
  * Initialize puppeteer browser instance
@@ -44,17 +57,12 @@ async function gotoPage(page, url) {
 }
 
 /**
- * Scrap the product data from a given page
- * @param { page to scrap } page 
+ * Process the products data
+ * @param { all products element } allProducts 
  */
-async function scrapProducts(page) {
-	log(logSymbols.info, "Scrapping products list...");
+async function processProducts(allProducts) {
 	// Product data to return
 	let productsData = [];
-	// Product css selector
-	const baseSelector = ".fs-product-card";
-	// Select all products from page
-	let allProducts = await page.$$(baseSelector);
 	// Iterate over all products
 	for (let i = 0; i < allProducts.length; i++) {
 		// Current product element
@@ -62,7 +70,7 @@ async function scrapProducts(page) {
 		// Get product's name
 		let pname = await productElem.$eval(".u-p2", e => e.textContent);
 		// Get products details
-		let pdata = await productElem.$eval(baseSelector + "__footer-container", e => e.getAttribute("data-options"));
+		let pdata = await productElem.$eval(productBaseSelector + "__footer-container", e => e.getAttribute("data-options"));
 		let product = {
 			name: pname,
 			data: pdata
@@ -73,7 +81,19 @@ async function scrapProducts(page) {
 }
 
 /**
- * Run Supomation scrapper
+ * Scrap the product data from a given page
+ * @param { page to scrap } page 
+ */
+async function scrapProducts(page) {
+	log(logSymbols.info, "Scrapping products list...");
+	// Select all products from page
+	let allProducts = await page.$$(productBaseSelector);
+	// Process the products data
+	return processProducts(allProducts);
+}
+
+/**
+ * Run Supomation Scrapper
  */
 async function runSupomation() {
 	// Initialize puppeteer browser
@@ -84,7 +104,7 @@ async function runSupomation() {
 	// Navigate to url target
 	await gotoPage(page, TARGET);
 
-	// scrap products from page
+	// Scrap products from page
 	let scrappedProducts = await scrapProducts(page);
 	log({ scrappedProducts });
 
