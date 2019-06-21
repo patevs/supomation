@@ -15,8 +15,9 @@ const chalk = require("chalk");
 // Chalk theme data
 const log = console.log;
 const title = chalk.bold.underline.green;
-const green = chalk.green;
 const link = chalk.underline.blue;
+const green = chalk.green;
+//const red = chalk.red;
 
 // CONSTANTS
 const TARGET = "https://www.ishopnewworld.co.nz/specials";
@@ -83,7 +84,7 @@ async function runSupomation() {
 	// Navigate to url target
 	await gotoPage(page, TARGET);
 
-	// scrap products from oage
+	// scrap products from page
 	let scrappedProducts = await scrapProducts(page);
 	log({ scrappedProducts });
 
@@ -92,19 +93,24 @@ async function runSupomation() {
 	log(logSymbols.success, "DONE!");
 }
 
+/**
+ * Writes content to disk.
+ * @param { name of file } name 
+ * @param { content to write } content 
+ */
 /*
 function writeToFile(name, content) {
 	fs.writeFile(name, content, function (err) {
 		if (err) {
-			return console.log(chalk.red(err));
+			return log(red(err));
 		}
-		console.log(chalk.green(name + " written successfully!"));
+		log(green(name + " written successfully!"));
 	});
 }
 */
 
 /**
- * Application entry point
+ * * Application entry point
  */
 (async () => {
 	log(title("\nSUPOMATION"));
