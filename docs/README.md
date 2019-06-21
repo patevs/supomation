@@ -39,9 +39,11 @@ CLI Interaction:
 - [`inquirer.js`](https://github.com/SBoudrias/Inquirer.js)
 - [`qoa`](https://github.com/klaussinani/qoa)
 
-String Parsing:
+Strings:
 
 - [`strip-indent`](https://github.com/sindresorhus/strip-indent)
+- [`voca`](https://github.com/panzerdp/voca)
+- [`string.js`](https://github.com/jprichardson/string.js)
 
 Logging:
 
