@@ -29,6 +29,8 @@ WebDriver Automation:
 
 - [`simplecrawler`](https://github.com/simplecrawler/simplecrawler)
 
+- [`x-ray`](https://github.com/matthewmueller/x-ray)
+
 CLI Interaction:
 
 - [`meow`](https://github.com/sindresorhus/meow)
@@ -39,6 +41,10 @@ CLI Interaction:
 String Parsing:
 
 - [`strip-indent`](https://github.com/sindresorhus/strip-indent)
+
+Logging:
+
+- [`signale`](https://github.com/klaussinani/signale)
 
 Terminal Styling:
 

@@ -7,28 +7,37 @@
 "use strict";
 
 // IMPORTS
-//const CFonts = require('cfonts');
-const chalk = require("chalk");
-const logSymbols = require("log-symbols");
 const puppeteer = require("puppeteer");
+const logSymbols = require("log-symbols");
+const chalk = require("chalk");
+
+// chalk theme data
+const log = console.log;
+const title = chalk.bold.underline.green;
+const green = chalk.green;
+const link = chalk.underline.blue;
+
+//const CFonts = require('cfonts');
 //const fs = require("fs");
 
 // CONSTANTS
-//let url = "https://www.newworld.co.nz/savings/virtual-mailer";
 const TARGET = "https://www.ishopnewworld.co.nz/specials";
 
 async function runSupomation() {
-	console.log(logSymbols.info, "Launching Puppeteer...");
+	log(logSymbols.info, "Launching Puppeteer...");
+
 	const browser = await puppeteer.launch();
 	const browserVersion = await browser.version();
-	console.log(logSymbols.success, "Browser version: " + chalk.green(browserVersion));
+
+	log(logSymbols.success, "Browser version: " + green(browserVersion));
 
 	const page = await browser.newPage();
 
-	console.log(logSymbols.info, "Navigating page to: \n\t" + chalk.underline.blue(TARGET));
+	log(logSymbols.info, "Navigating page to: \n\t" + link(TARGET));
+
 	await page.goto(TARGET);
 
-	console.log(logSymbols.info, "Enumerating products list...");
+	log(logSymbols.info, "Scrapping products list...");
 
 	let allProducts = await page.$$(".fs-product-card");
 
@@ -61,7 +70,7 @@ async function runSupomation() {
 
 	await browser.close();
 
-	console.log(logSymbols.success, "DONE!");
+	log(logSymbols.success, "DONE!");
 }
 
 /*
@@ -74,6 +83,14 @@ function writeToFile(name, content) {
 	});
 }
 */
+
+/**
+ * Application entry point
+ */
+(async () => {
+	log(title("\nSUPOMATION"));
+	runSupomation();
+})();
 
 /*
 function printTitle() {
@@ -91,12 +108,6 @@ function printTitle() {
 	console.log(logSymbols.warning, "WARNING!");
 	console.log(logSymbols.error, "ERROR!");
 */
-
-(async () => {
-	console.log(chalk.underline.bold.green("\nSUPOMATION"));
-	//printTitle();
-	runSupomation();
-})();
 
 
 // EOF //
