@@ -9,6 +9,7 @@
 // IMPORTS
 //const CFonts = require('cfonts');
 const chalk = require("chalk");
+const logSymbols = require("log-symbols");
 const puppeteer = require("puppeteer");
 //const fs = require("fs");
 
@@ -17,14 +18,14 @@ const puppeteer = require("puppeteer");
 const TARGET = "https://www.ishopnewworld.co.nz/specials";
 
 async function runSupomation() {
-	console.log(chalk.blue("-> Launching puppeteer..."));
+	console.log(logSymbols.info, "Launching Puppeteer...");
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 
-	console.log(chalk.blue("-> Navigating to: ") + chalk.underline(TARGET));
+	console.log(logSymbols.info, "Navigating to: \n\t" + chalk.underline.blue(TARGET));
 	await page.goto(TARGET);
 
-	console.log(chalk.blue("-> Retrieving products list..."));
+	console.log(logSymbols.info, "Enumerating products list...");
 
 	let allProducts = await page.$$(".fs-product-card");
 
@@ -56,6 +57,8 @@ async function runSupomation() {
 	//writeToFile("contents.html", content);
 
 	await browser.close();
+
+	console.log(logSymbols.success, "DONE!");
 }
 
 /*
@@ -79,8 +82,15 @@ function printTitle() {
 }
 */
 
+/*
+	console.log(logSymbols.info, "INFO!");
+	console.log(logSymbols.success, "SUCCESS!");
+	console.log(logSymbols.warning, "WARNING!");
+	console.log(logSymbols.error, "ERROR!");
+*/
+
 (async () => {
-	console.log(chalk.underline.bold.green("SUPOMATION"));
+	console.log(chalk.underline.bold.green("\nSUPOMATION"));
 	//printTitle();
 	runSupomation();
 })();
