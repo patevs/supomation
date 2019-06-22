@@ -49,6 +49,10 @@ Logging:
 
 - [`signale`](https://github.com/klaussinani/signale)
 
+Emoji Support:
+
+- [`node-emoji`](https://github.com/omnidan/node-emoji)
+
 Terminal Styling:
 
 - [`chalk`](https://github.com/chalk/chalk)
