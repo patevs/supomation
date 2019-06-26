@@ -48,8 +48,8 @@ async function initPuppeteer() {
 
 /**
  * Navigate puppeteer to a given page
- * @param { puppeteer page instance } page 
- * @param { url to naviagte to } url 
+ * @param { puppeteer page instance } page
+ * @param { url to naviagte to } url
  */
 async function gotoPage(page, url) {
 	log(logSymbols.info, "Navigating browser page to: \n\t" + link(url));
@@ -58,7 +58,7 @@ async function gotoPage(page, url) {
 
 /**
  * Process the products data
- * @param { all products element } allProducts 
+ * @param { all products element } allProducts
  */
 async function processProducts(allProducts) {
 	log(logSymbols.info, "Processing products data...");
@@ -99,7 +99,7 @@ async function processProducts(allProducts) {
 
 /**
  * Scrap the product data from a given page
- * @param { page to scrap } page 
+ * @param { page to scrap } page
  */
 async function scrapProducts(page) {
 	log(logSymbols.info, "Scrapping products list...");
@@ -132,8 +132,8 @@ async function runSupomation() {
 
 /**
  * Writes content to disk.
- * @param { name of file } name 
- * @param { content to write } content 
+ * @param { name of file } name
+ * @param { content to write } content
  */
 /*
 function writeToFile(name, content) {
