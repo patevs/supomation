@@ -1,6 +1,16 @@
 
 # [`supomation`](https://github.com/patevs/supomation)
 
+## Backlog
+
+1. Improve CLI iteraction
+2. Implement saving of scrapper data to file
+3. Implement scrapping of multiple pages
+4. Implement allowing the selection of scrapping specific categories only 
+5. Implement a more efficient webscrapping api
+
+---
+
 ## Links & Resources
 
 - [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
