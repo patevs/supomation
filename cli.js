@@ -74,6 +74,40 @@ async function initPuppeteer() {
 	return browser;
 }
 
+/*
+function startSupomationCLI_() {
+	inquirer
+		.prompt([
+			{
+				type: "expand",
+				message: "Select an option: ",
+				name: "overwrite",
+				choices: [
+					{
+						key: "s",
+						name: "Start WebScrapper",
+						value: "start"
+					},
+					{
+						key: "q",
+						name: "Quit Supomation CLI",
+						value: "quit"
+					},
+					new inquirer.Separator(),
+					{
+						key: "o",
+						name: "Other",
+						value: "other"
+					}
+				]
+			}
+		])
+		.then(answers => {
+			console.log(JSON.stringify(answers, null, "  "));
+		});
+}
+*/
+
 /**
  * Start the supomation interactive prompt
  */
