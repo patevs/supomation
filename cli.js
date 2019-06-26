@@ -23,9 +23,10 @@ const chalk = require("chalk");
 
 const log = console.log;
 const title = chalk.bold.underline.green;
-const link = chalk.underline.blue;
+const link = chalk.underline.cyan;
 const green = chalk.green;
-//const red = chalk.red;
+// const blue = chalk.blue;
+// const red = chalk.red;
 
 /***************
  * * CONSTANTS *
@@ -34,7 +35,7 @@ const green = chalk.green;
 // Target URL
 const TARGET = "https://www.ishopnewworld.co.nz/specials";
 // Product CSS selector
-// const productBaseSelector = ".fs-product-card";
+const productBaseSelector = ".fs-product-card";
 
 /***************
  * * FUNCTIONS *
@@ -60,7 +61,6 @@ async function initPuppeteer() {
  * @param { url to naviagte to } url
  */
 async function gotoPage(page, url) {
-	// log(logSymbols.info, "Navigating browser page to: \n\t" + link(url));
 	const spinner = ora("Navigating browser page to: \n\t" + link(url)).start();
 	spinner.indent = 2;
 	await page.goto(url);
@@ -68,13 +68,64 @@ async function gotoPage(page, url) {
 }
 
 /**
+ * Process the products data
+ * @param { all products element } allProducts
+ */
+async function processProducts(allProducts) {
+	// log(logSymbols.info, "Processing products data...");
+	const spinner = ora("Processing products data...").start();
+	spinner.indent = 2;
+	// Product data to return
+	let productsData = [];
+	// Iterate over all products
+	for (let i = 0; i < allProducts.length; i++) {
+		// Current product element
+		let productElem = allProducts[i];
+		// Get product's name
+		// TODO: Move this to seperate method
+		let pname = await productElem.$eval(".u-p2", e => e.textContent);
+		// Remove white space
+		pname = pname.trim();
+		// Get product data
+		// TODO: Move this to seperate method
+		let pdata = await productElem.$eval(productBaseSelector + "__footer-container", e => e.getAttribute("data-options"));
+		// Parse product data as JSON
+		pdata = JSON.parse(pdata);
+		// Get products unique id
+		let pid = pdata.productId;
+		// Get product details
+		let pdetails = pdata.ProductDetails;
+		// Get price info
+		let priceMode = pdetails.PriceMode;
+		let pricePer = pdetails.PricePerItem;
+		// Create product object
+		let product = {
+			uid: pid,
+			name: pname,
+			pricePer: pricePer,
+			priceMode: priceMode
+		};
+		// push product object into products data array
+		productsData.push(product);
+	}
+	spinner.succeed();
+	// return array of all products
+	return productsData;
+}
+
+/**
  * Scrap the product data from a given page
  * @param { page to scrap } page
  */
 async function scrapProducts(page) {
-	log(logSymbols.info, "Scrapping products list...");
+	const spinner = ora("Scrapping products from page...").start();
+	spinner.indent = 2;
 	// Select all products from page
-	let allProducts = await page.$$(productBaseSelector);
+	const allProducts = await page.$$(productBaseSelector);
+	spinner.succeed();
+	const numProducts = allProducts.length;
+	// log("\tNumber of products: " + green(numProducts));
+	log("  " + logSymbols.info, "Number of products: " + green(numProducts));
 	// Process the products data
 	return processProducts(allProducts);
 }
@@ -94,11 +145,12 @@ async function runSupomation() {
 	// Navigate to url target
 	await gotoPage(page, TARGET);
 	// Scrap products from page
-	// let scrappedProducts = await scrapProducts(page);
+	// let scrappedProducts =
+	await scrapProducts(page);
 	// log({ scrappedProducts });
 	// Close the browser instance
 	await browser.close();
-	log("\n" + logSymbols.success, green("DONE!"));
+	log("\n" + logSymbols.error, "Quitting Supomation CLI\n");
 }
 
 /**
@@ -107,7 +159,8 @@ async function runSupomation() {
  */
 function processMenuOption(option) {
 	if (option === "q") {
-		log(logSymbols.error, "Quitting Supomation CLI...\n");
+		// TODO: Make this reusable
+		log("\n" + logSymbols.error, "Quitting Supomation CLI...\n");
 		process.exit(0);
 	} else if (option === "s") {
 		log(logSymbols.info, "Starting Supomation WebScrapper...");
