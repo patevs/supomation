@@ -68,6 +68,18 @@ async function gotoPage(page, url) {
 }
 
 /**
+ * Scrap the product data from a given page
+ * @param { page to scrap } page
+ */
+async function scrapProducts(page) {
+	log(logSymbols.info, "Scrapping products list...");
+	// Select all products from page
+	let allProducts = await page.$$(productBaseSelector);
+	// Process the products data
+	return processProducts(allProducts);
+}
+
+/**
  * RUn the supomation webscrapper
  */
 async function runSupomation() {
@@ -81,6 +93,12 @@ async function runSupomation() {
 	// spinner.succeed();
 	// Navigate to url target
 	await gotoPage(page, TARGET);
+	// Scrap products from page
+	// let scrappedProducts = await scrapProducts(page);
+	// log({ scrappedProducts });
+	// Close the browser instance
+	await browser.close();
+	log("\n" + logSymbols.success, green("DONE!"));
 }
 
 /**
