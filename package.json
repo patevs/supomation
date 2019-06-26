@@ -19,6 +19,7 @@
 		"lint": "eslint --fix . && echo Lint complete."
 	},
 	"files": [
+		"cli.js",
 		"index.js"
 	],
 	"dependencies": {
@@ -28,6 +29,9 @@
 		"puppeteer": "^1.17.0"
 	},
 	"devDependencies": {
-		"eslint": "^5.16.0"
+		"eslint": "^5.16.0",
+		"eslint-config-prettier": "^6.0.0",
+		"eslint-plugin-prettier": "^3.1.0",
+		"prettier": "^1.18.2"
 	}
 }
