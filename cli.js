@@ -11,8 +11,8 @@
  *************/
 
 // const puppeteer = require("puppeteer");
-// const logSymbols = require("log-symbols");
-const inquirer = require("inquirer");
+// const inquirer = require("inquirer");
+const logSymbols = require("log-symbols");
 const chalk = require("chalk");
 //const fs = require("fs");
 
@@ -39,22 +39,42 @@ const title = chalk.bold.underline.green;
  * * FUNCTIONS *
  ***************/
 
+/*
 function cli() {
-	inquirer
-		.prompt([
-			// Pass your questions in here
-			{
-				type: "confirm",
-				name: "toBeDelivered",
-				message: "Is this for delivery?",
-				default: false
-			},
-		])
-		.then(answers => {
-			// Use user feedback for... whatever!!
-			log("\nOrder receipt:");
-			log(JSON.stringify(answers, null, "  "));
-		});
+ inquirer
+	 .prompt([
+		 // Pass your questions in here
+		 {
+			 type: "confirm",
+			 name: "toBeDelivered",
+			 message: "Is this for delivery?",
+			 default: false
+		 },
+	 ])
+	 .then(answers => {
+		 // Use user feedback for... whatever!!
+		 log("\nOrder receipt:");
+		 log(JSON.stringify(answers, null, "  "));
+	 });
+}
+*/
+
+/**
+ * Initialize puppeteer browser instance
+ */
+// eslint-disable-next-line no-unused-vars
+async function initPuppeteer() {
+	log(logSymbols.info, "Launching Puppeteer...");
+	// const browser = await puppeteer.launch();
+	// const browserVersion = await browser.version();
+	// log(logSymbols.success, "Browser version: \n\t" + green(browserVersion));
+	// return browser;
+}
+
+
+// eslint-disable-next-line no-unused-vars
+function startSupomation() {
+	//..
 }
 
 /**
@@ -62,7 +82,6 @@ function cli() {
 */
 (function () {
 	log(title("\n  SUPOMATION\n"));
-	cli();
 	// runSupomation();
 })();
 
