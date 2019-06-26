@@ -11,7 +11,7 @@
  *************/
 
 const puppeteer = require("puppeteer");
-// const inquirer = require("inquirer");
+const inquirer = require("inquirer");
 const ora = require("ora");
 // const logSymbols = require("log-symbols");
 const chalk = require("chalk");
@@ -24,7 +24,7 @@ const chalk = require("chalk");
 const log = console.log;
 const title = chalk.bold.underline.green;
 // const link = chalk.underline.blue;
-// const green = chalk.green;
+const green = chalk.green;
 //const red = chalk.red;
 
 /***************
@@ -42,30 +42,22 @@ const title = chalk.bold.underline.green;
 
 /* inquirer usage
 function cli() {
- inquirer
-	 .prompt([
-		 // Pass your questions in here
-		 {
-			 type: "confirm",
-			 name: "toBeDelivered",
-			 message: "Is this for delivery?",
-			 default: false
-		 },
-	 ])
-	 .then(answers => {
-		 // Use user feedback for... whatever!!
-		 log("\nOrder receipt:");
-		 log(JSON.stringify(answers, null, "  "));
-	 });
+	inquirer
+		.prompt([
+			// Pass your questions in here
+			{
+				type: "confirm",
+				name: "toBeDelivered",
+				message: "Is this for delivery?",
+				default: false
+			},
+		])
+		.then(answers => {
+			// Use user feedback for... whatever!!
+			log("\nOrder receipt:");
+			log(JSON.stringify(answers, null, "  "));
+		});
 }
-*/
-
-/* ora usage
-const spinner = ora("Loading CLI...").start();
-setTimeout(() => {
-	spinner.succeed();
-	//..
-}, 2000);
 */
 
 /**
@@ -82,18 +74,42 @@ async function initPuppeteer() {
 	return browser;
 }
 
-// eslint-disable-next-line no-unused-vars
-function startSupomation() {
-	//..
+/**
+ * Start the supomation interactive prompt
+ */
+function startSupomationCLI() {
+	inquirer
+		.prompt([
+			{
+				type: "list",
+				name: "option",
+				message: green("Select an option:"),
+				choices: [
+					"Start WebScrapper",
+					"Quit Supomation CLI",
+					new inquirer.Separator(),
+					{
+						name: "Display Help",
+						disabled: "Unavailable at this time"
+					}
+				],
+				filter: function (val) {
+					return val.toLowerCase();
+				}
+			}
+		])
+		.then(answers => {
+			console.log(JSON.stringify(answers, null, "  "));
+		});
 }
 
 /**
 * * Application entry point
 */
 (function () {
-	log(title("\nWELCOME TO SUPOMATION\n"));
+	log(title("\nWELCOME TO SUPOMATION CLI\n"));
+	startSupomationCLI();
 	// initPuppeteer();
-	// runSupomation();
 })();
 
 /* self invoking async function
@@ -108,6 +124,20 @@ setTimeout(() => {
 	spinner.succeed();
 	//..
 }, 2000);
+*/
+
+/* log-update usage
+const frames = ["-", "\\", "|", "/"];
+let i = 0;
+setInterval(() => {
+	const frame = frames[i = ++i % frames.length];
+	logUpdate(
+		`
+        ♥♥
+   ${frame} unicorns ${frame}
+        ♥♥
+`);
+}, 80);
 */
 
 // EOF //
