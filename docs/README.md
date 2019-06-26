@@ -6,7 +6,7 @@
 1. Improve CLI iteraction
 2. Implement saving of scrapper data to file
 3. Implement scrapping of multiple pages
-4. Implement allowing the selection of scrapping specific categories only 
+4. Implement allowing the selection of scrapping specific categories only
 5. Implement a more efficient webscrapping api
 
 ---
@@ -47,6 +47,7 @@ CLI Interaction:
 - [`commander.js`](https://github.com/tj/commander.js)
 - [`yargs`](https://github.com/yargs/yargs)
 - [`inquirer.js`](https://github.com/SBoudrias/Inquirer.js)
+  - [Examples](https://github.com/SBoudrias/Inquirer.js/tree/master/packages/inquirer/examples)
 - [`qoa`](https://github.com/klaussinani/qoa)
 
 Strings:
