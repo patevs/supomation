@@ -15,7 +15,7 @@ const inquirer = require("inquirer");
 const ora = require("ora");
 const logSymbols = require("log-symbols");
 const chalk = require("chalk");
-//const fs = require("fs");
+const fs = require("fs");
 
 /***********
  * * THEME *
@@ -25,8 +25,8 @@ const log = console.log;
 const title = chalk.bold.underline.green;
 const link = chalk.underline.cyan;
 const green = chalk.green;
+const red = chalk.red;
 // const blue = chalk.blue;
-// const red = chalk.red;
 
 /***************
  * * CONSTANTS *
@@ -65,6 +65,21 @@ async function gotoPage(page, url) {
 	spinner.indent = 2;
 	await page.goto(url);
 	spinner.succeed();
+}
+
+/**
+ * Writes content to disk.
+ * @param { name of file } name
+ * @param { content to write } content
+ */
+// eslint-disable-next-line no-unused-vars
+function writeToFile(name, content) {
+	fs.writeFile(name, content, function (err) {
+		if (err) {
+			return log(logSymbols.error, red(err));
+		}
+		log("\n" + logSymbols.success, green(name) + " saved successfully!");
+	});
 }
 
 /**
@@ -145,9 +160,11 @@ async function runSupomation() {
 	// Navigate to url target
 	await gotoPage(page, TARGET);
 	// Scrap products from page
-	// let scrappedProducts =
-	await scrapProducts(page);
+	let scrappedProducts = await scrapProducts(page);
 	// log({ scrappedProducts });
+	// ! This will break if the scrapped products array is too large
+	const out = JSON.stringify(scrappedProducts, null, 2);
+	writeToFile("products.json", out);
 	// Close the browser instance
 	await browser.close();
 	log("\n" + logSymbols.error, "Quitting Supomation CLI\n");
@@ -163,7 +180,7 @@ function processMenuOption(option) {
 		log("\n" + logSymbols.error, "Quitting Supomation CLI...\n");
 		process.exit(0);
 	} else if (option === "s") {
-		log(logSymbols.info, "Starting Supomation WebScrapper...");
+		log("\n" + logSymbols.info, "Starting Supomation WebScrapper...");
 		runSupomation();
 	}
 }
