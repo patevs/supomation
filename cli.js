@@ -50,7 +50,7 @@ async function initPuppeteer() {
 	const browser = await puppeteer.launch();
 	const browserVersion = await browser.version();
 	spinner.succeed();
-	log("  " + logSymbols.success, "Browser version: \n\t" + green(browserVersion));
+	log("  " + logSymbols.info, "Browser version: \n\t" + green(browserVersion));
 	return browser;
 }
 
@@ -60,17 +60,25 @@ async function initPuppeteer() {
  * @param { url to naviagte to } url
  */
 async function gotoPage(page, url) {
-	log(logSymbols.info, "Navigating browser page to: \n\t" + link(url));
+	// log(logSymbols.info, "Navigating browser page to: \n\t" + link(url));
+	const spinner = ora("Navigating browser page to: \n\t" + link(url)).start();
+	spinner.indent = 2;
 	await page.goto(url);
+	spinner.succeed();
 }
 
-// eslint-disable-next-line no-unused-vars
+/**
+ * RUn the supomation webscrapper
+ */
 async function runSupomation() {
 	// launch puppeteer browser instance
 	const browser = await initPuppeteer();
 	// log(await browser.version()); // check we have the browser instance
 	// create a new page
+	// const spinner = ora("Creating new page...").start();
+	// spinner.indent = 2;
 	const page = await browser.newPage();
+	// spinner.succeed();
 	// Navigate to url target
 	await gotoPage(page, TARGET);
 }
@@ -125,40 +133,6 @@ function mainMenuPrompt() {
 function startSupomationCLI() {
 	mainMenuPrompt();
 }
-/*
-function startSupomationCLI() {
-	inquirer
-		.prompt([
-			{
-				type: "list",
-				name: "option",
-				message: "Select an option:",
-				choices: [
-					"Start WebScrapper",
-					"Quit Supomation CLI",
-					new inquirer.Separator(),
-					{
-						name: "Display Help",
-						disabled: "Unavailable at this time"
-					}
-				],
-				filter: function (val) {
-					return val.charAt(0).toLowerCase();
-				}
-			}
-		])
-		.then(answers => {
-			// console.log(JSON.stringify(answers, null, "  "));
-			if (answers.option === "q") {
-				log(logSymbols.error, "Quitting Supomation CLI...\n");
-				process.exit(0);
-			} else if (answers.option === "s") {
-				log(logSymbols.info, "Starting Supomation WebScrapper...");
-				initPuppeteer();
-			}
-		});
-}
-*/
 
 /**
 * * Application entry point
