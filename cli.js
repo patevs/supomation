@@ -10,9 +10,10 @@
  * * IMPORTS *
  *************/
 
-// const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer");
 // const inquirer = require("inquirer");
-const logSymbols = require("log-symbols");
+const ora = require("ora");
+// const logSymbols = require("log-symbols");
 const chalk = require("chalk");
 //const fs = require("fs");
 
@@ -39,7 +40,7 @@ const title = chalk.bold.underline.green;
  * * FUNCTIONS *
  ***************/
 
-/*
+/* inquirer usage
 function cli() {
  inquirer
 	 .prompt([
@@ -59,18 +60,27 @@ function cli() {
 }
 */
 
+/* ora usage
+const spinner = ora("Loading CLI...").start();
+setTimeout(() => {
+	spinner.succeed();
+	//..
+}, 2000);
+*/
+
 /**
  * Initialize puppeteer browser instance
  */
 // eslint-disable-next-line no-unused-vars
 async function initPuppeteer() {
-	log(logSymbols.info, "Launching Puppeteer...");
-	// const browser = await puppeteer.launch();
+	const spinner = ora("Launching Puppeteer...").start();
+	//log(logSymbols.info, "Launching Puppeteer...");
+	const browser = await puppeteer.launch();
 	// const browserVersion = await browser.version();
+	spinner.succeed();
 	// log(logSymbols.success, "Browser version: \n\t" + green(browserVersion));
-	// return browser;
+	return browser;
 }
-
 
 // eslint-disable-next-line no-unused-vars
 function startSupomation() {
@@ -81,7 +91,8 @@ function startSupomation() {
 * * Application entry point
 */
 (function () {
-	log(title("\n  SUPOMATION\n"));
+	log(title("\nWELCOME TO SUPOMATION\n"));
+	// initPuppeteer();
 	// runSupomation();
 })();
 

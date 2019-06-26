@@ -15,7 +15,7 @@
 	},
 	"scripts": {
 		"clean": "rm -rf node_modules",
-		"start": "node index.js",
+		"start": "node cli.js",
 		"lint": "eslint --fix . && echo Lint complete."
 	},
 	"files": [
