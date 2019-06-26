@@ -17,7 +17,7 @@
 /***********
  * * THEME *
  ***********/
-const log = console.log;
+// const log = console.log;
 // const title = chalk.bold.underline.green;
 // const link = chalk.underline.blue;
 // const green = chalk.green;
@@ -27,6 +27,23 @@ const log = console.log;
  * * CONSTANTS *
  ***************/
 // Target URL
-const TARGET = "https://www.ishopnewworld.co.nz/specials";
+// const TARGET = "https://www.ishopnewworld.co.nz/specials";
 // Product CSS selector
-const productBaseSelector = ".fs-product-card";
+// const productBaseSelector = ".fs-product-card";
+
+/***************
+ * * FUNCTIONS *
+ ***************/
+
+/**
+* * Application entry point
+*/
+/*
+(async () => {
+  log(title("\nSUPOMATION\n"));
+  // runSupomation();
+})();
+*/
+
+// EOF //
+
