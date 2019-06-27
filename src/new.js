@@ -15,6 +15,7 @@
 // const ora = require("ora");
 // const logSymbols = require("log-symbols");
 const chalk = require("chalk");
+const qoa = require("qoa");
 // const fs = require("fs");
 
 /***********
@@ -41,12 +42,37 @@ const title = chalk.bold.underline.green;
  * * FUNCTIONS *
  ***************/
 
+function prompt() {
+	//..
+
+	const interactive = {
+		type: "interactive",
+		query: "What is your favorite treat?",
+		handle: "treat",
+		symbol: ">",
+		menu: [
+			"Chocolate",
+			"Cupcakes",
+			"Ice-Cream"
+		]
+	};
+
+	// using the `prompt` async method
+	qoa.prompt([interactive]).then(log);
+	//=> { treat: 'Cupcakes' }
+
+	// using the `interactive` async method
+	qoa.interactive(interactive).then(log);
+	//=> { treat: 'Cupcakes' }
+	//..
+}
+
 /**
 * * Application entry point
 */
 (function () {
 	log(title("\nWELCOME TO SUPOMATION CLI\n"));
-	// startSupomationCLI();
+	prompt();
 })();
 
 
