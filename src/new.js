@@ -62,7 +62,7 @@ function prompt() {
 	//=> { treat: 'Cupcakes' }
 
 	// using the `interactive` async method
-	qoa.interactive(interactive).then(log);
+	// qoa.interactive(interactive).then(log);
 	//=> { treat: 'Cupcakes' }
 	//..
 }
