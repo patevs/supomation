@@ -1,6 +1,6 @@
 {
 	"name": "supomation",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "supomation",
 	"license": "MIT",
 	"repository": "github:PatEvs/supomation",
@@ -9,18 +9,16 @@
 		"email": "ppevans11@gmail.com",
 		"url": "https://github.com/patevs"
 	},
-	"main": "index.js",
 	"engines": {
 		"node": ">=8"
 	},
 	"scripts": {
 		"clean": "rm -rf node_modules",
 		"start": "node cli.js",
-		"lint": "eslint --fix . && echo Lint complete."
+		"test": "eslint --fix . && echo test complete."
 	},
 	"files": [
-		"cli.js",
-		"index.js"
+		"src"
 	],
 	"dependencies": {
 		"chalk": "^2.4.2",
