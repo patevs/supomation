@@ -32,6 +32,8 @@ const red = chalk.red;
  * * CONSTANTS *
  ***************/
 
+// ?pg=2
+
 // Target URL
 const TARGET = "https://www.ishopnewworld.co.nz/specials";
 // Product CSS selector
@@ -48,7 +50,7 @@ async function initPuppeteer() {
 	const spinner = ora("Launching Puppeteer...").start();
 	spinner.indent = 2;
 	// launch puppeteer
-	const browser = await puppeteer.launch();
+	const browser = await puppeteer.launch({ headless: true });
 	const browserVersion = await browser.version();
 	spinner.succeed();
 	log("  " + logSymbols.info, "Browser version: \n\t" + green(browserVersion));
@@ -109,7 +111,9 @@ async function processProducts(allProducts) {
 		// Get products unique id
 		let pid = pdata.productId;
 		// Get product details
+		log(pdata);
 		let pdetails = pdata.ProductDetails;
+		// log(pdetails);
 		// Get price info
 		let priceMode = pdetails.PriceMode;
 		let pricePer = pdetails.PricePerItem;
@@ -150,21 +154,33 @@ async function scrapProducts(page) {
  */
 async function runSupomation() {
 	// launch puppeteer browser instance
-	const browser = await initPuppeteer();
+	const browser = await initPuppeteer({ headless: false });
 	// log(await browser.version()); // check we have the browser instance
 	// create a new page
 	// const spinner = ora("Creating new page...").start();
 	// spinner.indent = 2;
 	const page = await browser.newPage();
 	// spinner.succeed();
+	//
+	// ?pg=2
 	// Navigate to url target
-	await gotoPage(page, TARGET);
-	// Scrap products from page
-	let scrappedProducts = await scrapProducts(page);
-	// log({ scrappedProducts });
-	// ! This will break if the scrapped products array is too large
-	const out = JSON.stringify(scrappedProducts, null, 2);
-	writeToFile("products.json", out);
+	let count = 0;
+	for (count; count < 42; count++) {
+		let targets = TARGET;
+		if (count > 0) {
+			targets = TARGET + "?pg=" + count;
+		};
+		await gotoPage(page, targets);
+		// Scrap products from page
+
+		let scrappedProducts = await scrapProducts(page);
+		// log({ scrappedProducts });
+		// ! This will break if the scrapped products array is too large
+		const out = JSON.stringify(scrappedProducts, null, 2);
+		writeToFile("products-" + count + ".json", out, count);
+
+	}
+
 	// Close the browser instance
 	await browser.close();
 	log("\n" + logSymbols.error, "Quitting Supomation CLI\n");
