@@ -161,11 +161,9 @@ async function runSupomation() {
 	// spinner.indent = 2;
 	const page = await browser.newPage();
 	// spinner.succeed();
-	//
-	// ?pg=2
 	// Navigate to url target
 	let count = 0;
-	for (count; count < 42; count++) {
+	for (count; count < 5; count++) {
 		let targets = TARGET;
 		if (count > 0) {
 			targets = TARGET + "?pg=" + count;
