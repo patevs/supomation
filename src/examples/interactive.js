@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- *  `new.js`
+ *  `src/examples/interactive.js`
  */
 
 "use strict";
