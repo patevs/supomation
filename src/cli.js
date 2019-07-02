@@ -71,7 +71,9 @@ function quit() {
 function processOption(option) {
 	if (option === "q") {
 		quit();
-	} else if (option === "s") {
+	} else if (option === "o") {
+		log("---LAUNCHING DASHBOARD---");
+	} else if (option === "r") {
 		runSupomation();
 	}
 }
@@ -197,7 +199,8 @@ function prompt() {
 				name: "option",
 				message: "Select an option:",
 				choices: [
-					"Start WebScrapper",
+					"Run WebScrapper",
+					"Open Dashboard",
 					"Quit Supomation CLI",
 					new inquirer.Separator(),
 					{
@@ -212,6 +215,7 @@ function prompt() {
 		])
 		.then(answers => {
 			//..
+			log(answers);
 			processOption(answers.option);
 			//..
 		});
