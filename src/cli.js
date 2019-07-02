@@ -18,6 +18,7 @@ const inquirer = require("inquirer");
  * * CONSTANTS *
  ***************/
 
+// Shortcut to console log
 const log = console.log;
 
 // Target URL
@@ -50,7 +51,7 @@ function quit() {
 	process.exit(0);
 }
 
-//--------------------//
+//------------------------------------------//
 
 /**
  * Process user selected main menu option
@@ -60,13 +61,32 @@ function processOption(option) {
 	if (option === "q") {
 		quit();
 	} else if (option === "s") {
-		// runSupomation();
+		runSupomation();
 	}
 }
 
 /***************
  * * FUNCTIONS *
  ***************/
+
+/**
+ * Run the Supomation webscrapper
+ */
+async function runSupomation() {
+	//..
+	log("\n" + logSymbols.info, "Starting Supomation WebScrapper...");
+	// launch puppeteer browser instance
+	// const browser = await initPuppeteer({ headless: false });
+	// create a new page
+	// const page = await browser.newPage();
+
+	// Close the browser instance
+	// await browser.close();
+	// log("\n" + logSymbols.error, "Quitting Supomation CLI\n");
+	//..
+}
+
+//------------------------------------------//
 
 /**
  * Display the main menu prompt
@@ -101,8 +121,10 @@ function prompt() {
 	//..
 }
 
+//------------------------------------------//
+
 /**
-* * Application entry point
+* * Supomation application entry point
 */
 (function () {
 	//..
@@ -111,4 +133,6 @@ function prompt() {
 	//..
 })();
 
+
 // EOF //
+
