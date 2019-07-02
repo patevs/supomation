@@ -11,13 +11,23 @@
  *************/
 
 const chalk = require("chalk");
+const logSymbols = require("log-symbols");
 const inquirer = require("inquirer");
+
+/***************
+ * * CONSTANTS *
+ ***************/
+
+const log = console.log;
+
+// Target URL
+// const TARGET = "https://www.ishopnewworld.co.nz/specials";
+// Product CSS selector
+// const productBaseSelector = ".fs-product-card";
 
 /***********
  * * THEME *
  ***********/
-
-const log = console.log;
 
 // Colors
 // const red = chalk.red;
@@ -28,27 +38,38 @@ const green = chalk.green;
 const title = green.underline.bold;
 // const link = blue.underline;
 
-/***************
- * * CONSTANTS *
- ***************/
-
-// Target URL
-// const TARGET = "https://www.ishopnewworld.co.nz/specials";
-// Product CSS selector
-// const productBaseSelector = ".fs-product-card";
-
 /**********************
  * * HELPER FUNCTIONS *
  **********************/
 
+/**
+ * Quit Supomation CLI
+ */
+function quit() {
+	log("\n" + logSymbols.error, "Quitting Supomation CLI...\n");
+	process.exit(0);
+}
+
 //--------------------//
+
+/**
+ * Process user selected main menu option
+ * @param { user selected option } option
+ */
+function processOption(option) {
+	if (option === "q") {
+		quit();
+	} else if (option === "s") {
+		// runSupomation();
+	}
+}
 
 /***************
  * * FUNCTIONS *
  ***************/
 
 /**
- * Main menu prompt
+ * Display the main menu prompt
  */
 function prompt() {
 	//..
@@ -74,8 +95,7 @@ function prompt() {
 		])
 		.then(answers => {
 			//..
-			log(answers);
-			// processOption(answers.option);
+			processOption(answers.option);
 			//..
 		});
 	//..
