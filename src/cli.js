@@ -159,7 +159,11 @@ async function runSupomation() {
 	// Log status to prompt
 	navPrompt.success("[%d/2] - Navigated to target page!", 2);
 
-	// Scrap products from page
+	// Initialize an interactive prompt
+	const scrapPrompt = new Signale({ interactive: true, scope: "supomation" });
+	// Log status to prompt
+	scrapPrompt.await("[%d/2] - Scrapping products from target page...", 1);
+	// Scrap products from target page
 	// let scrappedProducts = await scrapProducts(page);
 	// log({ scrappedProducts });
 	// ! This will break if the scrapped products array is too large
