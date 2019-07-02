@@ -72,7 +72,7 @@ function processOption(option) {
 	if (option === "q") {
 		quit();
 	} else if (option === "o") {
-		log("---LAUNCHING DASHBOARD---");
+		log("\n--- LAUNCHING DASHBOARD ---\n");
 	} else if (option === "r") {
 		runSupomation();
 	}
@@ -169,7 +169,7 @@ async function runSupomation() {
 	// let scrappedProducts = await scrapProducts(page);
 	// log({ scrappedProducts });
 	// TODO: Log number of scrapped products
-	scrapPrompt.success("[%d/2] - Scrapped all products from target page!\n", 2);
+	scrapPrompt.success("[%d/2] - Scrapped all products from target page!", 2);
 
 	// ! This will break if the scrapped products array is too large
 	//const out = JSON.stringify(scrappedProducts, null, 2);
