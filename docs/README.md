@@ -12,6 +12,14 @@
 - [JavaScript](https://github.com/sorrycc/awesome-javascript)
 - [Puppeteer](https://github.com/transitive-bullshit/awesome-puppeteer)
 
+### Modules & Packages
+
+- [`blessed`](https://github.com/chjj/blessed)
+- [`blessed-contrib`](https://github.com/yaronn/blessed-contrib)
+- [`inquirer.js`](https://github.com/SBoudrias/Inquirer.js)
+  - [Examples](https://github.com/SBoudrias/Inquirer.js/tree/master/packages/inquirer/examples)
+- [`signale`](https://github.com/klaussinani/signale)
+
 ---
 
 ## Backlog

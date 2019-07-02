@@ -13,6 +13,7 @@
 const chalk = require("chalk");
 const logSymbols = require("log-symbols");
 const inquirer = require("inquirer");
+// const puppeteer = require("puppeteer");
 
 /***************
  * * CONSTANTS *
@@ -44,7 +45,7 @@ const title = green.underline.bold;
  **********************/
 
 /**
- * Quit Supomation CLI
+ * * Quit Supomation CLI
  */
 function quit() {
 	log("\n" + logSymbols.error, "Quitting Supomation CLI...\n");
@@ -54,7 +55,8 @@ function quit() {
 //------------------------------------------//
 
 /**
- * Process user selected main menu option
+ * * Process user selected main menu option
+ *
  * @param { user selected option } option
  */
 function processOption(option) {
@@ -65,13 +67,34 @@ function processOption(option) {
 	}
 }
 
+/********************************
+ * * PUPPETEER HELPER FUNCTIONS *
+ ********************************/
+
+/**
+ * Initialize puppeteer browser instance
+ */
+/*
+async function initPuppeteer() {
+	const spinner = ora("Launching Puppeteer...").start();
+	spinner.indent = 2;
+	// launch puppeteer
+	const browser = await puppeteer.launch({ headless: true });
+	const browserVersion = await browser.version();
+	spinner.succeed();
+	log("  " + logSymbols.info, "Browser version: \n\t" + green(browserVersion));
+	return browser;
+}
+*/
+
 /***************
  * * FUNCTIONS *
  ***************/
 
 /**
- * Run the Supomation webscrapper
+ * * Run the Supomation webscrapper
  */
+// TODO: Add option to run in headless mode
 async function runSupomation() {
 	//..
 	log("\n" + logSymbols.info, "Starting Supomation WebScrapper...");
@@ -89,8 +112,9 @@ async function runSupomation() {
 //------------------------------------------//
 
 /**
- * Display the main menu prompt
+ * * Display the main menu prompt
  */
+// TODO: Add question to enable headless mode
 function prompt() {
 	//..
 	inquirer
