@@ -19,6 +19,7 @@ const inquirer = require("inquirer");
 // Text styling
 const chalk = require("chalk");
 // Logging symbols
+// TODO: Use signale instead of log-symbols
 const logSymbols = require("log-symbols");
 // Interactive logging
 const { Signale } = require("signale");
@@ -126,33 +127,37 @@ async function gotoPage(page, url) {
 // TODO: Add option to run in headless mode
 async function runSupomation() {
 	//..
-	log("\n" + logSymbols.info, "Starting Supomation WebScrapper...");
+	log("\n" + logSymbols.info, "Starting Supomation WebScrapper...\n");
 
 	// Initialize signale prompt
 	// const signale = new Signale();
 	// signale.success("Starting Supomation WebScrapper");
 
 	// Initialize an interactive prompt
-	// const supoPrompt = new Signale({ interactive: true, scope: "supomation" });
+	const browserPrompt = new Signale({ interactive: true, scope: "supomation" });
 	// Log status to prompt
-	// supoPrompt.await("[%d/4] - Starting Supomation WebScrapper", 1);
-
+	browserPrompt.await("[%d/2] - Launching Puppeteer browser...", 1);
 	// Initialize a puppeteer browser instance
 	const browser = await initPuppeteer();
-
-	// log("\n" + logSymbols.info, "Starting Supomation WebScrapper...");
-	// launch puppeteer browser instance
-	// const browser = await initPuppeteer({ headless: false });
-
+	// TODO: Log browser version
+	// Log status to prompt
+	browserPrompt.success("[%d/2] - Puppetter browser launched!", 2);
+	log();
+	// Initialize another prompt
+	const pagePrompt = new Signale({ interactive: true, scope: "supomation" });
+	// Log status to prompt
+	pagePrompt.await("[%d/2] - Creating a new browser page...", 1);
 	// Create a new page in the browser
 	// const page =
 	await browser.newPage();
+	// Log status to prompt
+	pagePrompt.success("[%d/2] - New browser page created!", 2);
 
+	// TODO: Check if user wants to quit or goto main menu
 	// Close the browser instance
 	await browser.close();
 	// Quit Supomation CLI
 	quit();
-	// log("\n" + logSymbols.error, "Quitting Supomation CLI\n");
 	//..
 }
 
