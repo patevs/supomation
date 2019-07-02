@@ -45,7 +45,7 @@ const title = green.underline.bold;
  **********************/
 
 /**
- * * Quit Supomation CLI
+ *	* Quit Supomation CLI
  */
 function quit() {
 	log("\n" + logSymbols.error, "Quitting Supomation CLI...\n");
@@ -55,7 +55,7 @@ function quit() {
 //------------------------------------------//
 
 /**
- * * Process user selected main menu option
+ *	* Process user selected main menu option
  *
  * @param { user selected option } option
  */
@@ -87,12 +87,29 @@ async function initPuppeteer() {
 }
 */
 
+//------------------------------------------//
+
+/**
+ * Navigate puppeteer to a given page
+ *
+ * @param { puppeteer page instance } page
+ * @param { target url } url
+ */
+/*
+async function gotoPage(page, url) {
+	const spinner = ora("Navigating browser page to: \n\t" + link(url)).start();
+	spinner.indent = 2;
+	await page.goto(url);
+	spinner.succeed();
+}
+*/
+
 /***************
  * * FUNCTIONS *
  ***************/
 
 /**
- * * Run the Supomation webscrapper
+ *	* Run the Supomation webscrapper
  */
 // TODO: Add option to run in headless mode
 async function runSupomation() {
@@ -112,7 +129,7 @@ async function runSupomation() {
 //------------------------------------------//
 
 /**
- * * Display the main menu prompt
+ *	* Display the main menu prompt
  */
 // TODO: Add question to enable headless mode
 function prompt() {
@@ -148,8 +165,8 @@ function prompt() {
 //------------------------------------------//
 
 /**
-* * Supomation application entry point
-*/
+ *	* Supomation application entry point
+ */
 (function () {
 	//..
 	log(title("\nWELCOME TO SUPOMATION CLI\n"));
