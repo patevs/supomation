@@ -150,8 +150,14 @@ async function runSupomation() {
 	// Log status to prompt
 	pagePrompt.success("[%d/2] - New browser page created!\n", 2);
 
+	// Initialize an interactive prompt
+	const navPrompt = new Signale({ interactive: true, scope: "supomation" });
+	// Log status to prompt
+	navPrompt.await("[%d/2] - Navigating to target page...", 1);
 	// Navigate to target page
 	await gotoPage(page, TARGET_URL);
+	// Log status to prompt
+	navPrompt.success("[%d/2] - Navigated to target page!", 2);
 
 	// Scrap products from page
 	// let scrappedProducts = await scrapProducts(page);
