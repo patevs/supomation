@@ -41,4 +41,14 @@
  * * FUNCTIONS *
  ***************/
 
+/**
+* * Application entry point
+*/
+(function () {
+	//..
+	// log(title("\nWELCOME TO SUPOMATION CLI\n"));
+	// prompt();
+	//..
+})();
+
 // EOF //
