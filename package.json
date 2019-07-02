@@ -13,7 +13,7 @@
 		"node": ">=8"
 	},
 	"scripts": {
-		"clean": "rm -rf node_modules",
+		"clean": "trash node_modules",
 		"start": "node src/cli.js",
 		"test": "eslint --fix . && echo test complete."
 	},
