@@ -34,7 +34,7 @@ const log = console.log;
 // Target URL
 const TARGET_URL = "https://www.ishopnewworld.co.nz/specials";
 // Product CSS selector
-// const PRODUCT_SELECTOR = ".fs-product-card";
+const PRODUCT_SELECTOR = ".fs-product-card";
 
 /***********
  * * THEME *
@@ -122,6 +122,27 @@ async function gotoPage(page, url) {
  ***************/
 
 /**
+ *	* Scrap the product data from a given page
+ *
+ * @param { page to scrap } page
+ */
+async function scrapProducts(page) {
+	// const spinner = ora("Scrapping products from page...").start();
+	// spinner.indent = 2;
+	// Select all products from page
+	// const allProducts =
+	await page.$$(PRODUCT_SELECTOR);
+	// spinner.succeed();
+	// const numProducts = allProducts.length;
+	// log("\tNumber of products: " + green(numProducts));
+	// log("  " + logSymbols.info, "Number of products: " + green(numProducts));
+	// Process the products data
+	// return processProducts(allProducts);
+}
+
+//------------------------------------------//
+
+/**
  *	* Run the Supomation webscrapper
  */
 // TODO: Add option to run in headless mode
@@ -166,7 +187,8 @@ async function runSupomation() {
 	// Log status to prompt
 	scrapPrompt.await("[%d/2] - Scrapping products from target page...", 1);
 	// Scrap products from target page
-	// let scrappedProducts = await scrapProducts(page);
+	// let scrappedProducts =
+	await scrapProducts(page);
 	// log({ scrappedProducts });
 	// TODO: Log number of scrapped products
 	scrapPrompt.success("[%d/2] - Scrapped all products from target page!", 2);
