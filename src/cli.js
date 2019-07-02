@@ -10,10 +10,18 @@
  * * IMPORTS *
  *************/
 
-const chalk = require("chalk");
-const logSymbols = require("log-symbols");
+// WebDriver
+const puppeteer = require("puppeteer");
+
+// CLI iteraction
 const inquirer = require("inquirer");
-// const puppeteer = require("puppeteer");
+
+// Text styling
+const chalk = require("chalk");
+// Logging symbols
+const logSymbols = require("log-symbols");
+// Interactive logging
+const { Signale } = require("signale");
 
 /***************
  * * CONSTANTS *
@@ -72,20 +80,24 @@ function processOption(option) {
  ********************************/
 
 /**
- * Initialize puppeteer browser instance
+ *	* Initialize a puppeteer browser instance
  */
-/*
 async function initPuppeteer() {
-	const spinner = ora("Launching Puppeteer...").start();
-	spinner.indent = 2;
-	// launch puppeteer
+	//..
+	// const spinner = ora("Launching Puppeteer...").start();
+	// spinner.indent = 2;
+
+	// Launch puppeteer browser
 	const browser = await puppeteer.launch({ headless: true });
-	const browserVersion = await browser.version();
-	spinner.succeed();
-	log("  " + logSymbols.info, "Browser version: \n\t" + green(browserVersion));
+
+	// const browserVersion = await browser.version();
+	// spinner.succeed();
+	// log("  " + logSymbols.info, "Browser version: \n\t" + green(browserVersion));
+
+	// Return the browser instance
 	return browser;
+	//..
 }
-*/
 
 //------------------------------------------//
 
@@ -115,13 +127,31 @@ async function gotoPage(page, url) {
 async function runSupomation() {
 	//..
 	log("\n" + logSymbols.info, "Starting Supomation WebScrapper...");
+
+	// Initialize signale prompt
+	// const signale = new Signale();
+	// signale.success("Starting Supomation WebScrapper");
+
+	// Initialize an interactive prompt
+	// const supoPrompt = new Signale({ interactive: true, scope: "supomation" });
+	// Log status to prompt
+	// supoPrompt.await("[%d/4] - Starting Supomation WebScrapper", 1);
+
+	// Initialize a puppeteer browser instance
+	const browser = await initPuppeteer();
+
+	// log("\n" + logSymbols.info, "Starting Supomation WebScrapper...");
 	// launch puppeteer browser instance
 	// const browser = await initPuppeteer({ headless: false });
-	// create a new page
-	// const page = await browser.newPage();
+
+	// Create a new page in the browser
+	// const page =
+	await browser.newPage();
 
 	// Close the browser instance
-	// await browser.close();
+	await browser.close();
+	// Quit Supomation CLI
+	quit();
 	// log("\n" + logSymbols.error, "Quitting Supomation CLI\n");
 	//..
 }
@@ -173,6 +203,22 @@ function prompt() {
 	prompt();
 	//..
 })();
+
+
+// signale example usage
+/*
+supoPrompt.await("[%d/4] - Process A", 1);
+setTimeout(() => {
+	supoPrompt.success("[%d/4] - Process A", 2);
+	setTimeout(() => {
+		supoPrompt.await("[%d/4] - Process B", 3);
+		setTimeout(() => {
+			supoPrompt.error("[%d/4] - Process B", 4);
+			setTimeout(() => { }, 1000);
+		}, 1000);
+	}, 1000);
+}, 1000);
+*/
 
 
 // EOF //
