@@ -32,9 +32,9 @@ const { Signale } = require("signale");
 const log = console.log;
 
 // Target URL
-// const TARGET = "https://www.ishopnewworld.co.nz/specials";
+const TARGET_URL = "https://www.ishopnewworld.co.nz/specials";
 // Product CSS selector
-// const productBaseSelector = ".fs-product-card";
+// const PRODUCT_SELECTOR = ".fs-product-card";
 
 /***********
  * * THEME *
@@ -103,19 +103,17 @@ async function initPuppeteer() {
 //------------------------------------------//
 
 /**
- * Navigate puppeteer to a given page
+ *	* Navigate puppeteer to a given page
  *
  * @param { puppeteer page instance } page
  * @param { target url } url
  */
-/*
 async function gotoPage(page, url) {
-	const spinner = ora("Navigating browser page to: \n\t" + link(url)).start();
-	spinner.indent = 2;
+	// const spinner = ora("Navigating browser page to: \n\t" + link(url)).start();
+	// spinner.indent = 2;
 	await page.goto(url);
-	spinner.succeed();
+	// spinner.succeed();
 }
-*/
 
 /***************
  * * FUNCTIONS *
@@ -141,17 +139,27 @@ async function runSupomation() {
 	const browser = await initPuppeteer();
 	// TODO: Log browser version
 	// Log status to prompt
-	browserPrompt.success("[%d/2] - Puppetter browser launched!", 2);
-	log();
-	// Initialize another prompt
+	browserPrompt.success("[%d/2] - Puppetter browser launched!\n", 2);
+
+	// Initialize an interactive prompt
 	const pagePrompt = new Signale({ interactive: true, scope: "supomation" });
 	// Log status to prompt
 	pagePrompt.await("[%d/2] - Creating a new browser page...", 1);
 	// Create a new page in the browser
-	// const page =
-	await browser.newPage();
+	const page = await browser.newPage();
 	// Log status to prompt
-	pagePrompt.success("[%d/2] - New browser page created!", 2);
+	pagePrompt.success("[%d/2] - New browser page created!\n", 2);
+
+	// Navigate to target page
+	await gotoPage(page, TARGET_URL);
+
+	// Scrap products from page
+	// let scrappedProducts = await scrapProducts(page);
+	// log({ scrappedProducts });
+	// ! This will break if the scrapped products array is too large
+	//const out = JSON.stringify(scrappedProducts, null, 2);
+	// writeToFile("products-" + count + ".json", out, count);
+	// }
 
 	// TODO: Check if user wants to quit or goto main menu
 	// Close the browser instance
