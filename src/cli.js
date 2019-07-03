@@ -68,27 +68,6 @@ function quit() {
 //------------------------------------------//
 
 /**
- *	* Prompt the user to confirm to run
- * 	* the webscraper in headless mode
- */
-function promptHeadless() {
-	//..
-	inquirer
-		.prompt([
-			{
-				type: "confirm",
-				name: "headless",
-				message: "Run in headless mode? (No GUI)",
-				default: true
-			}
-		])
-		.then(answers => {
-			log(answers);
-		});
-	//..
-}
-
-/**
  *	* Process user selected main menu option
  *
  * @param { user selected option } option
@@ -150,14 +129,14 @@ function loadDashboard() {
 /**
  *	* Initialize a puppeteer browser instance
  */
-async function initPuppeteer() {
+async function initPuppeteer(headlessMode) {
 	//..
 	// Initialize an interactive prompt
 	const browserPrompt = new Signale({ interactive: true, scope: "supomation" });
 	// Log status to prompt
 	browserPrompt.await("[%d/2] - Launching Puppeteer browser...", 1);
 	// Launch puppeteer browser
-	const browser = await puppeteer.launch({ headless: true });
+	const browser = await puppeteer.launch({ headless: headlessMode });
 	// TODO: Log browser version
 	// const browserVersion = await browser.version();
 	// log("  " + logSymbols.info, "Browser version: \n\t" + green(browserVersion));
@@ -339,13 +318,12 @@ async function scrapProducts(page) {
 /**
  *	* Run the Supomation webscrapper
  */
-// TODO: Add option to run in headless mode
-async function runSupomation() {
+async function runSupomation(headlessMode) {
 	//..
 	log("\n" + logSymbols.info, "Starting Supomation WebScrapper...\n");
 
 	// Initialize a puppeteer browser instance
-	const browser = await initPuppeteer();
+	const browser = await initPuppeteer(headlessMode);
 
 	// Create a new page in the browser
 	const page = await createPage(browser);
@@ -377,9 +355,33 @@ async function runSupomation() {
 //------------------------------------------//
 
 /**
+ *	* Prompt the user to confirm to run
+ * 	* the webscraper in headless mode
+ */
+function promptHeadless() {
+	//..
+	inquirer
+		.prompt([
+			{
+				type: "confirm",
+				name: "headless",
+				message: "Run in headless mode? (No GUI)",
+				default: true
+			}
+		])
+		.then(answers => {
+			//..
+			runSupomation(answers.headless);
+			//..
+		});
+	//..
+}
+
+//------------------------------------------//
+
+/**
  *	* Display the main menu prompt
  */
-// TODO: Add question to enable headless mode
 // TODO: Add question for number of pages to scrap
 function prompt() {
 	//..
