@@ -147,12 +147,62 @@ async function gotoPage(page, url) {
 	//..
 }
 
-
 //------------------------------------------//
 
 /***************
  * * FUNCTIONS *
  ***************/
+
+/**
+ * Process the products data
+ * @param { all products element } allProducts
+ */
+// eslint-disable-next-line no-unused-vars
+async function processProducts(allProducts) {
+	// log(logSymbols.info, "Processing products data...");
+	// const spinner = ora("Processing products data...").start();
+	// spinner.indent = 2;
+	// Product data to return
+	let productsData = [];
+	// Iterate over all products
+	for (let i = 0; i < allProducts.length; i++) {
+		// Current product element
+		let productElem = allProducts[i];
+		// Get product's name
+		// TODO: Move this to seperate method
+		let pname = await productElem.$eval(".u-p2", e => e.textContent);
+		// Remove white space
+		pname = pname.trim();
+		// Get product data
+		// TODO: Move this to seperate method
+		let pdata = await productElem.$eval(PRODUCT_SELECTOR + "__footer-container", e => e.getAttribute("data-options"));
+		// Parse product data as JSON
+		pdata = JSON.parse(pdata);
+		// Get products unique id
+		let pid = pdata.productId;
+		// Get product details
+		log(pdata);
+		let pdetails = pdata.ProductDetails;
+		// log(pdetails);
+		// Get price info
+		let priceMode = pdetails.PriceMode;
+		let pricePer = pdetails.PricePerItem;
+		// Create product object
+		let product = {
+			uid: pid,
+			name: pname,
+			pricePer: pricePer,
+			priceMode: priceMode
+		};
+		// push product object into products data array
+		productsData.push(product);
+	}
+	// spinner.succeed();
+	// return array of all products
+	return productsData;
+}
+
+//------------------------------------------//
 
 /**
  *	* Scrap the product data from a given page
