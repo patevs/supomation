@@ -101,6 +101,9 @@ function loadDashboard() {
 	grid.set(0, 4, 1, 4, blessed.box, {
 		content: "SUPOMATION DASHBOARD",
 		align: "center",
+		border: {
+			type: "line"
+		},
 		style: {
 			border: { fg: "green" }
 		}
