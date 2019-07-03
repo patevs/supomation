@@ -67,6 +67,10 @@ function quit() {
 
 //------------------------------------------//
 
+/**
+ *	* Prompt the user to confirm to run
+ * 	* the webscraper in headless mode
+ */
 function promptHeadless() {
 	//..
 	inquirer
