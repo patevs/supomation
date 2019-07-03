@@ -237,7 +237,6 @@ function prompt() {
 		])
 		.then(answers => {
 			//..
-			log(answers);
 			processOption(answers.option);
 			//..
 		});
@@ -255,22 +254,6 @@ function prompt() {
 	prompt();
 	//..
 })();
-
-
-// signale example usage
-/*
-supoPrompt.await("[%d/4] - Process A", 1);
-setTimeout(() => {
-	supoPrompt.success("[%d/4] - Process A", 2);
-	setTimeout(() => {
-		supoPrompt.await("[%d/4] - Process B", 3);
-		setTimeout(() => {
-			supoPrompt.error("[%d/4] - Process B", 4);
-			setTimeout(() => { }, 1000);
-		}, 1000);
-	}, 1000);
-}, 1000);
-*/
 
 
 // EOF //
