@@ -92,7 +92,9 @@ function loadDashboard() {
 	//..
 	// Dashboard screen
 	let screen = blessed.screen();
-	// Grid layout
+	// Set screen title
+	screen.title = "SUPOMATION DASHBOARD";
+	// Use grid layout
 	let grid = new contrib.grid({ rows: 12, cols: 12, screen: screen });
 
 	// grid.set(row, col, rowSpan, colSpan, obj, opts)
@@ -111,15 +113,18 @@ function loadDashboard() {
 	// Dashboard content
 	grid.set(1, 0, 4, 4, blessed.box, {
 		content: "CONTENT LEFT",
-		align: "center"
+		align: "center",
+		valign: "middle"
 	});
 	grid.set(1, 4, 4, 4, blessed.box, {
 		content: "CONTENT CENTER",
-		align: "center"
+		align: "center",
+		valign: "middle"
 	});
 	grid.set(1, 8, 4, 4, blessed.box, {
 		content: "CONTENT RIGHT",
-		align: "center"
+		align: "center",
+		valign: "middle"
 	});
 	// let map =
 	// grid.set(0, 0, 4, 4, contrib.map, { label: "World Map" });
