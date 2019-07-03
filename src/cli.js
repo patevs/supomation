@@ -24,6 +24,10 @@ const logSymbols = require("log-symbols");
 // Interactive logging
 const { Signale } = require("signale");
 
+// Blessed dashboard
+const blessed = require("blessed");
+const contrib = require("blessed-contrib");
+
 /***************
  * * CONSTANTS *
  ***************/
@@ -74,9 +78,48 @@ function processOption(option) {
 	} else if (option === "o") {
 		// TODO: Implement blessed-contrib dashboard
 		log("\n--- LAUNCHING DASHBOARD ---\n");
+		loadDashboard();
 	} else if (option === "r") {
 		runSupomation();
 	}
+}
+
+//------------------------------------------//
+
+/**
+ *	* Load the blessed dashboard
+ */
+function loadDashboard() {
+	//..
+	// Dashboard screen
+	const screen = blessed.screen();
+	// Line graph
+	const line = contrib.line({
+		style: {
+			line: "yellow",
+			text: "green",
+			baseline: "white"
+		},
+		xLabelPadding: 3,
+		xPadding: 5,
+		label: "Title"
+	});
+	// Data to display
+	const data = {
+		x: ["t1", "t2", "t3", "t4"],
+		y: [7, 5, 1, 5]
+	};
+	// Append line graph to screen
+	screen.append(line);
+	line.setData([data]);
+	// Key event handling
+	// eslint-disable-next-line no-unused-vars
+	screen.key(["escape", "q", "C-c"], function (ch, key) {
+		return process.exit(0);
+	});
+	// Render the screen
+	screen.render();
+	//..
 }
 
 /********************************
