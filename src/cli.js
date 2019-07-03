@@ -113,18 +113,29 @@ function loadDashboard() {
 	// Dashboard content
 	grid.set(1, 0, 4, 4, blessed.box, {
 		content: "CONTENT LEFT",
+		label: "Content Left",
 		align: "center",
-		valign: "middle"
+		valign: "middle",
+		style: {
+			border: { fg: "green" }
+		}
 	});
 	grid.set(1, 4, 4, 4, blessed.box, {
 		content: "CONTENT CENTER",
 		align: "center",
 		valign: "middle"
 	});
-	grid.set(1, 8, 4, 4, blessed.box, {
+	grid.set(1, 8, 11, 4, blessed.box, {
 		content: "CONTENT RIGHT",
+		label: "Content Right",
 		align: "center",
-		valign: "middle"
+		valign: "middle",
+		style: {
+			border: { fg: "green" }
+		}
+	});
+	grid.set(5, 0, 7, 8, blessed.list, {
+		items: ["One", "Two", "Three"]
 	});
 	// let map =
 	// grid.set(0, 0, 4, 4, contrib.map, { label: "World Map" });
