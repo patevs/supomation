@@ -98,17 +98,28 @@ function loadDashboard() {
 	// grid.set(row, col, rowSpan, colSpan, obj, opts)
 
 	// Dashboard title
-	grid.set(1, 4, 1, 4, blessed.box, {
+	grid.set(0, 4, 1, 4, blessed.box, {
 		content: "SUPOMATION DASHBOARD",
 		align: "center",
 		style: {
 			border: { fg: "green" }
 		}
 	});
+	// Dashboard content
+	grid.set(1, 0, 4, 4, blessed.box, {
+		content: "CONTENT LEFT",
+		align: "center"
+	});
+	grid.set(1, 4, 4, 4, blessed.box, {
+		content: "CONTENT CENTER",
+		align: "center"
+	});
+	grid.set(1, 8, 4, 4, blessed.box, {
+		content: "CONTENT RIGHT",
+		align: "center"
+	});
 	// let map =
 	// grid.set(0, 0, 4, 4, contrib.map, { label: "World Map" });
-	// let box =
-	// grid.set(4, 4, 4, 4, blessed.box, { content: "My Box" });
 
 	// Key event handling
 	// eslint-disable-next-line no-unused-vars
