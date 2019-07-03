@@ -149,39 +149,70 @@ async function gotoPage(page, url) {
 
 //------------------------------------------//
 
+/**
+ *	* Get the name of a given product
+ *
+ * @param { product element } productElem
+ */
+async function getProductName(productElem) {
+	//..
+	// Get product's name
+	let pname = await productElem.$eval(".u-p2", e => e.textContent);
+	// Remove white space
+	pname = pname.trim();
+	// Return the result
+	return pname;
+	//..
+}
+
+//------------------------------------------//
+
+/**
+ *	* Get the data for a given product
+ *
+ * @param { product element } productElem
+ */
+async function getProductData(productElem) {
+	//..
+	// Get product data
+	let pdata = await productElem.$eval(PRODUCT_SELECTOR + "__footer-container", e => e.getAttribute("data-options"));
+	// Parse product data as JSON
+	pdata = JSON.parse(pdata);
+	// Return the result
+	return pdata;
+	//..
+}
+
+//------------------------------------------//
+
+
 /***************
  * * FUNCTIONS *
  ***************/
 
 /**
  * Process the products data
- * @param { all products element } allProducts
+ * @param { all products element } allProductsElems
  */
 // eslint-disable-next-line no-unused-vars
-async function processProducts(allProducts) {
-	// log(logSymbols.info, "Processing products data...");
-	// const spinner = ora("Processing products data...").start();
-	// spinner.indent = 2;
-	// Product data to return
-	let productsData = [];
-	// Iterate over all products
-	for (let i = 0; i < allProducts.length; i++) {
-		// Current product element
-		let productElem = allProducts[i];
+async function processProducts(allProductsElems) {
+	//..
+	// TODO: Add logging
+	// Array of all products to return
+	let allProducts = [];
+	// Iterate over all product elements
+	for (let i = 0; i < allProductsElems.length; i++) {
+		// Get the current product element
+		let productElem = allProductsElems[i];
 		// Get product's name
-		// TODO: Move this to seperate method
-		let pname = await productElem.$eval(".u-p2", e => e.textContent);
-		// Remove white space
-		pname = pname.trim();
+		let pname = await getProductName(productElem);
 		// Get product data
-		// TODO: Move this to seperate method
-		let pdata = await productElem.$eval(PRODUCT_SELECTOR + "__footer-container", e => e.getAttribute("data-options"));
-		// Parse product data as JSON
-		pdata = JSON.parse(pdata);
+		let pdata = await getProductData(productElem);
+		// TODO: Move this to a seperate method
 		// Get products unique id
 		let pid = pdata.productId;
 		// Get product details
-		log(pdata);
+		// log(pdata);
 		let pdetails = pdata.ProductDetails;
 		// log(pdetails);
 		// Get price info
@@ -194,12 +225,11 @@ async function processProducts(allProducts) {
 			pricePer: pricePer,
 			priceMode: priceMode
 		};
-		// push product object into products data array
-		productsData.push(product);
+		// Push product object into products array
+		allProducts.push(product);
 	}
-	// spinner.succeed();
-	// return array of all products
-	return productsData;
+	// Return array of all products
+	return allProducts;
 }
 
 //------------------------------------------//
@@ -216,16 +246,15 @@ async function scrapProducts(page) {
 	// Log status to prompt
 	scrapPrompt.await("[%d/2] - Scrapping products from target page...", 1);
 	// Select all products from page
-	// const allProducts =
-	await page.$$(PRODUCT_SELECTOR);
+	const allProductElems = await page.$$(PRODUCT_SELECTOR);
 	// Log status to prompy
 	scrapPrompt.success("[%d/2] - Scrapped all products from target page!", 2);
 	// TODO: Log number of scrapped products
 	// const numProducts = allProducts.length;
 	// log("\tNumber of products: " + green(numProducts));
 	// log("  " + logSymbols.info, "Number of products: " + green(numProducts));
-	// Process the products data
-	// return processProducts(allProducts);
+	// Process the product elements
+	return processProducts(allProductElems);
 	//..
 }
 
