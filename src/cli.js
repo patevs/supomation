@@ -183,18 +183,44 @@ async function getProductData(productElem) {
 	//..
 }
 
-//------------------------------------------//
-
-
 /***************
  * * FUNCTIONS *
  ***************/
 
 /**
- * Process the products data
+ *	* Process the data for a given product
+ *
+ * @param { Product's name } pname
+ * @param { Product's data } pdata
+ */
+function processProduct(pname, pdata) {
+	//..
+	// Get the product's unique id
+	let pid = pdata.productId;
+	// Get the product's details
+	let pdetails = pdata.ProductDetails;
+	// Get the product's price info
+	let priceMode = pdetails.PriceMode;
+	let pricePer = pdetails.PricePerItem;
+	// Create a product object
+	let product = {
+		uid: pid,
+		name: pname,
+		pricePer: pricePer,
+		priceMode: priceMode
+	};
+	// Return the processed product
+	return product;
+	//..
+}
+
+//------------------------------------------//
+
+/**
+ *	* Process the scrapped product elements
+ *
  * @param { all products element } allProductsElems
  */
-// eslint-disable-next-line no-unused-vars
 async function processProducts(allProductsElems) {
 	//..
 	// TODO: Add logging
@@ -208,28 +234,14 @@ async function processProducts(allProductsElems) {
 		let pname = await getProductName(productElem);
 		// Get product data
 		let pdata = await getProductData(productElem);
-		// TODO: Move this to a seperate method
-		// Get products unique id
-		let pid = pdata.productId;
-		// Get product details
-		// log(pdata);
-		let pdetails = pdata.ProductDetails;
-		// log(pdetails);
-		// Get price info
-		let priceMode = pdetails.PriceMode;
-		let pricePer = pdetails.PricePerItem;
-		// Create product object
-		let product = {
-			uid: pid,
-			name: pname,
-			pricePer: pricePer,
-			priceMode: priceMode
-		};
+		// Process the product
+		let product = processProduct(pname, pdata);
 		// Push product object into products array
 		allProducts.push(product);
 	}
 	// Return array of all products
 	return allProducts;
+	//..
 }
 
 //------------------------------------------//
@@ -278,9 +290,12 @@ async function runSupomation() {
 	await gotoPage(page, TARGET_URL);
 
 	// Scrap products from target page
-	// let scrappedProducts =
-	await scrapProducts(page);
+	let scrappedProducts = await scrapProducts(page);
+	// TODO: Do something with the scrapped product's data
+	let aProduct = scrappedProducts[0];
 	// log({ scrappedProducts });
+	log(); // New line
+	log({ aProduct });
 
 	// ! This will break if the scrapped products array is too large
 	//const out = JSON.stringify(scrappedProducts, null, 2);
