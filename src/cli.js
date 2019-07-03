@@ -76,8 +76,6 @@ function processOption(option) {
 	if (option === "q") {
 		quit();
 	} else if (option === "o") {
-		// TODO: Implement blessed-contrib dashboard
-		log("\n--- LAUNCHING DASHBOARD ---\n");
 		loadDashboard();
 	} else if (option === "r") {
 		runSupomation();
@@ -97,13 +95,24 @@ function loadDashboard() {
 	let grid = new contrib.grid({ rows: 12, cols: 12, screen: screen });
 
 	// grid.set(row, col, rowSpan, colSpan, obj, opts)
+
+	// Dashboard title
+	grid.set(1, 4, 1, 4, blessed.box, {
+		content: "SUPOMATION DASHBOARD",
+		align: "center",
+		style: {
+			border: { fg: "green" }
+		}
+	});
 	// let map =
-	grid.set(0, 0, 4, 4, contrib.map, { label: "World Map" });
+	// grid.set(0, 0, 4, 4, contrib.map, { label: "World Map" });
 	// let box =
-	grid.set(4, 4, 4, 4, blessed.box, { content: "My Box" });
+	// grid.set(4, 4, 4, 4, blessed.box, { content: "My Box" });
 
 	// Key event handling
+	// eslint-disable-next-line no-unused-vars
 	screen.key(["escape", "q", "C-c"], function (ch, key) {
+		// TODO: Exit to main menu
 		return process.exit(0);
 	});
 
