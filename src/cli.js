@@ -67,6 +67,23 @@ function quit() {
 
 //------------------------------------------//
 
+function promptHeadless() {
+	//..
+	inquirer
+		.prompt([
+			{
+				type: "confirm",
+				name: "headless",
+				message: "Run in headless mode? (No GUI)",
+				default: true
+			}
+		])
+		.then(answers => {
+			log(answers);
+		});
+	//..
+}
+
 /**
  *	* Process user selected main menu option
  *
@@ -78,7 +95,8 @@ function processOption(option) {
 	} else if (option === "o") {
 		loadDashboard();
 	} else if (option === "r") {
-		runSupomation();
+		promptHeadless();
+		// runSupomation();
 	}
 }
 
