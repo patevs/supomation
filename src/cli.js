@@ -72,6 +72,7 @@ function processOption(option) {
 	if (option === "q") {
 		quit();
 	} else if (option === "o") {
+		// TODO: Implement blessed-contrib dashboard
 		log("\n--- LAUNCHING DASHBOARD ---\n");
 	} else if (option === "r") {
 		runSupomation();
@@ -87,18 +88,41 @@ function processOption(option) {
  */
 async function initPuppeteer() {
 	//..
-	// const spinner = ora("Launching Puppeteer...").start();
-	// spinner.indent = 2;
-
+	// Initialize an interactive prompt
+	const browserPrompt = new Signale({ interactive: true, scope: "supomation" });
+	// Log status to prompt
+	browserPrompt.await("[%d/2] - Launching Puppeteer browser...", 1);
 	// Launch puppeteer browser
 	const browser = await puppeteer.launch({ headless: true });
-
+	// TODO: Log browser version
 	// const browserVersion = await browser.version();
-	// spinner.succeed();
 	// log("  " + logSymbols.info, "Browser version: \n\t" + green(browserVersion));
-
+	// Log status to prompt
+	browserPrompt.success("[%d/2] - Puppetter browser launched!\n", 2);
 	// Return the browser instance
 	return browser;
+	//..
+}
+
+//------------------------------------------//
+
+/**
+ *	* Create a new page in the puppeteer browser
+ *
+ * @param { puppeteer browser } browser
+ */
+async function createPage(browser) {
+	//..
+	// Initialize an interactive prompt
+	const pagePrompt = new Signale({ interactive: true, scope: "supomation" });
+	// Log status to prompt
+	pagePrompt.await("[%d/2] - Creating a new browser page...", 1);
+	// Create a new page in the browser
+	const page = await browser.newPage();
+	// Log status to prompt
+	pagePrompt.success("[%d/2] - New browser page created!\n", 2);
+	// Return the new page
+	return page;
 	//..
 }
 
@@ -111,11 +135,20 @@ async function initPuppeteer() {
  * @param { target url } url
  */
 async function gotoPage(page, url) {
-	// const spinner = ora("Navigating browser page to: \n\t" + link(url)).start();
-	// spinner.indent = 2;
+	//..
+	// Initialize an interactive prompt
+	const navPrompt = new Signale({ interactive: true, scope: "supomation" });
+	// Log status to prompt
+	navPrompt.await("[%d/2] - Navigating to target page...", 1);
+	// Navigate the page to the target url
 	await page.goto(url);
-	// spinner.succeed();
+	// Log status to prompt
+	navPrompt.success("[%d/2] - Navigated to target page!\n", 2);
+	//..
 }
+
+
+//------------------------------------------//
 
 /***************
  * * FUNCTIONS *
@@ -127,17 +160,23 @@ async function gotoPage(page, url) {
  * @param { page to scrap } page
  */
 async function scrapProducts(page) {
-	// const spinner = ora("Scrapping products from page...").start();
-	// spinner.indent = 2;
+	//..
+	// Initialize an interactive prompt
+	const scrapPrompt = new Signale({ interactive: true, scope: "supomation" });
+	// Log status to prompt
+	scrapPrompt.await("[%d/2] - Scrapping products from target page...", 1);
 	// Select all products from page
 	// const allProducts =
 	await page.$$(PRODUCT_SELECTOR);
-	// spinner.succeed();
+	// Log status to prompy
+	scrapPrompt.success("[%d/2] - Scrapped all products from target page!", 2);
+	// TODO: Log number of scrapped products
 	// const numProducts = allProducts.length;
 	// log("\tNumber of products: " + green(numProducts));
 	// log("  " + logSymbols.info, "Number of products: " + green(numProducts));
 	// Process the products data
 	// return processProducts(allProducts);
+	//..
 }
 
 //------------------------------------------//
@@ -150,48 +189,19 @@ async function runSupomation() {
 	//..
 	log("\n" + logSymbols.info, "Starting Supomation WebScrapper...\n");
 
-	// Initialize signale prompt
-	// const signale = new Signale();
-	// signale.success("Starting Supomation WebScrapper");
-
-	// Initialize an interactive prompt
-	const browserPrompt = new Signale({ interactive: true, scope: "supomation" });
-	// Log status to prompt
-	browserPrompt.await("[%d/2] - Launching Puppeteer browser...", 1);
 	// Initialize a puppeteer browser instance
 	const browser = await initPuppeteer();
-	// TODO: Log browser version
-	// Log status to prompt
-	browserPrompt.success("[%d/2] - Puppetter browser launched!\n", 2);
 
-	// Initialize an interactive prompt
-	const pagePrompt = new Signale({ interactive: true, scope: "supomation" });
-	// Log status to prompt
-	pagePrompt.await("[%d/2] - Creating a new browser page...", 1);
 	// Create a new page in the browser
-	const page = await browser.newPage();
-	// Log status to prompt
-	pagePrompt.success("[%d/2] - New browser page created!\n", 2);
+	const page = await createPage(browser);
 
-	// Initialize an interactive prompt
-	const navPrompt = new Signale({ interactive: true, scope: "supomation" });
-	// Log status to prompt
-	navPrompt.await("[%d/2] - Navigating to target page...", 1);
 	// Navigate to target page
 	await gotoPage(page, TARGET_URL);
-	// Log status to prompt
-	navPrompt.success("[%d/2] - Navigated to target page!\n", 2);
 
-	// Initialize an interactive prompt
-	const scrapPrompt = new Signale({ interactive: true, scope: "supomation" });
-	// Log status to prompt
-	scrapPrompt.await("[%d/2] - Scrapping products from target page...", 1);
 	// Scrap products from target page
 	// let scrappedProducts =
 	await scrapProducts(page);
 	// log({ scrappedProducts });
-	// TODO: Log number of scrapped products
-	scrapPrompt.success("[%d/2] - Scrapped all products from target page!", 2);
 
 	// ! This will break if the scrapped products array is too large
 	//const out = JSON.stringify(scrappedProducts, null, 2);
@@ -212,6 +222,7 @@ async function runSupomation() {
  *	* Display the main menu prompt
  */
 // TODO: Add question to enable headless mode
+// TODO: Add question for number of pages to scrap
 function prompt() {
 	//..
 	inquirer
