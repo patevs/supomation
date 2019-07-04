@@ -137,7 +137,12 @@ function loadDashboard() {
 		label: "Content Bottom",
 		content: "CONTENT BOTTOM",
 		align: "center",
-		valign: "middle"
+		valign: "middle",
+		style: {
+			border: {
+				fg: "magenta"
+			}
+		}
 	});
 	// let map =
 	// grid.set(0, 0, 4, 4, contrib.map, { label: "World Map" });
