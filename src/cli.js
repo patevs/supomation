@@ -347,15 +347,13 @@ async function scrapProducts(page) {
 	// Initialize an interactive prompt
 	const scrapPrompt = new Signale({ interactive: true, scope: "supomation" });
 	// Log status to prompt
-	scrapPrompt.await("[%d/2] - Scrapping products from target page...", 1);
+	scrapPrompt.await("[%d/2] - Scraping products from target page...", 1);
 	// Select all products from page
 	const allProductElems = await page.$$(PRODUCT_SELECTOR);
+	// Get number of scraped products
+	const numProducts = allProductElems.length;
 	// Log status to prompy
-	scrapPrompt.success("[%d/2] - Scrapped all products from target page!", 2);
-	// TODO: Log number of scrapped products
-	// const numProducts = allProducts.length;
-	// log("\tNumber of products: " + green(numProducts));
-	// log("  " + logSymbols.info, "Number of products: " + green(numProducts));
+	scrapPrompt.success("[%d/2] - Scraped " + green("%d") + " products from target page!", 2, numProducts);
 	// Process the product elements
 	return processProducts(allProductElems);
 	//..
@@ -388,9 +386,8 @@ async function runSupomation(headlessMode) {
 	log({ aProduct });
 
 	// ! This will break if the scrapped products array is too large
-	//const out = JSON.stringify(scrappedProducts, null, 2);
+	// const out = JSON.stringify(scrappedProducts, null, 2);
 	// writeToFile("products-" + count + ".json", out, count);
-	// }
 
 	// TODO: Check if user wants to quit or goto main menu
 	// Close the browser instance
