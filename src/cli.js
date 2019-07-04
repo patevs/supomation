@@ -116,13 +116,20 @@ function loadDashboard() {
 		align: "center",
 		valign: "middle",
 		style: {
-			border: { fg: "green" }
+			border: {
+				fg: "cyan"
+			}
 		}
 	});
 	grid.set(1, 4, 4, 4, blessed.box, {
 		content: "CONTENT TOP CENTER",
 		align: "center",
-		valign: "middle"
+		valign: "middle",
+		style: {
+			border: {
+				fg: "red"
+			}
+		}
 	});
 	grid.set(1, 8, 11, 4, blessed.box, {
 		label: "Content Right",
@@ -130,7 +137,9 @@ function loadDashboard() {
 		align: "center",
 		valign: "middle",
 		style: {
-			border: { fg: "green" }
+			border: {
+				fg: "yellow"
+			}
 		}
 	});
 	grid.set(5, 0, 7, 8, blessed.box, {
