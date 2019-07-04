@@ -26,7 +26,6 @@
 		"chalk": "^2.4.2",
 		"inquirer": "^6.4.1",
 		"log-symbols": "^3.0.0",
-		"ora": "^3.4.0",
 		"puppeteer": "^1.17.0",
 		"signale": "^1.4.0"
 	},
