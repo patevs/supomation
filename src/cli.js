@@ -106,7 +106,9 @@ function loadDashboard() {
 			type: "line"
 		},
 		style: {
-			border: { fg: "green" }
+			border: {
+				fg: "green"
+			}
 		}
 	});
 	// Dashboard content
