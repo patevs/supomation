@@ -79,7 +79,6 @@ function processOption(option) {
 		loadDashboard();
 	} else if (option === "r") {
 		promptHeadless();
-		// runSupomation();
 	}
 }
 
@@ -112,8 +111,8 @@ function loadDashboard() {
 	});
 	// Dashboard content
 	grid.set(1, 0, 4, 4, blessed.box, {
-		content: "CONTENT LEFT",
-		label: "Content Left",
+		label: "Content Top Left",
+		content: "CONTENT TOP LEFT",
 		align: "center",
 		valign: "middle",
 		style: {
@@ -121,21 +120,24 @@ function loadDashboard() {
 		}
 	});
 	grid.set(1, 4, 4, 4, blessed.box, {
-		content: "CONTENT CENTER",
+		content: "CONTENT TOP CENTER",
 		align: "center",
 		valign: "middle"
 	});
 	grid.set(1, 8, 11, 4, blessed.box, {
-		content: "CONTENT RIGHT",
 		label: "Content Right",
+		content: "CONTENT RIGHT",
 		align: "center",
 		valign: "middle",
 		style: {
 			border: { fg: "green" }
 		}
 	});
-	grid.set(5, 0, 7, 8, blessed.list, {
-		items: ["One", "Two", "Three"]
+	grid.set(5, 0, 7, 8, blessed.box, {
+		label: "Content Bottom",
+		content: "CONTENT BOTTOM",
+		align: "center",
+		valign: "middle"
 	});
 	// let map =
 	// grid.set(0, 0, 4, 4, contrib.map, { label: "World Map" });
