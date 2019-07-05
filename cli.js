@@ -68,23 +68,6 @@ function quit() {
 //------------------------------------------//
 
 /**
- *	* Process user selected main menu option
- *
- * @param { user selected option } option
- */
-function processOption(option) {
-	if (option === "q") {
-		quit();
-	} else if (option === "o") {
-		loadDashboard();
-	} else if (option === "r") {
-		promptHeadless();
-	}
-}
-
-//------------------------------------------//
-
-/**
  *	* Load the blessed dashboard
  */
 function loadDashboard() {
@@ -249,10 +232,8 @@ async function getProductName(productElem) {
 	//..
 	// Get product's name
 	let pname = await productElem.$eval(".u-p2", e => e.textContent);
-	// Remove white space
-	pname = pname.trim();
-	// Return the result
-	return pname;
+	// Remove whitespace and return the result
+	return pname.trim();
 	//..
 }
 
@@ -267,16 +248,14 @@ async function getProductData(productElem) {
 	//..
 	// Get product data
 	let pdata = await productElem.$eval(PRODUCT_SELECTOR + "__footer-container", e => e.getAttribute("data-options"));
-	// Parse product data as JSON
-	pdata = JSON.parse(pdata);
-	// Return the result
-	return pdata;
+	// Parse product data as JSON and return the result
+	return JSON.parse(pdata);
 	//..
 }
 
-/***************
- * * FUNCTIONS *
- ***************/
+/***********************
+ * * SCRAPER FUNCTIONS *
+ ***********************/
 
 /**
  *	* Process the data for a given product
@@ -395,6 +374,25 @@ async function runSupomation(headlessMode) {
 	// Quit Supomation CLI
 	quit();
 	//..
+}
+
+/**********************
+ * * PROMPT FUNCTIONS *
+ **********************/
+
+/**
+ *	* Process user selected main menu option
+ *
+ * @param { user selected option } option
+ */
+function processOption(option) {
+	if (option === "q") {
+		quit();
+	} else if (option === "o") {
+		loadDashboard();
+	} else if (option === "r") {
+		promptHeadless();
+	}
 }
 
 //------------------------------------------//
