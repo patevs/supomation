@@ -72,11 +72,15 @@ function quit() {
 /**
  *	* Write some data to file
  */
-// eslint-disable-next-line no-unused-vars
 function writeToFile(fileName, content) {
 	//..
 	// TODO: Add logging & callback function
-	fs.writeFile(fileName, content);
+	fs.writeFile(fileName, content, (err) => {
+		if (err) {
+			log(err); return;
+		}
+		log("File saved successfully!");
+	});
 	//..
 }
 
@@ -378,15 +382,14 @@ async function runSupomation(headlessMode) {
 	log(); // New line
 	log({ aProduct });
 
-	// TODO: Prompt user for what to do with data. i.e print, save
-
+	// TODO: Prompt user with what to do with data. i.e print, save to file
+	// TODO: Ensure data/ directory exists
 	// ! This will break if the scrapped products array is too large
 	// ! Approximately upto 100MB max effectively
 	// Stringify json data
-	// const out = JSON.stringify(scrappedProducts, null, 2);
+	const out = JSON.stringify(scrappedProducts, null, 2);
 	// Write scraped data to file
-	// writeToFile("data/products.json", out);
-	// writeToFile("products-" + count + ".json", out, count);
+	writeToFile("data/products.json", out);
 
 	// TODO: Check if user wants to quit or goto main menu
 	// Close the browser instance
