@@ -14,6 +14,9 @@
 
 ### Modules & Packages
 
+- [`puppeteer`](https://github.com/GoogleChrome/puppeteer)
+- [`chalk`](https://github.com/chalk/chalk)
+- [`log-symbols`](https://github.com/sindresorhus/log-symbols)
 - [`blessed`](https://github.com/chjj/blessed)
 - [`blessed-contrib`](https://github.com/yaronn/blessed-contrib)
 - [`inquirer.js`](https://github.com/SBoudrias/Inquirer.js)
@@ -24,10 +27,9 @@
 
 ## Backlog
 
-1. Improve CLI iteraction
-2. Implement saving of scrapper data to file
-3. Implement scrapping of multiple pages
-4. Implement allowing the selection of scrapping specific categories only
-5. Implement a more efficient webscrapping api
+1. Implement saving of scrapper data to file
+2. Implement scrapping of multiple pages
+3. Implement allowing the selection of scrapping specific categories only
+4. Implement a more efficient webscrapping api
 
 ---
