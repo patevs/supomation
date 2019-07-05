@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- *  `src/cli.js`
+ *  `cli.js`
  */
 
 "use strict";

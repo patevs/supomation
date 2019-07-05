@@ -1,6 +1,6 @@
 {
 	"name": "supomation",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"description": "supomation",
 	"license": "MIT",
 	"repository": "github:PatEvs/supomation",
@@ -18,7 +18,7 @@
 		"test": "eslint --fix . && echo test complete."
 	},
 	"files": [
-		"src"
+		"cli.js"
 	],
 	"dependencies": {
 		"blessed": "^0.1.81",
