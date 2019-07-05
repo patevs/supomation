@@ -407,6 +407,8 @@ async function runSupomation(headlessMode) {
 function processOption(option) {
 	if (option === "q") {
 		quit();
+	} else if (option === "e") {
+		prompt();
 	} else if (option === "o") {
 		loadDashboard();
 	} else if (option === "r") {
@@ -489,7 +491,7 @@ function promptHeadless() {
 // TODO: Add question for number of pages to scrap
 function prompt() {
 	//..
-	log("-- " + green("MAIN MENU") + " --\n");
+	log("\n-- " + green("MAIN MENU") + " --\n");
 	// Main menu prompt
 	inquirer
 		.prompt([
@@ -528,7 +530,7 @@ function prompt() {
  */
 (function () {
 	//..
-	log(title("\nWELCOME TO SUPOMATION CLI\n"));
+	log(title("\nWELCOME TO SUPOMATION CLI"));
 	prompt();
 	//..
 })();
