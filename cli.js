@@ -470,37 +470,5 @@ function prompt() {
 })();
 
 
-/* blessed & blessed-contrib usage example
-	// Dashboard screen
-	const screen = blessed.screen();
-	// Line graph
-	const line = contrib.line({
-		style: {
-			line: "yellow",
-			text: "green",
-			baseline: "white"
-		},
-		xLabelPadding: 3,
-		xPadding: 5,
-		label: "Title"
-	});
-	// Data to display
-	const data = {
-		x: ["t1", "t2", "t3", "t4"],
-		y: [7, 5, 1, 5]
-	};
-	// Append line graph to screen
-	screen.append(line);
-	line.setData([data]);
-	// Key event handling
-	// eslint-disable-next-line no-unused-vars
-	screen.key(["escape", "q", "C-c"], function (ch, key) {
-		return process.exit(0);
-	});
-	// Render the screen
-	screen.render();
-*/
-
-
 // EOF //
 
