@@ -47,7 +47,7 @@ const PRODUCT_SELECTOR = ".fs-product-card";
  ***********/
 
 // Colors
-// const red = chalk.red;
+const red = chalk.red;
 const green = chalk.green;
 const blue = chalk.cyan;
 
@@ -74,12 +74,25 @@ function quit() {
  */
 function writeToFile(fileName, content) {
 	//..
-	// TODO: Add logging & callback function
-	fs.writeFile(fileName, content, (err) => {
+	// Initialize an interactive prompt
+	const writePrompt = new Signale({ interactive: true, scope: "supomation" });
+	// Log status
+	writePrompt.await("[%d/2] - Saving data to file as: %s", 1, blue(fileName));
+	// Create data directory if doesnt exists
+	if (!fs.existsSync("data")) {
+		fs.mkdirSync("data");
+	}
+	// Build file path
+	const filePath = "data/" + fileName;
+	// Write data to file
+	fs.writeFile(filePath, content, (err) => {
 		if (err) {
-			log(err); return;
+			// Log any errors
+			writePrompt.error(red(err));
+			return;
 		}
-		log("File saved successfully!");
+		// Log success
+		writePrompt.success("[%d/2] - Data saved successfully as: %s", 2, blue(fileName));
 	});
 	//..
 }
@@ -231,15 +244,17 @@ async function gotoPage(page, url) {
 	// Initialize an interactive prompt
 	const navPrompt = new Signale({ interactive: true, scope: "supomation" });
 	// Log status to prompt
-	navPrompt.await("[%d/2] - Navigating to target page... URL: %s", 1, link(url));
+	navPrompt.await("[%d/2] - Navigating to: %s", 1, link(url));
 	// Navigate the page to the target url
 	await page.goto(url);
 	// Log status to prompt
-	navPrompt.success("[%d/2] - Navigated to target page! URL: %s \n", 2, link(url));
+	navPrompt.success("[%d/2] - Navigated to: %s \n", 2, link(url));
 	//..
 }
 
-//------------------------------------------//
+/***********************
+ * * SCRAPER FUNCTIONS *
+ ***********************/
 
 /**
  *	* Get the name of a given product
@@ -271,9 +286,7 @@ async function getProductData(productElem) {
 	//..
 }
 
-/***********************
- * * SCRAPER FUNCTIONS *
- ***********************/
+//------------------------------------------//
 
 /**
  *	* Process the data for a given product
@@ -350,7 +363,7 @@ async function scrapProducts(page) {
 	// Get number of scraped products
 	const numProducts = allProductElems.length;
 	// Log status to prompy
-	scrapPrompt.success("[%d/2] - Scraped " + green("%d") + " products from target page!", 2, numProducts);
+	scrapPrompt.success("[%d/2] - Scraped " + green("%d") + " products from target page!\n", 2, numProducts);
 	// Process the product elements
 	return processProducts(allProductElems);
 	//..
@@ -370,28 +383,22 @@ async function runSupomation(headlessMode) {
 
 	// Create a new page in the browser
 	const page = await createPage(browser);
-
+	// TODO: Combine createPage and gotoPage functions
 	// Navigate to target page
 	await gotoPage(page, TARGET_URL);
 
 	// Scrap products from target page
 	let scrappedProducts = await scrapProducts(page);
-	// TODO: Do something with the scrapped product's data
-	let aProduct = scrappedProducts[0];
-	// log({ scrappedProducts });
-	log(); // New line
-	log({ aProduct });
 
 	// TODO: Prompt user with what to do with data. i.e print, save to file
-	// TODO: Ensure data/ directory exists
-	// ! This will break if the scrapped products array is too large
-	// ! Approximately upto 100MB max effectively
 	// Stringify json data
 	const out = JSON.stringify(scrappedProducts, null, 2);
+	// ! This will break if the scrapped products array is too large
+	// ! Approximately upto 100MB max effectively
 	// Write scraped data to file
-	writeToFile("data/products.json", out);
+	writeToFile("products.json", out);
 
-	// TODO: Check if user wants to quit or goto main menu
+	// TODO: Prompt if user wants to quit or goto main menu
 	// Close the browser instance
 	await browser.close();
 	// Quit Supomation CLI
