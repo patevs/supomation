@@ -372,19 +372,10 @@ async function runSupomation(headlessMode) {
 	const page = await createAndGotoPage(browser, TARGET_URL);
 
 	// Scrap products from target page
-	// let scrappedProducts =
-	await scrapProducts(page);
+	let scrapedProducts = await scrapProducts(page);
 
-	// TODO: Prompt user with what to do with data. i.e print, save to file
-	// TODO: Add an inquirer prompt here
-	promptData();
-
-	// Stringify json data
-	// const out = JSON.stringify(scrappedProducts, null, 2);
-	// ! This will break if the scrapped products array is too large
-	// ! Approximately upto 100MB max effectively
-	// Write scraped data to file
-	// writeToFile("products.json", out);
+	// Prompt user with what to do with data
+	promptData(scrapedProducts);
 
 	// TODO: Prompt if user wants to quit or goto main menu
 	// Close the browser instance
@@ -399,16 +390,46 @@ async function runSupomation(headlessMode) {
  **********************/
 
 /**
- *	* Process user selected main menu option
+ *	* Process user selected data menu option
  *
  * @param { user selected option } option
+ * @param { scraped data } scrapedData
  */
 // TODO: Implement; exit to main menu; print scraped data; save scraped data
-function processOption(option) {
+// ! TODO: FIXME
+function processDataOption(option, scrapedProducts) {
 	if (option === "q") {
 		quit();
 	} else if (option === "e") {
 		prompt();
+	} else if (option === "o") {
+		loadDashboard();
+	} else if (option === "r") {
+		promptHeadless();
+	} else if (option === "v") {
+		// print scraped data
+		let product = scrapedProducts[0];
+		log(product);
+		quit();
+	} else if (option === "s") {
+		// Stringify json data
+		const out = JSON.stringify(scrapedProducts, null, 2);
+		// ! This will break if the scrapped products array is too large
+		// ! Approximately upto 100MB max effectively
+		// Write scraped data to file
+		writeToFile("products.json", out);
+		quit();
+	}
+}
+
+/**
+ *	* Process user selected main menu option
+ *
+ * @param { user selected option } option
+ */
+function processOption(option) {
+	if (option === "q") {
+		quit();
 	} else if (option === "o") {
 		loadDashboard();
 	} else if (option === "r") {
@@ -422,7 +443,7 @@ function processOption(option) {
  *	* Prompt the user to select what to
  *	*	 do with the scraped product data.
  */
-function promptData() {
+function promptData(scrapedProducts) {
 	//..
 	log("-- " + green("SCRAPED DATA MENU") + " --\n");
 	// Scraped data prompt
@@ -433,8 +454,9 @@ function promptData() {
 				name: "option",
 				message: "Select an option:",
 				choices: [
-					"Print scraped data",
-					"Save to data file",
+					"View scraped data",
+					"Save data to file",
+					"Open dashboard",
 					// "Rerun WebScraper",
 					new inquirer.Separator(),
 					"Exit to main menu",
@@ -452,7 +474,7 @@ function promptData() {
 		])
 		.then(answers => {
 			//..
-			processOption(answers.option);
+			processDataOption(answers.option, scrapedProducts);
 			//..
 		});
 	//..
