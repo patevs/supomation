@@ -46,11 +46,11 @@ const PRODUCT_SELECTOR = ".fs-product-card";
 // Colors
 // const red = chalk.red;
 const green = chalk.green;
-// const blue = chalk.blue;
+const blue = chalk.cyan;
 
 // Typography
 const title = green.underline.bold;
-// const link = blue.underline;
+const link = blue.underline;
 
 /**********************
  * * HELPER FUNCTIONS *
@@ -170,7 +170,7 @@ async function initPuppeteer(headlessMode) {
 	// Get browser version
 	const browserVersion = await browser.version();
 	// Log status to prompt
-	browserPrompt.success("[%d/2] - Puppetter browser launched! Version: " + green("%s") + "\n", 2, browserVersion);
+	browserPrompt.success("[%d/2] - Puppetter browser launched! Version: %s \n", 2, green(browserVersion));
 	// Return the browser instance
 	return browser;
 	//..
@@ -210,13 +210,12 @@ async function gotoPage(page, url) {
 	//..
 	// Initialize an interactive prompt
 	const navPrompt = new Signale({ interactive: true, scope: "supomation" });
-	// TODO: Log target url
 	// Log status to prompt
-	navPrompt.await("[%d/2] - Navigating to target page...", 1);
+	navPrompt.await("[%d/2] - Navigating to target page... URL: %s", 1, link(url));
 	// Navigate the page to the target url
 	await page.goto(url);
 	// Log status to prompt
-	navPrompt.success("[%d/2] - Navigated to target page!\n", 2);
+	navPrompt.success("[%d/2] - Navigated to target page! URL: %s \n", 2, link(url));
 	//..
 }
 
