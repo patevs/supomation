@@ -27,6 +27,9 @@ const { Signale } = require("signale");
 const blessed = require("blessed");
 const contrib = require("blessed-contrib");
 
+// File system
+const fs = require("fs");
+
 /***************
  * * CONSTANTS *
  ***************/
@@ -62,6 +65,19 @@ const link = blue.underline;
 function quit() {
 	log("\n" + logSymbols.error, "Quitting Supomation CLI...\n");
 	process.exit(0);
+}
+
+//------------------------------------------//
+
+/**
+ *	* Write some data to file
+ */
+// eslint-disable-next-line no-unused-vars
+function writeToFile(fileName, content) {
+	//..
+	// TODO: Add logging & callback function
+	fs.writeFile(fileName, content);
+	//..
 }
 
 //------------------------------------------//
@@ -362,9 +378,14 @@ async function runSupomation(headlessMode) {
 	log(); // New line
 	log({ aProduct });
 
+	// TODO: Prompt user for what to do with data. i.e print, save
+
 	// ! This will break if the scrapped products array is too large
 	// ! Approximately upto 100MB max effectively
+	// Stringify json data
 	// const out = JSON.stringify(scrappedProducts, null, 2);
+	// Write scraped data to file
+	// writeToFile("data/products.json", out);
 	// writeToFile("products-" + count + ".json", out, count);
 
 	// TODO: Check if user wants to quit or goto main menu
