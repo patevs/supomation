@@ -363,6 +363,7 @@ async function runSupomation(headlessMode) {
 	log({ aProduct });
 
 	// ! This will break if the scrapped products array is too large
+	// ! Approximately upto 100MB max effectively
 	// const out = JSON.stringify(scrappedProducts, null, 2);
 	// writeToFile("products-" + count + ".json", out, count);
 
