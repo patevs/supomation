@@ -77,7 +77,7 @@ function writeToFile(fileName, content) {
 	// Initialize an interactive prompt
 	const writePrompt = new Signale({ interactive: true, scope: "supomation" });
 	// Log status
-	writePrompt.await("[%d/2] - Saving data to file as: %s", 1, blue(fileName));
+	writePrompt.await("[%d/2] - Saving data to file as: %s", 1, green(fileName));
 	// Create data directory if doesnt exists
 	if (!fs.existsSync("data")) {
 		fs.mkdirSync("data");
@@ -92,7 +92,7 @@ function writeToFile(fileName, content) {
 			return;
 		}
 		// Log success
-		writePrompt.success("[%d/2] - Data saved successfully as: %s", 2, blue(fileName));
+		writePrompt.success("[%d/2] - Data file saved as: %s", 2, green(fileName));
 	});
 	//..
 }
@@ -203,7 +203,7 @@ async function initPuppeteer(headlessMode) {
 	// Get browser version
 	const browserVersion = await browser.version();
 	// Log status to prompt
-	browserPrompt.success("[%d/2] - Puppetter browser launched! Version: %s \n", 2, green(browserVersion));
+	browserPrompt.success("[%d/2] - Launched Puppetter browser version: %s \n", 2, green(browserVersion));
 	// Return the browser instance
 	return browser;
 	//..
@@ -212,11 +212,13 @@ async function initPuppeteer(headlessMode) {
 //------------------------------------------//
 
 /**
- *	* Create a new page in the puppeteer browser
+ *	* Create a new page in puppeteer browser and navigate
+ *	* 	to a given page.
  *
- * @param { puppeteer browser } browser
+ * @param { puppeteer browser instance } browser
+ * @param { target url } url
  */
-async function createPage(browser) {
+async function createAndGotoPage(browser, url) {
 	//..
 	// Initialize an interactive prompt
 	const pagePrompt = new Signale({ interactive: true, scope: "supomation" });
@@ -226,29 +228,14 @@ async function createPage(browser) {
 	const page = await browser.newPage();
 	// Log status to prompt
 	pagePrompt.success("[%d/2] - New browser page created!\n", 2);
-	// Return the new page
-	return page;
-	//..
-}
-
-//------------------------------------------//
-
-/**
- *	* Navigate puppeteer to a given page
- *
- * @param { puppeteer page instance } page
- * @param { target url } url
- */
-async function gotoPage(page, url) {
-	//..
-	// Initialize an interactive prompt
-	const navPrompt = new Signale({ interactive: true, scope: "supomation" });
 	// Log status to prompt
-	navPrompt.await("[%d/2] - Navigating to: %s", 1, link(url));
+	pagePrompt.await("[%d/2] - Navigating to: %s", 1, link(url));
 	// Navigate the page to the target url
 	await page.goto(url);
 	// Log status to prompt
-	navPrompt.success("[%d/2] - Navigated to: %s \n", 2, link(url));
+	pagePrompt.success("[%d/2] - Navigated to: %s \n", 2, link(url));
+	// Return the new page
+	return page;
 	//..
 }
 
@@ -324,7 +311,7 @@ function processProduct(pname, pdata) {
  */
 async function processProducts(allProductsElems) {
 	//..
-	// TODO: Add logging
+	// TODO: Add logging to this function
 	// Array of all products to return
 	let allProducts = [];
 	// Iterate over all product elements
@@ -363,7 +350,7 @@ async function scrapProducts(page) {
 	// Get number of scraped products
 	const numProducts = allProductElems.length;
 	// Log status to prompy
-	scrapPrompt.success("[%d/2] - Scraped " + green("%d") + " products from target page!\n", 2, numProducts);
+	scrapPrompt.success("[%d/2] - Scraped " + green("%d") + " products!\n", 2, numProducts);
 	// Process the product elements
 	return processProducts(allProductElems);
 	//..
@@ -381,16 +368,14 @@ async function runSupomation(headlessMode) {
 	// Initialize a puppeteer browser instance
 	const browser = await initPuppeteer(headlessMode);
 
-	// Create a new page in the browser
-	const page = await createPage(browser);
-	// TODO: Combine createPage and gotoPage functions
-	// Navigate to target page
-	await gotoPage(page, TARGET_URL);
+	// Create a new page and navigate to target url
+	const page = await createAndGotoPage(browser, TARGET_URL);
 
 	// Scrap products from target page
 	let scrappedProducts = await scrapProducts(page);
 
 	// TODO: Prompt user with what to do with data. i.e print, save to file
+	// TODO: Add an inquirer prompt here
 	// Stringify json data
 	const out = JSON.stringify(scrappedProducts, null, 2);
 	// ! This will break if the scrapped products array is too large
@@ -456,6 +441,7 @@ function promptHeadless() {
  *	* Display the main menu prompt
  */
 // TODO: Add question for number of pages to scrap
+// TODO: Log a main menu title
 function prompt() {
 	//..
 	inquirer
