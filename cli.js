@@ -372,22 +372,25 @@ async function runSupomation(headlessMode) {
 	const page = await createAndGotoPage(browser, TARGET_URL);
 
 	// Scrap products from target page
-	let scrappedProducts = await scrapProducts(page);
+	// let scrappedProducts =
+	await scrapProducts(page);
 
 	// TODO: Prompt user with what to do with data. i.e print, save to file
 	// TODO: Add an inquirer prompt here
+	promptData();
+
 	// Stringify json data
-	const out = JSON.stringify(scrappedProducts, null, 2);
+	// const out = JSON.stringify(scrappedProducts, null, 2);
 	// ! This will break if the scrapped products array is too large
 	// ! Approximately upto 100MB max effectively
 	// Write scraped data to file
-	writeToFile("products.json", out);
+	// writeToFile("products.json", out);
 
 	// TODO: Prompt if user wants to quit or goto main menu
 	// Close the browser instance
-	await browser.close();
+	// await browser.close();
 	// Quit Supomation CLI
-	quit();
+	// quit();
 	//..
 }
 
@@ -400,6 +403,7 @@ async function runSupomation(headlessMode) {
  *
  * @param { user selected option } option
  */
+// TODO: Implement; exit to main menu; print scraped data; save scraped data
 function processOption(option) {
 	if (option === "q") {
 		quit();
@@ -408,6 +412,48 @@ function processOption(option) {
 	} else if (option === "r") {
 		promptHeadless();
 	}
+}
+
+//------------------------------------------//
+
+/**
+ *	* Prompt the user to select what to
+ *	*	 do with the scraped product data.
+ */
+function promptData() {
+	//..
+	log("-- " + green("SCRAPED DATA MENU") + " --\n");
+	// Scraped data prompt
+	inquirer
+		.prompt([
+			{
+				type: "list",
+				name: "option",
+				message: "Select an option:",
+				choices: [
+					"Print scraped data",
+					"Save to data file",
+					// "Rerun WebScraper",
+					new inquirer.Separator(),
+					"Exit to main menu",
+					"Quit Supomation CLI",
+					new inquirer.Separator(),
+					{
+						name: "Display Help",
+						disabled: "Unavailable at this time"
+					}
+				],
+				filter: function (val) {
+					return val.charAt(0).toLowerCase();
+				}
+			}
+		])
+		.then(answers => {
+			//..
+			processOption(answers.option);
+			//..
+		});
+	//..
 }
 
 //------------------------------------------//
@@ -441,9 +487,10 @@ function promptHeadless() {
  *	* Display the main menu prompt
  */
 // TODO: Add question for number of pages to scrap
-// TODO: Log a main menu title
 function prompt() {
 	//..
+	log("-- " + green("MAIN MENU") + " --\n");
+	// Main menu prompt
 	inquirer
 		.prompt([
 			{
@@ -452,7 +499,8 @@ function prompt() {
 				message: "Select an option:",
 				choices: [
 					"Run WebScrapper",
-					"Open Dashboard",
+					"Open dashboard",
+					new inquirer.Separator(),
 					"Quit Supomation CLI",
 					new inquirer.Separator(),
 					{
