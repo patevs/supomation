@@ -19,7 +19,6 @@ const inquirer = require("inquirer");
 // Text styling
 const chalk = require("chalk");
 // Logging symbols
-// TODO: Use signale instead of log-symbols
 const logSymbols = require("log-symbols");
 // Interactive logging
 const { Signale } = require("signale");
@@ -168,11 +167,10 @@ async function initPuppeteer(headlessMode) {
 	browserPrompt.await("[%d/2] - Launching Puppeteer browser...", 1);
 	// Launch puppeteer browser
 	const browser = await puppeteer.launch({ headless: headlessMode });
-	// TODO: Log browser version
-	// const browserVersion = await browser.version();
-	// log("  " + logSymbols.info, "Browser version: \n\t" + green(browserVersion));
+	// Get browser version
+	const browserVersion = await browser.version();
 	// Log status to prompt
-	browserPrompt.success("[%d/2] - Puppetter browser launched!\n", 2);
+	browserPrompt.success("[%d/2] - Puppetter browser launched! Version: " + green("%s") + "\n", 2, browserVersion);
 	// Return the browser instance
 	return browser;
 	//..
@@ -212,6 +210,7 @@ async function gotoPage(page, url) {
 	//..
 	// Initialize an interactive prompt
 	const navPrompt = new Signale({ interactive: true, scope: "supomation" });
+	// TODO: Log target url
 	// Log status to prompt
 	navPrompt.await("[%d/2] - Navigating to target page...", 1);
 	// Navigate the page to the target url
