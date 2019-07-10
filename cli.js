@@ -49,6 +49,8 @@ const log = console.log;
 
 // Target URL
 const TARGET_URL = "https://www.ishopnewworld.co.nz/specials";
+// Page target e.g. ?pg=2
+const PAGE_TARGET = "?pg=";
 // Product CSS selector
 const PRODUCT_SELECTOR = ".fs-product-card";
 
@@ -83,6 +85,7 @@ function quit() {
 /**
  *	* Write some data to file
  */
+// TODO: Make this async
 function writeToFile(fileName, content) {
 	//..
 	// Initialize an interactive prompt
@@ -372,6 +375,7 @@ async function scrapProducts(page) {
 /**
  *	* Run the Supomation webscrapper
  */
+// TODO: Pass in number of pages
 async function runSupomation(headlessMode) {
 	//..
 	log("\n" + logSymbols.info, "Starting Supomation WebScrapper...\n");
@@ -379,17 +383,17 @@ async function runSupomation(headlessMode) {
 	// Initialize a puppeteer browser instance
 	const browser = await initPuppeteer(headlessMode);
 
+	// TODO: Wrap this in page count
+	let pageCount = 1; // page to scrap
+	const PAGE_TARGET_URL = TARGET_URL + PAGE_TARGET + pageCount;
 	// Create a new page and navigate to target url
-	const page = await createAndGotoPage(browser, TARGET_URL);
-
+	const page = await createAndGotoPage(browser, PAGE_TARGET_URL);
 	// Scrap products from target page
 	let scrapedProducts = await scrapProducts(page);
 	// log({ scrapedProducts });
-
 	// Prompt user with what to do with data
 	promptData(scrapedProducts);
 
-	// TODO: Prompt if user wants to quit or goto main menu
 	// Close the browser instance
 	// await browser.close();
 	// Quit Supomation CLI
@@ -521,6 +525,7 @@ function promptHeadless() {
 		])
 		.then(answers => {
 			//..
+			// TODO: Prompt page number
 			runSupomation(answers.headless);
 			//..
 		});
