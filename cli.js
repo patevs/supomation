@@ -27,6 +27,9 @@ const { Signale } = require("signale");
 const blessed = require("blessed");
 const contrib = require("blessed-contrib");
 
+// Clear terminal
+const clear = require("clear");
+
 // File system
 const fs = require("fs");
 
@@ -559,6 +562,7 @@ function prompt() {
  */
 (function () {
 	//..
+	clear();
 	log(title("\nWELCOME TO SUPOMATION CLI"));
 	prompt();
 	//..
