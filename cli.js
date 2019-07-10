@@ -421,21 +421,24 @@ function processDataOption(option, scrapedProducts) {
 	} else if (option === "v") {
 		// TODO: Create function for viewing scraped data in a table
 		// log scraped data
+		log("\n" + logSymbols.success, "View Scraped Products: ");
 		log(scrapedProducts);
 		// Goto data prompt
 		promptData(scrapedProducts);
 		// quit();
 	} else if (option === "s") {
 		// TODO: Create function for saving scraped data
-		log("\n" + logSymbols.error, red("NOT YET IMPLEMENTED!\n"));
+		// log("\n" + logSymbols.error, red("SAVE SCRAPED PRODUCTS NOT YET IMPLEMENTED!\n"));
 		// Stringify json data
 		const out = JSON.stringify(scrapedProducts, null, 2);
 		// ! This will break if the scrapped products array is too large
 		// ! Approximately upto 100MB max effectively
 		// Write scraped data to file
+		// TODO: Make this async
 		writeToFile("products.json", out);
 		// TODO: Goto data prompt
-		quit();
+		// promptData(scrapedProducts);
+		// quit();
 	}
 }
 
@@ -479,13 +482,12 @@ function promptData(scrapedProducts) {
 					// "Open dashboard",
 					// "Rerun WebScraper",
 					new inquirer.Separator(),
-					"Exit to main menu",
-					"Quit Supomation CLI",
-					new inquirer.Separator(),
 					{
 						name: "Display help",
 						disabled: "Unavailable at this time"
-					}
+					},
+					"Exit to main menu",
+					"Quit Supomation CLI",
 				],
 				filter: function (val) {
 					return val.charAt(0).toLowerCase();
@@ -543,14 +545,14 @@ function prompt() {
 				message: "Select an option:",
 				choices: [
 					"Run webscraper",
-					"Open dashboard (WIP)",
 					new inquirer.Separator(),
-					"Quit Supomation CLI",
+					"Open dashboard (WIP)",
 					new inquirer.Separator(),
 					{
 						name: "Display help",
 						disabled: "Unavailable at this time"
-					}
+					},
+					"Quit Supomation CLI",
 				],
 				filter: function (val) {
 					return val.charAt(0).toLowerCase();
