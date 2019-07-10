@@ -363,7 +363,7 @@ async function scrapProducts(page) {
 	// Log status to prompy
 	scrapPrompt.success("[%d/2] - Scraped " + green("%d") + " products!\n", 2, numProducts);
 	// Process the product elements
-	return processProducts(allProductElems);
+	return await processProducts(allProductElems);
 	//..
 }
 
@@ -384,6 +384,7 @@ async function runSupomation(headlessMode) {
 
 	// Scrap products from target page
 	let scrapedProducts = await scrapProducts(page);
+	// log({ scrapedProducts });
 
 	// Prompt user with what to do with data
 	promptData(scrapedProducts);
@@ -418,16 +419,15 @@ function processDataOption(option, scrapedProducts) {
 	} else if (option === "r") {
 		promptHeadless(); // ! This isnt used
 	} else if (option === "v") {
-		// TODO: Create function for viewing scraped data
-		log(red("\nNOT YET IMPLEMENTED\n"));
-		// print scraped data
-		let product = scrapedProducts[0];
-		log(product);
-		// TODO: Goto data prompt
-		quit();
+		// TODO: Create function for viewing scraped data in a table
+		// log scraped data
+		log(scrapedProducts);
+		// Goto data prompt
+		promptData(scrapedProducts);
+		// quit();
 	} else if (option === "s") {
 		// TODO: Create function for saving scraped data
-		log(red("\nNOT YET IMPLEMENTED\n"));
+		log("\n" + logSymbols.error, red("NOT YET IMPLEMENTED!\n"));
 		// Stringify json data
 		const out = JSON.stringify(scrapedProducts, null, 2);
 		// ! This will break if the scrapped products array is too large
