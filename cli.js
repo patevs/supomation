@@ -414,24 +414,32 @@ function processDataOption(option, scrapedProducts) {
 	} else if (option === "e") {
 		prompt();
 	} else if (option === "o") {
-		loadDashboard();
+		loadDashboard(); // ! This isnt used
 	} else if (option === "r") {
-		promptHeadless();
+		promptHeadless(); // ! This isnt used
 	} else if (option === "v") {
+		// TODO: Create function for viewing scraped data
+		log(red("\nNOT YET IMPLEMENTED\n"));
 		// print scraped data
 		let product = scrapedProducts[0];
 		log(product);
+		// TODO: Goto data prompt
 		quit();
 	} else if (option === "s") {
+		// TODO: Create function for saving scraped data
+		log(red("\nNOT YET IMPLEMENTED\n"));
 		// Stringify json data
 		const out = JSON.stringify(scrapedProducts, null, 2);
 		// ! This will break if the scrapped products array is too large
 		// ! Approximately upto 100MB max effectively
 		// Write scraped data to file
 		writeToFile("products.json", out);
+		// TODO: Goto data prompt
 		quit();
 	}
 }
+
+//------------------------------------------//
 
 /**
  *	* Process user selected main menu option
