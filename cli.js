@@ -376,7 +376,7 @@ async function scrapProducts(page) {
  *	* Run the Supomation webscrapper
  */
 // TODO: Pass in number of pages
-async function runSupomation(headlessMode) {
+async function runSupomation(headlessMode, pageNumber) {
 	//..
 	log("\n" + logSymbols.info, "Starting Supomation WebScrapper...\n");
 
@@ -384,8 +384,7 @@ async function runSupomation(headlessMode) {
 	const browser = await initPuppeteer(headlessMode);
 
 	// TODO: Wrap this in page count
-	let pageCount = 1; // page to scrap
-	const PAGE_TARGET_URL = TARGET_URL + PAGE_TARGET + pageCount;
+	const PAGE_TARGET_URL = TARGET_URL + PAGE_TARGET + pageNumber;
 	// Create a new page and navigate to target url
 	const page = await createAndGotoPage(browser, PAGE_TARGET_URL);
 	// Scrap products from target page
@@ -508,6 +507,27 @@ function promptData(scrapedProducts) {
 
 //------------------------------------------//
 
+function promptPageNum(headless) {
+	//..
+	inquirer
+		.prompt([
+			{
+				type: "number",
+				name: "pgnum",
+				message: "Page number to scrap: ",
+				default: 1
+			}
+		])
+		.then(answers => {
+			//..
+			runSupomation(headless, answers.pgnum);
+			//..
+		});
+	//..
+}
+
+//------------------------------------------//
+
 /**
  *	* Prompt the user to confirm to run
  * 	* the webscraper in headless mode
@@ -526,7 +546,8 @@ function promptHeadless() {
 		.then(answers => {
 			//..
 			// TODO: Prompt page number
-			runSupomation(answers.headless);
+			promptPageNum(answers.headless);
+			// runSupomation(answers.headless);
 			//..
 		});
 	//..
