@@ -62,7 +62,8 @@ const green = chalk.green;
 const blue = chalk.cyan;
 
 // Typography
-const title = green.underline.bold;
+const title = green.bold;
+const header = title.underline;
 const link = blue.underline;
 
 /**********************
@@ -406,7 +407,7 @@ async function runSupomation(headlessMode) {
  * @param { scraped data } scrapedData
  */
 // TODO: Implement; exit to main menu; print scraped data; save scraped data
-// ! TODO: FIXME
+// ! TODO: Complete this
 function processDataOption(option, scrapedProducts) {
 	if (option === "q") {
 		quit();
@@ -453,9 +454,10 @@ function processOption(option) {
  *	* Prompt the user to select what to
  *	*	 do with the scraped product data.
  */
+// TODO: Complete this
 function promptData(scrapedProducts) {
 	//..
-	log("-- " + green("SCRAPED DATA MENU") + " --\n");
+	log("-- " + title("SCRAPED DATA MENU") + " --\n");
 	// Scraped data prompt
 	inquirer
 		.prompt([
@@ -473,7 +475,7 @@ function promptData(scrapedProducts) {
 					"Quit Supomation CLI",
 					new inquirer.Separator(),
 					{
-						name: "Display Help",
+						name: "Display help",
 						disabled: "Unavailable at this time"
 					}
 				],
@@ -523,7 +525,7 @@ function promptHeadless() {
 // TODO: Add question for number of pages to scrap
 function prompt() {
 	//..
-	log("\n-- " + green("MAIN MENU") + " --\n");
+	log("\n-- " + title("MAIN MENU") + " --\n");
 	// Main menu prompt
 	inquirer
 		.prompt([
@@ -532,13 +534,13 @@ function prompt() {
 				name: "option",
 				message: "Select an option:",
 				choices: [
-					"Run WebScrapper",
-					"Open dashboard",
+					"Run webscraper",
+					"Open dashboard (WIP)",
 					new inquirer.Separator(),
 					"Quit Supomation CLI",
 					new inquirer.Separator(),
 					{
-						name: "Display Help",
+						name: "Display help",
 						disabled: "Unavailable at this time"
 					}
 				],
@@ -563,7 +565,7 @@ function prompt() {
 (function () {
 	//..
 	clear();
-	log(title("\nWELCOME TO SUPOMATION CLI"));
+	log(header("\nWELCOME TO SUPOMATION CLI"));
 	prompt();
 	//..
 })();
