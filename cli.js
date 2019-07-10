@@ -30,6 +30,13 @@ const contrib = require("blessed-contrib");
 // File system
 const fs = require("fs");
 
+/*************
+ * * GLOBALS *
+ *************/
+
+// TODO: Add scraper has run global boolean
+// TODO: Save scraped data into global variable
+
 /***************
  * * CONSTANTS *
  ***************/
