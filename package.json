@@ -1,6 +1,6 @@
 {
 	"name": "supomation",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "supomation",
 	"license": "MIT",
 	"repository": "github:PatEvs/supomation",
@@ -15,7 +15,7 @@
 	"scripts": {
 		"clean": "trash node_modules data",
 		"start": "node cli.js",
-		"test": "eslint --fix . && echo test complete."
+		"test": "eslint --fix . && echo Test Complete!"
 	},
 	"files": [
 		"cli.js"

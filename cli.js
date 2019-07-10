@@ -468,7 +468,7 @@ function promptData(scrapedProducts) {
 				choices: [
 					"View scraped data",
 					"Save data to file",
-					"Open dashboard",
+					// "Open dashboard",
 					// "Rerun WebScraper",
 					new inquirer.Separator(),
 					"Exit to main menu",
