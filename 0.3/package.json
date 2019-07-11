@@ -1,0 +1,61 @@
+{
+	"name": "supomation",
+	"version": "0.0.0",
+	"description": "",
+	"homepage": "https://github.com/patevs/supomation",
+	"repository": "patevs/supomation",
+	"author": "PatEvs",
+	"license": "MIT",
+	"files": [
+		"lib"
+	],
+	"main": "lib/index.js",
+	"scripts": {
+		"clean": "trash node_modules",
+		"pretest": "eslint . --fix && echo Pretest Complete!",
+		"test": "jest && echo Test Complete!"
+	},
+	"devDependencies": {
+		"eslint": "^6.0.1",
+		"prettier": "^1.15.2",
+		"husky": "^3.0.0",
+		"lint-staged": "^9.2.0",
+		"eslint-config-prettier": "^6.0.0",
+		"eslint-plugin-prettier": "^3.0.0",
+		"eslint-config-xo": "^0.26.0",
+		"jest": "^24.8.0"
+	},
+	"engines": {
+		"npm": ">= 10.0.0"
+	},
+	"lint-staged": {
+		"*.js": [
+			"eslint --fix",
+			"git add"
+		],
+		"*.json": [
+			"prettier --write",
+			"git add"
+		]
+	},
+	"eslintConfig": {
+		"extends": [
+			"xo",
+			"prettier"
+		],
+		"env": {
+			"jest": true,
+			"node": true
+		},
+		"rules": {
+			"prettier/prettier": "error",
+			"eslint/capitalized-comments": "off"
+		},
+		"plugins": [
+			"prettier"
+		]
+	},
+	"jest": {
+		"testEnvironment": "node"
+	}
+}
