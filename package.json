@@ -48,8 +48,7 @@
 			"node": true
 		},
 		"rules": {
-			"prettier/prettier": "error",
-			"eslint/capitalized-comments": "off"
+			"prettier/prettier": "error"
 		},
 		"plugins": [
 			"prettier"
