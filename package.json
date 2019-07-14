@@ -1,6 +1,6 @@
 {
 	"name": "supomation",
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"description": "Supomation CLI",
 	"homepage": "https://github.com/patevs/supomation",
 	"repository": "patevs/supomation",
@@ -60,7 +60,8 @@
 			"prettier"
 		],
 		"rules": {
-			"valid-jsdoc": 0
+			"valid-jsdoc": 0,
+			"no-warning-comments": 0
 		}
 	},
 	"jest": {
