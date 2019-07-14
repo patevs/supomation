@@ -14,6 +14,11 @@
 
 ### Modules & Packages
 
+- [`axios`](https://github.com/axios/axios)
+- [`cheerio`](https://github.com/cheeriojs/cheerio)
+
+[]()
+
 - [`puppeteer`](https://github.com/GoogleChrome/puppeteer)
 
 []()
