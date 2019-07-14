@@ -1,7 +1,7 @@
 {
 	"name": "supomation",
 	"version": "0.3.1",
-	"description": "",
+	"description": "Supomation CLI",
 	"homepage": "https://github.com/patevs/supomation",
 	"repository": "patevs/supomation",
 	"author": "PatEvs",
@@ -15,6 +15,12 @@
 		"start": "node lib/index.js",
 		"pretest": "eslint . --fix && echo Pretest Complete!",
 		"test": "jest && echo Test Complete!"
+	},
+	"dependencies": {
+		"axios": "^0.19.0",
+		"chalk": "^2.4.2",
+		"cheerio": "^1.0.0-rc.3",
+		"clear": "^0.1.0"
 	},
 	"devDependencies": {
 		"eslint": "^6.0.1",
@@ -54,11 +60,5 @@
 	},
 	"jest": {
 		"testEnvironment": "node"
-	},
-	"dependencies": {
-		"axios": "^0.19.0",
-		"chalk": "^2.4.2",
-		"cheerio": "^1.0.0-rc.3",
-		"clear": "^0.1.0"
 	}
 }
