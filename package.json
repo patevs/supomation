@@ -1,6 +1,6 @@
 {
 	"name": "supomation",
-	"version": "0.3.4",
+	"version": "0.3.5",
 	"description": "Supomation CLI",
 	"homepage": "https://github.com/patevs/supomation",
 	"repository": "patevs/supomation",
@@ -22,7 +22,8 @@
 		"cheerio": "^1.0.0-rc.3",
 		"clear": "^0.1.0",
 		"inquirer": "^6.5.0",
-		"log-symbols": "^3.0.0"
+		"log-symbols": "^3.0.0",
+		"signale": "^1.4.0"
 	},
 	"devDependencies": {
 		"eslint": "^6.0.1",
