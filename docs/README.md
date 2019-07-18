@@ -12,3 +12,15 @@
 7. [ ] Add `blessed-contrib` dashboard
 
 ---
+
+https://www.ishopnewworld.co.nz/category/fresh-foods-and-bakery
+
+https://www.ishopnewworld.co.nz/category/chilled-frozen-and-desserts
+
+https://www.ishopnewworld.co.nz/category/pantry
+
+https://www.ishopnewworld.co.nz/category/personal-care
+
+https://www.ishopnewworld.co.nz/category/kitchen-dining-and-household
+
+---
