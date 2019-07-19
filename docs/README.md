@@ -1,17 +1,26 @@
 
 # [`supomation`](https://github.com/patevs/supomation)
 
-## Backlog
+## Libraries & Packages
 
-1. [ ] Saving of scraped data to file or database
-2. [ ] Scraping of multiple pages
-3. [ ] Store location selection
-4. [ ] Saving of virtual mailer to file
-5. [ ] Allow the selection of scraping specific categories only
-6. [X] Use a more efficient scraping api. e.g. `axios` & `cheerio`
-7. [ ] Add `blessed-contrib` dashboard
+- [`strapi`](https://github.com/strapi/strapi)
+- [`keystone`](https://github.com/keystonejs/keystone)
+- [`dayjs`](https://github.com/iamkun/dayjs)
+- [`cli-table3`](https://github.com/cli-table/cli-table3)
 
 ---
+
+## Backlog
+
+1. [ ] Save of scraped data to file/database
+2. [ ] Scrap of multiple pages
+3. [ ] Change store location
+4. [ ] Download and save of virtual mailer to file
+5. [ ] Scrap by categories
+
+---
+
+## Categories
 
 https://www.ishopnewworld.co.nz/category/fresh-foods-and-bakery
 
