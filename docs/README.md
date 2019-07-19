@@ -15,6 +15,6 @@
 2. [ ] Scrap multiple pages
 3. [ ] Change store location
 4. [ ] Download and save virtual mailer to file
-5. [ ] Scrap by categories
+5. [X] Scrap by categories
 
 ---
