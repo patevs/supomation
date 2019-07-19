@@ -5,7 +5,6 @@
 
 - [`strapi`](https://github.com/strapi/strapi)
 - [`keystone`](https://github.com/keystonejs/keystone)
-- [`dayjs`](https://github.com/iamkun/dayjs)
 - [`cli-table3`](https://github.com/cli-table/cli-table3)
 
 ---
