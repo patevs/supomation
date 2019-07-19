@@ -11,7 +11,7 @@
 	],
 	"main": "lib/index.js",
 	"scripts": {
-		"clean": "trash node_modules",
+		"clean": "trash node_modules data",
 		"start": "node lib/index.js",
 		"pretest": "eslint . --fix && echo Pretest Complete!",
 		"test": "jest && echo Test Complete!"
