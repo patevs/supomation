@@ -10,6 +10,8 @@
 		"node": ">=8"
 	},
 	"scripts": {
+		"clean": "trash node_modules",
+		"start": "node cli.js",
 		"test": "xo && ava"
 	},
 	"files": [
