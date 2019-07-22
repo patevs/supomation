@@ -12,5 +12,8 @@
     "clean": "trash node_modules",
     "start": "node lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "npm": ">= 10.0.0"
   }
 }
