@@ -133,7 +133,7 @@ function loadDashboard() {
 	// Set screen title
 	screen.title = "SUPOMATION DASHBOARD";
 	// Use grid layout
-	let grid = new contrib.grid({ rows: 12, cols: 12, screen: screen });
+	let grid = new contrib.Grid({ rows: 12, cols: 12, screen: screen });
 
 	// Grid.set(row, col, rowSpan, colSpan, obj, opts)
 
@@ -353,9 +353,11 @@ async function processProducts(allProductsElems) {
 		// Get the current product element
 		let productElem = allProductsElems[i];
 		// Get product's name
-		let pname = await getProductName(productElem);
+		// . let pname = await getProductName(productElem);
+		let pname = getProductName(productElem);
 		// Get product data
-		let pdata = await getProductData(productElem);
+		// . let pdata = await getProductData(productElem);
+		let pdata = getProductData(productElem);
 		// Process the product
 		let product = processProduct(pname, pdata);
 		// Push product object into products array
@@ -391,7 +393,7 @@ async function scrapProducts(page) {
 		numProducts
 	);
 	// Process the product elements
-	return await processProducts(allProductElems);
+	return processProducts(allProductElems);
 	// ..
 }
 
