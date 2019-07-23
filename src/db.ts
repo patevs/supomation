@@ -20,7 +20,7 @@ import { MongoClient } from "mongodb";
  ***************/
 
 const uri =
-    "mongodb+srv://patevs:F0rtunes@cluster0-t7g5a.mongodb.net/test?retryWrites=true&w=majority";
+    "mongodb+srv://patevs:<password>@cluster0-t7g5a.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 /***************
@@ -28,8 +28,12 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
  ***************/
 
 // Connect to database
-client.connect(err => {
-    const collection = client.db("test").collection("devices");
+client.connect(async function(err) {
+    const isConnected = await client.isConnected();
+    console.log(isConnected);
+    // . const db = client.db("test");
+    // . client.db("test").createCollection("devices");
+    // . const collection = client.db("test").collection("devices");
     // perform actions on the collection object
     client.close();
 });
