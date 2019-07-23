@@ -33,14 +33,13 @@ const log = console.log;
 // Colors
 // . const red = chalk.red;
 const green = chalk.green;
-// . const blue = chalk.cyan;
-// . const blueBright = chalk.blueBright;
+const blue = chalk.cyan;
 const magenta = chalk.magenta;
 const magentaBright = chalk.magentaBright;
 
 // Typography
 const header = green.bold.underline;
-// . const title = blue.bold;
+const title = blue.bold;
 // . const link = blue.underline;
 
 /***************
@@ -91,11 +90,9 @@ function logSuccess(msg) {
  *  Log a menu title
  * @param { title } msg
  */
-/*
-function logTitle(msg) {
+function logTitle(msg: string): void {
     log("\n ----- " + title(msg) + " ----- \n");
 }
-*/
 
 // ------------------------------------------ //
 
@@ -109,6 +106,7 @@ function logWelcome(): void {
     const heading: string = header("WELCOME TO SUPOMATION CLI\n");
     const version: string | undefined = process.env.npm_package_version;
     const date: string = new Date().toDateString();
+    // Construct welcome message
     const msg: string =
         heading +
         "\n" +
@@ -116,25 +114,25 @@ function logWelcome(): void {
         version +
         "\n\n" +
         magentaBright(date);
+    // Log welcome message
     log(boxen(msg, { padding: 1, align: "center" }));
-    log(); // new line
 }
 
 /*************
  * * EXPORTS *
  *************/
 
-export { logWelcome };
+export { logTitle, logWelcome };
 
 /*
 module.exports = {
     green,
     magenta,
     link,
-    // logError,
-    // logInfo,
-    // logSuccess,
-    // logTitle,
+    logError,
+    logInfo,
+    logSuccess,
+    logTitle,
     logWelcome
 };
 */
