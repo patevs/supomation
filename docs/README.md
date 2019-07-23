@@ -21,7 +21,93 @@
 
 ---
 
-0.2.0 `package.json`
+0.3.0 `package.json`:
+
+```json
+    {
+        "name": "supomation",
+        "version": "0.3.0",
+        "description": "Supomation CLI",
+        "author": "PatEvs <ppevans11@gmail.com> (https://github.com/patevs)",
+        "repository": "patevs/supomation",
+        "license": "MIT",
+        "engines": {
+            "npm": ">= 10.0.0"
+        },
+        "files": [
+            "src"
+        ],
+        "main": "src/index.ts",
+        "scripts": {
+            "clean": "trash node_modules lib data",
+            "start": "ts-node src/index.ts",
+            "start:live": "npm run build:live",
+            "build": "tsc -p .",
+            "build:live": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
+            "pretest": "eslint src/ --fix && echo Pretest Complete!",
+            "test": "jest && echo. && echo Test Complete! && exit 0"
+        },
+        "dependencies": {
+            "axios": "^0.19.0",
+            "boxen": "^4.1.0",
+            "chalk": "^2.4.2",
+            "cheerio": "^1.0.0-rc.3",
+            "clear": "^0.1.0",
+            "inquirer": "^6.5.0",
+            "log-symbols": "^3.0.0"
+        },
+        "devDependencies": {
+            "@types/cheerio": "^0.22.12",
+            "@types/inquirer": "^6.0.3",
+            "@types/node": "^12.6.8",
+            "eslint": "^6.1.0",
+            "eslint-config-prettier": "^6.0.0",
+            "eslint-config-xo": "^0.26.0",
+            "eslint-plugin-prettier": "^3.1.0",
+            "husky": "^3.0.1",
+            "jest": "^24.8.0",
+            "prettier": "^1.18.2",
+            "ts-node": "^8.3.0",
+            "typescript": "^3.5.3"
+        },
+        "lint-staged": {
+            "*.js": [
+                "eslint --fix",
+                "git add"
+            ],
+            "*.ts": [
+                "eslint --fix",
+                "git add"
+            ],
+            "*.json": [
+                "prettier --write",
+                "git add"
+            ]
+        },
+        "eslintConfig": {
+            "extends": [
+                "xo",
+                "prettier"
+            ],
+            "env": {
+                "jest": true,
+                "node": true
+            },
+            "plugins": [
+                "prettier"
+            ],
+            "rules": {
+                "valid-jsdoc": 0,
+                "no-warning-comments": 0
+            }
+        },
+        "jest": {
+            "testEnvironment": "node"
+        }
+    }
+```
+
+0.2.0 `package.json`:
 
 ```json
     {
