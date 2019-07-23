@@ -15,6 +15,9 @@
 // Logging utilities
 import * as logging from "./utils/logging";
 
+// Interactive prompts
+import inquirer from "inquirer";
+
 /**********************
  * * PROMPT FUNCTIONS *
  **********************/

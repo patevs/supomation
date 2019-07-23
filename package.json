@@ -27,6 +27,7 @@
         "inquirer": "^6.5.0"
     },
     "devDependencies": {
+        "@types/inquirer": "^6.0.3",
         "@types/node": "^12.6.8",
         "eslint": "^6.1.0",
         "eslint-config-prettier": "^6.0.0",
