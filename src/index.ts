@@ -20,7 +20,7 @@ import * as utils from "./utils/utilities";
 import * as scraper from "./utils/scraper";
 
 //
-import { Signale } from "signale";
+// import { Signale } from "signale";
 // Interactive Prompts
 import inquirer from "inquirer";
 // HTTP Client
@@ -68,9 +68,7 @@ function writeToFile(filePath: string, data: any): void {
 
 // ------------------------------------------ //
 
-function getCategory(categoryUrl: string, categoryName: string, prompt: any) {
-    // ..
-    prompt.await("Scraping Category: %s", logging.green(categoryName));
+function getCategory(categoryUrl: string) {
     // Scraper products to return
     let products: any[] = [];
     axios
@@ -80,11 +78,7 @@ function getCategory(categoryUrl: string, categoryName: string, prompt: any) {
         })
         .finally(function() {
             if (products !== null) {
-                prompt.success(
-                    "Scraped %d Products from category: %s",
-                    products.length,
-                    logging.green(categoryName)
-                );
+                // TODO: Something here...
             }
         });
     // ..
@@ -108,18 +102,7 @@ async function getCategory_(categoryUrl: string) {
 function runWebScraper() {
     logging.log(); // new line
     logging.logInfo("Running Supomation WebScraper...\n");
-    const freshPrompt = new Signale({
-        interactive: true,
-        scope: "Fresh Foods"
-    });
-    getCategory(FRESH_URL, ALL_CATEGORIES[0], freshPrompt);
-    /*
-    const chilledPrompt = new Signale({
-        interactive: true,
-        scope: "Chilled & Frozen"
-    });
-    getCategory(CHILLED_URL, ALL_CATEGORIES[1], chilledPrompt);
-    */
+    getCategory(FRESH_URL);
     // . await getCategory(PANTRY_URL);
     // . await getCategory(CHILLED_URL);
 }
