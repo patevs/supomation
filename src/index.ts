@@ -117,8 +117,8 @@ async function runWebScraper() {
     try {
         const response = await axios.get(TARGET_URL);
         const data = response.data;
-        const products = scraper.scrapProducts(data);
-        logging.log(products);
+        const products = await scraper.scrapProducts(data);
+        await logging.log(products);
     } catch (error) {
         logging.logError(error);
     }
@@ -134,13 +134,13 @@ async function runWebScraper() {
  * @param { prompt answers } answers
  * @returns { void }
  */
-function processMainMenuOption(answers: any): void {
+async function processMainMenuOption(answers: any) {
     // Get user selected option
     const option: string = answers.option;
     // Process option
     switch (option) {
         case "r":
-            runWebScraper();
+            await runWebScraper();
             promptMain();
             break;
         case "g":

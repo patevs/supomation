@@ -21,9 +21,9 @@ import cheerio from "cheerio";
 
 const PRODUCT_SELECTOR: string = ".fs-product-card";
 
-/***************
- * * FUNCTIONS *
- ***************/
+/**********************
+ * * HELPER FUNCTIONS *
+ **********************/
 
 /**
  *	* Get the name of a given product element
@@ -31,8 +31,7 @@ const PRODUCT_SELECTOR: string = ".fs-product-card";
  * @param { product element } productElem
  * @returns { name of product }
  */
-/*
-function getProductName(productElem) {
+function getProductName(productElem: any) {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
     // Product name CSS selector
@@ -42,7 +41,6 @@ function getProductName(productElem) {
     // Remove whitespace and return the result
     return pname.trim();
 }
-*/
 
 // ------------------------------------------ //
 
@@ -52,8 +50,7 @@ function getProductName(productElem) {
  * @param { product element } productElem
  * @returns { product data }
  */
-/*
-function getProductData(productElem) {
+function getProductData(productElem: any) {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
     // Product data CSS selector
@@ -63,7 +60,6 @@ function getProductData(productElem) {
     // Parse product data as JSON and return the result
     return JSON.parse(pdata);
 }
-*/
 
 // ------------------------------------------ //
 
@@ -74,8 +70,7 @@ function getProductData(productElem) {
  * @param { Product's data } pdata
  * @returns { product }
  */
-/*
-function processProduct(pname, pdata) {
+function processProduct(pname: any, pdata: any) {
     // Get the product's unique id
     const pid = pdata.productId;
     // Get the product's details
@@ -96,9 +91,10 @@ function processProduct(pname, pdata) {
     // Return the processed product
     return product;
 }
-*/
 
-// ------------------------------------------ //
+/***************
+ * * FUNCTIONS *
+ ***************/
 
 /**
  *  * scrapProducts
@@ -107,7 +103,7 @@ function processProduct(pname, pdata) {
  * @param { target page html content } pageHtmlContent
  * @returns { any[] } allProducts
  */
-function scrapProducts(pageHtmlContent: string) {
+async function scrapProducts(pageHtmlContent: string) {
     // Array of all products to return
     let allProducts: any[] = [];
     // Load the target page HTML content into cheerio
@@ -120,13 +116,13 @@ function scrapProducts(pageHtmlContent: string) {
         // Get the current product element
         let productElem = productElems[i];
         // Get the name of the current product
-        // . let pname = getProductName(productElem);
+        let pname = getProductName(productElem);
         // Get the data for the current product
-        // . let pdata = getProductData(productElem);
+        let pdata = getProductData(productElem);
         // Process the current product
-        // . let product = processProduct(pname, pdata);
+        let product = processProduct(pname, pdata);
         // Push product object into products array
-        // . allProducts.push(product);
+        allProducts.push(product);
     }
 
     // Return array containing all products
