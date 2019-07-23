@@ -11,10 +11,11 @@
 
 ## Backlog
 
-1. [X] Save of scraped data to file/database
-2. [ ] Scrap multiple pages
-3. [ ] Change store location
-4. [ ] Download and save virtual mailer to file
-5. [X] Scrap by categories
+1. [X] Save of scraped data to file
+2. [ ] Save scraped data to database
+3. [ ] Scrap multiple pages
+4. [ ] Change store location
+5. [ ] Download and save virtual mailer to file
+6. [X] Scrap by categories
 
 ---
