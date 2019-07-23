@@ -34,6 +34,29 @@ function processMainMenuOption(answers: any): void {
     // ..
     const option: string = answers.option;
     // TODO: Convert this to a switch statement
+    switch (option) {
+        case "r":
+            // . runCategoryWebscraper();
+            // . runWebscraper();
+            break;
+        case "d":
+            utils.help();
+            promptMain();
+            break;
+        case "p":
+            utils.version();
+            promptMain();
+            break;
+        case "q":
+            utils.quit();
+            break;
+        default:
+            logging.logError(
+                "Main menu option: " + option + " is not recognised"
+            );
+            promptMain();
+    }
+    /*
     if (option === "r") {
         // . runCategoryWebscraper();
         // . runWebscraper();
@@ -46,6 +69,7 @@ function processMainMenuOption(answers: any): void {
     } else if (option === "q") {
         utils.quit();
     }
+    */
 }
 
 // ------------------------------------------ //
