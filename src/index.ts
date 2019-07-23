@@ -19,6 +19,8 @@ import * as utils from "./utils/utilities";
 // Scraper Helper Functions
 import * as scraper from "./utils/scraper";
 
+//
+import signale from "signale";
 // Interactive Prompts
 import inquirer from "inquirer";
 // HTTP Client
@@ -55,6 +57,9 @@ const ALL_CATEGORIES = [
     "personal-care",
     "kitchen-dining-and-household"
 ];
+const FRESH_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
+const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
+const PANTRY_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[2];
 
 /***************
  * * FUNCTIONS *
@@ -66,34 +71,9 @@ function writeToFile(filePath: string, data: any): void {
 }
 */
 
-async function getPantry() {
-    const PANTRY_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[2];
+async function getCategory(categoryUrl: string) {
     try {
-        const response = await axios.get(PANTRY_URL);
-        const data = response.data;
-        const products = await scraper.scrapProducts(data);
-        await logging.log(products);
-    } catch (error) {
-        logging.logError(error);
-    }
-}
-
-async function getChilled() {
-    const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
-    try {
-        const response = await axios.get(CHILLED_URL);
-        const data = response.data;
-        const products = await scraper.scrapProducts(data);
-        await logging.log(products);
-    } catch (error) {
-        logging.logError(error);
-    }
-}
-
-async function getFresh() {
-    const FRESH_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0]; //const
-    try {
-        const response = await axios.get(FRESH_URL);
+        const response = await axios.get(categoryUrl);
         const data = response.data;
         const products = await scraper.scrapProducts(data);
         await logging.log(products);
@@ -107,13 +87,12 @@ async function getFresh() {
 async function getAll() {
     // . let count = ALL_CATEGORIES.length;
     logging.logInfo("get fresh.");
-    await getFresh();
-    logging.logInfo("get chilled.");
-    await getChilled();
-    logging.logInfo("get pantry.");
-    await getPantry();
+    await getCategory(FRESH_URL);
+    await getCategory(PANTRY_URL);
+    await getCategory(CHILLED_URL);
 }
 
+/*
 async function runWebScraper() {
     logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
     const TARGET_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
@@ -127,6 +106,7 @@ async function runWebScraper() {
         logging.logError(error);
     }
 }
+*/
 
 /**********************
  * * PROMPT FUNCTIONS *
