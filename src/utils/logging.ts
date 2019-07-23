@@ -15,7 +15,7 @@
 // Terminal string styling
 import chalk from "chalk";
 // Logging symbols
-// . const logSymbols = require("log-symbols");
+import logSymbols from "log-symbols";
 // Create boxes
 import boxen from "boxen";
 
@@ -51,11 +51,9 @@ const title = blue.bold;
  *  Log an error message
  * @param { message to log } msg
  */
-/*
-function logError(msg) {
+function logError(msg: string): void {
     log("\n" + logSymbols.error, msg);
 }
-*/
 
 // ------------------------------------------ //
 
@@ -64,11 +62,9 @@ function logError(msg) {
  *  Log an information message
  * @param { message to log } msg
  */
-/*
-function logInfo(msg: String): void {
+function logInfo(msg: string): void {
     log(logSymbols.info, msg);
 }
-*/
 
 // ------------------------------------------ //
 
@@ -122,7 +118,7 @@ function logWelcome(): void {
  * * EXPORTS *
  *************/
 
-export { magenta, logTitle, logWelcome };
+export { log, magenta, logError, logInfo, logTitle, logWelcome };
 
 /*
 module.exports = {

@@ -13,14 +13,7 @@
  *************/
 
 // Logging utilities
-// const logging = require("./logging");
-// . import * as logging from "./logging";
-
-/***************
- * * CONSTANTS *
- ***************/
-
-//
+import * as logging from "./logging";
 
 /***************
  * * FUNCTIONS *
@@ -31,7 +24,7 @@
  *  Quit Supomation CLI
  */
 function quit(): void {
-    // . logging.logError("Quitting Supomation CLI...");
+    logging.logError("Quitting Supomation CLI...");
     process.exit(0);
 }
 
@@ -41,14 +34,12 @@ function quit(): void {
  *	*version
  *  Print the Supomation CLI version
  */
-/*
 function version(): void {
-    const msg =
-        "Supomation CLI version: " +
-        logging.magenta(process.env.npm_package_version);
+    logging.log(); // new line
+    const version = process.env.npm_package_version;
+    const msg = logging.magenta("Supomation CLI version: ") + version;
     logging.logInfo(msg);
 }
-*/
 
 // ------------------------------------------ //
 
@@ -57,17 +48,22 @@ function version(): void {
  *  Print the Supomation help message
  */
 function help(): void {
-    // . logging.logInfo(" ---- " + logging.magenta("HELP MESSAGE") + " ---- ");
+    logging.log(); // new line
+    logging.logInfo(" ---- " + logging.magenta("HELP MESSAGE") + " ---- ");
 }
 
 /*************
  * * EXPORTS *
  *************/
 
+export { quit, version, help };
+
+/*
 module.exports = {
     quit,
-    // . version,
+    version,
     help
 };
+*/
 
 // EOF //

@@ -14,6 +14,8 @@
 
 // Logging utilities
 import * as logging from "./utils/logging";
+// Helper functions
+import * as utils from "./utils/utilities";
 
 // Interactive prompts
 import inquirer from "inquirer";
@@ -28,11 +30,12 @@ import inquirer from "inquirer";
  * @param { user selected option } option
  * @returns { void }
  */
-/*
-function processMainMenuOption(option) {
+function processMainMenuOption(answers: any): void {
     // ..
+    const option: string = answers.option;
+    // TODO: Convert this to a switch statement
     if (option === "r") {
-        runCategoryWebscraper();
+        // . runCategoryWebscraper();
         // . runWebscraper();
     } else if (option === "d") {
         utils.help();
@@ -43,9 +46,7 @@ function processMainMenuOption(option) {
     } else if (option === "q") {
         utils.quit();
     }
-    // ..
 }
-*/
 
 // ------------------------------------------ //
 
@@ -77,8 +78,7 @@ function promptMain(): void {
             }
         ])
         .then(answers => {
-            // . console.log(answers);
-            // . processMainMenuOption(answers.option);
+            processMainMenuOption(answers);
         });
 }
 
