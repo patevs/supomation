@@ -4,6 +4,8 @@
  *	`src/utils/scraper.ts`
  *
  *	* Supomation Scraper Helper Functions
+ *
+ *  TODO: Correct type annotations
  */
 
 "use strict";
@@ -12,7 +14,6 @@
  * * IMPORTS *
  *************/
 
-// . const cheerio = require("cheerio");
 import cheerio from "cheerio";
 
 /***************
@@ -20,6 +21,8 @@ import cheerio from "cheerio";
  ***************/
 
 const PRODUCT_SELECTOR: string = ".fs-product-card";
+const PRODUCT_DATA_SELECTOR: string = PRODUCT_SELECTOR + "__footer-container";
+const PRODUCT_NAME_SELECTOR: string = ".u-p2";
 
 /**********************
  * * HELPER FUNCTIONS *
@@ -34,10 +37,8 @@ const PRODUCT_SELECTOR: string = ".fs-product-card";
 function getProductName(productElem: any) {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
-    // Product name CSS selector
-    const nameSelector = ".u-p2";
     // Get products name
-    const pname = $(nameSelector).text();
+    const pname = $(PRODUCT_NAME_SELECTOR).text();
     // Remove whitespace and return the result
     return pname.trim();
 }
@@ -53,10 +54,8 @@ function getProductName(productElem: any) {
 function getProductData(productElem: any) {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
-    // Product data CSS selector
-    const dataSelector = PRODUCT_SELECTOR + "__footer-container";
     // Get the product's data
-    const pdata = $(dataSelector).attr("data-options");
+    const pdata = $(PRODUCT_DATA_SELECTOR).attr("data-options");
     // Parse product data as JSON and return the result
     return JSON.parse(pdata);
 }
@@ -70,6 +69,7 @@ function getProductData(productElem: any) {
  * @param { Product's data } pdata
  * @returns { product }
  */
+// TODO: Create product interface
 function processProduct(pname: any, pdata: any) {
     // Get the product's unique id
     const pid = pdata.productId;
