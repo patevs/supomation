@@ -105,9 +105,12 @@ async function getFresh() {
 // ------------------------------------------ //
 
 async function getAll() {
-    let count = ALL_CATEGORIES.length;
+    // . let count = ALL_CATEGORIES.length;
+    logging.logInfo("get fresh.");
     await getFresh();
+    logging.logInfo("get chilled.");
     await getChilled();
+    logging.logInfo("get pantry.");
     await getPantry();
 }
 
