@@ -21,6 +21,8 @@ import * as utils from "./utils/utilities";
 import inquirer from "inquirer";
 // HTTP client
 import axios from "axios";
+// JQuery implementation
+import cheerio from "cheerio";
 
 import fs from "fs";
 
