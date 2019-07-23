@@ -20,6 +20,31 @@ import * as utils from "./utils/utilities";
 // Interactive prompts
 import inquirer from "inquirer";
 
+/***************
+ * * CONSTANTS *
+ ***************/
+
+// Base URL
+// . const BASE_URL = "https://www.ishopnewworld.co.nz";
+// Target URL
+// . const TARGET_URL = BASE_URL + "/specials";
+// Page target e.g. ?pg=2
+// .. const PAGE_TARGET = "?pg=";
+
+// Categories base URL
+// . const CATEGORY_BASE_URL = BASE_URL + "/category/";
+
+// Array of all categories
+/*
+const ALL_CATEGORIES = [
+    "fresh-foods-and-bakery",
+    "chilled-frozen-and-desserts",
+    "pantry",
+    "personal-care",
+    "kitchen-dining-and-household"
+];
+*/
+
 /**********************
  * * PROMPT FUNCTIONS *
  **********************/
@@ -38,6 +63,9 @@ function processMainMenuOption(answers: any): void {
         case "r":
             // . runCategoryWebscraper();
             // . runWebscraper();
+            break;
+        case "g":
+            logging.log("GET VIRTUAL MAILER...");
             break;
         case "d":
             utils.help();
@@ -77,6 +105,7 @@ function promptMain(): void {
                 message: "Select an option:",
                 choices: [
                     "Run WebScraper",
+                    "Get Virtual Mailer",
                     new inquirer.Separator(),
                     "Display Help",
                     "Print Version",

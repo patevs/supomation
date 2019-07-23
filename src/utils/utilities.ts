@@ -41,6 +41,7 @@ function version(): void {
     const version = process.env.npm_package_version;
     const msg = logging.magenta("Supomation CLI version: ") + version;
     logging.logInfo(msg);
+    logging.log(); // new line
 }
 
 // ------------------------------------------ //
@@ -53,6 +54,7 @@ function version(): void {
 function help(): void {
     logging.log(); // new line
     logging.logInfo(" ---- " + logging.magenta("HELP MESSAGE") + " ---- ");
+    logging.log(); // new line
 }
 
 /*************
