@@ -18,7 +18,6 @@ import chalk from "chalk";
 // . const logSymbols = require("log-symbols");
 // Create boxes
 import boxen from "boxen";
-// . const boxen = require("boxen");
 
 /***************
  * * CONSTANTS *
@@ -34,15 +33,15 @@ const log = console.log;
 // Colors
 // . const red = chalk.red;
 const green = chalk.green;
-const blue = chalk.cyan;
+// . const blue = chalk.cyan;
 // . const blueBright = chalk.blueBright;
 const magenta = chalk.magenta;
 const magentaBright = chalk.magentaBright;
 
 // Typography
 const header = green.bold.underline;
-const title = blue.bold;
-const link = blue.underline;
+// . const title = blue.bold;
+// . const link = blue.underline;
 
 /***************
  * * FUNCTIONS *

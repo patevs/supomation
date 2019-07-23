@@ -2,11 +2,21 @@
 
 /**
  *  `src/__tests__/supomation.test.js`
+ *
+ *  * Supomation Tests
  */
 
-/* eslint-disable no-unused-vars */
+/*************
+ * * IMPORTS *
+ *************/
+
 const assert = require("assert");
-const supomation = require("../index.ts");
+// . const supomation = require("../index.ts");
+// . import supomation from "../index.ts";
+
+/****************
+ * * TEST CASES *
+ ****************/
 
 describe("supomation", () => {
     it("has a test", () => {
