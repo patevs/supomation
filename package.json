@@ -8,7 +8,7 @@
     "files": [
         "src"
     ],
-    "main": "src/hello.ts",
+    "main": "src/index.ts",
     "engines": {
         "npm": ">= 10.0.0"
     },
@@ -16,7 +16,7 @@
         "clean": "trash node_modules lib",
         "start": "npm run build:live",
         "build": "tsc -p .",
-        "build:live": "nodemon --watch 'src/**/*.ts' --exec ts-node src/hello.ts",
+        "build:live": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
         "pretest": "eslint src/ --fix && echo Pretest Complete!",
         "test": "jest && echo Test Complete! && exit 0"
     },
