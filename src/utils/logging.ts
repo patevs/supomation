@@ -39,7 +39,7 @@ const magentaBright = chalk.magentaBright;
 
 // Typography
 const header = green.bold.underline;
-const title = blue.bold;
+const title = blue.bold.underline;
 // . const link = blue.underline;
 
 /***************
@@ -87,8 +87,18 @@ function logSuccess(msg) {
  * @param { title } msg
  */
 function logTitle(msg: string): void {
-    // TODO: Put this in a boxen box
-    log("\n ----- " + title(msg) + " ----- \n");
+    // Construct title message
+    const titleMsg = title(msg);
+    // Box padding
+    const pad = {
+        top: 1,
+        right: 11,
+        bottom: 1,
+        left: 11
+    };
+    // Log title message
+    log(boxen(titleMsg, { padding: pad }));
+    log(); // new line
 }
 
 // ------------------------------------------ //
