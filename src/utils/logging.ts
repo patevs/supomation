@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- *	`src/utils/logging.js`
+ *	`src/utils/logging.ts`
  *
- *	* Logging Helper Functions
+ *	* Supomation CLI Logging Helper Functions
  */
 
 "use strict";
