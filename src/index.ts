@@ -19,14 +19,15 @@ import * as utils from "./utils/utilities";
 
 // Interactive prompts
 import inquirer from "inquirer";
+// HTTP client
+import axios from "axios";
 
 /***************
  * * CONSTANTS *
  ***************/
 
-const VIRTUAL_MAILER: URL = new URL(
-    "https://www.newworld.co.nz/savings/virtualmailer/"
-);
+const VIRTUAL_MAILER_URL: string =
+    "https://www.newworld.co.nz/savings/virtualmailer/";
 
 // Base URL
 // . const BASE_URL = "https://www.ishopnewworld.co.nz";
@@ -49,6 +50,19 @@ const ALL_CATEGORIES = [
 ];
 */
 
+/***************
+ * * FUNCTIONS *
+ ***************/
+
+function getVirtualMailer() {
+    logging.log("\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n");
+    // Navigate to virtual mailer page
+    axios.get(VIRTUAL_MAILER_URL).then(function(response) {
+        const data = response.data;
+        logging.log(data);
+    });
+}
+
 /**********************
  * * PROMPT FUNCTIONS *
  **********************/
@@ -70,7 +84,7 @@ function processMainMenuOption(answers: any): void {
             // . runWebscraper();
             break;
         case "g":
-            logging.log("\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n");
+            getVirtualMailer();
             break;
         case "d":
             utils.help();
