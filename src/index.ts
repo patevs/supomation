@@ -64,6 +64,8 @@ function writeToFile(filePath: string, data: any): void {
 }
 */
 
+// ------------------------------------------ //
+
 async function runWebScraper() {
     logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
     const TARGET_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
@@ -77,17 +79,6 @@ async function runWebScraper() {
         logging.logError(error);
     }
 }
-
-/* axios async example
-async function getUser() {
-    try {
-        const response = await axios.get("/user?ID=12345");
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-    }
-}
-*/
 
 /**********************
  * * PROMPT FUNCTIONS *
