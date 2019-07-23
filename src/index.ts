@@ -22,12 +22,17 @@ import inquirer from "inquirer";
 // HTTP client
 import axios from "axios";
 
+import fs from "fs";
+
 /***************
  * * CONSTANTS *
  ***************/
 
 const VIRTUAL_MAILER_URL: string =
     "https://www.newworld.co.nz/savings/virtualmailer/";
+
+// cookie
+// new-world-store-id=storenodeid=1260;
 
 // Base URL
 // . const BASE_URL = "https://www.ishopnewworld.co.nz";
@@ -50,17 +55,35 @@ const ALL_CATEGORIES = [
 ];
 */
 
+function writeToFile(filePath: string, data: any): void {
+    fs.writeFileSync(filePath, data);
+}
+
 /***************
  * * FUNCTIONS *
  ***************/
 
+function createAxiosInstance() {
+    // TODO: Allow selection of store id
+    const instance = axios.create({
+        baseURL: VIRTUAL_MAILER_URL,
+        timeout: 1000,
+        headers: { Cookie: "new-world-store-id=storenodeid=1260" }
+    });
+    instance.get(VIRTUAL_MAILER_URL).then(function(response) {
+        // . logging.log(response);
+        const data = response.data;
+        // . logging.log(data);
+        writeToFile("data/data.html", data);
+        // Write data to file
+    });
+}
+
 function getVirtualMailer() {
+    // TODO: Enumerate all store id's
     logging.log("\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n");
     // Navigate to virtual mailer page
-    axios.get(VIRTUAL_MAILER_URL).then(function(response) {
-        const data = response.data;
-        logging.log(data);
-    });
+    createAxiosInstance();
 }
 
 /**********************
