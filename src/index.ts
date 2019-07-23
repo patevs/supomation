@@ -27,13 +27,13 @@ import inquirer from "inquirer";
 /**
  *	* processMainMenuOption
  * 	Process user selected main menu option
- * @param { user selected option } option
+ * @param { prompt answers } answers
  * @returns { void }
  */
 function processMainMenuOption(answers: any): void {
-    // ..
+    // Get user selected option
     const option: string = answers.option;
-    // TODO: Convert this to a switch statement
+    // Process option
     switch (option) {
         case "r":
             // . runCategoryWebscraper();
@@ -56,20 +56,6 @@ function processMainMenuOption(answers: any): void {
             );
             promptMain();
     }
-    /*
-    if (option === "r") {
-        // . runCategoryWebscraper();
-        // . runWebscraper();
-    } else if (option === "d") {
-        utils.help();
-        promptMain();
-    } else if (option === "p") {
-        utils.version();
-        promptMain();
-    } else if (option === "q") {
-        utils.quit();
-    }
-    */
 }
 
 // ------------------------------------------ //
@@ -77,6 +63,7 @@ function processMainMenuOption(answers: any): void {
 /**
  *	* promptMain
  * Display the main menu prompt
+ * @returns { void }
  */
 function promptMain(): void {
     // ..

@@ -87,6 +87,7 @@ function logSuccess(msg) {
  * @param { title } msg
  */
 function logTitle(msg: string): void {
+    // TODO: Put this in a boxen box
     log("\n ----- " + title(msg) + " ----- \n");
 }
 
