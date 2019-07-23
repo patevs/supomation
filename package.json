@@ -25,10 +25,12 @@
         "boxen": "^4.1.0",
         "chalk": "^2.4.2",
         "clear": "^0.1.0",
+        "dotenv": "^8.0.0",
         "inquirer": "^6.5.0",
         "log-symbols": "^3.0.0"
     },
     "devDependencies": {
+        "@types/dotenv": "^6.1.1",
         "@types/inquirer": "^6.0.3",
         "@types/node": "^12.6.8",
         "eslint": "^6.1.0",
