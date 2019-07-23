@@ -8,15 +8,15 @@
     "files": [
         "src"
     ],
-    "main": "src/index.js",
+    "main": "src/hello.ts",
     "engines": {
         "npm": ">= 10.0.0"
     },
     "scripts": {
-        "clean": "trash node_modules",
+        "clean": "trash node_modules lib",
         "start": "npm run build:live",
         "build": "tsc -p .",
-        "build:live": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
+        "build:live": "nodemon --watch 'src/**/*.ts' --exec ts-node src/hello.ts",
         "pretest": "eslint src/ --fix && echo Pretest Complete!",
         "test": "jest && echo Test Complete! && exit 0"
     },

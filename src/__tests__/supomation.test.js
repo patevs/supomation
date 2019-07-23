@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 const assert = require("assert");
-const supomation = require("../index.js");
+const supomation = require("../index.ts");
 
 describe("supomation", () => {
-	it("has a test", () => {
-		assert(true, "supomation should have a test");
-	});
+    it("has a test", () => {
+        assert(true, "supomation should have a test");
+    });
 });
