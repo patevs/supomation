@@ -103,7 +103,7 @@ function logTitle(msg) {
  *  * logWelcome
  *  Log the Supomation main welcome message
  */
-function logWelcome() {
+function logWelcome(): void {
     // . require("clear")(); // Clear the terminal
     log(header("\nWELCOME TO SUPOMATION CLI\n"));
     const version = " version:" + magenta(process.env.npm_package_version);
@@ -117,15 +117,17 @@ function logWelcome() {
  * * EXPORTS *
  *************/
 
+export { logWelcome };
+
 /*
 module.exports = {
     green,
     magenta,
     link,
-    logError,
-    logInfo,
-    logSuccess,
-    logTitle,
+    // logError,
+    // logInfo,
+    // logSuccess,
+    // logTitle,
     logWelcome
 };
 */

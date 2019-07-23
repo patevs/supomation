@@ -12,6 +12,9 @@
  * * IMPORTS *
  *************/
 
+// Logging utilities
+import * as logging from "./utils/logging";
+
 /*****************************
  * * APPLICATION ENTRY POINT *
  *****************************/
@@ -22,7 +25,7 @@
 (function() {
     // ..
     console.log("SUPOMATION CLI");
-    // . logging.logWelcome(); // Log Supomation main welcome
+    logging.logWelcome(); // Log Supomation main welcome
     // . promptMain();
     // ..
 })();
