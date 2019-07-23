@@ -28,14 +28,12 @@
         "cheerio": "^1.0.0-rc.3",
         "clear": "^0.1.0",
         "inquirer": "^6.5.0",
-        "log-symbols": "^3.0.0",
-        "signale": "^1.4.0"
+        "log-symbols": "^3.0.0"
     },
     "devDependencies": {
         "@types/cheerio": "^0.22.12",
         "@types/inquirer": "^6.0.3",
         "@types/node": "^12.6.8",
-        "@types/signale": "^1.2.1",
         "eslint": "^6.1.0",
         "eslint-config-prettier": "^6.0.0",
         "eslint-config-xo": "^0.26.0",
