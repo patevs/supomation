@@ -68,6 +68,37 @@ function writeToFile(filePath: string, data: any): void {
 
 // ------------------------------------------ //
 
+async function getAll() {
+    let count = ALL_CATEGORIES.length;
+    const FRESH_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0]; //const
+    const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
+    const PANTRY_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[2];
+    try {
+        const response = await axios.get(FRESH_URL);
+        const data = response.data;
+        const products = await scraper.scrapProducts(data);
+        await logging.log(products);
+    } catch (error) {
+        logging.logError(error);
+    }
+    try {
+        const response = await axios.get(CHILLED_URL);
+        const data = response.data;
+        const products = await scraper.scrapProducts(data);
+        await logging.log(products);
+    } catch (error) {
+        logging.logError(error);
+    }
+    try {
+        const response = await axios.get(PANTRY_URL);
+        const data = response.data;
+        const products = await scraper.scrapProducts(data);
+        await logging.log(products);
+    } catch (error) {
+        logging.logError(error);
+    }
+}
+
 async function runWebScraper() {
     logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
     const TARGET_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
@@ -98,8 +129,9 @@ async function processMainMenuOption(answers: any) {
     // Process option
     switch (option) {
         case "r":
-            await runWebScraper();
-            promptMain();
+            // . await runWebScraper();
+            await getAll();
+            // . promptMain();
             break;
         case "g":
             logging.log("\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n");
