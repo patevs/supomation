@@ -12,13 +12,15 @@
  * * IMPORTS *
  *************/
 
-// Logging utilities
+// Logging Utilities
 import * as logging from "./utils/logging";
-// Helper functions
+// Helper Functions
 import * as utils from "./utils/utilities";
 
-// Interactive prompts
+// Interactive Prompts
 import inquirer from "inquirer";
+// HTTP Client
+import axios from "axios";
 
 // Environment config
 // . require("dotenv").config();
@@ -38,13 +40,12 @@ import inquirer from "inquirer";
 
 // https://app.redpepperdigital.net/app/redpepper/home/91
 
-// . const BASE_URL = "https://www.ishopnewworld.co.nz";
+const BASE_URL = "https://www.ishopnewworld.co.nz";
 // . const TARGET_URL = BASE_URL + "/specials";
 // . const PAGE_TARGET = "?pg=";
-// . const CATEGORY_BASE_URL = BASE_URL + "/category/";
+const CATEGORY_BASE_URL = BASE_URL + "/category/";
 
 // Array of all categories
-/*
 const ALL_CATEGORIES = [
     "fresh-foods-and-bakery",
     "chilled-frozen-and-desserts",
@@ -52,7 +53,6 @@ const ALL_CATEGORIES = [
     "personal-care",
     "kitchen-dining-and-household"
 ];
-*/
 
 /***************
  * * FUNCTIONS *
@@ -64,9 +64,30 @@ function writeToFile(filePath: string, data: any): void {
 }
 */
 
-const runWebScraper = () => {
+async function runWebScraper() {
     logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
-};
+    const TARGET_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
+    logging.log(TARGET_URL + "\n");
+    try {
+        // . const response =
+        await axios.get(TARGET_URL);
+        // . const data = response.data;
+        // . logging.log(data);
+    } catch (error) {
+        logging.logError(error);
+    }
+}
+
+/* axios async example
+async function getUser() {
+    try {
+        const response = await axios.get("/user?ID=12345");
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
+}
+*/
 
 /**********************
  * * PROMPT FUNCTIONS *
