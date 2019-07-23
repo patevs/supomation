@@ -6,15 +6,15 @@
   "repository": "patevs/supomation",
   "license": "MIT",
   "files": [
-    "lib"
+    "src"
   ],
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "engines": {
     "npm": ">= 10.0.0"
   },
   "scripts": {
     "clean": "trash node_modules",
-    "start": "node lib/index.js",
+    "start": "node src/index.js",
     "pretest": "eslint . --fix && echo Pretest Complete!",
     "test": "jest && echo Test Complete! && exit 0"
   },
