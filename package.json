@@ -14,7 +14,9 @@
 	},
 	"scripts": {
 		"clean": "trash node_modules",
-		"start": "node src/index.js",
+		"start": "npm run build:live",
+		"build": "tsc -p .",
+		"build:live": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
 		"pretest": "eslint src/ --fix && echo Pretest Complete!",
 		"test": "jest && echo Test Complete! && exit 0"
 	},
