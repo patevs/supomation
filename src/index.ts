@@ -33,6 +33,9 @@ import fs from "fs";
 const VIRTUAL_MAILER_URL: string =
     "https://www.newworld.co.nz/savings/virtualmailer/";
 
+// https://app.redpepperdigital.net/app/redpepper/home/91
+// . ?toolbar=no&portrait=false
+
 // cookie
 // new-world-store-id=storenodeid=1260;
 
@@ -57,9 +60,11 @@ const ALL_CATEGORIES = [
 ];
 */
 
+/*
 function writeToFile(filePath: string, data: any): void {
     fs.writeFileSync(filePath, data);
 }
+*/
 
 /***************
  * * FUNCTIONS *
@@ -73,11 +78,18 @@ function createAxiosInstance() {
         headers: { Cookie: "new-world-store-id=storenodeid=1260" }
     });
     instance.get(VIRTUAL_MAILER_URL).then(function(response) {
-        // . logging.log(response);
         const data = response.data;
-        // . logging.log(data);
-        writeToFile("data/data.html", data);
-        // Write data to file
+        const $ = cheerio.load(data);
+        let catelogScript = $("#__red-pepper-catalog")
+            .next()
+            .html();
+        // Ensure catelogScript is not null
+        if (catelogScript !== null) {
+            catelogScript = catelogScript.trim();
+            const len = catelogScript.length;
+            let catelogId = catelogScript.substr(len - 4, 2);
+            logging.log(catelogId);
+        }
     });
 }
 
@@ -85,7 +97,18 @@ function getVirtualMailer() {
     // TODO: Enumerate all store id's
     logging.log("\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n");
     // Navigate to virtual mailer page
-    createAxiosInstance();
+    // . createAxiosInstance();
+}
+
+async function getMailer() {
+    try {
+        const response = await axios.get(
+            "https://app.redpepperdigital.net/app/redpepper/home/91"
+        );
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 /* axios async example
