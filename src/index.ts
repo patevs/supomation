@@ -66,6 +66,48 @@ function writeToFile(filePath: string, data: any): void {
 
 // ------------------------------------------ //
 
+/*
+function scrapPage(targetPage, targetPageUrl) {
+    // ..
+    // Target page HTML content to return
+    let pageHtmlContent = null;
+    // Make GET request to target page
+    axios
+        .get(targetPageUrl)
+        .then(function(response) {
+            // Handle success
+            // . logging.logSuccess("Navigated to: " + logging.link(targetPageUrl));
+            // . prompt.success("[%d/2] - Navigated to: %s", 2, logging.link(targetPageUrl));
+            pageHtmlContent = response.data; // Target page HTML content
+        })
+        .catch(function(error) {
+            // Handle error
+            logging.logError("Error navigating to page! " + error);
+            // . prompt.error("[%d/2] - Error navigating to page! %s", 2, logging.logError(error));
+            // TODO: Log error.response.status & error.response.data
+        })
+        .finally(async function() {
+            // Check we have retrieved target page HTML content
+            if (pageHtmlContent === null) {
+                // . prompt.error("[%d/2] - Error retrieving page HTML content! %s", 2);
+            } else {
+                // TODO: Process scraped products
+                // . prompt.success("[%d/2] - Retrieved page HTML content!", 2);
+                let scrapedProducts = scraper.scrapProducts(pageHtmlContent);
+                // . const numProducts = scrapedProducts.length;
+                // . prompt.success("[%d/2] - Scraped %s products from page!\n", 2, logging.green(numProducts));
+                await saveProductData(targetPage + ".json", scrapedProducts);
+                logging.logSuccess(
+                    logging.green(targetPage) + " data saved to file!"
+                );
+            }
+        });
+    // ..
+}
+*/
+
+// ------------------------------------------ //
+
 async function runWebScraper() {
     logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
     const TARGET_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
