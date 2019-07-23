@@ -78,7 +78,6 @@ function processProduct(pname: any, pdata: any) {
     // Get the product's price info
     const priceMode = pdetails.PriceMode;
     const pricePer = pdetails.PricePerItem;
-    // . console.log(pdetails);
     const baseUnit = pdetails.PricePreBaseUnitText;
     // Create a product object
     const product = {

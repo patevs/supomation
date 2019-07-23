@@ -68,10 +68,10 @@ function writeToFile(filePath: string, data: any): void {
 
 async function getCategory(categoryUrl: string) {
     try {
-        const response = await axios.get(categoryUrl);
-        const data = response.data;
-        const products = await scraper.scrapProducts(data);
-        // . await logging.log(products);
+        // const response = await axios.get(categoryUrl);
+        // const data = response.data;
+        // const products = await scraper.scrapProducts(data);
+        // await logging.log(products);
     } catch (error) {
         logging.logError(error);
     }
@@ -81,7 +81,7 @@ async function getCategory(categoryUrl: string) {
 
 async function runWebScraper() {
     // . let count = ALL_CATEGORIES.length;
-    logging.logInfo("get fresh.");
+    logging.logInfo("\nRunning Supomation WebScraper...\n");
     const freshPrompt = new Signale({
         interactive: true,
         scope: "Fresh Foods"
