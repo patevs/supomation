@@ -36,7 +36,7 @@ import inquirer from "inquirer";
 // Target URL
 // . const TARGET_URL = BASE_URL + "/specials";
 // Page target e.g. ?pg=2
-// .. const PAGE_TARGET = "?pg=";
+// . const PAGE_TARGET = "?pg=";
 
 // Categories base URL
 // . const CATEGORY_BASE_URL = BASE_URL + "/category/";

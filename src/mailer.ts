@@ -19,9 +19,9 @@
  * * FUNCTIONS *
  ***************/
 
+/*
 function createAxiosInstance() {
     // TODO: Allow selection of store id
-    /*
     const instance = axios.create({
         baseURL: VIRTUAL_MAILER_URL,
         timeout: 1000,
@@ -41,8 +41,8 @@ function createAxiosInstance() {
             // . logging.log(catelogId);
         }
     });
-    */
 }
+*/
 
 /*
 function getVirtualMailer() {
