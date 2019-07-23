@@ -118,7 +118,7 @@ async function runWebScraper() {
         const response = await axios.get(TARGET_URL);
         const data = response.data;
         const products = scraper.scrapProducts(data);
-        // . logging.log(products);
+        logging.log(products);
     } catch (error) {
         logging.logError(error);
     }
