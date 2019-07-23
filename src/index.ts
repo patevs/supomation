@@ -24,6 +24,10 @@ import inquirer from "inquirer";
  * * CONSTANTS *
  ***************/
 
+const VIRTUAL_MAILER: URL = new URL(
+    "https://www.newworld.co.nz/savings/virtualmailer/"
+);
+
 // Base URL
 // . const BASE_URL = "https://www.ishopnewworld.co.nz";
 // Target URL
@@ -61,11 +65,12 @@ function processMainMenuOption(answers: any): void {
     // Process option
     switch (option) {
         case "r":
+            logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
             // . runCategoryWebscraper();
             // . runWebscraper();
             break;
         case "g":
-            logging.log("GET VIRTUAL MAILER...");
+            logging.log("\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n");
             break;
         case "d":
             utils.help();
