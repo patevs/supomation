@@ -26,7 +26,8 @@
         "chalk": "^2.4.2",
         "clear": "^0.1.0",
         "inquirer": "^6.5.0",
-        "log-symbols": "^3.0.0"
+        "log-symbols": "^3.0.0",
+        "mongodb": "^3.3.0-beta2"
     },
     "devDependencies": {
         "@types/inquirer": "^6.0.3",
