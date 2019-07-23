@@ -12,8 +12,8 @@
  * * IMPORTS *
  *************/
 
-// Terminal styling
-// . const chalk = require("chalk");
+// Terminal string styling
+const chalk = require("chalk");
 // Logging symbols
 // . const logSymbols = require("log-symbols");
 // Create boxes
@@ -32,7 +32,6 @@ const log = console.log;
 
 // Colors
 // . const red = chalk.red;
-/*
 const green = chalk.green;
 const blue = chalk.cyan;
 // . const blueBright = chalk.blueBright;
@@ -43,7 +42,6 @@ const magentaBright = chalk.magentaBright;
 const header = green.bold.underline;
 const title = blue.bold;
 const link = blue.underline;
-*/
 
 /***************
  * * FUNCTIONS *
@@ -105,16 +103,15 @@ function logTitle(msg) {
  *  * logWelcome
  *  Log the Supomation main welcome message
  */
-/*
 function logWelcome() {
-    require("clear")(); // Clear the terminal
+    // . require("clear")(); // Clear the terminal
     log(header("\nWELCOME TO SUPOMATION CLI\n"));
     const version = " version:" + magenta(process.env.npm_package_version);
     const date = new Date().toDateString();
     const msg = version + "\n\n" + magentaBright(date);
-    log(boxen(msg, { padding: 1, align: "center" }));
+    log(msg);
+    // . log(boxen(msg, { padding: 1, align: "center" }));
 }
-*/
 
 /*************
  * * EXPORTS *
