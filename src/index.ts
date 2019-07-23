@@ -66,7 +66,7 @@ function processMainMenuOption(answers: any): void {
  * @returns { void }
  */
 function promptMain(): void {
-    // ..
+    // Print title
     logging.logTitle("MAIN MENU");
     // Main menu prompt
     inquirer

@@ -22,6 +22,7 @@ import * as logging from "./logging";
 /**
  *	* quit
  *  Quit Supomation CLI
+ *  @returns { void }
  */
 function quit(): void {
     logging.logError("Quitting Supomation CLI...");
@@ -33,6 +34,7 @@ function quit(): void {
 /**
  *	*version
  *  Print the Supomation CLI version
+ *  @returns { void }
  */
 function version(): void {
     logging.log(); // new line
@@ -46,6 +48,7 @@ function version(): void {
 /**
  *	* help
  *  Print the Supomation help message
+ *  @returns { void }
  */
 function help(): void {
     logging.log(); // new line
