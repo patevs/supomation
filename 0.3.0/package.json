@@ -15,8 +15,8 @@
   "scripts": {
     "clean": "trash node_modules",
     "start": "node lib/index.js",
-    "pretest": "eslint . --fix && echo \"Pretest Complete!\"",
-    "test": "jest && echo \"Test Complete!\" && exit 0"
+    "pretest": "eslint . --fix && echo Pretest Complete!",
+    "test": "jest && echo Test Complete! && exit 0"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
