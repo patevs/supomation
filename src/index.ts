@@ -53,8 +53,8 @@ const ALL_CATEGORIES = [
     "kitchen-dining-and-household"
 ];
 const FRESH_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
-// . const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
-// . const PANTRY_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[2];
+// const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
+// const PANTRY_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[2];
 
 /***************
  * * FUNCTIONS *
@@ -68,14 +68,26 @@ function writeToFile(filePath: string, data: any): void {
 
 // ------------------------------------------ //
 
-function getCategory(categoryUrl: string, prompt: any) {
-    prompt.info("Scraping Category Fresh Foods & Bakery... GOT HERE!");
-    axios.get(categoryUrl).then(async function(response) {
-        const products = await scraper.scrapProducts(response.data);
-        const numProducts = products.length;
-        logging.logInfo("num products: " + numProducts);
-    });
-    prompt.success("Scraping Category Fresh Foods & Bakery... GOT HERE TOO!");
+function getCategory(categoryUrl: string, categoryName: string, prompt: any) {
+    // ..
+    prompt.await("Scraping Category: %s", logging.green(categoryName));
+    // Scraper products to return
+    let products: any[] = [];
+    axios
+        .get(categoryUrl)
+        .then(async function(response) {
+            products = await scraper.scrapProducts(response.data);
+        })
+        .finally(function() {
+            if (products !== null) {
+                prompt.success(
+                    "Scraped %d Products from category: %s",
+                    products.length,
+                    logging.green(categoryName)
+                );
+            }
+        });
+    // ..
 }
 
 /*
@@ -100,8 +112,14 @@ function runWebScraper() {
         interactive: true,
         scope: "Fresh Foods"
     });
-    freshPrompt.info("Scraping Category Fresh Foods & Bakery...");
-    getCategory(FRESH_URL, freshPrompt);
+    getCategory(FRESH_URL, ALL_CATEGORIES[0], freshPrompt);
+    /*
+    const chilledPrompt = new Signale({
+        interactive: true,
+        scope: "Chilled & Frozen"
+    });
+    getCategory(CHILLED_URL, ALL_CATEGORIES[1], chilledPrompt);
+    */
     // . await getCategory(PANTRY_URL);
     // . await getCategory(CHILLED_URL);
 }

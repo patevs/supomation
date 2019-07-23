@@ -135,7 +135,7 @@ function logWelcome(): void {
  * * EXPORTS *
  *************/
 
-export { log, magenta, logError, logInfo, logTitle, logWelcome };
+export { log, green, blue, magenta, logError, logInfo, logTitle, logWelcome };
 
 /*
 module.exports = {
