@@ -25,5 +25,39 @@
     "husky": "^3.0.1",
     "jest": "^24.8.0",
     "prettier": "^1.18.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.ts": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "valid-jsdoc": 0,
+      "no-warning-comments": 0
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
