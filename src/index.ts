@@ -76,7 +76,7 @@ async function getCategory(categoryUrl: string) {
         const response = await axios.get(categoryUrl);
         const data = response.data;
         const products = await scraper.scrapProducts(data);
-        await logging.log(products);
+        // . await logging.log(products);
     } catch (error) {
         logging.logError(error);
     }
