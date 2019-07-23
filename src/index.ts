@@ -66,29 +66,8 @@ function writeToFile(filePath: string, data: any): void {
 }
 */
 
-// ------------------------------------------ //
-
-async function getAll() {
-    let count = ALL_CATEGORIES.length;
-    const FRESH_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0]; //const
-    const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
+async function getPantry() {
     const PANTRY_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[2];
-    try {
-        const response = await axios.get(FRESH_URL);
-        const data = response.data;
-        const products = await scraper.scrapProducts(data);
-        await logging.log(products);
-    } catch (error) {
-        logging.logError(error);
-    }
-    try {
-        const response = await axios.get(CHILLED_URL);
-        const data = response.data;
-        const products = await scraper.scrapProducts(data);
-        await logging.log(products);
-    } catch (error) {
-        logging.logError(error);
-    }
     try {
         const response = await axios.get(PANTRY_URL);
         const data = response.data;
@@ -97,6 +76,39 @@ async function getAll() {
     } catch (error) {
         logging.logError(error);
     }
+}
+
+async function getChilled() {
+    const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
+    try {
+        const response = await axios.get(CHILLED_URL);
+        const data = response.data;
+        const products = await scraper.scrapProducts(data);
+        await logging.log(products);
+    } catch (error) {
+        logging.logError(error);
+    }
+}
+
+async function getFresh() {
+    const FRESH_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0]; //const
+    try {
+        const response = await axios.get(FRESH_URL);
+        const data = response.data;
+        const products = await scraper.scrapProducts(data);
+        await logging.log(products);
+    } catch (error) {
+        logging.logError(error);
+    }
+}
+
+// ------------------------------------------ //
+
+async function getAll() {
+    let count = ALL_CATEGORIES.length;
+    await getFresh();
+    await getChilled();
+    await getPantry();
 }
 
 async function runWebScraper() {
