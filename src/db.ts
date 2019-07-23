@@ -13,20 +13,23 @@
  *************/
 
 // const MongoClient = require("mongodb").MongoClient;
-import { MongoClient } from "mongodb";
+// . import { MongoClient } from "mongodb";
 
 /***************
  * * CONSTANTS *
  ***************/
 
+/*
 const uri =
     "mongodb+srv://patevs:<password>@cluster0-t7g5a.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
+*/
 
 /***************
  * * FUNCTIONS *
  ***************/
 
+/*
 // Connect to database
 client.connect(async function(err) {
     const isConnected = await client.isConnected();
@@ -37,5 +40,6 @@ client.connect(async function(err) {
     // perform actions on the collection object
     client.close();
 });
+*/
 
 // EOF //

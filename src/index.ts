@@ -19,6 +19,11 @@ import * as utils from "./utils/utilities";
 
 // Interactive prompts
 import inquirer from "inquirer";
+// Environment config
+// . require("dotenv").config();
+// . const testKey = process.env.TEST_KEY;
+// . logging.log(testKey);
+// . import dotenv from "dotenv";
 // File system
 // import fs from "fs";
 
@@ -81,10 +86,12 @@ function processMainMenuOption(answers: any): void {
             logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
             // . runCategoryWebscraper();
             // . runWebscraper();
+            promptMain();
             break;
         case "g":
             logging.log("\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n");
             // . getVirtualMailer();
+            promptMain();
             break;
         case "d":
             utils.help();
@@ -150,8 +157,8 @@ function promptMain(): void {
  */
 (function() {
     // ..
-    logging.logWelcome(); // Log Supomation main welcome
-    promptMain(); // Main menu prompt
+    // . logging.logWelcome(); // Log Supomation main welcome
+    // . promptMain(); // Main menu prompt
     // ..
 })();
 
