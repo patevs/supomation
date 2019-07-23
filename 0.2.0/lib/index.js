@@ -15,7 +15,7 @@
 // HTTP Client
 const axios = require("axios");
 // Interactive logging
-const { Signale } = require("signale");
+// . const { Signale } = require("signale");
 // Interactive command line user interfaces
 const inquirer = require("inquirer");
 // JSON file writer
@@ -70,7 +70,7 @@ function scrapPage(targetPage, targetPageUrl) {
 		})
 		.catch(function (error) {
 			// Handle error
-			// . logging.logError("Error navigating to page! " + error);
+			logging.logError("Error navigating to page! " + error);
 			// . prompt.error("[%d/2] - Error navigating to page! %s", 2, logging.logError(error));
 			// TODO: Log error.response.status & error.response.data
 		})
