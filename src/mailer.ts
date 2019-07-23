@@ -16,6 +16,15 @@
 // import cheerio from "cheerio";
 
 /***************
+ * * CONSTANTS *
+ ***************/
+
+// const VIRTUAL_MAILER_URL: string =
+//    "https://www.newworld.co.nz/savings/virtualmailer/";
+
+// https://app.redpepperdigital.net/app/redpepper/home/91
+
+/***************
  * * FUNCTIONS *
  ***************/
 

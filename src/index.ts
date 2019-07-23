@@ -20,7 +20,7 @@ import * as utils from "./utils/utilities";
 import * as scraper from "./utils/scraper";
 
 //
-import signale from "signale";
+import { Signale } from "signale";
 // Interactive Prompts
 import inquirer from "inquirer";
 // HTTP Client
@@ -39,11 +39,6 @@ import axios from "axios";
  * * CONSTANTS *
  ***************/
 
-// const VIRTUAL_MAILER_URL: string =
-//    "https://www.newworld.co.nz/savings/virtualmailer/";
-
-// https://app.redpepperdigital.net/app/redpepper/home/91
-
 const BASE_URL = "https://www.ishopnewworld.co.nz";
 // . const TARGET_URL = BASE_URL + "/specials";
 // . const PAGE_TARGET = "?pg=";
@@ -58,8 +53,8 @@ const ALL_CATEGORIES = [
     "kitchen-dining-and-household"
 ];
 const FRESH_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
-const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
-const PANTRY_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[2];
+// . const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
+// . const PANTRY_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[2];
 
 /***************
  * * FUNCTIONS *
@@ -84,29 +79,19 @@ async function getCategory(categoryUrl: string) {
 
 // ------------------------------------------ //
 
-async function getAll() {
+async function runWebScraper() {
     // . let count = ALL_CATEGORIES.length;
     logging.logInfo("get fresh.");
+    const freshPrompt = new Signale({
+        interactive: true,
+        scope: "Fresh Foods"
+    });
+    freshPrompt.info("Scraping Category Fresh Foods & Bakery...");
     await getCategory(FRESH_URL);
-    await getCategory(PANTRY_URL);
-    await getCategory(CHILLED_URL);
+    freshPrompt.complete("Finished Scraping Fresh Foods & Bakery!");
+    // . await getCategory(PANTRY_URL);
+    // . await getCategory(CHILLED_URL);
 }
-
-/*
-async function runWebScraper() {
-    logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
-    const TARGET_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
-    logging.log(TARGET_URL + "\n");
-    try {
-        const response = await axios.get(TARGET_URL);
-        const data = response.data;
-        const products = await scraper.scrapProducts(data);
-        await logging.log(products);
-    } catch (error) {
-        logging.logError(error);
-    }
-}
-*/
 
 /**********************
  * * PROMPT FUNCTIONS *
@@ -124,8 +109,7 @@ async function processMainMenuOption(answers: any) {
     // Process option
     switch (option) {
         case "r":
-            // . await runWebScraper();
-            await getAll();
+            await runWebScraper();
             // . promptMain();
             break;
         case "g":
@@ -196,10 +180,8 @@ function promptMain(): void {
  *	* Supomation CLI entry point
  */
 (function() {
-    // ..
     logging.logWelcome(); // Log Supomation main welcome
     promptMain(); // Main menu prompt
-    // ..
 })();
 
 // EOF //
