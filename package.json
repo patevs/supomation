@@ -35,6 +35,7 @@
         "@types/cheerio": "^0.22.12",
         "@types/inquirer": "^6.0.3",
         "@types/node": "^12.6.8",
+        "@types/signale": "^1.2.1",
         "eslint": "^6.1.0",
         "eslint-config-prettier": "^6.0.0",
         "eslint-config-xo": "^0.26.0",
