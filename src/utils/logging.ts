@@ -13,11 +13,11 @@
  *************/
 
 // Terminal string styling
-// . const chalk = require("chalk");
 import chalk from "chalk";
 // Logging symbols
 // . const logSymbols = require("log-symbols");
 // Create boxes
+import boxen from "boxen";
 // . const boxen = require("boxen");
 
 /***************
@@ -105,13 +105,20 @@ function logTitle(msg) {
  *  Log the Supomation main welcome message
  */
 function logWelcome(): void {
-    // . require("clear")(); // Clear the terminal
-    log(header("\nWELCOME TO SUPOMATION CLI\n"));
-    // . const version = " version:" + magenta(process.env.npm_package_version);
-    const date = new Date().toDateString();
-    // . const msg = version + "\n\n" + magentaBright(date);
-    log(date);
-    // . log(boxen(msg, { padding: 1, align: "center" }));
+    require("clear")(); // Clear the terminal
+    log(); // new line
+    const heading: string = header("WELCOME TO SUPOMATION CLI\n");
+    const version: string | undefined = process.env.npm_package_version;
+    const date: string = new Date().toDateString();
+    const msg: string =
+        heading +
+        "\n" +
+        magenta("Version ") +
+        version +
+        "\n\n" +
+        magentaBright(date);
+    log(boxen(msg, { padding: 1, align: "center" }));
+    log(); // new line
 }
 
 /*************

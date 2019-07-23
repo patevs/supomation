@@ -24,7 +24,6 @@ import * as logging from "./utils/logging";
  */
 (function() {
     // ..
-    console.log("SUPOMATION CLI");
     logging.logWelcome(); // Log Supomation main welcome
     // . promptMain();
     // ..
