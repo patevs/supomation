@@ -12,13 +12,13 @@
  * * IMPORTS *
  *************/
 
-// . const cheerio = require("cheerio");
+const cheerio = require("cheerio");
 
 /***************
  * * CONSTANTS *
  ***************/
 
-// . const PRODUCT_SELECTOR = ".fs-product-card";
+const PRODUCT_SELECTOR: string = ".fs-product-card";
 
 /***************
  * * FUNCTIONS *
@@ -100,14 +100,15 @@ function processProduct(pname, pdata) {
 // ------------------------------------------ //
 
 /**
- *	* Scrap the product data from the current page
+ *  * scrapProducts
+ *  Scrap the product data from the given page
  *
  * @param { target page html content } pageHtmlContent
+ * @returns { any[] } allProducts
  */
-/*
-function scrapProducts(pageHtmlContent) {
+function scrapProducts(pageHtmlContent: string): any[] {
     // Array of all products to return
-    let allProducts = [];
+    let allProducts: any[] = [];
     // Load the target page HTML content into cheerio
     const $ = cheerio.load(pageHtmlContent);
     // Select all products from target page
@@ -118,23 +119,24 @@ function scrapProducts(pageHtmlContent) {
         // Get the current product element
         let productElem = productElems[i];
         // Get the name of the current product
-        let pname = getProductName(productElem);
+        // . let pname = getProductName(productElem);
         // Get the data for the current product
-        let pdata = getProductData(productElem);
+        // . let pdata = getProductData(productElem);
         // Process the current product
-        let product = processProduct(pname, pdata);
+        // . let product = processProduct(pname, pdata);
         // Push product object into products array
-        allProducts.push(product);
+        // . allProducts.push(product);
     }
 
     // Return array containing all products
     return allProducts;
 }
-*/
 
 /*************
  * * EXPORTS *
  *************/
+
+export = { scrapProducts };
 
 /*
 module.exports = {
