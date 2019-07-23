@@ -66,7 +66,20 @@ function writeToFile(filePath: string, data: any): void {
 }
 */
 
-async function getCategory(categoryUrl: string) {
+// ------------------------------------------ //
+
+function getCategory(categoryUrl: string, prompt: any) {
+    prompt.info("Scraping Category Fresh Foods & Bakery... GOT HERE!");
+    axios.get(categoryUrl).then(async function(response) {
+        const products = await scraper.scrapProducts(response.data);
+        const numProducts = products.length;
+        logging.logInfo("num products: " + numProducts);
+    });
+    prompt.success("Scraping Category Fresh Foods & Bakery... GOT HERE TOO!");
+}
+
+/*
+async function getCategory_(categoryUrl: string) {
     try {
         // const response = await axios.get(categoryUrl);
         // const data = response.data;
@@ -76,19 +89,19 @@ async function getCategory(categoryUrl: string) {
         logging.logError(error);
     }
 }
+*/
 
 // ------------------------------------------ //
 
-async function runWebScraper() {
-    // . let count = ALL_CATEGORIES.length;
-    logging.logInfo("\nRunning Supomation WebScraper...\n");
+function runWebScraper() {
+    logging.log(); // new line
+    logging.logInfo("Running Supomation WebScraper...\n");
     const freshPrompt = new Signale({
         interactive: true,
         scope: "Fresh Foods"
     });
     freshPrompt.info("Scraping Category Fresh Foods & Bakery...");
-    await getCategory(FRESH_URL);
-    freshPrompt.complete("Finished Scraping Fresh Foods & Bakery!");
+    getCategory(FRESH_URL, freshPrompt);
     // . await getCategory(PANTRY_URL);
     // . await getCategory(CHILLED_URL);
 }
