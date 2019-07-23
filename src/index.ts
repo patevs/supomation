@@ -68,7 +68,7 @@ function writeToFile(filePath: string, data: any): void {
 
 // ------------------------------------------ //
 
-function getCategory(categoryUrl: string) {
+async function getCategory(categoryUrl: string) {
     // Scraper products to return
     let products: any[] = [];
     axios
@@ -78,6 +78,7 @@ function getCategory(categoryUrl: string) {
         })
         .finally(function() {
             if (products !== null) {
+                // return products;
                 // TODO: Something here...
             }
         });
@@ -99,10 +100,10 @@ async function getCategory_(categoryUrl: string) {
 
 // ------------------------------------------ //
 
-function runWebScraper() {
+async function runWebScraper() {
     logging.log(); // new line
     logging.logInfo("Running Supomation WebScraper...\n");
-    getCategory(FRESH_URL);
+    await getCategory(FRESH_URL);
     // . await getCategory(PANTRY_URL);
     // . await getCategory(CHILLED_URL);
 }
