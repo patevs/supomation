@@ -12,7 +12,8 @@
  * * IMPORTS *
  *************/
 
-const cheerio = require("cheerio");
+// . const cheerio = require("cheerio");
+import cheerio from "cheerio";
 
 /***************
  * * CONSTANTS *
@@ -101,12 +102,12 @@ function processProduct(pname, pdata) {
 
 /**
  *  * scrapProducts
- *  Scrap the product data from the given page
+ *  Scrap the product data from the given page's HTML content
  *
  * @param { target page html content } pageHtmlContent
  * @returns { any[] } allProducts
  */
-function scrapProducts(pageHtmlContent: string): any[] {
+function scrapProducts(pageHtmlContent: string) {
     // Array of all products to return
     let allProducts: any[] = [];
     // Load the target page HTML content into cheerio
@@ -136,7 +137,7 @@ function scrapProducts(pageHtmlContent: string): any[] {
  * * EXPORTS *
  *************/
 
-export = { scrapProducts };
+export { scrapProducts };
 
 /*
 module.exports = {

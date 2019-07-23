@@ -16,6 +16,8 @@
 import * as logging from "./utils/logging";
 // Helper Functions
 import * as utils from "./utils/utilities";
+// Scraper Helper Functions
+import * as scraper from "./utils/scraper";
 
 // Interactive Prompts
 import inquirer from "inquirer";
@@ -113,10 +115,10 @@ async function runWebScraper() {
     const TARGET_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
     logging.log(TARGET_URL + "\n");
     try {
-        // . const response =
-        await axios.get(TARGET_URL);
-        // . const data = response.data;
-        // . logging.log(data);
+        const response = await axios.get(TARGET_URL);
+        const data = response.data;
+        const products = scraper.scrapProducts(data);
+        // . logging.log(products);
     } catch (error) {
         logging.logError(error);
     }
