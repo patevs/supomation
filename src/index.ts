@@ -57,7 +57,6 @@ function promptMain(): void {
     // ..
     logging.logTitle("MAIN MENU");
     // Main menu prompt
-    /*
     inquirer
         .prompt([
             {
@@ -72,18 +71,15 @@ function promptMain(): void {
                     new inquirer.Separator(),
                     "Quit Supomation CLI"
                 ],
-                filter: function(val) {
+                filter: function(val: string) {
                     return val.charAt(0).toLowerCase();
                 }
             }
         ])
         .then(answers => {
-            // ..
-            processMainMenuOption(answers.option);
-            // ..
+            console.log(answers);
+            // . processMainMenuOption(answers.option);
         });
-    */
-    // ..
 }
 
 /*****************************
