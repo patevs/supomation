@@ -77,7 +77,7 @@ function promptMain(): void {
             }
         ])
         .then(answers => {
-            console.log(answers);
+            // . console.log(answers);
             // . processMainMenuOption(answers.option);
         });
 }

@@ -65,7 +65,7 @@ function logError(msg) {
  * @param { message to log } msg
  */
 /*
-function logInfo(msg) {
+function logInfo(msg: String): void {
     log(logSymbols.info, msg);
 }
 */
@@ -122,7 +122,7 @@ function logWelcome(): void {
  * * EXPORTS *
  *************/
 
-export { logTitle, logWelcome };
+export { magenta, logTitle, logWelcome };
 
 /*
 module.exports = {
