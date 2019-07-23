@@ -64,6 +64,10 @@ function writeToFile(filePath: string, data: any): void {
 }
 */
 
+const runWebScraper = () => {
+    logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
+};
+
 /**********************
  * * PROMPT FUNCTIONS *
  **********************/
@@ -80,9 +84,7 @@ function processMainMenuOption(answers: any): void {
     // Process option
     switch (option) {
         case "r":
-            logging.log("\n TO BE IMPLEMENTED: RUN WEBSCRAPER...\n");
-            // . runCategoryWebscraper();
-            // . runWebscraper();
+            runWebScraper();
             promptMain();
             break;
         case "g":
@@ -154,8 +156,8 @@ function promptMain(): void {
  */
 (function() {
     // ..
-    // . logging.logWelcome(); // Log Supomation main welcome
-    // . promptMain(); // Main menu prompt
+    logging.logWelcome(); // Log Supomation main welcome
+    promptMain(); // Main menu prompt
     // ..
 })();
 
