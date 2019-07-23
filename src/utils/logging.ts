@@ -50,8 +50,10 @@ const title = blue.bold.underline;
  *  *logError
  *  Log an error message
  * @param { message to log } msg
+ * @returns { void }
  */
 function logError(msg: string): void {
+    // ? log red
     log("\n" + logSymbols.error, msg);
 }
 
@@ -61,6 +63,7 @@ function logError(msg: string): void {
  *  *logInfo
  *  Log an information message
  * @param { message to log } msg
+ * @returns { void }
  */
 function logInfo(msg: string): void {
     log(logSymbols.info, msg);
@@ -72,6 +75,7 @@ function logInfo(msg: string): void {
  *  *logSuccess
  *  Log a success message
  * @param { message to log } msg
+ * @returns { void }
  */
 /*
 function logSuccess(msg) {
@@ -85,6 +89,7 @@ function logSuccess(msg) {
  *  *logTitle
  *  Log a menu title
  * @param { title } msg
+ * @returns { void }
  */
 function logTitle(msg: string): void {
     // Construct title message
@@ -106,6 +111,7 @@ function logTitle(msg: string): void {
 /**
  *  * logWelcome
  *  Log the Supomation main welcome message
+ * @returns { void }
  */
 function logWelcome(): void {
     require("clear")(); // Clear the terminal
