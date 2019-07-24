@@ -36,6 +36,7 @@ const ALL_CATEGORIES = [
     'kitchen-dining-and-household'
 ];
 
+// Product Selectors
 const PRODUCT_SELECTOR: string = '.fs-product-card';
 const PRODUCT_DATA_SELECTOR: string = PRODUCT_SELECTOR + '__footer-container';
 const PRODUCT_NAME_SELECTOR: string = '.u-p2';
@@ -54,10 +55,6 @@ const processProduct = (productName: string, productData: any) => {
     const pid = productData.productId;
     // Get the product's details
     const pdetails = productData.ProductDetails;
-    // Get the product's price info
-    // const priceMode = pdetails.PriceMode;
-    // const pricePer = pdetails.PricePerItem;
-    // const baseUnit = pdetails.PricePreBaseUnitText;
     // Create a product object
     const product = {
         uid: pid,
@@ -106,8 +103,10 @@ const getProductData = (productElem: CheerioElement) => {
  *  * scrapProductsFromPage
  * @param { string } pageHtmlContent
  */
-const scrapProductsFromPage = (pageHtmlContent: string) => {
+const scrapProductsFromPage = (category: string, pageHtmlContent: string) => {
+    logging.log('Scraping Products from category: ' + category);
     // Array of all products to return
+    // tslint:disable-next-line: prefer-const
     let allProducts = [];
     // Load the target page HTML content into cheerio
     const $ = cheerio.load(pageHtmlContent);
@@ -144,7 +143,6 @@ const getPageContents = async (targetUrl: string) => {
     try {
         const response = await axios.get(targetUrl);
         return response.data;
-        // const products = await scraper.scrapProducts(data);
     } catch (error) {
         logging.logError(error);
     }
@@ -161,9 +159,9 @@ const runWebScraper = async () => {
     const target = CATEGORY_BASE_URL + category;
     const pageContents = await getPageContents(target);
     // logging.log(pageContents);
-    //
-    scrapProductsFromPage(pageContents);
-    // TODO: Scrap products from page
+    const products = scrapProductsFromPage(category, pageContents);
+    logging.log(products);
+    // TODO: Do something with product data
 };
 
 /*****************************
