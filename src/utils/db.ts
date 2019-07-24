@@ -12,18 +12,21 @@
  * * IMPORTS *
  *************/
 
-import { MongoClient } from 'mongodb';
-import assert from 'assert';
+// import { MongoClient } from 'mongodb';
+// import assert from 'assert';
 // const assert = require('assert');
 
-import { config } from 'dotenv';
+// require('dotenv').config();
+// import { config } from 'dotenv';
+import dotenv from 'dotenv';
+dotenv.config();
 
 /***************
  * * CONSTANTS *
  ***************/
 
 // Connection URL
-const URL = process.env.DB_URL;
+// const URL = process.env.DB_URL;
 // const url =
 //    'mongodb+srv://patevs:<password>@cluster0-t7g5a.mongodb.net/test?retryWrites=true&w=majority';
 // Database Name
@@ -34,6 +37,7 @@ const URL = process.env.DB_URL;
  ***************/
 
 const connectToDb = () => {
+    const URL = process.env.DB_URL;
     console.log(URL);
     /*
     const client = new MongoClient(URL, { useNewUrlParser: true });
