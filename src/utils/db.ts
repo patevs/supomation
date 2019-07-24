@@ -40,6 +40,7 @@ const connectToDb = () => {
         // const db =
         client.db(dbName);
 
+        // Close connect
         client.close();
 
         process.exit(0);
