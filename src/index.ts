@@ -21,7 +21,6 @@ import * as scraper from './utils/scraper';
 import axios from 'axios';
 // JSON file writer
 import writeJsonFile from 'write-json-file';
-// const writeJsonFile = require('write-json-file');
 
 /***************
  * * CONSTANTS *
@@ -43,6 +42,11 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
+/**
+ *  * saveProductData
+ * @param { string } fileName
+ * @param { any } productData
+ */
 const saveProductData = async (fileName: string, productData: any) => {
     logging.logInfo('Saving Product Data: ' + logging.green(fileName));
     const d = new Date();
