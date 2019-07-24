@@ -141,9 +141,9 @@ const runWebScraper = async () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(async function() {
     logging.logWelcome(); // Log Supomation main welcome
-    runWebScraper(); // Run Supomation WebScraper
+    await runWebScraper(); // Run Supomation WebScraper
     // promptMain(); // Main menu prompt
     db.connectToDb();
 })();
