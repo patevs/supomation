@@ -1,0 +1,41 @@
+{
+  "name": "supomation",
+  "version": "0.4.0",
+  "description": "Supomation CLI",
+  "main": "index.js",
+  "scripts": {
+    "pre-commit-msg": "echo '\n==== Pre-commit checks... ==== \n'&& exit 0",
+    "test": "ava",
+    "watch": "ts-node-dev --inspect=0.0.0.0:1234 -r dotenv-safe/config src/index.ts",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "build": "tsc",
+    "start": "ts-node src/",
+    "start:dist": "node dist/"
+  },
+  "pre-commit": [
+    "pre-commit-msg",
+    "lint",
+    "build"
+  ],
+  "author": "PatEvs",
+  "license": "MIT",
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "ava": "^2.2.0",
+    "dotenv-safe": "^6.1.0",
+    "pre-commit": "^1.2.2",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "tslint": "^5.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.5.3"
+  }
+}
