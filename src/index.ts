@@ -16,11 +16,11 @@
 import * as logging from './utils/logging';
 // Scraper Utilities
 import * as scraper from './utils/scraper';
+// Utility Helpers
+import * as utils from './utils/utilities';
 
 // HTTP Client
 import axios from 'axios';
-// JSON file writer
-import writeJsonFile from 'write-json-file';
 
 /***************
  * * CONSTANTS *
@@ -41,23 +41,6 @@ const ALL_CATEGORIES = [
 /***************
  * * FUNCTIONS *
  ***************/
-
-/**
- *  * saveProductData
- * @param { string } fileName
- * @param { any } productData
- */
-const saveProductData = async (fileName: string, productData: any) => {
-    logging.logInfo('Saving Product Data: ' + logging.green(fileName));
-    const d = new Date();
-    const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
-    const filePath = 'data/' + date + '/' + fileName + '.json';
-    // TODO: Wrap in try/catch
-    await writeJsonFile(filePath, productData);
-    logging.logSuccess('Saved Product Data: ' + logging.green(fileName));
-};
-
-// ------------------------------------------ //
 
 /**
  *  * getPageContents
@@ -88,7 +71,9 @@ const runWebScraper = async () => {
     // Scrap products from page
     const productsData = scraper.scrapProductsFromPage(pageContents);
     // logging.log(productsData);
-    saveProductData(category, productsData);
+    // logging.logInfo('Saving Product Data: ' + logging.green(category));
+    utils.saveProductData(category, productsData);
+    // logging.logSuccess('Saved Product Data: ' + logging.green(category));
 };
 
 /*****************************
