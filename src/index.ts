@@ -20,6 +20,9 @@ import * as scraper from './utils/scraper';
 // HTTP Client
 import axios from 'axios';
 
+// JSON file writer
+// const writeJsonFile = require('write-json-file');
+
 /***************
  * * CONSTANTS *
  ***************/
@@ -39,6 +42,12 @@ const ALL_CATEGORIES = [
 /***************
  * * FUNCTIONS *
  ***************/
+
+const saveProductData = (filePath: string, productData: any) => {
+    logging.log('Saving Product Data...');
+};
+
+// ------------------------------------------ //
 
 /**
  *  * getPageContents
@@ -63,11 +72,13 @@ const runWebScraper = async () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
     const category = ALL_CATEGORIES[0];
     const target = CATEGORY_BASE_URL + category;
+    // Get contents of target page
     const pageContents = await getPageContents(target);
     // logging.log(pageContents);
-    const products = scraper.scrapProductsFromPage(pageContents);
-    logging.log(products);
-    // TODO: Do something with product data
+    // Scrap products from page
+    const productsData = scraper.scrapProductsFromPage(pageContents);
+    // logging.log(productsData);
+    saveProductData(category, productsData);
 };
 
 /*****************************
