@@ -6,25 +6,25 @@
  *  * Supomation CLI
  */
 
-"use strict";
+'use strict';
 
 /*************
  * * IMPORTS *
  *************/
 
 // Logging Utilities
-import * as logging from "./utils/logging";
+import * as logging from './utils/logging';
 // Helper Functions
-import * as utils from "./utils/utilities";
+import * as utils from './utils/utilities';
 // Scraper Helper Functions
-import * as scraper from "./utils/scraper";
+import * as scraper from './utils/scraper';
 
 //
 // import { Signale } from "signale";
 // Interactive Prompts
-import inquirer from "inquirer";
+import inquirer from 'inquirer';
 // HTTP Client
-import axios from "axios";
+import axios from 'axios';
 
 // Environment config
 // . require("dotenv").config();
@@ -39,18 +39,18 @@ import axios from "axios";
  * * CONSTANTS *
  ***************/
 
-const BASE_URL = "https://www.ishopnewworld.co.nz";
+const BASE_URL = 'https://www.ishopnewworld.co.nz';
 // . const TARGET_URL = BASE_URL + "/specials";
 // . const PAGE_TARGET = "?pg=";
-const CATEGORY_BASE_URL = BASE_URL + "/category/";
+const CATEGORY_BASE_URL = BASE_URL + '/category/';
 
 // Array of all categories
 const ALL_CATEGORIES = [
-    "fresh-foods-and-bakery",
-    "chilled-frozen-and-desserts",
-    "pantry",
-    "personal-care",
-    "kitchen-dining-and-household"
+    'fresh-foods-and-bakery',
+    'chilled-frozen-and-desserts',
+    'pantry',
+    'personal-care',
+    'kitchen-dining-and-household'
 ];
 const FRESH_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[0];
 // const CHILLED_URL = CATEGORY_BASE_URL + ALL_CATEGORIES[1];
@@ -102,7 +102,7 @@ async function getCategory_(categoryUrl: string) {
 
 async function runWebScraper() {
     logging.log(); // new line
-    logging.logInfo("Running Supomation WebScraper...\n");
+    logging.logInfo('Running Supomation WebScraper...\n');
     await getCategory(FRESH_URL);
     // . await getCategory(PANTRY_URL);
     // . await getCategory(CHILLED_URL);
@@ -123,29 +123,29 @@ async function processMainMenuOption(answers: any) {
     const option: string = answers.option;
     // Process option
     switch (option) {
-        case "r":
+        case 'r':
             await runWebScraper();
             // . promptMain();
             break;
-        case "g":
-            logging.log("\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n");
+        case 'g':
+            logging.log('\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n');
             // . getVirtualMailer();
             promptMain();
             break;
-        case "d":
+        case 'd':
             utils.help();
             promptMain();
             break;
-        case "p":
+        case 'p':
             utils.version();
             promptMain();
             break;
-        case "q":
+        case 'q':
             utils.quit();
             break;
         default:
             logging.logError(
-                "Main menu option: " + option + " is not recognised"
+                'Main menu option: ' + option + ' is not recognised'
             );
             promptMain();
     }
@@ -160,22 +160,22 @@ async function processMainMenuOption(answers: any) {
  */
 function promptMain(): void {
     // Print menu title
-    logging.logTitle("MAIN MENU");
+    logging.logTitle('MAIN MENU');
     // Main menu prompt
     inquirer
         .prompt([
             {
-                type: "list",
-                name: "option",
-                message: "Select an option:",
+                type: 'list',
+                name: 'option',
+                message: 'Select an option:',
                 choices: [
-                    "Run WebScraper",
-                    "Get Virtual Mailer",
+                    'Run WebScraper',
+                    'Get Virtual Mailer',
                     new inquirer.Separator(),
-                    "Display Help",
-                    "Print Version",
+                    'Display Help',
+                    'Print Version',
                     new inquirer.Separator(),
-                    "Quit Supomation CLI"
+                    'Quit Supomation CLI'
                 ],
                 filter: function(val: string) {
                     return val.charAt(0).toLowerCase();

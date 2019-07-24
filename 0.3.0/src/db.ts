@@ -6,7 +6,7 @@
  *  * Supomation Database Connection
  */
 
-"use strict";
+'use strict';
 
 /*************
  * * IMPORTS *

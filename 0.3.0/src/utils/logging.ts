@@ -6,18 +6,18 @@
  *	* Supomation CLI Logging Helper Functions
  */
 
-"use strict";
+'use strict';
 
 /*************
  * * IMPORTS *
  *************/
 
 // Terminal string styling
-import chalk from "chalk";
+import chalk from 'chalk';
 // Logging symbols
-import logSymbols from "log-symbols";
+import logSymbols from 'log-symbols';
 // Create boxes
-import boxen from "boxen";
+import boxen from 'boxen';
 
 /***************
  * * CONSTANTS *
@@ -54,7 +54,7 @@ const title = blue.bold.underline;
  */
 function logError(msg: string): void {
     // ? log red
-    log("\n" + logSymbols.error, msg);
+    log('\n' + logSymbols.error, msg);
 }
 
 // ------------------------------------------ //
@@ -114,21 +114,21 @@ function logTitle(msg: string): void {
  * @returns { void }
  */
 function logWelcome(): void {
-    require("clear")(); // Clear the terminal
+    require('clear')(); // Clear the terminal
     log(); // new line
-    const heading: string = header("WELCOME TO SUPOMATION CLI\n");
+    const heading: string = header('WELCOME TO SUPOMATION CLI\n');
     const version: string | undefined = process.env.npm_package_version;
     const date: string = new Date().toDateString();
     // Construct welcome message
     const msg: string =
         heading +
-        "\n" +
-        magenta("Version ") +
+        '\n' +
+        magenta('Version ') +
         version +
-        "\n\n" +
+        '\n\n' +
         magentaBright(date);
     // Log welcome message
-    log(boxen(msg, { padding: 1, align: "center" }));
+    log(boxen(msg, { padding: 1, align: 'center' }));
 }
 
 /*************

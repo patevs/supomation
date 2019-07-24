@@ -8,21 +8,21 @@
  *  TODO: Correct type annotations
  */
 
-"use strict";
+'use strict';
 
 /*************
  * * IMPORTS *
  *************/
 
-import cheerio from "cheerio";
+import cheerio from 'cheerio';
 
 /***************
  * * CONSTANTS *
  ***************/
 
-const PRODUCT_SELECTOR: string = ".fs-product-card";
-const PRODUCT_DATA_SELECTOR: string = PRODUCT_SELECTOR + "__footer-container";
-const PRODUCT_NAME_SELECTOR: string = ".u-p2";
+const PRODUCT_SELECTOR: string = '.fs-product-card';
+const PRODUCT_DATA_SELECTOR: string = PRODUCT_SELECTOR + '__footer-container';
+const PRODUCT_NAME_SELECTOR: string = '.u-p2';
 
 /**********************
  * * HELPER FUNCTIONS *
@@ -55,7 +55,7 @@ function getProductData(productElem: any) {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
     // Get the product's data
-    const pdata = $(PRODUCT_DATA_SELECTOR).attr("data-options");
+    const pdata = $(PRODUCT_DATA_SELECTOR).attr('data-options');
     // Parse product data as JSON and return the result
     return JSON.parse(pdata);
 }

@@ -4,7 +4,7 @@
  *  `src/mailer.ts`
  */
 
-"use strict";
+'use strict';
 
 /*************
  * * IMPORTS *
