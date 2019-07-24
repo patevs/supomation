@@ -18,6 +18,8 @@ import * as logging from './utils/logging';
 import * as scraper from './utils/scraper';
 // Utility Helpers
 import * as utils from './utils/utilities';
+// Database Helpers
+import * as db from './utils/db';
 
 // HTTP Client
 import axios from 'axios';
@@ -128,9 +130,9 @@ const runWebScraper = async () => {
     // Scrap each category
     await scrapCategory(ALL_CATEGORIES[0]);
     await scrapCategory(ALL_CATEGORIES[1]);
-    await scrapCategory(ALL_CATEGORIES[2]);
-    await scrapCategory(ALL_CATEGORIES[3]);
-    await scrapCategory(ALL_CATEGORIES[4]);
+    // await scrapCategory(ALL_CATEGORIES[2]);
+    // await scrapCategory(ALL_CATEGORIES[3]);
+    // await scrapCategory(ALL_CATEGORIES[4]);
 
     logging.logSuccess(logging.green('DONE!'));
 };
@@ -143,6 +145,7 @@ const runWebScraper = async () => {
     logging.logWelcome(); // Log Supomation main welcome
     runWebScraper(); // Run Supomation WebScraper
     // promptMain(); // Main menu prompt
+    db.connectToDb();
 })();
 
 // EOF //
