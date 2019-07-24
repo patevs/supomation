@@ -15,6 +15,9 @@
 // Logging Utilities
 import * as logging from './utils/logging';
 
+// HTTP Client
+import axios from 'axios';
+
 /***************
  * * CONSTANTS *
  ***************/
@@ -38,6 +41,10 @@ const ALL_CATEGORIES = [
 const getPageContents = (targetUrl: string) => {
     logging.log(targetUrl);
     //
+    axios.get(targetUrl).then(function(response) {
+        const data = response.data;
+        logging.log(data);
+    });
 };
 
 const runWebScraper = () => {
