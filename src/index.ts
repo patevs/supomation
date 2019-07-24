@@ -34,9 +34,50 @@ const ALL_CATEGORIES = [
     'kitchen-dining-and-household'
 ];
 
+const PRODUCT_SELECTOR: string = '.fs-product-card';
+const PRODUCT_DATA_SELECTOR: string = PRODUCT_SELECTOR + '__footer-container';
+const PRODUCT_NAME_SELECTOR: string = '.u-p2';
+
 /***************
  * * FUNCTIONS *
  ***************/
+
+/**
+ *  * scrapProductsFromPage
+ *  Scrap the product data from the given page's HTML content
+ *
+ * @param { target page html content } pageHtmlContent
+ * @returns allProducts
+ */
+/*
+async function scrapProductsFromPage(pageHtmlContent: string) {
+    // Array of all products to return
+    let allProducts = [];
+    // Load the target page HTML content into cheerio
+    const $ = cheerio.load(pageHtmlContent);
+    // Select all products from target page
+    let productElems = $(PRODUCT_SELECTOR);
+    let numProducts = productElems.length;
+    // Iterate over all products
+    for (let i = 0; i < numProducts; i++) {
+        // Get the current product element
+        let productElem = productElems[i];
+        // Get the name of the current product
+        // let pname = getProductName(productElem);
+        // Get the data for the current product
+        // let pdata = getProductData(productElem);
+        // Process the current product
+        // let product = processProduct(pname, pdata);
+        // Push product object into products array
+        // allProducts.push(product);
+    }
+
+    // Return array containing all products
+    return allProducts;
+}
+*/
+
+// ------------------------------------------ //
 
 /**
  *  * getPageContents
