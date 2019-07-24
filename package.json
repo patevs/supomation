@@ -6,6 +6,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "clean": "trash node_modules",
     "pre-commit-msg": "echo '\n==== Pre-commit checks... ==== \n'&& exit 0",
     "test": "ava",
     "watch": "ts-node-dev --inspect=0.0.0.0:1234 -r dotenv-safe/config src/index.ts",
