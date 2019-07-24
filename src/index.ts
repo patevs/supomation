@@ -21,6 +21,8 @@ import * as utils from './utils/utilities';
 
 // HTTP Client
 import axios from 'axios';
+// Interactive logging
+import { Signale } from 'signale';
 
 /***************
  * * CONSTANTS *
@@ -47,7 +49,6 @@ const ALL_CATEGORIES = [
  * @param { string } targetUrl
  */
 const getPageContents = async (targetUrl: string) => {
-    // logging.log(targetUrl);
     try {
         const response = await axios.get(targetUrl);
         return response.data;
@@ -59,21 +60,51 @@ const getPageContents = async (targetUrl: string) => {
 // ------------------------------------------ //
 
 /**
+ *  *initPrompt
+ * @param { string } category
+ */
+const initPrompt = (category: string) => {
+    const prompt = new Signale({ interactive: true, scope: category });
+    return prompt;
+};
+
+// ------------------------------------------ //
+
+/**
  *  * runWebScraper
  */
 const runWebScraper = async () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
+    // Get category to scrap
     const category = ALL_CATEGORIES[0];
     const target = CATEGORY_BASE_URL + category;
+    // Initialize a new prompt
+    const prompt = initPrompt(category);
+    prompt.await(
+        '[1/4] - Getting page contents for category: ' + logging.green(category)
+    );
     // Get contents of target page
     const pageContents = await getPageContents(target);
-    // logging.log(pageContents);
+    prompt.await(
+        '[2/4] - Scraping products from category: ' + logging.green(category)
+    );
     // Scrap products from page
     const productsData = scraper.scrapProductsFromPage(pageContents);
-    // logging.log(productsData);
-    // logging.logInfo('Saving Product Data: ' + logging.green(category));
+    const numProducts: string = productsData.length.toString();
+    prompt.success(
+        '[3/4] - Scraped ' +
+            logging.blue(numProducts) +
+            ' products from category: ' +
+            logging.green(category)
+    );
+    // Save Product Data
     utils.saveProductData(category, productsData);
-    // logging.logSuccess('Saved Product Data: ' + logging.green(category));
+    prompt.success(
+        '[4/4] - Saved ' +
+            logging.blue(numProducts) +
+            ' products from: ' +
+            logging.green(category)
+    );
 };
 
 /*****************************
