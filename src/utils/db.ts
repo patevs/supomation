@@ -21,7 +21,9 @@ import assert from 'assert';
  ***************/
 
 // Connection URL
-const url = 'mongodb://localhost:27017';
+const url =
+    'mongodb+srv://patevs:F0rtunes@cluster0-t7g5a.mongodb.net/test?retryWrites=true&w=majority';
+// const url = 'mongodb://localhost:27017';
 // Database Name
 const dbName = 'myproject';
 
@@ -30,8 +32,9 @@ const dbName = 'myproject';
  ***************/
 
 const connectToDb = () => {
+    const client = new MongoClient(url, { useNewUrlParser: true });
     // Use connect method to connect to the server
-    MongoClient.connect(url, function(err, client) {
+    client.connect(function(err) {
         assert.equal(null, err);
         console.log('Connected successfully to server');
 
@@ -39,6 +42,8 @@ const connectToDb = () => {
         client.db(dbName);
 
         client.close();
+
+        process.exit(0);
     });
 };
 
