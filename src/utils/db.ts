@@ -16,22 +16,27 @@ import { MongoClient } from 'mongodb';
 import assert from 'assert';
 // const assert = require('assert');
 
+import { config } from 'dotenv';
+
 /***************
  * * CONSTANTS *
  ***************/
 
 // Connection URL
-const url =
-    'mongodb+srv://patevs:<password>@cluster0-t7g5a.mongodb.net/test?retryWrites=true&w=majority';
+const URL = process.env.DB_URL;
+// const url =
+//    'mongodb+srv://patevs:<password>@cluster0-t7g5a.mongodb.net/test?retryWrites=true&w=majority';
 // Database Name
-const dbName = 'myproject';
+// const dbName = 'myproject';
 
 /***************
  * * FUNCTIONS *
  ***************/
 
 const connectToDb = () => {
-    const client = new MongoClient(url, { useNewUrlParser: true });
+    console.log(URL);
+    /*
+    const client = new MongoClient(URL, { useNewUrlParser: true });
     // Use connect method to connect to the server
     client.connect(function(err) {
         assert.equal(null, err);
@@ -45,6 +50,7 @@ const connectToDb = () => {
 
         process.exit(0);
     });
+    */
 };
 
 /*************
