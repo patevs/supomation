@@ -18,11 +18,9 @@
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-/*
 (function() {
-    logging.logWelcome(); // Log Supomation main welcome
-    promptMain(); // Main menu prompt
+    // logging.logWelcome(); // Log Supomation main welcome
+    // promptMain(); // Main menu prompt
 })();
-*/
 
 // EOF //
