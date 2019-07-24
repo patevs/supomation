@@ -89,7 +89,6 @@ const getProductData = (productElem: CheerioElement) => {
  * @param { string } pageHtmlContent
  */
 const scrapProductsFromPage = (pageHtmlContent: string) => {
-    // logging.log('Scraping Products from category: ' + category);
     // Array of all products to return
     // tslint:disable-next-line: prefer-const
     let allProducts = [];
