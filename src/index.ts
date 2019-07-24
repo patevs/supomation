@@ -36,6 +36,9 @@ const ALL_CATEGORIES = [
  ***************/
 
 const runWebScraper = () => {
+    logging.log();
+    logging.logInfo('Starting Supomation WebScraper...');
+    logging.log();
     const category = ALL_CATEGORIES[0];
     const target = CATEGORY_BASE_URL + category;
     logging.log(target);
@@ -47,8 +50,7 @@ const runWebScraper = () => {
 
 (function() {
     logging.logWelcome(); // Log Supomation main welcome
-    logging.logInfo('Starting Supomation WebScraper...');
-    runWebScraper();
+    runWebScraper(); // Run Supomation WebScraper
     // promptMain(); // Main menu prompt
 })();
 
