@@ -19,8 +19,8 @@ import * as scraper from './utils/scraper';
 
 // HTTP Client
 import axios from 'axios';
-
 // JSON file writer
+import writeJsonFile from 'write-json-file';
 // const writeJsonFile = require('write-json-file');
 
 /***************
@@ -43,8 +43,14 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
-const saveProductData = (filePath: string, productData: any) => {
-    logging.log('Saving Product Data...');
+const saveProductData = async (fileName: string, productData: any) => {
+    logging.logInfo('Saving Product Data: ' + fileName);
+    const d = new Date();
+    const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+    const filePath = 'data/' + date + '/' + fileName + '.json';
+    // TODO: Wrap in try/catch
+    await writeJsonFile(filePath, productData);
+    logging.logSuccess('Saved Product Data: ' + fileName);
 };
 
 // ------------------------------------------ //
