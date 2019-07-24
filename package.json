@@ -13,6 +13,7 @@
     "scripts": {
         "fullclean": "npm run clean && trash node_modules",
         "clean": "rimraf lib && rimraf coverage",
+        "start": "ts-node src/index.ts",
         "format": "prettier --write \"{src,src/__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
         "lint": "tslint --force --format verbose \"src/**/*.ts\"",
         "prepublishOnly": "npm run build",
