@@ -30,7 +30,9 @@
         ],
         "arrow-parens": false,
         "object-literal-sort-keys": false,
-        "only-arrow-functions": false
+        "only-arrow-functions": false,
+        "no-console": false,
+        "jsdoc-format": false
     },
     "rulesDirectory": []
 }
