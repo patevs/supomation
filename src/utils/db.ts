@@ -22,8 +22,7 @@ import assert from 'assert';
 
 // Connection URL
 const url =
-    'mongodb+srv://patevs:F0rtunes@cluster0-t7g5a.mongodb.net/test?retryWrites=true&w=majority';
-// const url = 'mongodb://localhost:27017';
+    'mongodb+srv://patevs:<password>@cluster0-t7g5a.mongodb.net/test?retryWrites=true&w=majority';
 // Database Name
 const dbName = 'myproject';
 
