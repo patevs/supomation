@@ -22,6 +22,12 @@
 - [`node-mongodb-native`](https://github.com/mongodb/node-mongodb-native)
 - [`mongoose`](https://github.com/Automattic/mongoose)
 
+[]()
+
+- [`oclif`](https://github.com/oclif/oclif)
+- [`node-multispinner`](https://github.com/codekirei/node-multispinner)
+- [`listr`](https://github.com/samverschueren/listr)
+
 ---
 
 ## Backlog
