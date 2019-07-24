@@ -38,21 +38,34 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
-const getPageContents = (targetUrl: string) => {
+/**
+ *  * getPageContents
+ * @param { string } targetUrl
+ */
+const getPageContents = async (targetUrl: string) => {
     logging.log(targetUrl);
     //
-    axios.get(targetUrl).then(function(response) {
-        const data = response.data;
-        logging.log(data);
-    });
+    try {
+        const response = await axios.get(targetUrl);
+        return response.data;
+        // const products = await scraper.scrapProducts(data);
+    } catch (error) {
+        logging.logError(error);
+    }
 };
 
-const runWebScraper = () => {
+// ------------------------------------------ //
+
+/**
+ *  * runWebScraper
+ */
+const runWebScraper = async () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
-    // logging.log();
     const category = ALL_CATEGORIES[0];
     const target = CATEGORY_BASE_URL + category;
-    getPageContents(target);
+    const pageContents = await getPageContents(target);
+    logging.log(pageContents);
+    // TODO: Scrap products from page
 };
 
 /*****************************
