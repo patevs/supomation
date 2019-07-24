@@ -71,11 +71,52 @@ const initPrompt = (category: string) => {
 // ------------------------------------------ //
 
 /**
+ *  *scrapCategory
+ * @param { string } category
+ */
+const scrapCategory = async (category: string) => {
+    logging.log('Scraping Category: ' + category);
+    // Category target url
+    const target = CATEGORY_BASE_URL + category;
+    // Initialize a new prompt
+    const prompt = initPrompt(category);
+    prompt.await(
+        '[1/4] - Getting page contents for category: ' + logging.green(category)
+    );
+    // Get contents of target page
+    const pageContents = await getPageContents(target);
+    prompt.await(
+        '[2/4] - Scraping products from category: ' + logging.green(category)
+    );
+    // Scrap products from page
+    const productsData = scraper.scrapProductsFromPage(pageContents);
+    const numProducts: string = productsData.length.toString();
+    prompt.success(
+        '[3/4] - Scraped ' +
+            logging.blue(numProducts) +
+            ' products from category: ' +
+            logging.green(category)
+    );
+    // Save Product Data
+    utils.saveProductData(category, productsData);
+    prompt.success(
+        '[4/4] - Saved ' +
+            logging.blue(numProducts) +
+            ' products from: ' +
+            logging.green(category)
+    );
+};
+
+// ------------------------------------------ //
+
+/**
  *  * runWebScraper
  */
 const runWebScraper = async () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
-    // Get category to scrap
+    // Scrap each category
+    scrapCategory(ALL_CATEGORIES[0]);
+    /*
     const category = ALL_CATEGORIES[0];
     const target = CATEGORY_BASE_URL + category;
     // Initialize a new prompt
@@ -105,6 +146,7 @@ const runWebScraper = async () => {
             ' products from: ' +
             logging.green(category)
     );
+    */
 };
 
 /*****************************
