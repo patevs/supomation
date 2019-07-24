@@ -17,6 +17,8 @@ import * as logging from './utils/logging';
 
 // HTTP Client
 import axios from 'axios';
+// JQuery Implementation
+import cheerio from 'cheerio';
 
 /***************
  * * CONSTANTS *
@@ -43,39 +45,92 @@ const PRODUCT_NAME_SELECTOR: string = '.u-p2';
  ***************/
 
 /**
- *  * scrapProductsFromPage
- *  Scrap the product data from the given page's HTML content
- *
- * @param { target page html content } pageHtmlContent
- * @returns allProducts
+ *  * processProduct
+ * @param productName
+ * @param productData
  */
-/*
-async function scrapProductsFromPage(pageHtmlContent: string) {
+const processProduct = (productName: string, productData: any) => {
+    // Get the product's unique id
+    const pid = productData.productId;
+    // Get the product's details
+    const pdetails = productData.ProductDetails;
+    // Get the product's price info
+    // const priceMode = pdetails.PriceMode;
+    // const pricePer = pdetails.PricePerItem;
+    // const baseUnit = pdetails.PricePreBaseUnitText;
+    // Create a product object
+    const product = {
+        uid: pid,
+        name: productName,
+        pricePer: pdetails.PricePerItem,
+        priceMode: pdetails.PriceMode,
+        baseUnit: pdetails.PricePreBaseUnitText
+    };
+    // Return the processed product
+    return product;
+};
+
+// ------------------------------------------ //
+
+/**
+ *  * getProductName
+ * @param { CheerioElement } productElem
+ */
+const getProductName = (productElem: CheerioElement) => {
+    // Load product element into cheerio
+    const $ = cheerio.load(productElem);
+    // Get products name
+    const pname = $(PRODUCT_NAME_SELECTOR).text();
+    // Remove whitespace and return the result
+    return pname.trim();
+};
+
+// ------------------------------------------ //
+
+/**
+ *  * getProductData
+ * @param { CheerioElement }  productElem
+ */
+const getProductData = (productElem: CheerioElement) => {
+    // Load product element into cheerio
+    const $ = cheerio.load(productElem);
+    // Get the product's data
+    const pdata = $(PRODUCT_DATA_SELECTOR).attr('data-options');
+    // Parse product data as JSON and return the result
+    return JSON.parse(pdata);
+};
+
+// ------------------------------------------ //
+
+/**
+ *  * scrapProductsFromPage
+ * @param { string } pageHtmlContent
+ */
+const scrapProductsFromPage = (pageHtmlContent: string) => {
     // Array of all products to return
     let allProducts = [];
     // Load the target page HTML content into cheerio
     const $ = cheerio.load(pageHtmlContent);
     // Select all products from target page
-    let productElems = $(PRODUCT_SELECTOR);
-    let numProducts = productElems.length;
+    const productElems = $(PRODUCT_SELECTOR);
+    const numProducts = productElems.length;
     // Iterate over all products
     for (let i = 0; i < numProducts; i++) {
         // Get the current product element
-        let productElem = productElems[i];
+        const productElem = productElems[i];
         // Get the name of the current product
-        // let pname = getProductName(productElem);
+        const productName = getProductName(productElem);
         // Get the data for the current product
-        // let pdata = getProductData(productElem);
+        const productData = getProductData(productElem);
         // Process the current product
-        // let product = processProduct(pname, pdata);
+        const product = processProduct(productName, productData);
         // Push product object into products array
-        // allProducts.push(product);
+        allProducts.push(product);
     }
 
     // Return array containing all products
     return allProducts;
-}
-*/
+};
 
 // ------------------------------------------ //
 
@@ -105,7 +160,9 @@ const runWebScraper = async () => {
     const category = ALL_CATEGORIES[0];
     const target = CATEGORY_BASE_URL + category;
     const pageContents = await getPageContents(target);
-    logging.log(pageContents);
+    // logging.log(pageContents);
+    //
+    scrapProductsFromPage(pageContents);
     // TODO: Scrap products from page
 };
 
