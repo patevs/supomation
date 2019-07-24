@@ -32,4 +32,6 @@ typings/
 .env
 .env.test
 
+coverage/
+
 # End of https://www.gitignore.io/api/node
