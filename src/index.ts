@@ -1,3 +1,6 @@
+export * from './greeter';
+
+/*
 import * as http from 'http';
 
 const port = process.env.PORT || 3000;
@@ -8,3 +11,4 @@ export const server = http.createServer((req, res) => {
 });
 
 server.listen(port);
+*/
