@@ -35,13 +35,17 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
+const getPageContents = (targetUrl: string) => {
+    logging.log(targetUrl);
+    //
+};
+
 const runWebScraper = () => {
-    logging.log();
-    logging.logInfo('Starting Supomation WebScraper...');
-    logging.log();
+    logging.logInfo('Starting Supomation WebScraper...\n');
+    // logging.log();
     const category = ALL_CATEGORIES[0];
     const target = CATEGORY_BASE_URL + category;
-    logging.log(target);
+    getPageContents(target);
 };
 
 /*****************************

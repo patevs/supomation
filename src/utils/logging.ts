@@ -128,6 +128,7 @@ function logWelcome(): void {
         magentaBright(date);
     // Log welcome message
     log(boxen(msg, { padding: 1, align: 'center' }));
+    log(); // new line
 }
 
 /*************
