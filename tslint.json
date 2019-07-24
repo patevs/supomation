@@ -22,10 +22,6 @@
         "ordered-imports": [
             false
         ],
-        "max-line-length": [
-            true,
-            150
-        ],
         "member-ordering": [
             false
         ],
