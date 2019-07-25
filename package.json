@@ -12,7 +12,7 @@
     "types": "lib/index",
     "scripts": {
         "clean": "rimraf lib && rimraf coverage && echo Clean Complete!",
-        "clean:full": "npm run clean && trash node_modules && echo. && echo Full Clean Complete!",
+        "clean:full": "npm run clean && trash node_modules docs && echo. && echo Full Clean Complete!",
         "start": "ts-node src/index.ts",
         "format": "prettier --write \"{src,src/__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
         "lint": "tslint --force --format verbose \"src/**/*.ts\" && echo Lint Complete!",
