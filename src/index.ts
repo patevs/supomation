@@ -26,8 +26,6 @@ import axios from 'axios';
 // Interactive logging
 import { Signale } from 'signale';
 
-import Multispinner from 'multispinner';
-
 /***************
  * * CONSTANTS *
  ***************/
@@ -63,37 +61,6 @@ const getPageContents = async (targetUrl: string) => {
 
 // ------------------------------------------ //
 
-const initSpinnie = () => {
-    const spinners = ['foo', 'bar', 'baz', 'qux'];
-    // instantiate and start spinners
-    const m = new Multispinner(spinners);
-
-    // finish spinners in staggered timeouts
-    setTimeout(() => m.success('foo'), 1000);
-    setTimeout(() => m.error('bar'), 1500);
-    setTimeout(() => m.success('baz'), 2000);
-    setTimeout(() => m.error('qux'), 2500);
-
-    // do something on success/error events
-    m.on('success', () => {
-        // does not fire in this example because m.error is called
-        console.log('done without errors!');
-    }).on('err', e => {
-        console.log(`${e} spinner finished with an error`);
-    });
-};
-
-/**
- *  *initPrompt
- * @param { string } category
- */
-/*
-const initPrompt = (category: string) => {
-    const prompt = new Signale({ interactive: true, scope: category });
-    return prompt;
-};
-*/
-
 /**
  *  *initPrompt
  * @param { string } category
@@ -125,6 +92,7 @@ const scrapCategory = async (category: string) => {
     // Scrap products from page
     const productsData = scraper.scrapProductsFromPage(pageContents);
     const numProducts: string = productsData.length.toString();
+
     prompt.success(
         '[3/4] - Scraped ' +
             logging.blue(numProducts) +
@@ -151,11 +119,10 @@ const runWebScraper = async () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
     // Scrap each category
     await scrapCategory(ALL_CATEGORIES[0]);
-    await scrapCategory(ALL_CATEGORIES[1]);
-    await scrapCategory(ALL_CATEGORIES[2]);
-    await scrapCategory(ALL_CATEGORIES[3]);
-    await scrapCategory(ALL_CATEGORIES[4]);
-
+    // await scrapCategory(ALL_CATEGORIES[1]);
+    // await scrapCategory(ALL_CATEGORIES[2]);
+    // await scrapCategory(ALL_CATEGORIES[3]);
+    // await scrapCategory(ALL_CATEGORIES[4]);
     logging.logSuccess(logging.green('DONE!'));
 };
 
