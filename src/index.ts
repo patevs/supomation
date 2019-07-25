@@ -39,7 +39,7 @@ const ALL_CATEGORIES = [
     'chilled-frozen-and-desserts',
     'pantry',
     'personal-care',
-    'kitchen-dining-and-household',
+    'kitchen-dining-and-household'
 ];
 
 /***************
@@ -130,9 +130,9 @@ const runWebScraper = async () => {
     // Scrap each category
     await scrapCategory(ALL_CATEGORIES[0]);
     await scrapCategory(ALL_CATEGORIES[1]);
-    // await scrapCategory(ALL_CATEGORIES[2]);
-    // await scrapCategory(ALL_CATEGORIES[3]);
-    // await scrapCategory(ALL_CATEGORIES[4]);
+    await scrapCategory(ALL_CATEGORIES[2]);
+    await scrapCategory(ALL_CATEGORIES[3]);
+    await scrapCategory(ALL_CATEGORIES[4]);
 
     logging.logSuccess(logging.green('DONE!'));
 };
