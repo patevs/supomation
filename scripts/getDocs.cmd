@@ -2,9 +2,19 @@
 REM Script to download project dependencies documentation
 
 CLS
-ECHO. && ECHO Downloading Documentation for Project Dependencies...
+ECHO. && ECHO Script to download documentation for project dependencies...
 
 :: CALL curl https://raw.githubusercontent.com/user/repository/branch/filename
+
+ECHO. && ECHO Deleting old docs directory...
+RMDIR /S /Q docs
+ECHO Done!
+
+ECHO. && ECHO Creating new docs directory...
+CALL mkdir docs
+ECHO Done!
+
+ECHO. && ECHO Downloading Documentation for Project Dependencies...
 
 ECHO. && ECHO Axios:
 CALL curl https://raw.githubusercontent.com/axios/axios/master/README.md -o docs\axios.md -#
