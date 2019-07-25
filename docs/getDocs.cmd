@@ -11,4 +11,6 @@ REM :: CALL npm list --depth=0
 
 :: CALL curl https://raw.githubusercontent.com/user/repository/branch/filename
 
+CALL curl https://raw.githubusercontent.com/axios/axios/blob/master/README.md
+
 GOTO :EOF
