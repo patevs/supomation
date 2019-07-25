@@ -26,6 +26,8 @@ import axios from 'axios';
 // Interactive logging
 import { Signale } from 'signale';
 
+import multispinner from 'multispinner';
+
 /***************
  * * CONSTANTS *
  ***************/
