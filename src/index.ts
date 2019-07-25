@@ -46,6 +46,40 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
+/*
+const getCategoryPage = async (category: string, prompt: any) => {
+    // Category target url
+    const targetUrl = CATEGORY_BASE_URL + category;
+    // prompt.pending('[2/4] - Getting target: ' + targetUrl);
+    try {
+        const response = await axios.get(targetUrl);
+        prompt.await(
+            '[2/4] - Scraping products from category: ' +
+                logging.green(category)
+        );
+
+        // return response.data;
+        // Scrap products from page
+        const productsData = scraper.scrapProductsFromPage(response.data);
+        const numProducts: string = productsData.length.toString();
+        prompt.success(
+            '[3/4] - Scraped ' +
+                logging.blue(numProducts) +
+                ' products from category: ' +
+                logging.green(category)
+        );
+        return productsData;
+    } catch (error) {
+        prompt.error('ERROR getting target: ' + error);
+        logging.logError(error);
+        return;
+    }
+    // return;
+};
+*/
+
+// ------------------------------------------ //
+
 /**
  *  * getPageContents
  * @param { string } targetUrl
@@ -112,21 +146,47 @@ const scrapCategory = async (category: string) => {
 
 // ------------------------------------------ //
 
-/*
-const scrapAllCategories = async (allCategories: string[]) => {
-    // ..
-    const category = allCategories[0];
+const initCategoryPrompt = (category: string) => {
     // Category target url
-    const target = CATEGORY_BASE_URL + category;
+    const prompt = new Signale({ interactive: true, scope: 'supomation' });
+    prompt.pending('.....');
+    // Initialize a new prompt
+    // const prompt = initPrompt();
+    prompt.await('[1/4] - Getting category: ' + logging.green(category));
+    return prompt;
+};
+
+// ------------------------------------------ //
+
+const scrapAllCategories = (allCategories: string[]) => {
+    // ..
+    const category0 = allCategories[0];
+    const prompt0 = initCategoryPrompt(category0);
+    // const categoryPageData =
+    // getCategoryPage(category0, prompt0);
+    prompt0.success('[4/4] - Saved products from: ' + logging.green(category0));
+    // logging.log(); // new line
+    // utils.saveProductData(category0, productsPageData);
+    const category1 = allCategories[1];
+    const prompt1 = initCategoryPrompt(category1);
+    prompt1.success('[4/4] - Saved products from: ' + logging.green(category0));
+
+    // getCategoryPage(category1, prompt1);
     // Get contents of target page
-    const pageContents = await getPageContents(target);
+    // const target = CATEGORY_BASE_URL + category;
+    // const pageContents = await getPageContents(target);
+    // prompt.await(
+    //     '[2/4] - Scraping products from category: ' + logging.green(category)
+    // );
+    // Get contents of target page
+    // const pageContents = await getPageContents(target);
+
     // Scrap products from page
-    const productsData = scraper.scrapProductsFromPage(pageContents);
+    // const productsData = scraper.scrapProductsFromPage(pageContents);
     // const numProducts: string = productsData.length.toString();
     // Save Product Data
-    utils.saveProductData(category, productsData);
+    // utils.saveProductData(category, productsData);
 };
-*/
 
 // ------------------------------------------ //
 
@@ -138,10 +198,11 @@ const runWebScraper = async () => {
     // Scrap each category
     await scrapCategory(ALL_CATEGORIES[0]);
     await scrapCategory(ALL_CATEGORIES[1]);
-    await scrapCategory(ALL_CATEGORIES[2]);
-    await scrapCategory(ALL_CATEGORIES[3]);
+    // await scrapCategory(ALL_CATEGORIES[2]);
+    // await scrapCategory(ALL_CATEGORIES[3]);
+
     // await scrapCategory(ALL_CATEGORIES[4]);
-    // scrapAllCategories(ALL_CATEGORIES);
+    scrapAllCategories(ALL_CATEGORIES);
     logging.logSuccess(logging.green('DONE!'));
 };
 
