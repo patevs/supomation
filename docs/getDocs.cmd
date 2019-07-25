@@ -16,7 +16,7 @@ ECHO. && ECHO Chalk:
 CALL curl https://raw.githubusercontent.com/chalk/chalk/master/readme.md -o chalk.md -#
 
 ECHO. && ECHO Cheerio:
-CALL curl https://raw.githubusercontent.com/cheeriojs/cheerio/master/README.md -o cheerio.md -#
+CALL curl https://raw.githubusercontent.com/cheeriojs/cheerio/master/Readme.md -o cheerio.md -#
 
 ECHO. && ECHO Dotenv:
 CALL curl https://raw.githubusercontent.com/motdotla/dotenv/master/README.md -o dotenv.md -#
