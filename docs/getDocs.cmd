@@ -16,13 +16,13 @@ ECHO. && ECHO Chalk:
 CALL curl https://raw.githubusercontent.com/chalk/chalk/master/readme.md -o chalk.md -#
 
 ECHO. && ECHO Cheerio:
-CALL curl https://raw.githubusercontent.com/cheeriojs/cheerio/master/readme.md -o cheerio.md -#
+CALL curl https://raw.githubusercontent.com/cheeriojs/cheerio/master/README.md -o cheerio.md -#
 
 ECHO. && ECHO Dotenv:
-CALL curl https://raw.githubusercontent.com/motdotla/dotenv/master/readme.md -o dotenv.md -#
+CALL curl https://raw.githubusercontent.com/motdotla/dotenv/master/README.md -o dotenv.md -#
 
 ECHO. && ECHO Inquirer.js:
-CALL curl https://raw.githubusercontent.com/SBoudrias/Inquirer.js/master/readme.md -o inquirer.md -#
+CALL curl https://raw.githubusercontent.com/SBoudrias/Inquirer.js/master/README.md -o inquirer.md -#
 
 ECHO. && ECHO Log-Symbols:
 CALL curl https://raw.githubusercontent.com/sindresorhus/log-symbols/master/readme.md -o log-synbols.md -#
