@@ -39,7 +39,7 @@ const ALL_CATEGORIES = [
     'chilled-frozen-and-desserts',
     'pantry',
     'personal-care',
-    'kitchen-dining-and-household',
+    'kitchen-dining-and-household'
 ];
 
 /***************
