@@ -28,6 +28,9 @@
 - [`node-multispinner`](https://github.com/codekirei/node-multispinner)
 - [`listr`](https://github.com/samverschueren/listr)
 
+https://hub.github.com/hub-merge.1.html
+https://hub.github.com/hub-pull-request.1.html
+
 ---
 
 ## Backlog
