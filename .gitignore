@@ -37,4 +37,7 @@ typings/
 # Jest tests coverage reports
 coverage/
 
+# Generated docs
+docs/
+
 # End of https://www.gitignore.io/api/node
