@@ -1,10 +1,11 @@
+#!/usr/bin/env node
 /**
  *  `src/index.js`
  *
- *  * Supomation CLI
+ *  * Supomation
  */
 
-// 'use strict'
+'use strict';
 
 (function () {
     console.log(" - SUPOMATION CLI - \n");

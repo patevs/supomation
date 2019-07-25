@@ -5,6 +5,8 @@
  *  * Supomation Devlopment CLI
  */
 
+'use strict';
+
 require("nodejs-dashboard");
 require("./index");
 
