@@ -4,10 +4,10 @@
  *  * Supomation CLI
  */
 
-'use strict'
+// 'use strict'
 
-    (() => {
-        console.log(" - SUPOMATION CLI - \n");
-    })();
+(function () {
+    console.log(" - SUPOMATION CLI - \n");
+})();
 
 // EOF //
