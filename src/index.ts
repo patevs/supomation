@@ -119,9 +119,9 @@ const runWebScraper = async () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
     // Scrap each category
     await scrapCategory(ALL_CATEGORIES[0]);
-    // await scrapCategory(ALL_CATEGORIES[1]);
-    // await scrapCategory(ALL_CATEGORIES[2]);
-    // await scrapCategory(ALL_CATEGORIES[3]);
+    await scrapCategory(ALL_CATEGORIES[1]);
+    await scrapCategory(ALL_CATEGORIES[2]);
+    await scrapCategory(ALL_CATEGORIES[3]);
     // await scrapCategory(ALL_CATEGORIES[4]);
     logging.logSuccess(logging.green('DONE!'));
 };
