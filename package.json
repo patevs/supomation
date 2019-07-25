@@ -13,7 +13,6 @@
     "scripts": {
         "clean": "rimraf lib && rimraf coverage && echo Clean Complete!",
         "clean:full": "npm run clean && trash node_modules docs && echo. && echo Full Clean Complete!",
-        "gen:docs": "cd scripts && gen-docs.cmd",
         "start": "ts-node src/index.ts",
         "format": "prettier --write \"{src,src/__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
         "lint": "tslint --force --format verbose \"src/**/*.ts\" && echo Lint Complete!",
@@ -23,7 +22,8 @@
         "test": "jest && echo. && echo Test Complete!",
         "coverage": "jest --coverage",
         "watch": "npm run build -- --watch",
-        "watch:test": "jest --watch"
+        "watch:test": "jest --watch",
+        "gen:docs": "cd scripts && gen-docs.cmd"
     },
     "dependencies": {
         "axios": "^0.19.0",
