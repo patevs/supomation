@@ -1,6 +1,12 @@
 @ECHO OFF
 REM Script to download project dependencies documentation
 
-ECHO HELLO!
+REM :: https://raw.githubusercontent.com/user/repository/branch/filename
+
+CLS
+ECHO. && ECHO Downloading documentation for project dependencies... && ECHO.
+
+REM :: CALL cd ../
+REM :: CALL npm list --depth=0
 
 GOTO :EOF
