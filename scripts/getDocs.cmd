@@ -2,7 +2,7 @@
 REM Script to download project dependencies documentation
 
 CLS
-ECHO. && ECHO Script to download documentation for project dependencies.
+ECHO. && ECHO Running script to download documentation for project dependencies.
 
 :: CALL curl https://raw.githubusercontent.com/user/repository/branch/filename
 
