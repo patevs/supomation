@@ -122,7 +122,7 @@ const runWebScraper = async () => {
     await scrapCategory(ALL_CATEGORIES[1]);
     await scrapCategory(ALL_CATEGORIES[2]);
     await scrapCategory(ALL_CATEGORIES[3]);
-    // await scrapCategory(ALL_CATEGORIES[4]);
+    await scrapCategory(ALL_CATEGORIES[4]);
     logging.logSuccess(logging.green('DONE!'));
 };
 
