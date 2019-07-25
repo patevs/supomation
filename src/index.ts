@@ -24,7 +24,7 @@ import * as db from './utils/db';
 // HTTP Client
 import axios from 'axios';
 // Interactive logging
-// import { Signale } from 'signale';
+import { Signale } from 'signale';
 
 /***************
  * * CONSTANTS *
@@ -65,34 +65,17 @@ const getPageContents = async (targetUrl: string) => {
  *  *initPrompt
  * @param { string } category
  */
-/*
 const initPrompt = () => {
     const prompt = new Signale({ interactive: true, scope: 'supomation' });
     return prompt;
 };
-*/
 
 // ------------------------------------------ //
-
-const scrapAllCategories = async (allCategories: string[]) => {
-    // ..
-    const category = allCategories[0];
-    // Category target url
-    const target = CATEGORY_BASE_URL + category;
-    // Get contents of target page
-    const pageContents = await getPageContents(target);
-    // Scrap products from page
-    const productsData = scraper.scrapProductsFromPage(pageContents);
-    // const numProducts: string = productsData.length.toString();
-    // Save Product Data
-    utils.saveProductData(category, productsData);
-};
 
 /**
  *  *scrapCategory
  * @param { string } category
  */
-/*
 const scrapCategory = async (category: string) => {
     // Category target url
     const target = CATEGORY_BASE_URL + category;
@@ -126,6 +109,23 @@ const scrapCategory = async (category: string) => {
     );
     logging.log(); // new line
 };
+
+// ------------------------------------------ //
+
+/*
+const scrapAllCategories = async (allCategories: string[]) => {
+    // ..
+    const category = allCategories[0];
+    // Category target url
+    const target = CATEGORY_BASE_URL + category;
+    // Get contents of target page
+    const pageContents = await getPageContents(target);
+    // Scrap products from page
+    const productsData = scraper.scrapProductsFromPage(pageContents);
+    // const numProducts: string = productsData.length.toString();
+    // Save Product Data
+    utils.saveProductData(category, productsData);
+};
 */
 
 // ------------------------------------------ //
@@ -136,12 +136,12 @@ const scrapCategory = async (category: string) => {
 const runWebScraper = async () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
     // Scrap each category
-    // await scrapCategory(ALL_CATEGORIES[0]);
-    // await scrapCategory(ALL_CATEGORIES[1]);
-    // await scrapCategory(ALL_CATEGORIES[2]);
-    // await scrapCategory(ALL_CATEGORIES[3]);
+    await scrapCategory(ALL_CATEGORIES[0]);
+    await scrapCategory(ALL_CATEGORIES[1]);
+    await scrapCategory(ALL_CATEGORIES[2]);
+    await scrapCategory(ALL_CATEGORIES[3]);
     // await scrapCategory(ALL_CATEGORIES[4]);
-    scrapAllCategories(ALL_CATEGORIES);
+    // scrapAllCategories(ALL_CATEGORIES);
     logging.logSuccess(logging.green('DONE!'));
 };
 
