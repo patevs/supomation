@@ -11,7 +11,7 @@
     "main": "lib/index",
     "types": "lib/index",
     "scripts": {
-        "fullclean": "npm run clean && trash node_modules",
+        "clean:full": "npm run clean && trash node_modules",
         "clean": "rimraf lib && rimraf coverage",
         "start": "ts-node src/index.ts",
         "format": "prettier --write \"{src,src/__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
