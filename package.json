@@ -14,13 +14,13 @@
         "dev": "nodejs-dashboard node src/dev.index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "dependencies": {
+        "meow": "^5.0.0"
+    },
     "devDependencies": {
         "eslint": "^6.1.0",
         "eslint-config-prettier": "^6.0.0",
         "eslint-plugin-prettier": "^3.1.0",
         "prettier": "^1.18.2"
-    },
-    "dependencies": {
-        "meow": "^5.0.0"
     }
 }
