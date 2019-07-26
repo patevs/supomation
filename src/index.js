@@ -35,7 +35,7 @@ function main(input) {
     // instantiate spinners
     const spinners = new Multispinner(input, {
         preText: 'Downloading'
-    })
+    });
 
     /**
      * consume promises (simultaneously)
@@ -176,7 +176,7 @@ function printHtml(html) {
             })
             // reconnect lines into one string for printing
             .join('\n')
-    )
+    );
 }
 
 //----------------------------------------------------------
@@ -184,8 +184,8 @@ function printHtml(html) {
 //----------------------------------------------------------
 // bind cli args and define helpstring
 const cli = meow(chalk.blue(
-    `Call with one or more URLs:
-      $ node index.js <url> <url>`
+    `Usage:
+        $ node src/index.js [options] <url> <url>`
 ));
 
 cli.input.length === 0
