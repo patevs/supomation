@@ -11,13 +11,7 @@
     "main": "src/index.js",
     "scripts": {
         "start": "node src/index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "devDependencies": {
-        "eslint": "^6.1.0",
-        "eslint-config-prettier": "^6.0.0",
-        "eslint-plugin-prettier": "^3.1.0",
-        "prettier": "^1.18.2"
+        "test": "echo Error: no test specified && exit 0"
     },
     "dependencies": {
         "boxen": "^4.1.0",
@@ -25,5 +19,17 @@
         "clear": "^0.1.0",
         "enquirer": "^2.3.1",
         "log-symbols": "^3.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^6.1.0",
+        "eslint-config-prettier": "^6.0.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "prettier": "^1.18.2"
+    },
+    "ntl": {
+        "descriptions": {
+            "start": "Start Supomation CLI",
+            "test": "Run project's tests... but currently No tests exist!"
+        }
     }
 }

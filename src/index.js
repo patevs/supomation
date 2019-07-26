@@ -14,6 +14,8 @@
 
 const logging = require('./utils/logging');
 
+const { Select } = require('enquirer');
+
 /***************
  * * CONSTANTS *
  ***************/
@@ -36,12 +38,24 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
+const mainMenu = () => {
+    const prompt = new Select({
+        name: 'color',
+        message: 'Pick a flavor',
+        choices: ['apple', 'grape', 'watermelon', 'cherry', 'orange']
+    });
+    prompt.run()
+        .then(answer => logging.log('Answer:', answer))
+        .catch(console.error);
+};
+
 /*****************************
  * * APPLICATION ENTRY POINT *
  *****************************/
 
 (function () {
     logging.logWelcome(); // Log Supomation main welcome
+    mainMenu();
 })();
 
 // EOF //
