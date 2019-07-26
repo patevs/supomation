@@ -13,6 +13,7 @@
  *************/
 
 const logging = require('./utils/logging');
+const utils = require('./utils/utilities');
 
 const { Select } = require('enquirer');
 
@@ -45,41 +46,41 @@ const ALL_CATEGORIES = [
  * @returns { void }
  */
 const processMainMenuOption = (answer) => {
-    // Get user selected option
-    // const option = answers.option;
-    logging.log(answer);
-    // Process option
-    /*
+    // Format answer
+    answer = answer.split(' ')[0].toLowerCase();
+    // Process all options
     switch (answer) {
-        case 'r':
-            // await runWebScraper();
-            // . promptMain();
+        case 'run':
+            logging.log('- RUN WEBSCRAPER -');
             break;
-        case 'g':
-            logging.log('\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n');
-            // . getVirtualMailer();
-            // promptMain();
+        case 'display':
+            utils.help();
+            mainMenu();
             break;
-        case 'd':
-            // utils.help();
-            // promptMain();
+        case 'print':
+            utils.version();
+            mainMenu();
             break;
-        case 'p':
-            // utils.version();
-            // promptMain();
-            break;
-        case 'q':
-            // utils.quit();
+        case 'quit':
+            utils.quit();
             break;
         default:
+            // Base case - if all else fails which should never happen
             logging.logError(
                 'Main menu option: ' + answer + ' is not recognised'
             );
-        // promptMain();
+            mainMenu();
+            break;
     }
-    */
-}
+};
 
+// -------------------------------------------------------- //
+
+/**
+ * @function mainMenu
+ * @description Display the supomation main menu prompt to the user
+ * @returns { void }
+ */
 const mainMenu = () => {
     logging.logTitle('MAIN MENU');
     const mainMenuPrompt = new Select({
