@@ -14,6 +14,7 @@
 
 const logging = require('./utils/logging');
 const utils = require('./utils/utilities');
+const scraper = require('./utils/scraper');
 
 const axios = require('axios');
 const { Select } = require('enquirer');
@@ -46,6 +47,7 @@ const scrapCategory = async (category, spinners) => {
     try {
         const response = await axios.get(targetUrl);
         spinners.success(category);
+        scraper.scrapProductsFromPage(response.data);
         return response.data;
     } catch (error) {
         spinners.error(category);
@@ -60,11 +62,15 @@ const runSupomationScraper = () => {
     });
     // finish spinners in staggered timeouts
     scrapCategory(ALL_CATEGORIES[0], spinners);
+    scrapCategory(ALL_CATEGORIES[1], spinners);
+    scrapCategory(ALL_CATEGORIES[2], spinners);
+    scrapCategory(ALL_CATEGORIES[3], spinners);
+    scrapCategory(ALL_CATEGORIES[4], spinners);
     // setTimeout(() => spinners.success(ALL_CATEGORIES[0]), 1000);
-    setTimeout(() => spinners.error(ALL_CATEGORIES[1]), 1500);
-    setTimeout(() => spinners.success(ALL_CATEGORIES[2]), 2000);
-    setTimeout(() => spinners.error(ALL_CATEGORIES[3]), 2500);
-    setTimeout(() => spinners.success(ALL_CATEGORIES[4]), 2500);
+    // setTimeout(() => spinners.error(ALL_CATEGORIES[1]), 1500);
+    // setTimeout(() => spinners.success(ALL_CATEGORIES[2]), 2000);
+    // setTimeout(() => spinners.error(ALL_CATEGORIES[3]), 2500);
+    // setTimeout(() => spinners.success(ALL_CATEGORIES[4]), 2500);
 
     // do something on success/error events
     spinners.on('success', () => {
