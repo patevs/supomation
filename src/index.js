@@ -39,6 +39,13 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
+const runSupomationScraper = async () => {
+    await setTimeout(() => {
+        logging.log('TODO: RUN WEBSCRAPER...');
+    }, 2000);
+    // mainMenu();
+};
+
 /**
  * @function processMainMenuOption
  * @description Process user selected main menu option
@@ -51,7 +58,7 @@ const processMainMenuOption = (answer) => {
     // Process all options
     switch (answer) {
         case 'run':
-            logging.log('- TODO: RUN WEBSCRAPER -');
+            runSupomationScraper();
             break;
         case 'display':
             utils.help();
