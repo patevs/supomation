@@ -46,8 +46,9 @@ const scrapCategory = async (category, spinners) => {
     const targetUrl = CATEGORY_BASE_URL + category;
     try {
         const response = await axios.get(targetUrl);
+        const productData = scraper.scrapProductsFromPage(response.data);
+        utils.saveProductData(productData);
         spinners.success(category);
-        scraper.scrapProductsFromPage(response.data);
         return response.data;
     } catch (error) {
         spinners.error(category);
