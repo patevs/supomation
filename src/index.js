@@ -56,6 +56,8 @@ const scrapCategory = async (category, spinners) => {
     }
 };
 
+// -------------------------------------------------------- //
+
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
     const spinners = new Multispinner(ALL_CATEGORIES, {
