@@ -15,6 +15,8 @@
 const logging = require('./utils/logging');
 const utils = require('./utils/utilities');
 
+const axios = require('axios');
+
 const { Select } = require('enquirer');
 
 const Multispinner = require('multispinner');
@@ -40,16 +42,24 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
-const scrapCategory = (category, spinners) => {
-    spinners.success(category);
-    // spinners.error(category);
+const scrapCategory = async (category, spinners) => {
     // logging.log('Scraping Category: ' + category);
-    //const targetUrl = CATEGORY_BASE_URL + category;
+    const targetUrl = CATEGORY_BASE_URL + category;
+    try {
+        const response = await axios.get(targetUrl);
+        spinners.success(category);
+        return response.data;
+    } catch (error) {
+        spinners.error(category);
+        logging.logError(error);
+    }
 };
 
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...');
-    const spinners = new Multispinner(ALL_CATEGORIES);
+    const spinners = new Multispinner(ALL_CATEGORIES, {
+        preText: 'Category: '
+    });
     // finish spinners in staggered timeouts
     scrapCategory(ALL_CATEGORIES[0], spinners);
     // setTimeout(() => spinners.success(ALL_CATEGORIES[0]), 1000);
