@@ -51,7 +51,7 @@ const processMainMenuOption = (answer) => {
     // Process all options
     switch (answer) {
         case 'run':
-            logging.log('- RUN WEBSCRAPER -');
+            logging.log('- TODO: RUN WEBSCRAPER -');
             break;
         case 'display':
             utils.help();
