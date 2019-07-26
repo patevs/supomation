@@ -38,14 +38,62 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
+/**
+ * @function processMainMenuOption
+ * @description Process user selected main menu option
+ * @param { string } answer - user selected option
+ * @returns { void }
+ */
+const processMainMenuOption = (answer) => {
+    // Get user selected option
+    // const option = answers.option;
+    logging.log(answer);
+    // Process option
+    /*
+    switch (answer) {
+        case 'r':
+            // await runWebScraper();
+            // . promptMain();
+            break;
+        case 'g':
+            logging.log('\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n');
+            // . getVirtualMailer();
+            // promptMain();
+            break;
+        case 'd':
+            // utils.help();
+            // promptMain();
+            break;
+        case 'p':
+            // utils.version();
+            // promptMain();
+            break;
+        case 'q':
+            // utils.quit();
+            break;
+        default:
+            logging.logError(
+                'Main menu option: ' + answer + ' is not recognised'
+            );
+        // promptMain();
+    }
+    */
+}
+
 const mainMenu = () => {
+    logging.logTitle('MAIN MENU');
     const mainMenuPrompt = new Select({
-        name: 'color',
-        message: 'Pick a flavor',
-        choices: ['apple', 'grape', 'watermelon', 'cherry', 'orange']
+        name: 'option',
+        message: 'Select an option:',
+        choices: [
+            'Run WebScraper',
+            'Display Help',
+            'Print Version',
+            'Quit'
+        ]
     });
     mainMenuPrompt.run()
-        .then(answer => logging.log('Answer:', answer))
+        .then(answer => processMainMenuOption(answer))
         .catch(console.error);
 };
 
