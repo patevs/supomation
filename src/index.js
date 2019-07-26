@@ -39,12 +39,12 @@ const ALL_CATEGORIES = [
  ***************/
 
 const mainMenu = () => {
-    const prompt = new Select({
+    const mainMenuPrompt = new Select({
         name: 'color',
         message: 'Pick a flavor',
         choices: ['apple', 'grape', 'watermelon', 'cherry', 'orange']
     });
-    prompt.run()
+    mainMenuPrompt.run()
         .then(answer => logging.log('Answer:', answer))
         .catch(console.error);
 };
