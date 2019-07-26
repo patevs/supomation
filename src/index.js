@@ -18,7 +18,7 @@ const logging = require('./utils/logging');
  * * CONSTANTS *
  ***************/
 
-/* // TODO: create constants module
+/* // TODO: Create constants module
 const BASE_URL = 'https://www.ishopnewworld.co.nz';
 const CATEGORY_BASE_URL = BASE_URL + '/category/';
 
