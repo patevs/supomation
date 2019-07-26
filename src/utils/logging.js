@@ -16,6 +16,8 @@ const chalk = require('chalk');
 const logSymbols = require('log-symbols');
 const boxen = require('boxen');
 
+var pjson = require('../../package.json');
+
 /***************
  * * CONSTANTS *
  ***************/
@@ -23,6 +25,9 @@ const boxen = require('boxen');
 // Shortcut to console log
 const { log } = console;
 // const log = console.log;
+
+// project version
+const version = pjson.version;
 
 /***********
  * * THEME *
@@ -112,13 +117,13 @@ function logWelcome() {
     require('clear')(); // Clear the terminal
     // log(); // new line
     const heading = header('WELCOME TO SUPOMATION CLI\n');
-    const version = process.env.npm_package_version;
+    // const version = process.env.npm_package_version;
     const date = new Date().toDateString();
     // Construct welcome message
     const msg =
         heading +
         '\n' +
-        magenta('Version ') +
+        magenta('Version: ') +
         version +
         '\n\n' +
         magentaBright(date);
