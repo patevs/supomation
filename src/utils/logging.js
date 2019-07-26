@@ -13,17 +13,16 @@
  *************/
 
 const chalk = require('chalk');
-// Logging symbols
-// import logSymbols from 'log-symbols';
-// Create boxes
-// import boxen from 'boxen';
+const logSymbols = require('log-symbols');
+const boxen = require('boxen');
 
 /***************
  * * CONSTANTS *
  ***************/
 
 // Shortcut to console log
-const log = console.log;
+const { log } = console;
+// const log = console.log;
 
 /***********
  * * THEME *
@@ -132,7 +131,7 @@ function logWelcome() {
  * * EXPORTS *
  *************/
 
-module.export = {
+module.exports = {
     log,
     green,
     blue,
