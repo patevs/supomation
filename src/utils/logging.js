@@ -16,7 +16,7 @@ const chalk = require('chalk');
 const logSymbols = require('log-symbols');
 const boxen = require('boxen');
 
-var pjson = require('../../package.json');
+const pjson = require('../../package.json');
 
 /***************
  * * CONSTANTS *
@@ -117,7 +117,6 @@ function logWelcome() {
     require('clear')(); // Clear the terminal
     // log(); // new line
     const heading = header('WELCOME TO SUPOMATION CLI\n');
-    // const version = process.env.npm_package_version;
     const date = new Date().toDateString();
     // Construct welcome message
     const msg =
