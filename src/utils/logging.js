@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- *	`src/utils/logging.ts`
+ *	`src/utils/logging.js`
  *
- *	* Supomation CLI Logging Helper Functions
+ *	* Supomation CLI Logging Utilities and Helper Functions
  */
 
 'use strict';
@@ -26,7 +26,7 @@ const pjson = require('../../package.json');
 const { log } = console;
 // const log = console.log;
 
-// project version
+// Project version
 const version = pjson.version;
 
 /***********
@@ -50,9 +50,9 @@ const title = blue.bold.underline;
  ***************/
 
 /**
- *  *logError
- *  Log an error message
- * @param { string } msg - message to log
+ * @function logError
+ * @description Log an error message
+ * @param { string } msg - message to log as error
  * @returns { void }
  */
 function logError(msg) {
@@ -62,9 +62,9 @@ function logError(msg) {
 // ------------------------------------------ //
 
 /**
- *  *logInfo
- *  Log an information message
- * @param { string } msg - message to log
+ * @function logInfo
+ * @description Log an information message
+ * @param { string } msg - message to log as information
  * @returns { void }
  */
 function logInfo(msg) {
@@ -74,9 +74,9 @@ function logInfo(msg) {
 // ------------------------------------------ //
 
 /**
- *  *logSuccess
- *  Log a success message
- * @param { string } msg - message to log
+ * @function logSuccess
+ * @description Log a success message
+ * @param { string } msg - message to log as successful
  * @returns { void }
  */
 function logSuccess(msg) {
@@ -86,9 +86,9 @@ function logSuccess(msg) {
 // ------------------------------------------ //
 
 /**
- *  *logTitle
- *  Log a menu title
- * @param { string } msg - message to log
+ * @function logTitle
+ * @description Log a menu title
+ * @param { string } msg - message to log as menu title
  * @returns { void }
  */
 function logTitle(msg) {
@@ -115,7 +115,6 @@ function logTitle(msg) {
  */
 function logWelcome() {
     require('clear')(); // Clear the terminal
-    // log(); // new line
     const heading = header('WELCOME TO SUPOMATION CLI\n');
     const date = new Date().toDateString();
     // Construct welcome message
