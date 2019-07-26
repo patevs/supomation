@@ -47,7 +47,7 @@ const scrapCategory = async (category, spinners) => {
     try {
         const response = await axios.get(targetUrl);
         const productData = scraper.scrapProductsFromPage(response.data);
-        utils.saveProductData(productData);
+        utils.saveProductData(category, productData);
         spinners.success(category);
         return response.data;
     } catch (error) {
@@ -57,26 +57,21 @@ const scrapCategory = async (category, spinners) => {
 };
 
 const runSupomationScraper = () => {
-    logging.logInfo('Starting Supomation WebScraper...');
+    logging.logInfo('Starting Supomation WebScraper...\n');
     const spinners = new Multispinner(ALL_CATEGORIES, {
         preText: 'Category: '
     });
-    // finish spinners in staggered timeouts
     scrapCategory(ALL_CATEGORIES[0], spinners);
     scrapCategory(ALL_CATEGORIES[1], spinners);
     scrapCategory(ALL_CATEGORIES[2], spinners);
     scrapCategory(ALL_CATEGORIES[3], spinners);
     scrapCategory(ALL_CATEGORIES[4], spinners);
-    // setTimeout(() => spinners.success(ALL_CATEGORIES[0]), 1000);
-    // setTimeout(() => spinners.error(ALL_CATEGORIES[1]), 1500);
-    // setTimeout(() => spinners.success(ALL_CATEGORIES[2]), 2000);
-    // setTimeout(() => spinners.error(ALL_CATEGORIES[3]), 2500);
-    // setTimeout(() => spinners.success(ALL_CATEGORIES[4]), 2500);
 
     // do something on success/error events
     spinners.on('success', () => {
         // does not fire in this example because m.error is called
-        logging.logSuccess('Finished running Supomation WebScraper!');
+        logging.log(); // new line
+        logging.logSuccess('Supomation WebScraper Finished Successfully!');
         // console.log('done without errors!');
     }).on('err', (e) => {
         logging.logError('Error running Supomation WebScraper: ' + e);
