@@ -56,7 +56,7 @@ const title = blue.bold.underline;
  * @returns { void }
  */
 function logError(msg) {
-    log('\n' + logSymbols.error, msg);
+    log(logSymbols.error, msg);
 }
 
 // ------------------------------------------ //

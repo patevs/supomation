@@ -17,11 +17,13 @@ const utils = require('./utils/utilities');
 
 const { Select } = require('enquirer');
 
+const Multispinner = require('multispinner');
+
 /***************
  * * CONSTANTS *
  ***************/
 
-/* // TODO: Create constants module
+// TODO: Create constants module
 const BASE_URL = 'https://www.ishopnewworld.co.nz';
 const CATEGORY_BASE_URL = BASE_URL + '/category/';
 
@@ -33,16 +35,38 @@ const ALL_CATEGORIES = [
     'personal-care',
     'kitchen-dining-and-household'
 ];
-*/
 
 /***************
  * * FUNCTIONS *
  ***************/
 
-const runSupomationScraper = async () => {
-    await setTimeout(() => {
-        logging.log('TODO: RUN WEBSCRAPER...');
-    }, 2000);
+const scrapCategory = (category, spinners) => {
+    spinners.success(category);
+    // spinners.error(category);
+    // logging.log('Scraping Category: ' + category);
+    //const targetUrl = CATEGORY_BASE_URL + category;
+};
+
+const runSupomationScraper = () => {
+    logging.logInfo('Starting Supomation WebScraper...');
+    const spinners = new Multispinner(ALL_CATEGORIES);
+    // finish spinners in staggered timeouts
+    scrapCategory(ALL_CATEGORIES[0], spinners);
+    // setTimeout(() => spinners.success(ALL_CATEGORIES[0]), 1000);
+    setTimeout(() => spinners.error(ALL_CATEGORIES[1]), 1500);
+    setTimeout(() => spinners.success(ALL_CATEGORIES[2]), 2000);
+    setTimeout(() => spinners.error(ALL_CATEGORIES[3]), 2500);
+    setTimeout(() => spinners.success(ALL_CATEGORIES[4]), 2500);
+
+    // do something on success/error events
+    spinners.on('success', () => {
+        // does not fire in this example because m.error is called
+        logging.logSuccess('Finished running Supomation WebScraper!');
+        // console.log('done without errors!');
+    }).on('err', (e) => {
+        logging.logError('Error running Supomation WebScraper: ' + e);
+        // console.log(`${e} spinner finished with an error`);
+    });
     // mainMenu();
 };
 
