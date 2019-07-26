@@ -12,8 +12,7 @@
  * * IMPORTS *
  *************/
 
-// Terminal string styling
-// import chalk from 'chalk';
+const chalk = require('chalk');
 // Logging symbols
 // import logSymbols from 'log-symbols';
 // Create boxes
@@ -125,7 +124,7 @@ function logWelcome() {
         '\n\n' +
         magentaBright(date);
     // Log welcome message
-    // log(boxen(msg, { padding: 1, align: 'center' }));
+    log(boxen(msg, { padding: 1, align: 'center' }));
     log(); // new line
 }
 
