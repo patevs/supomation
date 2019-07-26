@@ -13,7 +13,7 @@
  *************/
 
 // JQuery Implementation
-// import cheerio from 'cheerio';
+const cheerio = require('cheerio');
 
 /***************
  * * CONSTANTS *
@@ -29,9 +29,11 @@ const PRODUCT_NAME_SELECTOR = '.u-p2';
  **********************/
 
 /**
- *  * processProduct
+ * @function processProduct
+ * @description Processes a product name and data returning a product object
  * @param productName
  * @param productData
+ * @returns { object } product
  */
 const processProduct = (productName, productData) => {
     // Get the product's unique id
@@ -53,8 +55,10 @@ const processProduct = (productName, productData) => {
 // ------------------------------------------ //
 
 /**
- *  * getProductName
+ * @function getProductName
+ * @description Get the product name for a given product element
  * @param { CheerioElement } productElem
+ * @returns { string } productName
  */
 const getProductName = (productElem) => {
     // Load product element into cheerio
@@ -68,8 +72,10 @@ const getProductName = (productElem) => {
 // ------------------------------------------ //
 
 /**
- *  * getProductData
+ * @function getProductData
+ * @description Get the product data for a given product element
  * @param { CheerioElement }  productElem
+ * @returns { object } productData
  */
 const getProductData = (productElem) => {
     // Load product element into cheerio
@@ -85,12 +91,13 @@ const getProductData = (productElem) => {
  ***************/
 
 /**
- *  * scrapProductsFromPage
+ * @function scrapProductsFromPage
+ * @description Scraps all the product elements from a given page
  * @param { string } pageHtmlContent
+ * @returns { Array[Products] } allProducts - array of all products
  */
 const scrapProductsFromPage = (pageHtmlContent) => {
     // Array of all products to return
-    // tslint:disable-next-line: prefer-const
     let allProducts = [];
     // Load the target page HTML content into cheerio
     const $ = cheerio.load(pageHtmlContent);
@@ -119,6 +126,8 @@ const scrapProductsFromPage = (pageHtmlContent) => {
  * * EXPORTS *
  *************/
 
-// export { scrapProductsFromPage };
+module.exports = {
+    scrapProductsFromPage
+};
 
 // EOF //
