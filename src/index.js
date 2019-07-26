@@ -46,6 +46,8 @@ const runSupomationScraper = async () => {
     // mainMenu();
 };
 
+// -------------------------------------------------------- //
+
 /**
  * @function processMainMenuOption
  * @description Process user selected main menu option
