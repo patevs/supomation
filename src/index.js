@@ -185,7 +185,12 @@ function printHtml(html) {
 // bind cli args and define helpstring
 const cli = meow(chalk.blue(
     `Usage:
-        $ node src/index.js [options] <url> <url>`
+        $ node src/index.js [options] <url> <url>
+
+    Options:
+        -h, --help         show usage information
+        -v, --version      print version info and exit
+    `
 ));
 
 cli.input.length === 0
