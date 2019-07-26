@@ -48,7 +48,7 @@ const quit = () => {
  */
 const version = () => {
     logging.log(); // new line
-    const msg = logging.magenta('Supomation CLI version: ') + projectVersion;
+    const msg = 'Supomation CLI version: ' + logging.magenta(projectVersion);
     logging.logInfo(msg);
     logging.log(); // new line
 };
