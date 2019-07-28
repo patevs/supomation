@@ -14,7 +14,8 @@
         "start": "node src/index.js",
         "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
         "lint": "npm run prettier && eslint --fix src/**/*.js && echo. && echo Lint Completed!",
-        "test": "jest && echo. && echo Test Complete! && exit 0"
+        "test": "jest && echo. && echo Test Complete! && exit 0",
+        "docs": "cd scripts && gen-docs.cmd"
     },
     "ntl": {
         "descriptions": {
@@ -22,7 +23,8 @@
             "start": "Start Supomation CLI",
             "prettier": "Run prettier check style linting",
             "lint": "Run eslint check style linting",
-            "test": "Run Supomation tests... but currently No tests exist!"
+            "test": "Run Supomation tests",
+            "docs": "Generate project documentation"
         }
     },
     "dependencies": {
