@@ -6,21 +6,26 @@
 
 ## Links & Resources
 
--   [`awesome-nodejs`](https://github.com/sindresorhus/awesome-nodejs)
--   [`awesome-typescript`](https://github.com/dzharii/awesome-typescript)
+- [`awesome-nodejs`](https://github.com/sindresorhus/awesome-nodejs)
+- [`awesome-typescript`](https://github.com/dzharii/awesome-typescript)
 
 ## Libraries & Packages
 
--   [`nest`](https://github.com/nestjs/nest)
--   [`strapi`](https://github.com/strapi/strapi)
--   [`keystone`](https://github.com/keystonejs/keystone)
--   [`cli-table3`](https://github.com/cli-table/cli-table3)
--   [`oclif`](https://github.com/oclif/oclif)
+- [`cli-table3`](https://github.com/cli-table/cli-table3)
+- [`oclif`](https://github.com/oclif/oclif)
+- [`listr`](https://github.com/samverschueren/listr)
+- [`indent-string`](https://github.com/sindresorhus/indent-string)
 
 []()
 
--   [`node-mongodb-native`](https://github.com/mongodb/node-mongodb-native)
--   [`mongoose`](https://github.com/Automattic/mongoose)
+- [`nest`](https://github.com/nestjs/nest)
+- [`strapi`](https://github.com/strapi/strapi)
+- [`keystone`](https://github.com/keystonejs/keystone)
+
+[]()
+
+- [`node-mongodb-native`](https://github.com/mongodb/node-mongodb-native)
+- [`mongoose`](https://github.com/Automattic/mongoose)
 
 ---
 
