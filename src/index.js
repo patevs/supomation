@@ -68,7 +68,7 @@ const runSupomationScraper = () => {
     // do something on success/error events
     spinners
         .on('success', () => {
-            // does not fire in this example because m.error is called
+            // does not fire if spinners.error is called
             logging.log(); // new line
             logging.logSuccess('Supomation WebScraper Finished Successfully!');
         })
