@@ -2,8 +2,9 @@
 REM Script to download project dependencies documentation
 
 CLS
-ECHO. && ECHO [4mDownload Documentation for Project Dependencies Script [0m
+ECHO. && ECHO [4mRunning script to download Supomation project dependency documentation[0m
 
+:: To download a file from GitHub:
 :: CALL curl https://raw.githubusercontent.com/user/repository/branch/filename
 
 IF EXIST ..\docs (
@@ -18,32 +19,35 @@ ECHO [92m  Done! [0m
 
 ECHO. && ECHO [92mDownloading Documentation for Project Dependencies... [0m
 
+REM :: Move into docs directory
+CALL cd ..\docs
+
 ECHO. && ECHO [96mAxios: [0m
-CALL curl https://raw.githubusercontent.com/axios/axios/master/README.md -o ..\docs\axios.md -#
+CALL curl https://raw.githubusercontent.com/axios/axios/master/README.md -o axios.md -#
 
 ECHO. && ECHO [96mBoxen: [0m
-CALL curl https://raw.githubusercontent.com/sindresorhus/boxen/master/readme.md -o ..\docs\boxen.md -#
+CALL curl https://raw.githubusercontent.com/sindresorhus/boxen/master/readme.md -o boxen.md -#
 
 ECHO. && ECHO [96mChalk: [0m
-CALL curl https://raw.githubusercontent.com/chalk/chalk/master/readme.md -o ..\docs\chalk.md -#
+CALL curl https://raw.githubusercontent.com/chalk/chalk/master/readme.md -o chalk.md -#
 
 ECHO. && ECHO [96mCheerio: [0m
-CALL curl https://raw.githubusercontent.com/cheeriojs/cheerio/master/Readme.md -o ..\docs\cheerio.md -#
+CALL curl https://raw.githubusercontent.com/cheeriojs/cheerio/master/Readme.md -o cheerio.md -#
 
 REM :: ECHO. && ECHO [96mDotenv: [0m
-REM :: CALL curl https://raw.githubusercontent.com/motdotla/dotenv/master/README.md -o ..\docs\dotenv.md -#
+REM :: CALL curl https://raw.githubusercontent.com/motdotla/dotenv/master/README.md -o dotenv.md -#
 
 REM :: ECHO. && ECHO [96mInquirer.js: [0m
-REM :: CALL curl https://raw.githubusercontent.com/SBoudrias/Inquirer.js/master/README.md -o ..\docs\inquirer.md -#
+REM :: CALL curl https://raw.githubusercontent.com/SBoudrias/Inquirer.js/master/README.md -o inquirer.md -#
 
 ECHO. && ECHO [96mLog-Symbols: [0m
-CALL curl https://raw.githubusercontent.com/sindresorhus/log-symbols/master/readme.md -o ..\docs\log-synbols.md -#
+CALL curl https://raw.githubusercontent.com/sindresorhus/log-symbols/master/readme.md -o log-synbols.md -#
 
 REM :: ECHO. && ECHO [96mSignale: [0m
-REM :: CALL curl https://raw.githubusercontent.com/klaussinani/signale/master/readme.md -o ..\docs\signale.md -#
+REM :: CALL curl https://raw.githubusercontent.com/klaussinani/signale/master/readme.md -o signale.md -#
 
-ECHO. && ECHO [96mWrite-Json-File: [0m
-CALL curl https://raw.githubusercontent.com/sindresorhus/write-json-file/master/readme.md -o ..\docs\write-json-file.md -#
+REM :: ECHO. && ECHO [96mWrite-Json-File: [0m
+REM :: CALL curl https://raw.githubusercontent.com/sindresorhus/write-json-file/master/readme.md -o write-json-file.md -#
 
 ECHO. && ECHO [92mDone! [0m
 
