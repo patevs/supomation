@@ -12,6 +12,8 @@
  *************/
 
 const constants = require('./constants');
+const data = require('./data');
+
 const logging = require('./utils/logging');
 const utils = require('./utils/utilities');
 const scraper = require('./utils/scraper');
@@ -77,7 +79,6 @@ const runSupomationScraper = () => {
             logging.log(); // new line
             logging.logError('Error running Supomation WebScraper: ' + e);
         });
-    // mainMenu();
 };
 
 // -------------------------------------------------------- //
@@ -95,6 +96,11 @@ const processMainMenuOption = answer => {
     switch (answer) {
         case 'run':
             runSupomationScraper();
+            break;
+        case 'view':
+            logging.log('TODO: view scraped data...');
+            data.readProductsData();
+            mainMenu();
             break;
         case 'display':
             utils.help();
@@ -129,7 +135,13 @@ const mainMenu = () => {
     const mainMenuPrompt = new Select({
         name: 'option',
         message: 'Select an option:',
-        choices: ['Run WebScraper', 'Display Help', 'Print Version', 'Quit']
+        choices: [
+            'Run WebScraper',
+            'View Scraped Products',
+            'Display Help',
+            'Print Version',
+            'Quit'
+        ]
     });
     mainMenuPrompt
         .run()
@@ -141,7 +153,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();
