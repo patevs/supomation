@@ -56,11 +56,11 @@ const saveProductData = async (fileName, productData) => {
 
 // ------------------------------------------ //
 
-const readProductData = () => {
+const readProductData = async () => {
     for (let f in files) {
         let date = files[f];
-        let path = dataDir + date;
-        let dataFiles = fs.readdirSync(path);
+        let dataPath = dataDir + date;
+        let dataFiles = fs.readdirSync(dataPath);
         console.log(dataFiles);
     }
 };
