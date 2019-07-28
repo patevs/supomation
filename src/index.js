@@ -41,14 +41,21 @@ const ALL_CATEGORIES = [
  * * FUNCTIONS *
  ***************/
 
+/**
+ * @function scrapCategory
+ * @description Scrap a given category
+ * @param { string } category - Category to scrap
+ * @param { Multispinner } spinners - Multispinners
+ * @returns { string } response data
+ */
 const scrapCategory = async (category, spinners) => {
-    // logging.log('Scraping Category: ' + category);
     const targetUrl = CATEGORY_BASE_URL + category;
     try {
         const response = await axios.get(targetUrl);
         const productData = scraper.scrapProductsFromPage(response.data);
         utils.saveProductData(category, productData);
         spinners.success(category);
+        // TODO: Return productData
         return response.data;
     } catch (error) {
         spinners.error(category);
@@ -58,11 +65,17 @@ const scrapCategory = async (category, spinners) => {
 
 // -------------------------------------------------------- //
 
+/**
+ * @function runSupomationScraper
+ * @description Runs the Supomation WebScraper
+ * @returns { void }
+ */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
     const spinners = new Multispinner(ALL_CATEGORIES, {
         preText: 'Category: '
     });
+
     scrapCategory(ALL_CATEGORIES[0], spinners);
     scrapCategory(ALL_CATEGORIES[1], spinners);
     scrapCategory(ALL_CATEGORIES[2], spinners);
@@ -74,10 +87,9 @@ const runSupomationScraper = () => {
         // does not fire in this example because m.error is called
         logging.log(); // new line
         logging.logSuccess('Supomation WebScraper Finished Successfully!');
-        // console.log('done without errors!');
     }).on('err', (e) => {
+        logging.log(); // new line
         logging.logError('Error running Supomation WebScraper: ' + e);
-        // console.log(`${e} spinner finished with an error`);
     });
     // mainMenu();
 };
