@@ -55,8 +55,9 @@ const scrapCategory = async (category, spinners) => {
  */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
+    // const CATEGORIES = [constants.ALL_CATEGORIES[0]];
     const spinners = new Multispinner(constants.ALL_CATEGORIES, {
-        preText: 'Category: '
+        preText: 'Category:'
     });
 
     scrapCategory(constants.ALL_CATEGORIES[0], spinners);
@@ -65,7 +66,7 @@ const runSupomationScraper = () => {
     scrapCategory(constants.ALL_CATEGORIES[3], spinners);
     scrapCategory(constants.ALL_CATEGORIES[4], spinners);
 
-    // do something on success/error events
+    // Handle success/error events
     spinners
         .on('success', () => {
             // does not fire if spinners.error is called

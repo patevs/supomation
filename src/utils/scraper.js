@@ -46,7 +46,7 @@ const processProduct = (productName, productData) => {
         name: productName,
         pricePer: pdetails.PricePerItem,
         priceMode: pdetails.PriceMode,
-        baseUnit: pdetails.PricePreBaseUnitText
+        baseUnit: pdetails.PricePerBaseUnitText
     };
     // Return the processed product
     return product;
