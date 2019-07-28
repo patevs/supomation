@@ -90,7 +90,7 @@ const runSupomationScraper = () => {
  * @param { string } answer - user selected option
  * @returns { void }
  */
-const processMainMenuOption = async (answer) => {
+const processMainMenuOption = async answer => {
     // Format answer
     answer = answer.split(' ')[0].toLowerCase();
     // Process all options
@@ -155,7 +155,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function () {
+(function() {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();
