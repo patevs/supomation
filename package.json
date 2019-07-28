@@ -13,7 +13,7 @@
         "start": "node src/index.js",
         "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
         "lint": "npm run prettier && eslint --fix src/**/*.js && echo. && echo Lint Completed!",
-        "test": "jest && echo Test Complete! && exit 0"
+        "test": "jest && echo. && echo Test Complete! && exit 0"
     },
     "ntl": {
         "descriptions": {
