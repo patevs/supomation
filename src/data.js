@@ -11,8 +11,7 @@
  * * IMPORTS *
  *************/
 
-// const loadJsonFile = require('load-json-file');
-
+const loadJsonFile = require('load-json-file');
 const writeJsonFile = require('write-json-file');
 
 const fs = require('fs');
@@ -54,15 +53,20 @@ const saveProductData = async (fileName, productData) => {
 
 // ------------------------------------------ //
 
-const readProductData = () => {
+const readProductData = async () => {
     var files = fs.readdirSync(dataDir);
     var file = files[0];
     let dataPath = dataDir + file;
     let dataFiles = fs.readdirSync(dataPath);
     let dataFile = dataFiles[0];
 
-    console.log(dataFile);
+    console.log(dataPath + '/' + dataFile);
 
+    let productData = await loadJsonFile(dataPath + '/' + dataFile);
+
+    console.log(productData);
+
+    return productData;
     /*
     for (let f in files) {
         let date = files[f];
