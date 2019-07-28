@@ -13,9 +13,11 @@
 
 // const loadJsonFile = require('load-json-file');
 
+const writeJsonFile = require('write-json-file');
+
 const fs = require('fs');
 
-/**************
+/***************
  * * CONSTANTS *
  ***************/
 
@@ -35,6 +37,26 @@ var files = fs.readdirSync(dataDir);
 })();
 */
 
+// ------------------------------------------ //
+
+/**
+ *  @function saveProductData
+ *  @description Save given product data to file
+ *  @param { string } fileName
+ *  @param { object } productData
+ *  @returns { void }
+ */
+// TODO: Move this into data module
+const saveProductData = async (fileName, productData) => {
+    const d = new Date();
+    const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+    const filePath = 'data/' + date + '/' + fileName + '.json';
+    // TODO: Wrap in try/catch
+    await writeJsonFile(filePath, productData);
+};
+
+// ------------------------------------------ //
+
 const readProductsData = () => {
     for (let f in files) {
         let date = files[f];
@@ -44,11 +66,12 @@ const readProductsData = () => {
     }
 };
 
-/************
+/*************
  * * EXPORTS *
  *************/
 
 module.exports = {
+    saveProductData,
     readProductsData
 };
 

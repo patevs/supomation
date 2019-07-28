@@ -16,7 +16,7 @@ const logging = require('./logging');
 
 const pjson = require('../../package.json');
 
-const writeJsonFile = require('write-json-file');
+// const writeJsonFile = require('write-json-file');
 
 /***************
  * * CONSTANTS *
@@ -75,6 +75,7 @@ const help = () => {
  *  @returns { void }
  */
 // TODO: Move this into data module
+/*
 const saveProductData = async (fileName, productData) => {
     const d = new Date();
     const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
@@ -82,6 +83,7 @@ const saveProductData = async (fileName, productData) => {
     // TODO: Wrap in try/catch
     await writeJsonFile(filePath, productData);
 };
+*/
 
 /*************
  * * EXPORTS *
@@ -90,8 +92,7 @@ const saveProductData = async (fileName, productData) => {
 module.exports = {
     quit,
     version,
-    help,
-    saveProductData
+    help
 };
 
 // EOF //
