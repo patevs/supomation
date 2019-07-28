@@ -24,7 +24,6 @@ const pjson = require('../../package.json');
 
 // Shortcut to console log
 const { log } = console;
-// const log = console.log;
 
 // Project version
 const version = pjson.version;
