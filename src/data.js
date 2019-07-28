@@ -54,30 +54,17 @@ const saveProductData = async (fileName, productData) => {
 // ------------------------------------------ //
 
 const readProductData = async () => {
-    var files = fs.readdirSync(dataDir);
-    var file = files[0];
-    let dataPath = dataDir + file;
-    let dataFiles = fs.readdirSync(dataPath);
-    let dataFile = dataFiles[0];
-
-    console.log(dataPath + '/' + dataFile);
-
-    let productData = await loadJsonFile(dataPath + '/' + dataFile);
-
-    console.log(productData);
-
+    const dates = fs.readdirSync(dataDir);
+    const date = dates[0];
+    let dataPath = dataDir + date;
+    const categoryFiles = fs.readdirSync(dataPath);
+    let categoryFile = categoryFiles[0];
+    // console.log(dataPath + '/' + dataFile);
+    let productData = await loadJsonFile(dataPath + '/' + categoryFile);
+    let product = productData[0];
+    console.log(product);
+    // console.log(productData);
     return productData;
-    /*
-    for (let f in files) {
-        let date = files[f];
-        let dataPath = dataDir + date;
-        let dataFiles = fs.readdirSync(dataPath);
-        console.log(dataFiles);
-        aProductPath = dataFiles[0];
-        break;
-    };
-    console.log(aProductPath);
-    */
 };
 
 /*************

@@ -74,6 +74,7 @@ const runSupomationScraper = () => {
             // does not fire if spinners.error is called
             logging.log(); // new line
             logging.logSuccess('Supomation WebScraper Finished Successfully!');
+            mainMenu();
         })
         .on('err', e => {
             logging.log(); // new line
@@ -98,7 +99,9 @@ const processMainMenuOption = async (answer) => {
             runSupomationScraper();
             break;
         case 'view':
+            // var data =
             await data.readProductData();
+            // logging.log(data[0]);
             mainMenu();
             break;
         case 'display':
