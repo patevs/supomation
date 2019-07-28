@@ -2,7 +2,7 @@
 REM Script to download project dependencies documentation
 
 CLS
-ECHO. && ECHO [4mRunning script to download Supomation project dependency documentation[0m
+ECHO. && ECHO [4mRunning script to download dependency documentation[0m
 
 :: To download a file from GitHub:
 :: CALL curl https://raw.githubusercontent.com/user/repository/branch/filename
