@@ -11,13 +11,15 @@
     "main": "src/index.js",
     "scripts": {
         "start": "node src/index.js",
-        "lint": "eslint --fix src/**/*.js && echo Lint Completed!",
+        "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
+        "lint": "npm run prettier && eslint --fix src/**/*.js && echo. && echo Lint Completed!",
         "test": "jest && echo Test Complete! && exit 0"
     },
     "ntl": {
         "descriptions": {
             "start": "Start Supomation CLI",
-            "lint": "Run check style linting",
+            "prettier": "Run prettier check style linting",
+            "lint": "Run eslint check style linting",
             "test": "Run Supomation tests... but currently No tests exist!"
         }
     },
@@ -65,5 +67,9 @@
                 "always"
             ]
         }
+    },
+    "prettier": {
+        "singleQuote": true,
+        "semi": true
     }
 }

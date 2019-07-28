@@ -98,7 +98,7 @@ function logTitle(msg) {
         top: 1,
         right: 11,
         bottom: 1,
-        left: 11,
+        left: 11
     };
     // Log title message
     log(boxen(titleMsg, { padding: pad }));
@@ -118,11 +118,11 @@ function logWelcome() {
     const date = new Date().toDateString();
     // Construct welcome message
     const msg =
-        heading
-        + '\nVersion: '
-        + magenta(version)
-        + '\n\n'
-        + magentaBright(date);
+        heading +
+        '\nVersion: ' +
+        magenta(version) +
+        '\n\n' +
+        magentaBright(date);
     // Log welcome message
     log(boxen(msg, { padding: 1, align: 'center' }));
     log(); // new line

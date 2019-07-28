@@ -46,7 +46,7 @@ const processProduct = (productName, productData) => {
         name: productName,
         pricePer: pdetails.PricePerItem,
         priceMode: pdetails.PriceMode,
-        baseUnit: pdetails.PricePreBaseUnitText,
+        baseUnit: pdetails.PricePreBaseUnitText
     };
     // Return the processed product
     return product;
@@ -60,7 +60,7 @@ const processProduct = (productName, productData) => {
  * @param { CheerioElement } productElem
  * @returns { string } productName
  */
-const getProductName = (productElem) => {
+const getProductName = productElem => {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
     // Get products name
@@ -77,7 +77,7 @@ const getProductName = (productElem) => {
  * @param { CheerioElement }  productElem
  * @returns { object } productData
  */
-const getProductData = (productElem) => {
+const getProductData = productElem => {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
     // Get the product's data
@@ -96,7 +96,7 @@ const getProductData = (productElem) => {
  * @param { string } pageHtmlContent
  * @returns { Array[Products] } allProducts - array of all products
  */
-const scrapProductsFromPage = (pageHtmlContent) => {
+const scrapProductsFromPage = pageHtmlContent => {
     // Array of all products to return
     let allProducts = [];
     // Load the target page HTML content into cheerio

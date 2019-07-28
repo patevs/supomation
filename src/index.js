@@ -5,7 +5,6 @@
  *  * Supomation
  */
 
-
 'use strict';
 
 /*************
@@ -83,14 +82,16 @@ const runSupomationScraper = () => {
     scrapCategory(ALL_CATEGORIES[4], spinners);
 
     // do something on success/error events
-    spinners.on('success', () => {
-        // does not fire in this example because m.error is called
-        logging.log(); // new line
-        logging.logSuccess('Supomation WebScraper Finished Successfully!');
-    }).on('err', (e) => {
-        logging.log(); // new line
-        logging.logError('Error running Supomation WebScraper: ' + e);
-    });
+    spinners
+        .on('success', () => {
+            // does not fire in this example because m.error is called
+            logging.log(); // new line
+            logging.logSuccess('Supomation WebScraper Finished Successfully!');
+        })
+        .on('err', e => {
+            logging.log(); // new line
+            logging.logError('Error running Supomation WebScraper: ' + e);
+        });
     // mainMenu();
 };
 
@@ -102,7 +103,7 @@ const runSupomationScraper = () => {
  * @param { string } answer - user selected option
  * @returns { void }
  */
-const processMainMenuOption = (answer) => {
+const processMainMenuOption = answer => {
     // Format answer
     answer = answer.split(' ')[0].toLowerCase();
     // Process all options
@@ -143,14 +144,10 @@ const mainMenu = () => {
     const mainMenuPrompt = new Select({
         name: 'option',
         message: 'Select an option:',
-        choices: [
-            'Run WebScraper',
-            'Display Help',
-            'Print Version',
-            'Quit'
-        ]
+        choices: ['Run WebScraper', 'Display Help', 'Print Version', 'Quit']
     });
-    mainMenuPrompt.run()
+    mainMenuPrompt
+        .run()
         .then(answer => processMainMenuOption(answer))
         .catch(console.error);
 };
@@ -159,7 +156,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function () {
+(function() {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();
