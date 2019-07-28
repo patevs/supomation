@@ -12,6 +12,7 @@
  * * IMPORTS *
  *************/
 
+// const assert = require('assert');
 // import assert from 'assert';
 // import supomation from "../index.ts";
 
@@ -26,5 +27,6 @@ describe('supomation', () => {
     });
 });
 */
+
 
 // EOF //
