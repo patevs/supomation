@@ -98,7 +98,6 @@ const processMainMenuOption = answer => {
             runSupomationScraper();
             break;
         case 'view':
-            logging.log('TODO: view scraped data...');
             data.readProductsData();
             mainMenu();
             break;

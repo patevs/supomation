@@ -15,11 +15,18 @@
 
 const fs = require('fs');
 
-/***************
-* * FUNCTIONS *
+/**************
+* * CONSTANTS *
 ***************/
 
-var files = fs.readdirSync('data/');
+// TODO: move this into constants module
+const dataDir = 'data/';
+
+var files = fs.readdirSync(dataDir);
+
+/**************
+* * FUNCTIONS *
+***************/
 
 /*
 (async () => {
@@ -29,7 +36,12 @@ var files = fs.readdirSync('data/');
 */
 
 const readProductsData = () => {
-    console.log(files);
+    for (let f in files) {
+        let date = files[f];
+        let path = dataDir + date;
+        let dataFiles = fs.readdirSync(path);
+        console.log(dataFiles);
+    }
 };
 
 /************

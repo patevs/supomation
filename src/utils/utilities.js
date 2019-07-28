@@ -74,6 +74,7 @@ const help = () => {
  *  @param { object } productData
  *  @returns { void }
  */
+// TODO: Move this into data module
 const saveProductData = async (fileName, productData) => {
     const d = new Date();
     const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
