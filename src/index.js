@@ -38,7 +38,7 @@ const scrapCategory = async (category, spinners) => {
     try {
         const response = await axios.get(targetUrl);
         const productData = scraper.scrapProductsFromPage(response.data);
-        utils.saveProductData(category, productData);
+        data.saveProductData(category, productData);
         spinners.success(category);
         // TODO: Return productData
         return response.data;
@@ -98,7 +98,7 @@ const processMainMenuOption = answer => {
             runSupomationScraper();
             break;
         case 'view':
-            data.readProductsData();
+            data.readProductData();
             mainMenu();
             break;
         case 'display':
@@ -152,7 +152,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();

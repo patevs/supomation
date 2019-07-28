@@ -26,7 +26,7 @@ const dataDir = 'data/';
 
 var files = fs.readdirSync(dataDir);
 
-/**************
+/***************
  * * FUNCTIONS *
  ***************/
 
@@ -46,7 +46,6 @@ var files = fs.readdirSync(dataDir);
  *  @param { object } productData
  *  @returns { void }
  */
-// TODO: Move this into data module
 const saveProductData = async (fileName, productData) => {
     const d = new Date();
     const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
@@ -57,7 +56,7 @@ const saveProductData = async (fileName, productData) => {
 
 // ------------------------------------------ //
 
-const readProductsData = () => {
+const readProductData = () => {
     for (let f in files) {
         let date = files[f];
         let path = dataDir + date;
@@ -72,7 +71,7 @@ const readProductsData = () => {
 
 module.exports = {
     saveProductData,
-    readProductsData
+    readProductData
 };
 
 // EOF //

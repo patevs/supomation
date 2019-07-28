@@ -16,8 +16,6 @@ const logging = require('./logging');
 
 const pjson = require('../../package.json');
 
-// const writeJsonFile = require('write-json-file');
-
 /***************
  * * CONSTANTS *
  ***************/
@@ -64,26 +62,6 @@ const help = () => {
     logging.logInfo(' ---- ' + logging.magenta('HELP MESSAGE') + ' ---- ');
     logging.log(); // new line
 };
-
-// ------------------------------------------ //
-
-/**
- *  @function saveProductData
- *  @description Save given product data to file
- *  @param { string } fileName
- *  @param { object } productData
- *  @returns { void }
- */
-// TODO: Move this into data module
-/*
-const saveProductData = async (fileName, productData) => {
-    const d = new Date();
-    const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
-    const filePath = 'data/' + date + '/' + fileName + '.json';
-    // TODO: Wrap in try/catch
-    await writeJsonFile(filePath, productData);
-};
-*/
 
 /*************
  * * EXPORTS *
