@@ -30,17 +30,17 @@ CALL curl https://raw.githubusercontent.com/chalk/chalk/master/readme.md -o ..\d
 ECHO. && ECHO [96mCheerio: [0m
 CALL curl https://raw.githubusercontent.com/cheeriojs/cheerio/master/Readme.md -o ..\docs\cheerio.md -#
 
-ECHO. && ECHO [96mDotenv: [0m
-CALL curl https://raw.githubusercontent.com/motdotla/dotenv/master/README.md -o ..\docs\dotenv.md -#
+REM :: ECHO. && ECHO [96mDotenv: [0m
+REM :: CALL curl https://raw.githubusercontent.com/motdotla/dotenv/master/README.md -o ..\docs\dotenv.md -#
 
-ECHO. && ECHO [96mInquirer.js: [0m
-CALL curl https://raw.githubusercontent.com/SBoudrias/Inquirer.js/master/README.md -o ..\docs\inquirer.md -#
+REM :: ECHO. && ECHO [96mInquirer.js: [0m
+REM :: CALL curl https://raw.githubusercontent.com/SBoudrias/Inquirer.js/master/README.md -o ..\docs\inquirer.md -#
 
 ECHO. && ECHO [96mLog-Symbols: [0m
 CALL curl https://raw.githubusercontent.com/sindresorhus/log-symbols/master/readme.md -o ..\docs\log-synbols.md -#
 
-ECHO. && ECHO [96mSignale: [0m
-CALL curl https://raw.githubusercontent.com/klaussinani/signale/master/readme.md -o ..\docs\signale.md -#
+REM :: ECHO. && ECHO [96mSignale: [0m
+REM :: CALL curl https://raw.githubusercontent.com/klaussinani/signale/master/readme.md -o ..\docs\signale.md -#
 
 ECHO. && ECHO [96mWrite-Json-File: [0m
 CALL curl https://raw.githubusercontent.com/sindresorhus/write-json-file/master/readme.md -o ..\docs\write-json-file.md -#
