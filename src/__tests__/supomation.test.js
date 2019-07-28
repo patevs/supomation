@@ -4,6 +4,7 @@
  *  `src/__tests__/supomation.test.js`
  *
  *  * Supomation Tests
+ *  https://devhints.io/jest
  */
 
 'use strict';
@@ -30,7 +31,9 @@ describe('My work', () => {
 });
 */
 
+// BDD style test case
 describe('Supomation', () => {
+    // `it` is an alias for `test`.
     it('Has a test', () => {
         assert(true, 'Supomation should have a test!');
     });
