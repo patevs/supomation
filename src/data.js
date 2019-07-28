@@ -16,8 +16,8 @@
 const fs = require('fs');
 
 /**************
-* * CONSTANTS *
-***************/
+ * * CONSTANTS *
+ ***************/
 
 // TODO: move this into constants module
 const dataDir = 'data/';
@@ -25,8 +25,8 @@ const dataDir = 'data/';
 var files = fs.readdirSync(dataDir);
 
 /**************
-* * FUNCTIONS *
-***************/
+ * * FUNCTIONS *
+ ***************/
 
 /*
 (async () => {
@@ -45,8 +45,8 @@ const readProductsData = () => {
 };
 
 /************
-* * EXPORTS *
-*************/
+ * * EXPORTS *
+ *************/
 
 module.exports = {
     readProductsData
