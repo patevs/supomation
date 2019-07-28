@@ -24,8 +24,6 @@ const fs = require('fs');
 // TODO: move this into constants module
 const dataDir = 'data/';
 
-var files = fs.readdirSync(dataDir);
-
 /***************
  * * FUNCTIONS *
  ***************/
@@ -56,13 +54,26 @@ const saveProductData = async (fileName, productData) => {
 
 // ------------------------------------------ //
 
-const readProductData = async () => {
+const readProductData = () => {
+    var files = fs.readdirSync(dataDir);
+    var file = files[0];
+    let dataPath = dataDir + file;
+    let dataFiles = fs.readdirSync(dataPath);
+    let dataFile = dataFiles[0];
+
+    console.log(dataFile);
+
+    /*
     for (let f in files) {
         let date = files[f];
         let dataPath = dataDir + date;
         let dataFiles = fs.readdirSync(dataPath);
         console.log(dataFiles);
-    }
+        aProductPath = dataFiles[0];
+        break;
+    };
+    console.log(aProductPath);
+    */
 };
 
 /*************
