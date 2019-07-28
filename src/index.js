@@ -11,6 +11,7 @@
  * * IMPORTS *
  *************/
 
+const constants = require('./constants');
 const logging = require('./utils/logging');
 const utils = require('./utils/utilities');
 const scraper = require('./utils/scraper');
@@ -24,10 +25,11 @@ const Multispinner = require('multispinner');
  ***************/
 
 // TODO: Create constants module
-const BASE_URL = 'https://www.ishopnewworld.co.nz';
-const CATEGORY_BASE_URL = BASE_URL + '/category/';
+// const BASE_URL = 'https://www.ishopnewworld.co.nz';
+// const CATEGORY_BASE_URL = BASE_URL + '/category/';
 
 // Array of all categories
+/*
 const ALL_CATEGORIES = [
     'fresh-foods-and-bakery',
     'chilled-frozen-and-desserts',
@@ -35,6 +37,7 @@ const ALL_CATEGORIES = [
     'personal-care',
     'kitchen-dining-and-household'
 ];
+*/
 
 /***************
  * * FUNCTIONS *
@@ -48,7 +51,7 @@ const ALL_CATEGORIES = [
  * @returns { string } response data
  */
 const scrapCategory = async (category, spinners) => {
-    const targetUrl = CATEGORY_BASE_URL + category;
+    const targetUrl = constants.CATEGORY_BASE_URL + category;
     try {
         const response = await axios.get(targetUrl);
         const productData = scraper.scrapProductsFromPage(response.data);
@@ -71,15 +74,15 @@ const scrapCategory = async (category, spinners) => {
  */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
-    const spinners = new Multispinner(ALL_CATEGORIES, {
+    const spinners = new Multispinner(constants.ALL_CATEGORIES, {
         preText: 'Category: '
     });
 
-    scrapCategory(ALL_CATEGORIES[0], spinners);
-    scrapCategory(ALL_CATEGORIES[1], spinners);
-    scrapCategory(ALL_CATEGORIES[2], spinners);
-    scrapCategory(ALL_CATEGORIES[3], spinners);
-    scrapCategory(ALL_CATEGORIES[4], spinners);
+    scrapCategory(constants.ALL_CATEGORIES[0], spinners);
+    scrapCategory(constants.ALL_CATEGORIES[1], spinners);
+    scrapCategory(constants.ALL_CATEGORIES[2], spinners);
+    scrapCategory(constants.ALL_CATEGORIES[3], spinners);
+    scrapCategory(constants.ALL_CATEGORIES[4], spinners);
 
     // do something on success/error events
     spinners
@@ -156,7 +159,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();
