@@ -18,6 +18,7 @@ const assert = require('assert');
  * * TEST CASES *
  ****************/
 
+/*
 test('adds 1 + 2 to equal 3', () => {
     expect(1 + 2).toBe(3);
 });
@@ -27,11 +28,11 @@ describe('My work', () => {
         expect(2).toEqual(2);
     });
 });
+*/
 
-
-describe('supomation', () => {
-    it('has a test', () => {
-        assert(true, 'supomation should have a test');
+describe('Supomation', () => {
+    it('Has a test', () => {
+        assert(true, 'Supomation should have a test!');
     });
 });
 
