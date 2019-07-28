@@ -12,7 +12,7 @@
     "scripts": {
         "start": "node src/index.js",
         "lint": "eslint --fix src/**/*.js && echo Lint Completed!",
-        "test": "jest && echo Error: no test specified && exit 0"
+        "test": "jest && echo Test Complete! && exit 0"
     },
     "ntl": {
         "descriptions": {
@@ -42,7 +42,8 @@
     "eslintConfig": {
         "env": {
             "es6": true,
-            "node": true
+            "node": true,
+            "jest": true
         },
         "extends": [
             "eslint:recommended",
