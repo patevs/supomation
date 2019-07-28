@@ -34,6 +34,12 @@ CALL curl https://raw.githubusercontent.com/chalk/chalk/master/readme.md -o chal
 ECHO. && ECHO [96mCheerio: [0m
 CALL curl https://raw.githubusercontent.com/cheeriojs/cheerio/master/Readme.md -o cheerio.md -#
 
+ECHO. && ECHO [96mClear: [0m
+CALL curl https://raw.githubusercontent.com/bahamas10/node-clear/master/README.md -o clear.md -#
+
+ECHO. && ECHO [96mEnquirer: [0m
+CALL curl https://raw.githubusercontent.com/enquirer/enquirer/master/README.md -o enquirer.md -#
+
 REM :: ECHO. && ECHO [96mDotenv: [0m
 REM :: CALL curl https://raw.githubusercontent.com/motdotla/dotenv/master/README.md -o dotenv.md -#
 
@@ -42,6 +48,9 @@ REM :: CALL curl https://raw.githubusercontent.com/SBoudrias/Inquirer.js/master/
 
 ECHO. && ECHO [96mLog-Symbols: [0m
 CALL curl https://raw.githubusercontent.com/sindresorhus/log-symbols/master/readme.md -o log-synbols.md -#
+
+ECHO. && ECHO [96mMultispinner: [0m
+CALL curl https://raw.githubusercontent.com/codekirei/node-multispinner/master/readme.md -o multispinner.md -#
 
 REM :: ECHO. && ECHO [96mSignale: [0m
 REM :: CALL curl https://raw.githubusercontent.com/klaussinani/signale/master/readme.md -o signale.md -#
