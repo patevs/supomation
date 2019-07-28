@@ -1,6 +1,6 @@
 # [`supomation`](https://github.com/patevs/supomation)
 
-> 25/07/2019
+> 29/07/2019
 
 ---
 
@@ -11,13 +11,13 @@
 
 ## Libraries & Packages
 
-- [`cli-table3`](https://github.com/cli-table/cli-table3)
-- [`oclif`](https://github.com/oclif/oclif)
 - [`listr`](https://github.com/samverschueren/listr)
-- [`indent-string`](https://github.com/sindresorhus/indent-string)
+- [`node-progress`](https://github.com/visionmedia/node-progress)
+- [`cli-table3`](https://github.com/cli-table/cli-table3)
 
 []()
 
+- [`oclif`](https://github.com/oclif/oclif)
 - [`nest`](https://github.com/nestjs/nest)
 - [`strapi`](https://github.com/strapi/strapi)
 - [`keystone`](https://github.com/keystonejs/keystone)
