@@ -166,7 +166,7 @@ const mainMenu = () => {
  *****************************/
 
 (function () {
-    logging.logWelcome(); // Log Supomation main welcome
+    logging.logWelcome(constants.PROJECT_VERSION); // Log Supomation main welcome
     mainMenu();
 })();
 
