@@ -51,29 +51,17 @@ const scrapCategory = async (category, spinners) => {
 
 // -------------------------------------------------------- //
 
-/**
- * @function runSupomationScraper
- * @description Runs the Supomation WebScraper
- * @returns { void }
- */
-const runSupomationScraper = () => {
-    logging.logInfo('Starting Supomation WebScraper...\n');
-
-    data.ensureDataDirExists();
-
-    // const CATEGORIES = [constants.ALL_CATEGORIES[0]];
-    /*
-    const spinners = new Multispinner(constants.ALL_CATEGORIES, {
+const scrapAllCategories = (allCategories) => {
+    const spinners = new Multispinner(allCategories, {
         preText: 'Category:'
     });
 
-    TODO: Create scrapAllCategories function
-    scrapCategory(constants.ALL_CATEGORIES[0], spinners);
-    scrapCategory(constants.ALL_CATEGORIES[1], spinners);
-    scrapCategory(constants.ALL_CATEGORIES[2], spinners);
-    scrapCategory(constants.ALL_CATEGORIES[3], spinners);
-    scrapCategory(constants.ALL_CATEGORIES[4], spinners);
-    */
+    // TODO: Put these in a loop
+    scrapCategory(allCategories[0], spinners);
+    scrapCategory(allCategories[1], spinners);
+    scrapCategory(allCategories[2], spinners);
+    scrapCategory(allCategories[3], spinners);
+    scrapCategory(allCategories[4], spinners);
 
     // Handle success/error events
     spinners
@@ -87,6 +75,21 @@ const runSupomationScraper = () => {
             logging.log(); // new line
             logging.logError('Error running Supomation WebScraper: ' + e);
         });
+};
+
+// -------------------------------------------------------- //
+
+/**
+ * @function runSupomationScraper
+ * @description Runs the Supomation WebScraper
+ * @returns { void }
+ */
+const runSupomationScraper = () => {
+    logging.logInfo('Starting Supomation WebScraper...\n');
+
+    data.ensureDataDirExists();
+
+    scrapAllCategories(constants.ALL_CATEGORIES);
 };
 
 // -------------------------------------------------------- //
