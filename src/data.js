@@ -120,25 +120,22 @@ const readProductData = () => {
 
     const categoryDir = categoryDirs[0];
 
-    const filePath = dataPath + '/' + categoryDir;
+    const productFilePath = dataPath + '/' + categoryDir;
 
-    const file = fs.readFileSync(filePath);
+    const productFile = fs.readFileSync(productFilePath);
 
-    const data = JSON.parse(file);
-
-    // console.log(data);
+    const productData = JSON.parse(productFile);
 
     // instantiate
     var table = new Table({
-        head: ['TH 1 label', 'TH 2 label']
-        , colWidths: [20, 20]
+        head: ['Product Name', 'Price', 'Quantity'],
+        colWidths: [30, 10, 10]
     });
 
-    // table is an Array, so you can `push`, `unshift`, `splice` and friends
-    table.push(
-        ['First value', 'Second value']
-        , ['First value', 'Second value']
-    );
+    for (let product in productData) {
+        let p = productData[product];
+        table.push([p.name, p.pricePer, p.priceMode]);
+    }
 
     console.log(table.toString());
 };
