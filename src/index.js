@@ -110,8 +110,7 @@ const processMainMenuOption = async answer => {
             runSupomationScraper();
             break;
         case 'view':
-            data.readProductDataNew();
-            //await data.readProductData();
+            data.readProductData();
             mainMenu();
             break;
         case 'display':
@@ -166,7 +165,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();
