@@ -116,9 +116,7 @@ const readProductData = () => {
     // data/date/category directories
     const categoryDirs = fs.readdirSync(dataPath);
 
-    const categoryDir = categoryDirs[0];
-
-    const categoryFilePath = dataPath + '/' + categoryDir;
+    const categoryFilePath = dataPath + '/' + categoryDirs[0];
 
     const categoryFile = fs.readFileSync(categoryFilePath);
 
