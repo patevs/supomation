@@ -14,13 +14,15 @@
 
 const logging = require('./logging');
 
-const pjson = require('../../package.json');
+const constants = require('../store/constants');
+
+// const pjson = require('../../package.json');
 
 /***************
  * * CONSTANTS *
  ***************/
 
-const projectVersion = pjson.version;
+// const projectVersion = pjson.version;
 
 /***************
  * * FUNCTIONS *
@@ -45,7 +47,8 @@ const quit = () => {
  */
 const version = () => {
     logging.log(); // new line
-    const msg = 'Supomation CLI version: ' + logging.magenta(projectVersion);
+    const msg =
+        'Supomation CLI version: ' + logging.magenta(constants.PROJECT_VERSION);
     logging.logInfo(msg);
     logging.log(); // new line
 };

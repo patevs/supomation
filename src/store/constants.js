@@ -7,9 +7,18 @@
 
 'use strict';
 
+/*************
+ * * IMPORTS *
+ *************/
+
+const pjson = require('../../package.json');
+
 /***************
  * * CONSTANTS *
  ***************/
+
+// Project version
+const PROJECT_VERSION = pjson.version;
 
 // Base URL target
 const BASE_URL = 'https://www.ishopnewworld.co.nz';
@@ -29,6 +38,7 @@ const ALL_CATEGORIES = [
  *************/
 
 module.exports = {
+    PROJECT_VERSION,
     CATEGORY_BASE_URL,
     ALL_CATEGORIES
 };

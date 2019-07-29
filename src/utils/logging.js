@@ -12,11 +12,13 @@
  * * IMPORTS *
  *************/
 
+const constants = require('../store/constants');
+
 const chalk = require('chalk');
 const logSymbols = require('log-symbols');
 const boxen = require('boxen');
 
-const pjson = require('../../package.json');
+// const pjson = require('../../package.json');
 
 /***************
  * * CONSTANTS *
@@ -26,7 +28,7 @@ const pjson = require('../../package.json');
 const { log } = console;
 
 // Project version
-const version = pjson.version;
+// const version = pjson.version;
 
 /***********
  * * THEME *
@@ -120,7 +122,7 @@ function logWelcome() {
     const msg =
         heading +
         '\nVersion: ' +
-        magenta(version) +
+        magenta(constants.PROJECT_VERSION) +
         '\n\n' +
         magentaBright(date);
     // Log welcome message

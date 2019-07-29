@@ -157,7 +157,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function () {
+(function() {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();
