@@ -27,9 +27,26 @@ const dataDir = 'data/';
  * * FUNCTIONS *
  ***************/
 
+/**
+ * @function dataDirExists
+ * @description Check if the data directory exists
+ * @returns { boolean }
+ */
+const dataDirExists = () => {
+    return fs.existsSync(dataDir);
+};
+
+// ------------------------------------------ //
+
+/**
+ * @function ensureDataDirExists
+ * @description Creates the data directory if non existant
+ * @returns { void }
+ */
 const ensureDataDirExists = () => {
-    const dataDirExists = fs.existsSync(dataDir);
-    console.log('Data dir exists: ' + dataDirExists);
+    if (!dataDirExists()) {
+        fs.mkdirSync(dataDir);
+    };
 };
 
 // ------------------------------------------ //

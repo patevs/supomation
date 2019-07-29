@@ -89,7 +89,7 @@ const runSupomationScraper = () => {
 
     data.ensureDataDirExists();
 
-    scrapAllCategories(constants.ALL_CATEGORIES);
+    // scrapAllCategories(constants.ALL_CATEGORIES);
 };
 
 // -------------------------------------------------------- //
