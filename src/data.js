@@ -108,7 +108,7 @@ const saveProductData = (fileName, productData) => {
 // -------------------------------------------------------- //
 
 const readProductData = () => {
-    // TODO: Checl data/date directory exists
+    // TODO: Check data/date directory exists
     const dates = fs.readdirSync(dataDir);
     const date = dates[0];
     // data/date directory
