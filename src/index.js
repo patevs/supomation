@@ -39,8 +39,7 @@ const scrapCategory = async (category, spinners) => {
     try {
         const response = await axios.get(targetUrl);
         const productData = scraper.scrapProductsFromPage(response.data);
-        // data.saveProductData(category, productData);
-        data.saveProductDataNew(category, productData);
+        data.saveProductData(category, productData);
         spinners.success(category);
         return productData;
     } catch (error) {
@@ -166,7 +165,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();

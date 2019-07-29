@@ -12,7 +12,7 @@
  *************/
 
 const loadJsonFile = require('load-json-file');
-const writeJsonFile = require('write-json-file');
+// const writeJsonFile = require('write-json-file');
 
 const fs = require('fs');
 
@@ -85,19 +85,24 @@ const getDate = () => {
 // -------------------------------------------------------- //
 
 /**
- *  @function saveProductDataNew
+ *  @function saveProductData
  *  @description Save given product data to file
  *  @param { string } fileName
  *  @param { object } productData
  *  @returns { void }
  */
-const saveProductDataNew = (fileName, productData) => {
+const saveProductData = (fileName, productData) => {
     const date = getDate();
     ensureDateDirExists(date);
     const filePath = dataDir + date + '/' + fileName + '.json';
     const data = JSON.stringify(productData, null, 4);
-    fs.writeFile(filePath, data, () => {
+    fs.writeFile(filePath, data, (err) => {
+        if (err) {
+            // console.error(err);
+            return false;
+        };
         return true;
+        // console.log("File has been created");
     });
 };
 
@@ -111,6 +116,7 @@ const saveProductDataNew = (fileName, productData) => {
  *  @returns { void }
  */
 // TODO: Refactor to use fs module
+/*
 const saveProductData = async (fileName, productData) => {
     const d = new Date();
     const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
@@ -118,6 +124,7 @@ const saveProductData = async (fileName, productData) => {
     // TODO: Wrap in try/catch
     await writeJsonFile(filePath, productData);
 };
+*/
 
 // -------------------------------------------------------- //
 
@@ -150,7 +157,6 @@ const readProductData = async () => {
  *************/
 
 module.exports = {
-    saveProductDataNew,
     saveProductData,
     readProductData
 };
