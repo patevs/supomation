@@ -19,7 +19,6 @@ const fs = require('fs');
  * * CONSTANTS *
  ***************/
 
-// TODO: move this into constants module
 const DATA_DIR = 'data/';
 
 /***************
