@@ -97,11 +97,11 @@ const saveProductData = (fileName, productData) => {
     ensureDateDirExists(date);
     const filePath = dataDir + date + '/' + fileName + '.json';
     const data = JSON.stringify(productData, null, 4);
-    fs.writeFile(filePath, data, (err) => {
+    fs.writeFile(filePath, data, err => {
         if (err) {
             // console.error(err);
             return false;
-        };
+        }
         return true;
         // console.log("File has been created");
     });
