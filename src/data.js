@@ -20,7 +20,7 @@ const fs = require('fs');
  ***************/
 
 // TODO: move this into constants module
-const dataDir = 'data/';
+const DATA_DIR = 'data/';
 
 /***************
  * * FUNCTIONS *
@@ -28,23 +28,23 @@ const dataDir = 'data/';
 
 /**
  * @function dataDirExists
- * @description Check if the data directory exists
+ * @description Check if data directory exists
  * @returns { boolean }
  */
 const dataDirExists = () => {
-    return fs.existsSync(dataDir);
+    return fs.existsSync(DATA_DIR);
 };
 
 // -------------------------------------------------------- //
 
 /**
  * @function ensureDataDirExists
- * @description Creates the data directory if non existant
+ * @description Creates data directory if non existant
  * @returns { void }
  */
 const ensureDataDirExists = () => {
     if (!dataDirExists()) {
-        fs.mkdirSync(dataDir);
+        fs.mkdirSync(DATA_DIR);
     }
 };
 
@@ -57,7 +57,7 @@ const ensureDataDirExists = () => {
  * @returns { boolean }
  */
 const dateDirExists = date => {
-    return fs.existsSync(dataDir + date);
+    return fs.existsSync(DATA_DIR + date);
 };
 
 // -------------------------------------------------------- //
@@ -71,13 +71,12 @@ const dateDirExists = date => {
 const ensureDateDirExists = date => {
     ensureDataDirExists();
     if (!dateDirExists(date)) {
-        fs.mkdirSync(dataDir + date);
+        fs.mkdirSync(DATA_DIR + date);
     }
 };
 
 // -------------------------------------------------------- //
 
-// TODO: Move this to constants module
 const getDate = () => {
     const d = new Date();
     return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
@@ -95,7 +94,7 @@ const getDate = () => {
 const saveProductData = (fileName, productData) => {
     const date = getDate();
     ensureDateDirExists(date);
-    const filePath = dataDir + date + '/' + fileName + '.json';
+    const filePath = DATA_DIR + date + '/' + fileName + '.json';
     const data = JSON.stringify(productData, null, 4);
     fs.writeFile(filePath, data, err => {
         if (err) {
@@ -110,31 +109,30 @@ const saveProductData = (fileName, productData) => {
 // -------------------------------------------------------- //
 
 const readProductData = () => {
-    // TODO: Check data/date directory exists
-    const dates = fs.readdirSync(dataDir);
+    const dates = fs.readdirSync(DATA_DIR);
     const date = dates[0];
     // data/date directory
-    let dataPath = dataDir + date;
+    let dataPath = DATA_DIR + date;
     // data/date/category directories
     const categoryDirs = fs.readdirSync(dataPath);
 
     const categoryDir = categoryDirs[0];
 
-    const productFilePath = dataPath + '/' + categoryDir;
+    const categoryFilePath = dataPath + '/' + categoryDir;
 
-    const productFile = fs.readFileSync(productFilePath);
+    const categoryFile = fs.readFileSync(categoryFilePath);
 
-    const productData = JSON.parse(productFile);
+    const categoryData = JSON.parse(categoryFile);
 
     // instantiate
     var table = new Table({
-        head: ['Product Name', 'Price', 'Quantity'],
-        colWidths: [30, 10, 10]
+        head: ['Product Name', 'Price / Quantity'],
+        colWidths: [30, 20]
     });
 
-    for (let product in productData) {
-        let p = productData[product];
-        table.push([p.name, p.pricePer, p.priceMode]);
+    for (let productData in categoryData) {
+        let p = categoryData[productData];
+        table.push([p.name, p.pricePer + '/' + p.priceMode]);
     }
 
     console.log(table.toString());
