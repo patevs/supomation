@@ -14,8 +14,6 @@
 
 const logging = require('./logging');
 
-const constants = require('../store/constants');
-
 /***************
  * * FUNCTIONS *
  ***************/
@@ -37,10 +35,10 @@ const quit = () => {
  *  @description Print the Supomation CLI version
  *  @returns { void }
  */
-const version = () => {
+const version = (projectVersion) => {
     logging.log(); // new line
     const msg =
-        'Supomation CLI version: ' + logging.magenta(constants.PROJECT_VERSION);
+        'Supomation CLI version: ' + logging.magenta(projectVersion);
     logging.logInfo(msg);
     logging.log(); // new line
 };

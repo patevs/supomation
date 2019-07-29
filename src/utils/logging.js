@@ -12,8 +12,6 @@
  * * IMPORTS *
  *************/
 
-const constants = require('../store/constants');
-
 const chalk = require('chalk');
 const logSymbols = require('log-symbols');
 const boxen = require('boxen');
@@ -109,7 +107,7 @@ function logTitle(msg) {
  *  Log the Supomation main welcome message
  * @returns { void }
  */
-function logWelcome() {
+function logWelcome(projectVersion) {
     require('clear')(); // Clear the terminal
     const heading = header('WELCOME TO SUPOMATION CLI\n');
     const date = new Date().toDateString();
@@ -117,7 +115,7 @@ function logWelcome() {
     const msg =
         heading +
         '\nVersion: ' +
-        magenta(constants.PROJECT_VERSION) +
+        magenta(projectVersion) +
         '\n\n' +
         magentaBright(date);
     // Log welcome message

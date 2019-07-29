@@ -118,7 +118,7 @@ const processMainMenuOption = async answer => {
             mainMenu();
             break;
         case 'print':
-            utils.version();
+            utils.version(constants.PROJECT_VERSION);
             mainMenu();
             break;
         case 'quit':
@@ -165,7 +165,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();
