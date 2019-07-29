@@ -20,6 +20,8 @@ const pjson = require('../../package.json');
 // Project version
 const PROJECT_VERSION = pjson.version;
 
+// https://www.ishopnewworld.co.nz/specials
+
 // Base URL target
 const BASE_URL = 'https://www.ishopnewworld.co.nz';
 const CATEGORY_BASE_URL = BASE_URL + '/category/';
