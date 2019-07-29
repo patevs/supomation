@@ -51,17 +51,21 @@ const scrapCategory = async (category, spinners) => {
 
 // -------------------------------------------------------- //
 
-const scrapAllCategories = (allCategories) => {
+/**
+ * @function scrapAllCategories
+ * @description Scrap product data from all categories
+ * @param { string[] } allCategories
+ * @returns { void }
+ */
+const scrapAllCategories = allCategories => {
     const spinners = new Multispinner(allCategories, {
         preText: 'Category:'
     });
 
-    // TODO: Put these in a loop
-    scrapCategory(allCategories[0], spinners);
-    scrapCategory(allCategories[1], spinners);
-    scrapCategory(allCategories[2], spinners);
-    scrapCategory(allCategories[3], spinners);
-    scrapCategory(allCategories[4], spinners);
+    // Scrap all categories
+    for (let category in allCategories) {
+        scrapCategory(allCategories[category], spinners);
+    }
 
     // Handle success/error events
     spinners
@@ -89,7 +93,7 @@ const runSupomationScraper = () => {
 
     data.ensureDataDirExists();
 
-    // scrapAllCategories(constants.ALL_CATEGORIES);
+    scrapAllCategories(constants.ALL_CATEGORIES);
 };
 
 // -------------------------------------------------------- //
@@ -164,7 +168,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function () {
+(function() {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();

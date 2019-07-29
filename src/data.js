@@ -46,7 +46,7 @@ const dataDirExists = () => {
 const ensureDataDirExists = () => {
     if (!dataDirExists()) {
         fs.mkdirSync(dataDir);
-    };
+    }
 };
 
 // ------------------------------------------ //
