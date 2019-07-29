@@ -7,12 +7,14 @@ ECHO. && ECHO [4mRunning script to download dependency documentation[0m
 :: To download a file from GitHub:
 :: CALL curl https://raw.githubusercontent.com/user/repository/branch/filename
 
+REM :: Remove old docs directory if exists
 IF EXIST ..\docs (
     ECHO. && ECHO [96m Deleting old docs directory... [0m
     RMDIR /S /Q ..\docs
     ECHO [92m  Done! [0m
 )
 
+REM :: Create docs directory
 ECHO. && ECHO [96m Creating docs directory... [0m
 CALL mkdir ..\docs
 ECHO [92m  Done! [0m
