@@ -110,7 +110,8 @@ const processMainMenuOption = async answer => {
             runSupomationScraper();
             break;
         case 'view':
-            await data.readProductData();
+            data.readProductDataNew();
+            //await data.readProductData();
             mainMenu();
             break;
         case 'display':

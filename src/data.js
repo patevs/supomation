@@ -11,8 +11,6 @@
  * * IMPORTS *
  *************/
 
-const loadJsonFile = require('load-json-file');
-
 const fs = require('fs');
 
 /***************
@@ -109,28 +107,24 @@ const saveProductData = (fileName, productData) => {
 
 // -------------------------------------------------------- //
 
-/*
-(async () => {
-    console.log(await loadJsonFile('foo.json'));
-    //=> {foo: true}
-})();
-*/
-
-// -------------------------------------------------------- //
-
-// TODO: Refactor to use fs module
-const readProductData = async () => {
+const readProductData = () => {
+    // TODO: Checl data/date directory exists
     const dates = fs.readdirSync(dataDir);
     const date = dates[0];
+    // data/date directory
     let dataPath = dataDir + date;
-    const categoryFiles = fs.readdirSync(dataPath);
-    let categoryFile = categoryFiles[0];
-    // console.log(dataPath + '/' + dataFile);
-    let productData = await loadJsonFile(dataPath + '/' + categoryFile);
-    let product = productData[0];
-    console.log(product);
-    // console.log(productData);
-    return productData;
+    // data/date/category directories
+    const categoryDirs = fs.readdirSync(dataPath);
+
+    const categoryDir = categoryDirs[0];
+
+    const filePath = dataPath + '/' + categoryDir;
+
+    const file = fs.readFileSync(filePath);
+
+    const data = JSON.parse(file);
+
+    console.log(data);
 };
 
 /*************
