@@ -132,7 +132,8 @@ const readProductData = () => {
 
     for (let productData in categoryData) {
         let p = categoryData[productData];
-        table.push([p.name, p.pricePer + '/' + p.priceMode]);
+        // console.log(p);
+        table.push([p.name, p.pricePer + '/' + p.priceMode + ' ' + p.quantity]);
     }
 
     console.log(table.toString());
