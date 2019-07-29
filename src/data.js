@@ -36,7 +36,7 @@ const dataDirExists = () => {
     return fs.existsSync(dataDir);
 };
 
-// ------------------------------------------ //
+// -------------------------------------------------------- //
 
 /**
  * @function ensureDataDirExists
@@ -49,7 +49,7 @@ const ensureDataDirExists = () => {
     }
 };
 
-// ------------------------------------------ //
+// -------------------------------------------------------- //
 
 /**
  *  @function saveProductData
@@ -67,7 +67,7 @@ const saveProductData = async (fileName, productData) => {
     await writeJsonFile(filePath, productData);
 };
 
-// ------------------------------------------ //
+// -------------------------------------------------------- //
 
 /*
 (async () => {
@@ -76,7 +76,7 @@ const saveProductData = async (fileName, productData) => {
 })();
 */
 
-// ------------------------------------------ //
+// -------------------------------------------------------- //
 
 // TODO: Refactor to use fs module
 const readProductData = async () => {
