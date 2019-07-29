@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- *  `src/constants.js`
+ *  `src/store/constants.js`
  *
  *  * Supomation Contants
  */
@@ -11,6 +11,7 @@
  * * CONSTANTS *
  ***************/
 
+// Base URL target
 const BASE_URL = 'https://www.ishopnewworld.co.nz';
 const CATEGORY_BASE_URL = BASE_URL + '/category/';
 

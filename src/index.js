@@ -11,7 +11,8 @@
  * * IMPORTS *
  *************/
 
-const constants = require('./constants');
+const constants = require('./store/constants');
+
 const data = require('./data');
 
 const logging = require('./utils/logging');
@@ -132,6 +133,7 @@ const processMainMenuOption = async answer => {
  * @description Display the supomation main menu prompt to the user
  * @returns { void }
  */
+// TODO: Move this into seperate module
 const mainMenu = () => {
     logging.logTitle('MAIN MENU');
     const mainMenuPrompt = new Select({
@@ -155,7 +157,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();

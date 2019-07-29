@@ -43,6 +43,7 @@ const dataDir = 'data/';
  *  @param { object } productData
  *  @returns { void }
  */
+// TODO: Refactor to use fs module
 const saveProductData = async (fileName, productData) => {
     const d = new Date();
     const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
@@ -53,6 +54,7 @@ const saveProductData = async (fileName, productData) => {
 
 // ------------------------------------------ //
 
+// TODO: Refactor to use fs module
 const readProductData = async () => {
     const dates = fs.readdirSync(dataDir);
     const date = dates[0];
