@@ -39,10 +39,10 @@ const scrapCategory = async (category, spinners) => {
     try {
         const response = await axios.get(targetUrl);
         const productData = scraper.scrapProductsFromPage(response.data);
-        data.saveProductData(category, productData);
+        // data.saveProductData(category, productData);
+        data.saveProductDataNew(category, productData);
         spinners.success(category);
-        // TODO: Return productData
-        return response.data;
+        return productData;
     } catch (error) {
         spinners.error(category);
         logging.logError(error);
@@ -54,7 +54,7 @@ const scrapCategory = async (category, spinners) => {
 /**
  * @function scrapAllCategories
  * @description Scrap product data from all categories
- * @param { string[] } allCategories
+ * @param { string[] } allCategories - Array of all categories
  * @returns { void }
  */
 const scrapAllCategories = allCategories => {
@@ -90,8 +90,6 @@ const scrapAllCategories = allCategories => {
  */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
-
-    data.ensureDataDirExists();
 
     scrapAllCategories(constants.ALL_CATEGORIES);
 };
@@ -168,7 +166,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function () {
+(function() {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();

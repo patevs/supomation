@@ -52,6 +52,58 @@ const ensureDataDirExists = () => {
 // -------------------------------------------------------- //
 
 /**
+ * @function dateDirExists
+ * @description Check if the date/date directory exists
+ * @returns { boolean }
+ */
+const dateDirExists = date => {
+    return fs.existsSync(dataDir + date);
+};
+
+// -------------------------------------------------------- //
+
+/**
+ * @function ensureDateDirExists
+ * @description Creates the data/date directory if non existant
+ * @returns { void }
+ */
+const ensureDateDirExists = date => {
+    ensureDataDirExists();
+    if (!dateDirExists(date)) {
+        fs.mkdirSync(dataDir + date);
+    }
+};
+
+// -------------------------------------------------------- //
+
+// TODO: Move this to constants module
+const getDate = () => {
+    const d = new Date();
+    return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+};
+
+// -------------------------------------------------------- //
+
+/**
+ *  @function saveProductDataNew
+ *  @description Save given product data to file
+ *  @param { string } fileName
+ *  @param { object } productData
+ *  @returns { void }
+ */
+const saveProductDataNew = (fileName, productData) => {
+    const date = getDate();
+    ensureDateDirExists(date);
+    const filePath = dataDir + date + '/' + fileName + '.json';
+    const data = JSON.stringify(productData, null, 4);
+    fs.writeFile(filePath, data, () => {
+        return true;
+    });
+};
+
+// -------------------------------------------------------- //
+
+/**
  *  @function saveProductData
  *  @description Save given product data to file
  *  @param { string } fileName
@@ -98,7 +150,7 @@ const readProductData = async () => {
  *************/
 
 module.exports = {
-    ensureDataDirExists,
+    saveProductDataNew,
     saveProductData,
     readProductData
 };
