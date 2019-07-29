@@ -51,15 +51,6 @@ const ensureDataDirExists = () => {
 
 // ------------------------------------------ //
 
-/*
-(async () => {
-    console.log(await loadJsonFile('foo.json'));
-    //=> {foo: true}
-})();
-*/
-
-// ------------------------------------------ //
-
 /**
  *  @function saveProductData
  *  @description Save given product data to file
@@ -75,6 +66,15 @@ const saveProductData = async (fileName, productData) => {
     // TODO: Wrap in try/catch
     await writeJsonFile(filePath, productData);
 };
+
+// ------------------------------------------ //
+
+/*
+(async () => {
+    console.log(await loadJsonFile('foo.json'));
+    //=> {foo: true}
+})();
+*/
 
 // ------------------------------------------ //
 
