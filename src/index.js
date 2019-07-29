@@ -58,16 +58,22 @@ const scrapCategory = async (category, spinners) => {
  */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
+
+    data.ensureDataDirExists();
+
     // const CATEGORIES = [constants.ALL_CATEGORIES[0]];
+    /*
     const spinners = new Multispinner(constants.ALL_CATEGORIES, {
         preText: 'Category:'
     });
 
+    TODO: Create scrapAllCategories function
     scrapCategory(constants.ALL_CATEGORIES[0], spinners);
     scrapCategory(constants.ALL_CATEGORIES[1], spinners);
     scrapCategory(constants.ALL_CATEGORIES[2], spinners);
     scrapCategory(constants.ALL_CATEGORIES[3], spinners);
     scrapCategory(constants.ALL_CATEGORIES[4], spinners);
+    */
 
     // Handle success/error events
     spinners
@@ -100,9 +106,7 @@ const processMainMenuOption = async answer => {
             runSupomationScraper();
             break;
         case 'view':
-            // var data =
             await data.readProductData();
-            // logging.log(data[0]);
             mainMenu();
             break;
         case 'display':
@@ -157,7 +161,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(); // Log Supomation main welcome
     mainMenu();
 })();

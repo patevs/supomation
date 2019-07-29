@@ -27,6 +27,13 @@ const dataDir = 'data/';
  * * FUNCTIONS *
  ***************/
 
+const ensureDataDirExists = () => {
+    const dataDirExists = fs.existsSync(dataDir);
+    console.log('Data dir exists: ' + dataDirExists);
+};
+
+// ------------------------------------------ //
+
 /*
 (async () => {
     console.log(await loadJsonFile('foo.json'));
@@ -74,6 +81,7 @@ const readProductData = async () => {
  *************/
 
 module.exports = {
+    ensureDataDirExists,
     saveProductData,
     readProductData
 };
