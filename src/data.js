@@ -12,7 +12,6 @@
  *************/
 
 const loadJsonFile = require('load-json-file');
-// const writeJsonFile = require('write-json-file');
 
 const fs = require('fs');
 
@@ -54,6 +53,7 @@ const ensureDataDirExists = () => {
 /**
  * @function dateDirExists
  * @description Check if the date/date directory exists
+ * @param { string } date
  * @returns { boolean }
  */
 const dateDirExists = date => {
@@ -65,6 +65,7 @@ const dateDirExists = date => {
 /**
  * @function ensureDateDirExists
  * @description Creates the data/date directory if non existant
+ * @param { string } date
  * @returns { void }
  */
 const ensureDateDirExists = date => {
@@ -105,26 +106,6 @@ const saveProductData = (fileName, productData) => {
         // console.log("File has been created");
     });
 };
-
-// -------------------------------------------------------- //
-
-/**
- *  @function saveProductData
- *  @description Save given product data to file
- *  @param { string } fileName
- *  @param { object } productData
- *  @returns { void }
- */
-// TODO: Refactor to use fs module
-/*
-const saveProductData = async (fileName, productData) => {
-    const d = new Date();
-    const date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
-    const filePath = 'data/' + date + '/' + fileName + '.json';
-    // TODO: Wrap in try/catch
-    await writeJsonFile(filePath, productData);
-};
-*/
 
 // -------------------------------------------------------- //
 
