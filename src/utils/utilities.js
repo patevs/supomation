@@ -35,10 +35,9 @@ const quit = () => {
  *  @description Print the Supomation CLI version
  *  @returns { void }
  */
-const version = (projectVersion) => {
+const version = projectVersion => {
     logging.log(); // new line
-    const msg =
-        'Supomation CLI version: ' + logging.magenta(projectVersion);
+    const msg = 'Supomation CLI version: ' + logging.magenta(projectVersion);
     logging.logInfo(msg);
     logging.log(); // new line
 };
