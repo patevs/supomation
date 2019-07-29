@@ -33,6 +33,7 @@
         "chalk": "^2.4.2",
         "cheerio": "^1.0.0-rc.3",
         "clear": "^0.1.0",
+        "cli-table3": "^0.5.1",
         "enquirer": "^2.3.1",
         "log-symbols": "^3.0.0",
         "multispinner": "^0.2.1"
