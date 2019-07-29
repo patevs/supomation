@@ -36,8 +36,7 @@
         "enquirer": "^2.3.1",
         "load-json-file": "^6.2.0",
         "log-symbols": "^3.0.0",
-        "multispinner": "^0.2.1",
-        "write-json-file": "^4.1.1"
+        "multispinner": "^0.2.1"
     },
     "devDependencies": {
         "eslint": "^6.1.0",
