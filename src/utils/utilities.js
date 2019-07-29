@@ -16,14 +16,6 @@ const logging = require('./logging');
 
 const constants = require('../store/constants');
 
-// const pjson = require('../../package.json');
-
-/***************
- * * CONSTANTS *
- ***************/
-
-// const projectVersion = pjson.version;
-
 /***************
  * * FUNCTIONS *
  ***************/

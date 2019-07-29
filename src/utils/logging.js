@@ -18,17 +18,12 @@ const chalk = require('chalk');
 const logSymbols = require('log-symbols');
 const boxen = require('boxen');
 
-// const pjson = require('../../package.json');
-
 /***************
  * * CONSTANTS *
  ***************/
 
 // Shortcut to console log
 const { log } = console;
-
-// Project version
-// const version = pjson.version;
 
 /***********
  * * THEME *
