@@ -14,6 +14,7 @@
 - [`listr`](https://github.com/samverschueren/listr)
 - [`node-progress`](https://github.com/visionmedia/node-progress)
 - [`cli-table3`](https://github.com/cli-table/cli-table3)
+- [`apisauce`](https://github.com/infinitered/apisauce)
 
 []()
 
