@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- *	`src/utils/scraper.js`
+ *	`src/scraper/scraper.js`
  *
- *	* Supomation CLI Scraper Helper Functions
+ *	* Supomation Scraper
  */
 
 'use strict';
