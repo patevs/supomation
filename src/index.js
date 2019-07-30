@@ -12,12 +12,11 @@
  *************/
 
 const constants = require('./constants');
-
 const data = require('./data');
+const scraper = require('./scraper');
 
 const logging = require('./utils/logging');
 const utils = require('./utils/utilities');
-const scraper = require('./utils/scraper');
 
 const axios = require('axios');
 const { Select } = require('enquirer');
@@ -165,7 +164,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(constants.PROJECT_VERSION); // Log Supomation main welcome
     mainMenu();
 })();
