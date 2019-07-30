@@ -11,7 +11,7 @@
  * * IMPORTS *
  *************/
 
-const pjson = require('../../package.json');
+const pjson = require('../package.json');
 
 /***************
  * * CONSTANTS *
