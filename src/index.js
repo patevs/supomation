@@ -13,7 +13,8 @@
 
 const constants = require('./constants');
 const data = require('./data');
-const scraper = require('./scraper');
+
+const scraper = require('./scraper/scraper');
 
 const logging = require('./utils/logging');
 const utils = require('./utils/utilities');
