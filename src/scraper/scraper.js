@@ -12,6 +12,8 @@
  * * IMPORTS *
  *************/
 
+const selectors = require('./selectors');
+
 // JQuery Implementation
 const cheerio = require('cheerio');
 
@@ -20,10 +22,12 @@ const cheerio = require('cheerio');
  ***************/
 
 // Element Selectors
+/*
 const PRODUCT_SELECTOR = '.fs-product-card';
 const PRODUCT_DATA_SELECTOR = PRODUCT_SELECTOR + '__footer-container';
 const PRODUCT_NAME_SELECTOR = '.u-p2';
 const PRODUCT_QUANTITY_SELECTOR = '.u-p3';
+*/
 
 /**********************
  * * HELPER FUNCTIONS *
@@ -67,7 +71,7 @@ const getProductQuantity = productElem => {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
     // Get products quantity
-    const pquantity = $(PRODUCT_QUANTITY_SELECTOR).text();
+    const pquantity = $(selectors.PRODUCT_QUANTITY_SELECTOR).text();
     // Remove whitespace and return the result
     return pquantity.trim();
 };
@@ -84,7 +88,7 @@ const getProductName = productElem => {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
     // Get products name
-    const pname = $(PRODUCT_NAME_SELECTOR).text();
+    const pname = $(selectors.PRODUCT_NAME_SELECTOR).text();
     // Remove whitespace and return the result
     return pname.trim();
 };
@@ -101,7 +105,7 @@ const getProductData = productElem => {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
     // Get the product's data
-    const pdata = $(PRODUCT_DATA_SELECTOR).attr('data-options');
+    const pdata = $(selectors.PRODUCT_DATA_SELECTOR).attr('data-options');
     // Parse product data as JSON and return the result
     return JSON.parse(pdata);
 };
@@ -122,10 +126,9 @@ const scrapProductsFromPage = pageHtmlContent => {
     // Load the target page HTML content into cheerio
     const $ = cheerio.load(pageHtmlContent);
     // Select all products from target page
-    const productElems = $(PRODUCT_SELECTOR);
-    const numProducts = productElems.length;
+    const productElems = $(selectors.PRODUCT_SELECTOR);
     // Iterate over all products
-    for (let i = 0; i < numProducts; i++) {
+    for (let i = 0; i < productElems.length; i++) {
         // Get the current product element
         const productElem = productElems[i];
         // Get the name of the current product
