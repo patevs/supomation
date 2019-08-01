@@ -23,6 +23,7 @@ const utils = require('./utils/utilities');
 const { Select } = require('enquirer');
 // const Multispinner = require('multispinner');
 // const Listr = require('listr');
+// const { Observable } = require('rxjs');
 
 /***************
  * * FUNCTIONS *
@@ -93,22 +94,6 @@ const scrapSpecials = () => {
     axios.get(targetUrl).then(function (response) {
         const productData = scraper.scrapProductsFromPage(response.data);
         return productData;
-    });
-};
-*/
-
-// -------------------------------------------------------- //
-
-/*
-const scraperTasks = () => {
-    const tasks = new Listr([
-        {
-            title: 'Scrap Specials',
-            task: scrapSpecials,
-        }
-    ]);
-    tasks.run().catch(err => {
-        console.error(err);
     });
 };
 */
@@ -200,7 +185,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function () {
+(function() {
     logging.logWelcome(constants.PROJECT_VERSION); // Log Supomation main welcome
     mainMenu();
 })();
