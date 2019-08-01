@@ -13,7 +13,7 @@
     },
     "main": "src/index.js",
     "scripts": {
-        "clean": "trash node_modules",
+        "clean": "trash node_modules docs",
         "start": "node src/index.js",
         "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
         "lint": "npm run prettier && eslint --fix src/**/*.js && echo. && echo Lint Completed!",
@@ -22,7 +22,7 @@
     },
     "ntl": {
         "descriptions": {
-            "clean": "Deletes node_modules directory. Requires trash-cli to be installed globally",
+            "clean": "Deletes node_modules and docs directories. Requires trash-cli to be installed globally",
             "start": "Start Supomation CLI",
             "prettier": "Run prettier check style linting",
             "lint": "Run eslint check style linting",
