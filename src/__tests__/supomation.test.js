@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  *  `src/__tests__/supomation.test.js`
  *

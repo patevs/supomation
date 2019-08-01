@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  *	`src/utils/utilities.js`
  *
@@ -26,7 +24,8 @@ const logging = require('./logging');
 const quit = () => {
     logging.log(); // new line
     logging.logError('Quitting Supomation CLI...');
-    process.exit(0);
+    // process.exit(0);
+    throw new Error('Quitting Supomation CLI...');
 };
 
 // ------------------------------------------ //

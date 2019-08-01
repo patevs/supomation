@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  *	`src/scraper/scraper.js`
  *

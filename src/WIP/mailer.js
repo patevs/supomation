@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  *  `src/WIP/mailer.js`
  */
