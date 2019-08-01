@@ -84,12 +84,10 @@ const scrapAllCategories = allCategories => {
 
 const scrapSpecials = () => {
     const targetUrl = constants.SPECIALS_BASE_URL;
-    axios
-        .get(targetUrl)
-        .then(function (response) {
-            const productData = scraper.scrapProductsFromPage(response.data);
-            return productData;
-        });
+    axios.get(targetUrl).then(function(response) {
+        const productData = scraper.scrapProductsFromPage(response.data);
+        return productData;
+    });
 };
 
 // -------------------------------------------------------- //
@@ -178,7 +176,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function () {
+(function() {
     logging.logWelcome(constants.PROJECT_VERSION); // Log Supomation main welcome
     mainMenu();
 })();
