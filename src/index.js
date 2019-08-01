@@ -14,14 +14,14 @@
 const constants = require('./constants');
 const data = require('./data');
 
-const scraper = require('./scraper/scraper');
+// const scraper = require('./scraper/scraper');
 
 const logging = require('./utils/logging');
 const utils = require('./utils/utilities');
 
-const axios = require('axios');
+// const axios = require('axios');
 const { Select } = require('enquirer');
-const Multispinner = require('multispinner');
+// const Multispinner = require('multispinner');
 // const Listr = require('listr');
 
 /***************
@@ -35,6 +35,7 @@ const Multispinner = require('multispinner');
  * @param { Multispinner } spinners - Multispinners
  * @returns { string } response data
  */
+/*
 const scrapCategory = async (category, spinners) => {
     const targetUrl = constants.CATEGORY_BASE_URL + category;
     try {
@@ -48,6 +49,7 @@ const scrapCategory = async (category, spinners) => {
         logging.logError(error);
     }
 };
+*/
 
 // -------------------------------------------------------- //
 
@@ -57,6 +59,7 @@ const scrapCategory = async (category, spinners) => {
  * @param { string[] } allCategories - Array of all categories
  * @returns { void }
  */
+/*
 const scrapAllCategories = allCategories => {
     const spinners = new Multispinner(allCategories, {
         preText: 'Category:'
@@ -80,16 +83,19 @@ const scrapAllCategories = allCategories => {
             logging.logError('Error running Supomation WebScraper: ' + e);
         });
 };
+*/
 
 // -------------------------------------------------------- //
 
+/*
 const scrapSpecials = () => {
     const targetUrl = constants.SPECIALS_BASE_URL;
-    axios.get(targetUrl).then(function(response) {
+    axios.get(targetUrl).then(function (response) {
         const productData = scraper.scrapProductsFromPage(response.data);
         return productData;
     });
 };
+*/
 
 // -------------------------------------------------------- //
 
@@ -114,9 +120,9 @@ const scraperTasks = () => {
  */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
-    const specials = scrapSpecials();
-    data.saveProductData('specials', specials);
-    scrapAllCategories(constants.ALL_CATEGORIES);
+    // const specials = scrapSpecials();
+    // data.saveProductData('specials', specials);
+    // scrapAllCategories(constants.ALL_CATEGORIES);
 };
 
 // -------------------------------------------------------- //
@@ -127,7 +133,7 @@ const runSupomationScraper = () => {
  * @param { string } answer - user selected option
  * @returns { void }
  */
-const processMainMenuOption = async answer => {
+const processMainMenuOption = answer => {
     // Format answer
     answer = answer.split(' ')[0].toLowerCase();
     // Process all options
