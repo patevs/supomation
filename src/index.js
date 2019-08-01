@@ -119,10 +119,12 @@ const scraperTasks = () => {
  * @returns { void }
  */
 const runSupomationScraper = () => {
+    logging.log(); // new line
     logging.logInfo('Starting Supomation WebScraper...\n');
     // const specials = scrapSpecials();
     // data.saveProductData('specials', specials);
     // scrapAllCategories(constants.ALL_CATEGORIES);
+    logging.logSuccess('Supomation WebScraper Finished Successfully!');
 };
 
 // -------------------------------------------------------- //
