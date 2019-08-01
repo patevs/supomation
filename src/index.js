@@ -107,7 +107,9 @@ const scraperTasks = () => {
             task: scrapSpecials,
         }
     ]);
-    tasks.run();
+    tasks.run().catch(err => {
+        console.error(err);
+    });
 };
 */
 
@@ -198,7 +200,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(constants.PROJECT_VERSION); // Log Supomation main welcome
     mainMenu();
 })();
