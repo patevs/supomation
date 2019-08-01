@@ -82,6 +82,12 @@ CALL curl https://raw.githubusercontent.com/eslint/eslint/master/README.md -o es
 ECHO. && ECHO [96m - eslint-config-prettier - [0m
 CALL curl https://raw.githubusercontent.com/prettier/eslint-config-prettier/master/README.md -o eslint-config-prettier.md -#
 
+ECHO. && ECHO [96m - eslint-plugin-jest - [0m
+CALL curl https://raw.githubusercontent.com/jest-community/eslint-plugin-jest/master/README.md -o eslint-plugin-jest.md -#
+
+ECHO. && ECHO [96m - eslint-plugin-node - [0m
+CALL curl https://raw.githubusercontent.com/mysticatea/eslint-plugin-node/master/README.md -o eslint-plugin-node.md -#
+
 ECHO. && ECHO [96m - eslint-plugin-prettier - [0m
 CALL curl https://raw.githubusercontent.com/prettier/eslint-plugin-prettier/master/README.md -o eslint-plugin-prettier.md -#
 
