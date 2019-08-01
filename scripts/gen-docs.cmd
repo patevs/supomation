@@ -71,23 +71,24 @@ REM :: CALL curl https://raw.githubusercontent.com/klaussinani/signale/master/re
 REM :: ECHO. && ECHO [96mWrite-Json-File: [0m
 REM :: CALL curl https://raw.githubusercontent.com/sindresorhus/write-json-file/master/readme.md -o write-json-file.md -#
 
-GOTO :EOF
-
 ECHO. && ECHO [92mDownloading Documentation for Project Development Dependencies... [0m
 
-ECHO. && ECHO [96meslint: [0m
+REM :: Move into docs\dev-dependencies directory
+CALL cd ..\dev-dependencies
+
+ECHO. && ECHO [96m - eslint - [0m
 CALL curl https://raw.githubusercontent.com/eslint/eslint/master/README.md -o eslint.md -#
 
-ECHO. && ECHO [96meslint-config-prettier: [0m
+ECHO. && ECHO [96m - eslint-config-prettier - [0m
 CALL curl https://raw.githubusercontent.com/prettier/eslint-config-prettier/master/README.md -o eslint-config-prettier.md -#
 
-ECHO. && ECHO [96meslint-plugin-prettier: [0m
+ECHO. && ECHO [96m - eslint-plugin-prettier - [0m
 CALL curl https://raw.githubusercontent.com/prettier/eslint-plugin-prettier/master/README.md -o eslint-plugin-prettier.md -#
 
-ECHO. && ECHO [96mjest: [0m
+ECHO. && ECHO [96m - jest - [0m
 CALL curl https://raw.githubusercontent.com/facebook/jest/master/README.md -o jest.md -#
 
-ECHO. && ECHO [96mprettier: [0m
+ECHO. && ECHO [96m - prettier - [0m
 CALL curl https://raw.githubusercontent.com/prettier/prettier/master/README.md -o prettier.md -#
 
 ECHO. && ECHO [92mDone! [0m
