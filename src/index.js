@@ -82,6 +82,19 @@ const scrapAllCategories = allCategories => {
 
 // -------------------------------------------------------- //
 
+const scrapSpecials = () => {
+    const targetUrl = constants.SPECIALS_BASE_URL;
+    axios
+        .get(targetUrl)
+        .then(function (response) {
+            const productData = scraper.scrapProductsFromPage(response.data);
+            data.saveProductData('specials', productData);
+            return productData;
+        });
+};
+
+// -------------------------------------------------------- //
+
 /**
  * @function runSupomationScraper
  * @description Runs the Supomation WebScraper
@@ -89,8 +102,8 @@ const scrapAllCategories = allCategories => {
  */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
-
-    scrapAllCategories(constants.ALL_CATEGORIES);
+    scrapSpecials();
+    // scrapAllCategories(constants.ALL_CATEGORIES);
 };
 
 // -------------------------------------------------------- //
@@ -165,7 +178,7 @@ const mainMenu = () => {
  * * APPLICATION ENTRY POINT *
  *****************************/
 
-(function() {
+(function () {
     logging.logWelcome(constants.PROJECT_VERSION); // Log Supomation main welcome
     mainMenu();
 })();
