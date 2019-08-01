@@ -39,6 +39,9 @@ CALL curl https://raw.githubusercontent.com/cheeriojs/cheerio/master/Readme.md -
 ECHO. && ECHO [96mClear: [0m
 CALL curl https://raw.githubusercontent.com/bahamas10/node-clear/master/README.md -o clear.md -#
 
+ECHO. && ECHO [96mCLI-Table3: [0m
+CALL curl https://raw.githubusercontent.com/cli-table/cli-table3/master/README.md -o cli-table3.md -#
+
 ECHO. && ECHO [96mEnquirer: [0m
 CALL curl https://raw.githubusercontent.com/enquirer/enquirer/master/README.md -o enquirer.md -#
 
@@ -47,6 +50,9 @@ REM :: CALL curl https://raw.githubusercontent.com/motdotla/dotenv/master/README
 
 REM :: ECHO. && ECHO [96mInquirer.js: [0m
 REM :: CALL curl https://raw.githubusercontent.com/SBoudrias/Inquirer.js/master/README.md -o inquirer.md -#
+
+ECHO. && ECHO [96mListr: [0m
+CALL curl https://raw.githubusercontent.com/SamVerschueren/listr/master/readme.md -o listr.md -#
 
 ECHO. && ECHO [96mLog-Symbols: [0m
 CALL curl https://raw.githubusercontent.com/sindresorhus/log-symbols/master/readme.md -o log-synbols.md -#
