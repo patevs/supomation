@@ -28,7 +28,6 @@
         }
     },
     "dependencies": {
-        "@samverschueren/stream-to-observable": "^0.3.0",
         "axios": "^0.19.0",
         "boxen": "^4.1.0",
         "chalk": "^2.4.2",
@@ -36,7 +35,6 @@
         "clear": "^0.1.0",
         "cli-table3": "^0.5.1",
         "enquirer": "^2.3.1",
-        "listr": "^0.14.3",
         "log-symbols": "^3.0.0",
         "multispinner": "^0.2.1"
     },
