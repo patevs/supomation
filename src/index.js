@@ -22,6 +22,7 @@ const utils = require('./utils/utilities');
 const axios = require('axios');
 const { Select } = require('enquirer');
 const Multispinner = require('multispinner');
+// const Listr = require('listr');
 
 /***************
  * * FUNCTIONS *
@@ -92,6 +93,20 @@ const scrapSpecials = () => {
 
 // -------------------------------------------------------- //
 
+/*
+const scraperTasks = () => {
+    const tasks = new Listr([
+        {
+            title: 'Scrap Specials',
+            task: scrapSpecials,
+        }
+    ]);
+    tasks.run();
+};
+*/
+
+// -------------------------------------------------------- //
+
 /**
  * @function runSupomationScraper
  * @description Runs the Supomation WebScraper
@@ -99,9 +114,9 @@ const scrapSpecials = () => {
  */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
-    // const specials = scrapSpecials();
-    // data.saveProductData('specials', specials);
-    // scrapAllCategories(constants.ALL_CATEGORIES);
+    const specials = scrapSpecials();
+    data.saveProductData('specials', specials);
+    scrapAllCategories(constants.ALL_CATEGORIES);
 };
 
 // -------------------------------------------------------- //
@@ -152,7 +167,6 @@ const processMainMenuOption = async answer => {
  * @description Display the supomation main menu prompt to the user
  * @returns { void }
  */
-// TODO: Move this into seperate module
 const mainMenu = () => {
     logging.logTitle('MAIN MENU');
     const mainMenuPrompt = new Select({
