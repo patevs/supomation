@@ -22,7 +22,7 @@ const utils = require('./utils/utilities');
 const axios = require('axios');
 const { Select } = require('enquirer');
 const Multispinner = require('multispinner');
-// const Listr = require('listr');
+const Listr = require('listr');
 
 /***************
  * * FUNCTIONS *
@@ -95,6 +95,19 @@ const scrapSpecials = () => {
 
 // -------------------------------------------------------- //
 
+const runTasks = () => {
+    logging.logInfo("Running Tasks...");
+    const tasks = new Listr([
+        {
+            title: 'Task 1',
+            task: () => 'Foo'
+        }
+    ]);
+    tasks.run();
+};
+
+// -------------------------------------------------------- //
+
 /**
  * @function runSupomationScraper
  * @description Runs the Supomation WebScraper
@@ -102,8 +115,9 @@ const scrapSpecials = () => {
  */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
-    const specials = scrapSpecials();
-    data.saveProductData('specials', specials);
+    runTasks();
+    // const specials = scrapSpecials();
+    // data.saveProductData('specials', specials);
     // scrapAllCategories(constants.ALL_CATEGORIES);
 };
 
