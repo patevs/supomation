@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- *  `src/store/constants.js`
+ *  `src/constants.js`
  *
  *  * Supomation Contants
  */
@@ -17,12 +17,9 @@ const pjson = require('../package.json');
  * * CONSTANTS *
  ***************/
 
-// Project version
-const PROJECT_VERSION = pjson.version;
-
 // Base URL target
 const BASE_URL = 'https://www.ishopnewworld.co.nz';
-// const SPECIALS_BASE_URL = BASE_URL + '/specials';
+const SPECIALS_BASE_URL = BASE_URL + '/specials';
 const CATEGORY_BASE_URL = BASE_URL + '/category/';
 
 // Array of all categories
@@ -39,7 +36,8 @@ const ALL_CATEGORIES = [
  *************/
 
 module.exports = {
-    PROJECT_VERSION,
+    PROJECT_VERSION: pjson.version,
+    SPECIALS_BASE_URL,
     CATEGORY_BASE_URL,
     ALL_CATEGORIES
 };
