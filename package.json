@@ -8,6 +8,9 @@
         "type": "git",
         "url": "git+https://github.com/patevs/supomation.git"
     },
+    "engines": {
+        "node": ">=12.7.0"
+    },
     "main": "src/index.js",
     "scripts": {
         "clean": "trash node_modules",
