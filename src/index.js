@@ -88,7 +88,6 @@ const scrapSpecials = () => {
         .get(targetUrl)
         .then(function (response) {
             const productData = scraper.scrapProductsFromPage(response.data);
-            data.saveProductData('specials', productData);
             return productData;
         });
 };
@@ -102,7 +101,8 @@ const scrapSpecials = () => {
  */
 const runSupomationScraper = () => {
     logging.logInfo('Starting Supomation WebScraper...\n');
-    scrapSpecials();
+    const specials = scrapSpecials();
+    data.saveProductData('specials', specials);
     // scrapAllCategories(constants.ALL_CATEGORIES);
 };
 
