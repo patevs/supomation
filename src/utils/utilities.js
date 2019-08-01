@@ -1,7 +1,7 @@
 /**
  *	`src/utils/utilities.js`
  *
- *	* Supomation CLI Utility Helper Functions
+ *	* Supomation Utility Helper Functions
  */
 
 'use strict';
@@ -18,21 +18,23 @@ const logging = require('./logging');
 
 /**
  *  @function quit
- *  @description Quit Supomation CLI
+ *  @description Quit Supomation
  *  @returns { void }
  */
 const quit = () => {
     logging.log(); // new line
     logging.logError('Quitting Supomation CLI...');
-    // process.exit(0);
-    throw new Error('Quitting Supomation CLI...');
+    // throw new Error('Quitting Supomation CLI...');
+    const exit = process.exit;
+    exit(0);
 };
 
 // ------------------------------------------ //
 
 /**
  *	@function version
- *  @description Print the Supomation CLI version
+ *  @description Print the Supomation project version
+ *  @param { string } projectVersion
  *  @returns { void }
  */
 const version = projectVersion => {
