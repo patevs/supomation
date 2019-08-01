@@ -24,6 +24,7 @@ const logging = require('./logging');
  *  @returns { void }
  */
 const quit = () => {
+    logging.log(); // new line
     logging.logError('Quitting Supomation CLI...');
     process.exit(0);
 };
