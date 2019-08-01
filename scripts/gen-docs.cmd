@@ -82,6 +82,9 @@ CALL curl https://raw.githubusercontent.com/eslint/eslint/master/README.md -o es
 ECHO. && ECHO [96m - eslint-config-prettier - [0m
 CALL curl https://raw.githubusercontent.com/prettier/eslint-config-prettier/master/README.md -o eslint-config-prettier.md -#
 
+ECHO. && ECHO [96m - eslint-plugin-filenames - [0m
+CALL curl https://raw.githubusercontent.com/selaux/eslint-plugin-filenames/master/README.md -o eslint-plugin-filenames.md -#
+
 ECHO. && ECHO [96m - eslint-plugin-jest - [0m
 CALL curl https://raw.githubusercontent.com/jest-community/eslint-plugin-jest/master/README.md -o eslint-plugin-jest.md -#
 
