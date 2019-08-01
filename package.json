@@ -60,13 +60,15 @@
         },
         "extends": [
             "eslint:recommended",
-            "prettier"
+            "prettier",
+            "plugin:jest/recommended"
         ],
         "parserOptions": {
             "ecmaVersion": 2018
         },
         "plugins": [
-            "prettier"
+            "prettier",
+            "jest"
         ],
         "rules": {
             "quotes": [
