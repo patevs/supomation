@@ -70,7 +70,8 @@
         },
         "plugins": [
             "prettier",
-            "jest"
+            "jest",
+            "filenames"
         ],
         "rules": {
             "quotes": [
