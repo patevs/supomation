@@ -12,14 +12,14 @@
 
 const globals = require('./globals');
 
-// const data = require('./data');
+const data = require('./data');
 
-// const scraper = require('./scraper/scraper');
+const scraper = require('./scraper/scraper');
 
 const logging = require('./utils/logging');
 const utils = require('./utils/utilities');
 
-// const axios = require('axios');
+const axios = require('axios');
 
 const { Select } = require('enquirer');
 
@@ -30,15 +30,29 @@ const { Observable } = require('rxjs');
  * * FUNCTIONS *
  ***************/
 
-/*
-const scrapSpecials = () => {
+const scrapSpecials = async () => {
     const targetUrl = globals.SPECIALS_BASE_URL;
-    axios.get(targetUrl).then(function(response) {
-        const productData = scraper.scrapProductsFromPage(response.data);
-        return productData;
-    });
+    const specialTasks = new Listr([
+        {
+            title: 'Scraping Category: Specials',
+            task: () => {
+                return new Observable(observer => {
+                    observer.next('Scraping Product Data');
+                    axios.get(targetUrl).then(response => {
+                        const productData = scraper.scrapProductsFromPage(
+                            response.data
+                        );
+                        observer.next('Saving Product Data');
+                        data.saveProductData('specials', productData);
+                        observer.complete();
+                        // return productData;
+                    });
+                });
+            }
+        }
+    ]);
+    await specialTasks.run();
 };
-*/
 
 // -------------------------------------------------------- //
 
@@ -47,32 +61,13 @@ const scrapSpecials = () => {
  * @description Run the Supomation WebScraper
  * @returns { void }
  */
-const runSupomationScraper = () => {
+const runSupomationScraper = async () => {
     logging.log(); // new line
-    // logging.logInfo('Starting Supomation WebScraper...\n');
-    const scraperTasks = new Listr([
-        {
-            title: 'Running Supomation WebScraper',
-            task: () => {
-                return new Observable(observer => {
-                    observer.next('Foo');
-                    setTimeout(() => {
-                        observer.next('Bar');
-                    }, 2000);
-                    setTimeout(() => {
-                        observer.complete();
-                    }, 4000);
-                });
-            }
-        }
-    ]);
-    scraperTasks.run().catch(err => {
-        logging.logError(err);
-    });
-    // const specials = scrapSpecials();
-    // data.saveProductData('specials', specials);
+    logging.logInfo('Starting Supomation WebScraper...\n');
+    await scrapSpecials();
     // scrapAllCategories(constants.ALL_CATEGORIES);
-    // logging.logSuccess('Supomation WebScraper Finished Successfully!');
+    logging.log(); // new line
+    logging.logSuccess('Supomation WebScraper Finished Successfully!');
 };
 
 // -------------------------------------------------------- //
