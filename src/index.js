@@ -12,7 +12,7 @@
 
 const globals = require('./globals');
 
-const data = require('./data');
+// const data = require('./data/database');
 
 const scraper = require('./scraper/scraper');
 
@@ -40,11 +40,10 @@ const scrapSpecials = async () => {
                 return new Observable(observer => {
                     observer.next('Scraping Product Data');
                     axios.get(targetUrl).then(response => {
-                        const productData = scraper.scrapProductsFromPage(
-                            response.data
-                        );
+                        // const productData =
+                        scraper.scrapProductsFromPage(response.data);
                         observer.next('Saving Product Data');
-                        data.saveProductData('specials', productData);
+                        // data.saveProductData('specials', productData);
                         observer.complete();
                         // return productData;
                     });
