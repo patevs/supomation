@@ -47,10 +47,12 @@ const setupDataDir = date => {
  *  @returns { boolean }
  */
 const saveProductData = (date, fileName, productData) => {
-    // const date = getDate();
-    // ensureDateDirExists(date);
+    // Construct file path
     const filePath = DATA_DIR + date + '/' + fileName + '.json';
+    // Convert JSON data to string
     const data = JSON.stringify(productData, null, 4);
+    // Write data to file
+    // TODO: Move this into helpers
     fs.writeFile(filePath, data, err => {
         if (err) {
             // console.error(err);
