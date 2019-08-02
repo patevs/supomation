@@ -10,15 +10,15 @@
  * * IMPORTS *
  *************/
 
-const Table = require('cli-table3');
+// const Table = require('cli-table3');
 
-const fs = require('fs');
+// const fs = require('fs');
 
 /***************
  * * CONSTANTS *
  ***************/
 
-const DATA_DIR = 'data/';
+// const DATA_DIR = 'data/';
 
 /***************
  * * FUNCTIONS *
@@ -29,9 +29,11 @@ const DATA_DIR = 'data/';
  * @description Check if data directory exists
  * @returns { boolean }
  */
+/*
 const dataDirExists = () => {
     return fs.existsSync(DATA_DIR);
 };
+*/
 
 // -------------------------------------------------------- //
 
@@ -40,11 +42,13 @@ const dataDirExists = () => {
  * @description Creates data directory if non existant
  * @returns { void }
  */
+/*
 const ensureDataDirExists = () => {
     if (!dataDirExists()) {
         fs.mkdirSync(DATA_DIR);
     }
 };
+*/
 
 // -------------------------------------------------------- //
 
@@ -54,9 +58,11 @@ const ensureDataDirExists = () => {
  * @param { string } date
  * @returns { boolean }
  */
+/*
 const dateDirExists = date => {
     return fs.existsSync(DATA_DIR + date);
 };
+*/
 
 // -------------------------------------------------------- //
 
@@ -66,19 +72,23 @@ const dateDirExists = date => {
  * @param { string } date
  * @returns { void }
  */
+/*
 const ensureDateDirExists = date => {
     ensureDataDirExists();
     if (!dateDirExists(date)) {
         fs.mkdirSync(DATA_DIR + date);
     }
 };
+*/
 
 // -------------------------------------------------------- //
 
+/*
 const getDate = () => {
     const d = new Date();
     return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
 };
+*/
 
 // -------------------------------------------------------- //
 
@@ -89,6 +99,7 @@ const getDate = () => {
  *  @param { object } productData
  *  @returns { boolean }
  */
+/*
 const saveProductData = (fileName, productData) => {
     const date = getDate();
     ensureDateDirExists(date);
@@ -103,9 +114,11 @@ const saveProductData = (fileName, productData) => {
         // console.log("File has been created");
     });
 };
+*/
 
 // -------------------------------------------------------- //
 
+/*
 const readProductData = () => {
     const dates = fs.readdirSync(DATA_DIR);
     const date = dates[0];
@@ -134,14 +147,15 @@ const readProductData = () => {
 
     console.log(table.toString());
 };
+*/
 
 /*************
  * * EXPORTS *
  *************/
 
 module.exports = {
-    saveProductData,
-    readProductData
+    // saveProductData,
+    // readProductData
 };
 
 // EOF //
