@@ -10,7 +10,7 @@
  * * IMPORTS *
  *************/
 
-const constants = require('./constants');
+const globals = require('./globals');
 const data = require('./data');
 
 // const scraper = require('./scraper/scraper');
@@ -141,7 +141,7 @@ const processMainMenuOption = answer => {
             mainMenu();
             break;
         case 'print':
-            utils.version(constants.PROJECT_VERSION);
+            utils.version(globals.PROJECT_VERSION);
             mainMenu();
             break;
         case 'quit':
@@ -188,7 +188,7 @@ const mainMenu = () => {
  *****************************/
 
 (() => {
-    logging.logWelcome(constants.PROJECT_VERSION); // Log Supomation main welcome
+    logging.logWelcome(globals.PROJECT_VERSION); // Log Supomation main welcome
     mainMenu();
 })();
 

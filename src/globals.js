@@ -1,7 +1,7 @@
 /**
- *  `src/constants.js`
+ *  `src/globals.js`
  *
- *  * Supomation Contants
+ *  * Supomation Global Constants
  */
 
 'use strict';
