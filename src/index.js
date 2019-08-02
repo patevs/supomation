@@ -24,7 +24,7 @@ const utils = require('./utils/utilities');
 const { Select } = require('enquirer');
 
 const Listr = require('listr');
-// const { Observable } = require('rxjs');
+const { Observable } = require('rxjs');
 
 /***************
  * * FUNCTIONS *
@@ -32,8 +32,8 @@ const Listr = require('listr');
 
 /*
 const scrapSpecials = () => {
-    const targetUrl = constants.SPECIALS_BASE_URL;
-    axios.get(targetUrl).then(function (response) {
+    const targetUrl = globals.SPECIALS_BASE_URL;
+    axios.get(targetUrl).then(function(response) {
         const productData = scraper.scrapProductsFromPage(response.data);
         return productData;
     });
@@ -42,23 +42,9 @@ const scrapSpecials = () => {
 
 // -------------------------------------------------------- //
 
-const runScraper = () => {
-    /*
-    setTimeout(() => {
-        logging.log('GOT HERE!');
-        return;
-    }, 2000);
-    */
-    // const specials = scrapSpecials();
-    // data.saveProductData('specials', specials);
-    // scrapAllCategories(constants.ALL_CATEGORIES);
-};
-
-// -------------------------------------------------------- //
-
 /**
  * @function runSupomationScraper
- * @description RUn the Supomation WebScraper
+ * @description Run the Supomation WebScraper
  * @returns { void }
  */
 const runSupomationScraper = () => {
@@ -67,12 +53,25 @@ const runSupomationScraper = () => {
     const scraperTasks = new Listr([
         {
             title: 'Running Supomation WebScraper',
-            task: () => runScraper
+            task: () => {
+                return new Observable(observer => {
+                    observer.next('Foo');
+                    setTimeout(() => {
+                        observer.next('Bar');
+                    }, 2000);
+                    setTimeout(() => {
+                        observer.complete();
+                    }, 4000);
+                });
+            }
         }
     ]);
     scraperTasks.run().catch(err => {
         logging.logError(err);
     });
+    // const specials = scrapSpecials();
+    // data.saveProductData('specials', specials);
+    // scrapAllCategories(constants.ALL_CATEGORIES);
     // logging.logSuccess('Supomation WebScraper Finished Successfully!');
 };
 
