@@ -20,14 +20,20 @@ const helpers = require('./helpers');
  * * CONSTANTS *
  ***************/
 
-// const DATA_DIR = 'data/';
+const DATA_DIR = 'data/';
 
 /***************
  * * FUNCTIONS *
  ***************/
 
-const setupDataDir = (dataDir, date) => {
-    helpers.ensureDateDirExists(dataDir, date);
+/**
+ *  @function setupDataDir
+ *  @description Ensures the data/date directory exists
+ *  @param { string } date - todays date formatted as: yyyy-mm-dd
+ *  @returns { void }
+ */
+const setupDataDir = date => {
+    helpers.ensureDateDirExists(DATA_DIR, date);
 };
 
 // -------------------------------------------------------- //
