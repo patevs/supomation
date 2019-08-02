@@ -11,7 +11,8 @@
  *************/
 
 const globals = require('./globals');
-const data = require('./data');
+
+// const data = require('./data');
 
 // const scraper = require('./scraper/scraper');
 
@@ -91,10 +92,10 @@ const processMainMenuOption = answer => {
         case 'run':
             runSupomationScraper();
             break;
-        case 'view':
-            data.readProductData();
-            mainMenu();
-            break;
+        //        case 'view':
+        //            data.readProductData();
+        //            mainMenu();
+        //            break;
         case 'display':
             utils.help();
             mainMenu();
@@ -130,7 +131,7 @@ const mainMenu = () => {
         message: 'Select an option:',
         choices: [
             'Run WebScraper',
-            'View Scraped Products',
+            //            'View Scraped Products',
             'Display Help',
             'Print Version',
             'Quit'
