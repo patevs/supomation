@@ -34,7 +34,7 @@ const scrapSpecials = async () => {
     const targetUrl = globals.SPECIALS_BASE_URL;
     const specialTasks = new Listr([
         {
-            title: 'Scraping Category: Specials',
+            title: 'Scraping Category: ' + logging.green('Specials'),
             task: () => {
                 return new Observable(observer => {
                     observer.next('Scraping Product Data');
