@@ -77,6 +77,14 @@ const displayProductData = (productData) => {
 
 // -------------------------------------------------------- //
 
+/**
+ *  @function loadProductData
+ *  @description Load given product data from disk
+ *  @param { string } date
+ *  @param { string } fileName
+ *  @returns { void }
+ */
+// TODO: Allow for the selection of which data to load
 const loadProductData = (date, fileName) => {
     // Path to data/date directory
     let dataDirPath = DATA_DIR + date;
@@ -86,6 +94,7 @@ const loadProductData = (date, fileName) => {
     const dataFile = helpers.readProductDataFile(dataFilePath);
     // Parse product data to JSON
     const productData = JSON.parse(dataFile);
+    // TODO: Display data in table
     console.log(productData[0]);
 };
 

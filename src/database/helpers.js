@@ -92,6 +92,12 @@ const writeProductDataFile = (filePath, data) => {
 
 // -------------------------------------------------------- //
 
+/**
+ *  @function readProductDataFile
+ *  @description Read data from a given file
+ *  @param { string } filePath
+ *  @returns { dataFile }
+ */
 const readProductDataFile = filePath => {
     return fs.readFileSync(filePath);
 };
