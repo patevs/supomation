@@ -30,9 +30,6 @@ const ALL_CATEGORIES = [
     'kitchen-dining-and-household'
 ];
 
-// Product data directory
-// const DATA_DIR = 'data/';
-
 /*************
  * * EXPORTS *
  *************/
