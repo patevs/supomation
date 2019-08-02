@@ -36,7 +36,6 @@ const ALL_CATEGORIES = [
 
 module.exports = {
     PROJECT_VERSION: pjson.version,
-    DATA_DIR: 'data/',
     SPECIALS_BASE_URL,
     CATEGORY_BASE_URL,
     ALL_CATEGORIES
