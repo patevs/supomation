@@ -22,7 +22,7 @@ const utils = require('./utils/utilities');
 
 const { Select } = require('enquirer');
 
-// const Listr = require('listr');
+const Listr = require('listr');
 // const { Observable } = require('rxjs');
 
 /***************
@@ -41,18 +41,38 @@ const scrapSpecials = () => {
 
 // -------------------------------------------------------- //
 
+const runScraper = () => {
+    /*
+    setTimeout(() => {
+        logging.log('GOT HERE!');
+        return;
+    }, 2000);
+    */
+    // const specials = scrapSpecials();
+    // data.saveProductData('specials', specials);
+    // scrapAllCategories(constants.ALL_CATEGORIES);
+};
+
+// -------------------------------------------------------- //
+
 /**
  * @function runSupomationScraper
- * @description Run the Supomation WebScraper
+ * @description RUn the Supomation WebScraper
  * @returns { void }
  */
 const runSupomationScraper = () => {
     logging.log(); // new line
-    logging.logInfo('Starting Supomation WebScraper...\n');
-    // const specials = scrapSpecials();
-    // data.saveProductData('specials', specials);
-    // scrapAllCategories(constants.ALL_CATEGORIES);
-    logging.logSuccess('Supomation WebScraper Finished Successfully!');
+    // logging.logInfo('Starting Supomation WebScraper...\n');
+    const scraperTasks = new Listr([
+        {
+            title: 'Running Supomation WebScraper',
+            task: runScraper
+        }
+    ]);
+    scraperTasks.run().catch(err => {
+        logging.logError(err);
+    });
+    // logging.logSuccess('Supomation WebScraper Finished Successfully!');
 };
 
 // -------------------------------------------------------- //
