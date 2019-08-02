@@ -43,7 +43,7 @@ const scrapSpecials = () => {
 
 /**
  * @function runSupomationScraper
- * @description Runs the Supomation WebScraper
+ * @description Run the Supomation WebScraper
  * @returns { void }
  */
 const runSupomationScraper = () => {
