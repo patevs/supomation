@@ -87,7 +87,7 @@ const getDate = () => {
  *  @description Save given product data to file
  *  @param { string } fileName
  *  @param { object } productData
- *  @returns { void }
+ *  @returns { boolean }
  */
 const saveProductData = (fileName, productData) => {
     const date = getDate();
