@@ -48,7 +48,7 @@ const dateDirExists = (dataDir, date) => {
  *  @returns { void }
  */
 const ensureDataDirExists = dataDir => {
-    if (!dataDirExists()) {
+    if (!dataDirExists(dataDir)) {
         fs.mkdirSync(dataDir);
     }
 };
@@ -66,7 +66,7 @@ const ensureDataDirExists = dataDir => {
  */
 const ensureDateDirExists = (dataDir, date) => {
     ensureDataDirExists(dataDir);
-    if (!dateDirExists(date)) {
+    if (!dateDirExists(dataDir, date)) {
         fs.mkdirSync(dataDir + date);
     }
 };
