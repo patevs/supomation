@@ -62,8 +62,8 @@ CALL curl https://raw.githubusercontent.com/SamVerschueren/listr/master/readme.m
 ECHO. && ECHO [96m - log-symbols - [0m
 CALL curl https://raw.githubusercontent.com/sindresorhus/log-symbols/master/readme.md -o log-symbols.md -#
 
-ECHO. && ECHO [96m - multispinner - [0m
-CALL curl https://raw.githubusercontent.com/codekirei/node-multispinner/master/readme.md -o multispinner.md -#
+REM :: ECHO. && ECHO [96m - multispinner - [0m
+REM :: CALL curl https://raw.githubusercontent.com/codekirei/node-multispinner/master/readme.md -o multispinner.md -#
 
 REM :: ECHO. && ECHO [96mSignale: [0m
 REM :: CALL curl https://raw.githubusercontent.com/klaussinani/signale/master/readme.md -o signale.md -#
