@@ -62,6 +62,7 @@ const scrapSpecials = async () => {
  * @returns { void }
  */
 const runSupomationScraper = async () => {
+    // TODO: Ensure data directory exists
     logging.log(); // new line
     logging.logInfo('Starting Supomation WebScraper...\n');
     await scrapSpecials();
