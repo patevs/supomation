@@ -10,11 +10,11 @@
  * * IMPORTS *
  *************/
 
-const helpers = require('./helpers');
+const fs = require('fs');
 
 // const Table = require('cli-table3');
 
-// const fs = require('fs');
+const helpers = require('./helpers');
 
 /***************
  * * CONSTANTS *
@@ -41,14 +41,14 @@ const setupDataDir = date => {
 /**
  *  @function saveProductData
  *  @description Save given product data to file
+ *  @param { string } date - todays date formatted as: yyyy-mm-dd
  *  @param { string } fileName
  *  @param { object } productData
  *  @returns { boolean }
  */
-/*
-const saveProductData = (fileName, productData) => {
-    const date = getDate();
-    ensureDateDirExists(date);
+const saveProductData = (date, fileName, productData) => {
+    // const date = getDate();
+    // ensureDateDirExists(date);
     const filePath = DATA_DIR + date + '/' + fileName + '.json';
     const data = JSON.stringify(productData, null, 4);
     fs.writeFile(filePath, data, err => {
@@ -60,7 +60,6 @@ const saveProductData = (fileName, productData) => {
         // console.log("File has been created");
     });
 };
-*/
 
 // -------------------------------------------------------- //
 
@@ -100,8 +99,8 @@ const readProductData = () => {
  *************/
 
 module.exports = {
-    setupDataDir
-    // saveProductData,
+    setupDataDir,
+    saveProductData
     // readProductData
 };
 
