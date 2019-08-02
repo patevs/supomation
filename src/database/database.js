@@ -10,10 +10,6 @@
  * * IMPORTS *
  *************/
 
-// const fs = require('fs');
-
-// const Table = require('cli-table3');
-
 const helpers = require('./helpers');
 
 /***************
@@ -57,26 +53,6 @@ const saveProductData = (date, fileName, productData) => {
 
 // -------------------------------------------------------- //
 
-/* // TODO: Move this to helpers module
-const displayProductData = (productData) => {
-    // instantiate
-    var table = new Table({
-        head: ['Product Name', 'Price / Quantity'],
-        colWidths: [30, 20]
-    });
-
-    for (let productData in categoryData) {
-        let p = categoryData[productData];
-        // console.log(p);
-        table.push([p.name, p.pricePer + '/' + p.priceMode + ' ' + p.quantity]);
-    }
-
-    console.log(table.toString());
-};
-*/
-
-// -------------------------------------------------------- //
-
 /**
  *  @function loadProductData
  *  @description Load given product data from disk
@@ -94,8 +70,8 @@ const loadProductData = (date, fileName) => {
     const dataFile = helpers.readProductDataFile(dataFilePath);
     // Parse product data to JSON
     const productData = JSON.parse(dataFile);
-    // TODO: Display data in table
-    console.log(productData[0]);
+    // Display product data in table
+    helpers.displayProductDataTable(productData);
 };
 
 /*************

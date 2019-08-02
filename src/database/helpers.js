@@ -12,6 +12,8 @@
 
 const fs = require('fs');
 
+const Table = require('cli-table3');
+
 /**********************
  * * HELPER FUNCTIONS *
  **********************/
@@ -102,6 +104,22 @@ const readProductDataFile = filePath => {
     return fs.readFileSync(filePath);
 };
 
+// -------------------------------------------------------- //
+
+const displayProductDataTable = productData => {
+    // instantiate
+    var table = new Table({
+        head: ['Product Name', 'Price / Quantity'],
+        colWidths: [35, 20]
+    });
+
+    for (let product in productData) {
+        let p = productData[product];
+        table.push([p.name, p.pricePer + '/' + p.priceMode + ' ' + p.quantity]);
+    }
+    console.log(table.toString());
+};
+
 /*************
  * * EXPORTS *
  *************/
@@ -109,7 +127,8 @@ const readProductDataFile = filePath => {
 module.exports = {
     ensureDateDirExists,
     writeProductDataFile,
-    readProductDataFile
+    readProductDataFile,
+    displayProductDataTable
 };
 
 // EOF //
