@@ -10,81 +10,71 @@
  * * IMPORTS *
  *************/
 
-// const fs = require('fs');
-
-/***************
- * * CONSTANTS *
- ***************/
-
-// ? Move this to globals ?
-// const DATA_DIR = 'data/';
+const fs = require('fs');
 
 /***************
  * * FUNCTIONS *
  ***************/
 
 /**
- * @function dataDirExists
- * @description Check if data directory exists
- * @returns { boolean }
+ *  @function dataDirExists
+ *  @description Check if data directory exists
+ *  @param { string } dataDir - path to data directory
+ *  @returns { boolean }
  */
-/*
-const dataDirExists = () => {
-    return fs.existsSync(DATA_DIR);
+const dataDirExists = dataDir => {
+    return fs.existsSync(dataDir);
 };
-*/
 
 // -------------------------------------------------------- //
 
 /**
- * @function ensureDataDirExists
- * @description Creates data directory if non existant
- * @returns { void }
+ *  @function dateDirExists
+ *  @description Check if the date/date directory exists
+ *  @param { string } dataDir - path to data directory
+ *  @param { string } date - todays date formatted as: yyyy-mm-dd
+ *  @returns { boolean }
  */
-/*
-const ensureDataDirExists = () => {
+const dateDirExists = (dataDir, date) => {
+    return fs.existsSync(dataDir + date);
+};
+
+// -------------------------------------------------------- //
+
+/**
+ *  @function ensureDataDirExists
+ *  @description Creates data directory if non existant
+ *  @param { string } dataDir - path to data directory
+ *  @returns { void }
+ */
+const ensureDataDirExists = dataDir => {
     if (!dataDirExists()) {
-        fs.mkdirSync(DATA_DIR);
+        fs.mkdirSync(dataDir);
     }
 };
-*/
 
 // -------------------------------------------------------- //
 
 /**
- * @function dateDirExists
- * @description Check if the date/date directory exists
- * @param { string } date
- * @returns { boolean }
+ *  @function ensureDateDirExists
+ *  @description Creates the data/date directory if non existant
+ *  @param { string } dataDir - path to data directory
+ *  @param { string } date - todays date formatted as: yyyy-mm-dd
+ *  @returns { void }
  */
-/*
-const dateDirExists = date => {
-    return fs.existsSync(DATA_DIR + date);
-};
-*/
-
-// -------------------------------------------------------- //
-
-/**
- * @function ensureDateDirExists
- * @description Creates the data/date directory if non existant
- * @param { string } date
- * @returns { void }
- */
-/*
-const ensureDateDirExists = date => {
-    ensureDataDirExists();
+const ensureDateDirExists = (dataDir, date) => {
+    ensureDataDirExists(dataDir);
     if (!dateDirExists(date)) {
-        fs.mkdirSync(DATA_DIR + date);
+        fs.mkdirSync(dataDir + date);
     }
 };
-*/
 
 /*************
  * * EXPORTS *
  *************/
 
-// module.exports = { };
+module.exports = {
+    ensureDateDirExists
+};
 
 // EOF //
-

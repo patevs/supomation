@@ -10,6 +10,8 @@
  * * IMPORTS *
  *************/
 
+const helpers = require('./helpers');
+
 // const Table = require('cli-table3');
 
 // const fs = require('fs');
@@ -24,8 +26,8 @@
  * * FUNCTIONS *
  ***************/
 
-const setupDataDir = () => {
-    console.log('GOT HERE!');
+const setupDataDir = (dataDir, date) => {
+    helpers.ensureDateDirExists(dataDir, date);
 };
 
 // -------------------------------------------------------- //

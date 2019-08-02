@@ -12,7 +12,7 @@
 
 const globals = require('./globals');
 
-// const data = require('./database/database');
+const data = require('./database/database');
 
 const scraper = require('./scraper/scraper');
 
@@ -63,6 +63,7 @@ const scrapSpecials = async () => {
  */
 const runSupomationScraper = async () => {
     // TODO: Ensure data directory exists
+    data.setupDataDir(globals.DATA_DIR, utils.getDate);
     logging.log(); // new line
     logging.logInfo('Starting Supomation WebScraper...\n');
     await scrapSpecials();

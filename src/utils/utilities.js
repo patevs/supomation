@@ -21,12 +21,10 @@ const logging = require('./logging');
  *  @description Get todays date string formatted as yyyy-mm-dd
  *  @returns { string } date string
  */
-/*
 const getDate = () => {
     const d = new Date();
     return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
 };
-*/
 
 // -------------------------------------------------------- //
 
@@ -87,7 +85,7 @@ const help = () => {
  *************/
 
 module.exports = {
-    // getDate,
+    getDate,
     getDateFull,
     quit,
     version,
