@@ -71,12 +71,32 @@ const ensureDateDirExists = (dataDir, date) => {
     }
 };
 
+// -------------------------------------------------------- //
+
+/**
+ *  @function writeProductDataFile
+ *  @description Write given data to file
+ *  @param { string } filePath
+ *  @param { string } data
+ *  @returns { boolean }
+ */
+const writeProductDataFile = (filePath, data) => {
+    // Write data to file
+    fs.writeFile(filePath, data, err => {
+        if (err) {
+            return false;
+        }
+        return true;
+    });
+};
+
 /*************
  * * EXPORTS *
  *************/
 
 module.exports = {
-    ensureDateDirExists
+    ensureDateDirExists,
+    writeProductDataFile
 };
 
 // EOF //

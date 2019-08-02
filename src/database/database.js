@@ -10,7 +10,7 @@
  * * IMPORTS *
  *************/
 
-const fs = require('fs');
+// const fs = require('fs');
 
 // const Table = require('cli-table3');
 
@@ -42,8 +42,8 @@ const setupDataDir = date => {
  *  @function saveProductData
  *  @description Save given product data to file
  *  @param { string } date - todays date formatted as: yyyy-mm-dd
- *  @param { string } fileName
- *  @param { object } productData
+ *  @param { string } fileName - name of the data file to save
+ *  @param { object } productData - JSON object containing product data to save
  *  @returns { boolean }
  */
 const saveProductData = (date, fileName, productData) => {
@@ -52,15 +52,7 @@ const saveProductData = (date, fileName, productData) => {
     // Convert JSON data to string
     const data = JSON.stringify(productData, null, 4);
     // Write data to file
-    // TODO: Move this into helpers
-    fs.writeFile(filePath, data, err => {
-        if (err) {
-            // console.error(err);
-            return false;
-        }
-        return true;
-        // console.log("File has been created");
-    });
+    return helpers.writeProductDataFile(filePath, data);
 };
 
 // -------------------------------------------------------- //
