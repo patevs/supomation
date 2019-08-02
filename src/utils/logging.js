@@ -105,10 +105,10 @@ function logTitle(msg) {
  *  Log the Supomation main welcome message
  * @returns { void }
  */
-function logWelcome(projectVersion) {
+function logWelcome(projectVersion, date) {
     require('clear')(); // Clear the terminal
     const heading = header('WELCOME TO SUPOMATION CLI\n');
-    const date = new Date().toDateString();
+    // const date = new Date().toDateString();
     // Construct welcome message
     const msg =
         heading +

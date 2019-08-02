@@ -30,6 +30,7 @@ const { Observable } = require('rxjs');
  * * FUNCTIONS *
  ***************/
 
+// TODO: Move this to seperate module
 const scrapSpecials = async () => {
     const targetUrl = globals.SPECIALS_BASE_URL;
     const specialTasks = new Listr([
@@ -143,7 +144,7 @@ const mainMenu = () => {
  *****************************/
 
 (() => {
-    logging.logWelcome(globals.PROJECT_VERSION); // Log Supomation main welcome
+    logging.logWelcome(globals.PROJECT_VERSION, utils.getDateFull()); // Log Supomation main welcome
     mainMenu();
 })();
 
