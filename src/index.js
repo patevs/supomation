@@ -67,7 +67,7 @@ const runSupomationScraper = () => {
     const scraperTasks = new Listr([
         {
             title: 'Running Supomation WebScraper',
-            task: runScraper
+            task: () => runScraper
         }
     ]);
     scraperTasks.run().catch(err => {
