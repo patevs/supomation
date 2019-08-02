@@ -12,7 +12,7 @@
 
 const globals = require('./globals');
 
-// const data = require('./data/database');
+// const data = require('./database/database');
 
 const scraper = require('./scraper/scraper');
 

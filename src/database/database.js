@@ -1,7 +1,7 @@
 /**
- *  `src/data/data.js`
+ *  `src/database/database.js`
  *
- *  * Supomation Data Processing Functions
+ *  * Supomation Database Functions
  */
 
 'use strict';
