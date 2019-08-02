@@ -57,21 +57,8 @@ const saveProductData = (date, fileName, productData) => {
 
 // -------------------------------------------------------- //
 
-/*
-const readProductData = () => {
-    const dates = fs.readdirSync(DATA_DIR);
-    const date = dates[0];
-    // data/date directory
-    let dataPath = DATA_DIR + date;
-    // data/date/category directories
-    const categoryDirs = fs.readdirSync(dataPath);
-
-    const categoryFilePath = dataPath + '/' + categoryDirs[0];
-
-    const categoryFile = fs.readFileSync(categoryFilePath);
-
-    const categoryData = JSON.parse(categoryFile);
-
+/* // TODO: Move this to helpers module
+const displayProductData = (productData) => {
     // instantiate
     var table = new Table({
         head: ['Product Name', 'Price / Quantity'],
@@ -88,14 +75,26 @@ const readProductData = () => {
 };
 */
 
+// -------------------------------------------------------- //
+
+const loadProductData = (date, fileName) => {
+    // Path to data/date directory
+    let dataDirPath = DATA_DIR + date;
+    // Path to products data file
+    const dataFilePath = dataDirPath + '/' + fileName + '.json';
+    // const dataFile = fs.readFileSync(dataFilePath);
+    // const productData = JSON.parse(dataFile);
+    console.log(dataFilePath);
+};
+
 /*************
  * * EXPORTS *
  *************/
 
 module.exports = {
     setupDataDir,
-    saveProductData
-    // readProductData
+    saveProductData,
+    loadProductData
 };
 
 // EOF //
