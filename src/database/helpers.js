@@ -12,9 +12,9 @@
 
 const fs = require('fs');
 
-/***************
- * * FUNCTIONS *
- ***************/
+/**********************
+ * * HELPER FUNCTIONS *
+ **********************/
 
 /**
  *  @function dataDirExists
@@ -53,7 +53,9 @@ const ensureDataDirExists = dataDir => {
     }
 };
 
-// -------------------------------------------------------- //
+/***************
+ * * FUNCTIONS *
+ ***************/
 
 /**
  *  @function ensureDateDirExists
