@@ -82,9 +82,11 @@ const loadProductData = (date, fileName) => {
     let dataDirPath = DATA_DIR + date;
     // Path to products data file
     const dataFilePath = dataDirPath + '/' + fileName + '.json';
-    // const dataFile = fs.readFileSync(dataFilePath);
-    // const productData = JSON.parse(dataFile);
-    console.log(dataFilePath);
+    // Read product data file
+    const dataFile = helpers.readProductDataFile(dataFilePath);
+    // Parse product data to JSON
+    const productData = JSON.parse(dataFile);
+    console.log(productData[0]);
 };
 
 /*************

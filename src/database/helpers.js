@@ -90,13 +90,20 @@ const writeProductDataFile = (filePath, data) => {
     });
 };
 
+// -------------------------------------------------------- //
+
+const readProductDataFile = filePath => {
+    return fs.readFileSync(filePath);
+};
+
 /*************
  * * EXPORTS *
  *************/
 
 module.exports = {
     ensureDateDirExists,
-    writeProductDataFile
+    writeProductDataFile,
+    readProductDataFile
 };
 
 // EOF //
