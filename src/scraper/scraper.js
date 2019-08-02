@@ -1,7 +1,7 @@
 /**
  *	`src/scraper/scraper.js`
  *
- *	* Supomation Scraper
+ *	* Supomation Scraper Functions
  */
 
 'use strict';
@@ -19,12 +19,12 @@ const cheerio = require('cheerio');
  **********************/
 
 /**
- * @function processProduct
- * @description Processes a product name and data returning a product object
- * @param productName
- * @param productQuantity
- * @param productData
- * @returns { object } product
+ *  @function processProduct
+ *  @description Processes a product name, quantity, and data returning a product object
+ *  @param { string } productName
+ *  @param { string } productQuantity
+ *  @param { object } productData
+ *  @returns { object } product
  */
 const processProduct = (productName, productQuantity, productData) => {
     // Get the product's unique id
@@ -47,10 +47,10 @@ const processProduct = (productName, productQuantity, productData) => {
 // ------------------------------------------ //
 
 /**
- * @function getProductQuantity
- * @description Get the product base unit quanity for a given product element
- * @param { CheerioElement } productElem
- * @returns { string } product quantity
+ *  @function getProductQuantity
+ *  @description Get the product base unit quanity for a given product element
+ *  @param { CheerioElement } productElem
+ *  @returns { string } product quantity
  */
 const getProductQuantity = productElem => {
     // Load product element into cheerio
@@ -64,10 +64,10 @@ const getProductQuantity = productElem => {
 // ------------------------------------------ //
 
 /**
- * @function getProductName
- * @description Get the product name for a given product element
- * @param { CheerioElement } productElem
- * @returns { string } productName
+ *  @function getProductName
+ *  @description Get the product name for a given product element
+ *  @param { CheerioElement } productElem
+ *  @returns { string } productName
  */
 const getProductName = productElem => {
     // Load product element into cheerio
@@ -81,10 +81,10 @@ const getProductName = productElem => {
 // ------------------------------------------ //
 
 /**
- * @function getProductData
- * @description Get the product data for a given product element
- * @param { CheerioElement }  productElem
- * @returns { object } productData
+ *  @function getProductData
+ *  @description Get the product data for a given product element
+ *  @param { CheerioElement }  productElem
+ *  @returns { object } productData
  */
 const getProductData = productElem => {
     // Load product element into cheerio
@@ -100,10 +100,10 @@ const getProductData = productElem => {
  ***************/
 
 /**
- * @function scrapProductsFromPage
- * @description Scraps all the product elements from a given page
- * @param { string } pageHtmlContent
- * @returns { Array[Products] } allProducts - array of all products
+ *  @function scrapProductsFromPage
+ *  @description Scraps all the product elements from a given page
+ *  @param { string } pageHtmlContent
+ *  @returns { Array[Products] } allProducts - array of all products
  */
 const scrapProductsFromPage = pageHtmlContent => {
     // Array of all products to return
@@ -120,7 +120,6 @@ const scrapProductsFromPage = pageHtmlContent => {
         const productName = getProductName(productElem);
         // Get the base unit quantity for the current product
         const productQuantity = getProductQuantity(productElem);
-        // console.log(productQuantity);
         // Get the data for the current product
         const productData = getProductData(productElem);
         // Process the current product
