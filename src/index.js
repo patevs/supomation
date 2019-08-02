@@ -26,6 +26,12 @@ const { Select } = require('enquirer');
 const Listr = require('listr');
 const { Observable } = require('rxjs');
 
+/*************
+ * * GLOBALS *
+ *************/
+
+let scraperHasRun = false;
+
 /***************
  * * FUNCTIONS *
  ***************/
@@ -75,6 +81,8 @@ const runSupomationScraper = async () => {
     // scrapAllCategories(constants.ALL_CATEGORIES);
     logging.log(); // new line
     logging.logSuccess('Supomation WebScraper Finished Successfully!');
+    scraperHasRun = true;
+    mainMenu();
 };
 
 // -------------------------------------------------------- //
@@ -93,10 +101,11 @@ const processMainMenuOption = answer => {
         case 'run':
             runSupomationScraper();
             break;
-        //        case 'view':
-        //            data.readProductData();
-        //            mainMenu();
-        //            break;
+        case 'view':
+            logging.log('TODO: Display Scraped Product Data');
+            // data.readProductData();
+            mainMenu();
+            break;
         case 'display':
             utils.help();
             mainMenu();
@@ -121,6 +130,26 @@ const processMainMenuOption = answer => {
 // -------------------------------------------------------- //
 
 /**
+ *  @function getMainMenuChoices
+ *  @description Returns array containing all main menu prompt options
+ *  @returns { string[] } mainMenuChoices
+ */
+const getMainMenuChoices = () => {
+    let mainMenuChoices = [
+        'Run WebScraper',
+        'Display Help',
+        'Print Version',
+        'Quit'
+    ];
+    if (scraperHasRun) {
+        mainMenuChoices.splice(1, 0, 'View Scraped Products');
+    }
+    return mainMenuChoices;
+};
+
+// -------------------------------------------------------- //
+
+/**
  * @function mainMenu
  * @description Display the supomation main menu prompt to the user
  * @returns { void }
@@ -130,13 +159,7 @@ const mainMenu = () => {
     const mainMenuPrompt = new Select({
         name: 'option',
         message: 'Select an option:',
-        choices: [
-            'Run WebScraper',
-            //            'View Scraped Products',
-            'Display Help',
-            'Print Version',
-            'Quit'
-        ]
+        choices: getMainMenuChoices()
     });
     mainMenuPrompt
         .run()
