@@ -1,6 +1,6 @@
 # [`supomation`](https://github.com/patevs/supomation)
 
-> 29/07/2019
+> 04/08/2019
 
 ---
 
@@ -11,9 +11,7 @@
 
 ## Libraries & Packages
 
-- [`listr`](https://github.com/samverschueren/listr)
 - [`node-progress`](https://github.com/visionmedia/node-progress)
-- [`cli-table3`](https://github.com/cli-table/cli-table3)
 - [`apisauce`](https://github.com/infinitered/apisauce)
 
 []()
@@ -33,12 +31,9 @@
 
 ## Backlog
 
-1. [x] Save of scraped data to file
-2. [ ] Save scraped data to database
-3. [x] Scrap/sort projects by categories
-4. [ ] Scrap multiple pages pre category
-5. [ ] List all store locations
-6. [ ] Allow changing of store location
-7. [ ] Download/save virtual mailer to file
+1. [ ] Allow for scraping of n pages
+2. [ ] List all store locations
+3. [ ] Allow changing of store location
+4. [ ] Download/save virtual mailer to file
 
 ---
