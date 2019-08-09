@@ -46,7 +46,7 @@ const getDateFull = () => {
  *  @returns { void }
  */
 const welcome = (projectVersion) => {
-    console.log(projectVersion);
+    logging.logWelcome(projectVersion, getDateFull());
 };
 
 // -------------------------------------------------------- //

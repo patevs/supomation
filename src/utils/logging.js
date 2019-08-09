@@ -30,10 +30,10 @@ const { log } = console;
 const green = chalk.green;
 const blue = chalk.cyan;
 const magenta = chalk.magenta;
-// const magentaBright = chalk.magentaBright;
+const magentaBright = chalk.magentaBright;
 
 // Typography
-// const header = green.bold.underline;
+const header = green.bold.underline;
 const title = blue.bold.underline;
 // . const link = blue.underline;
 
@@ -101,11 +101,12 @@ function logTitle(msg) {
 // -------------------------------------------------------- //
 
 /**
- *  * logWelcome
- *  Log the Supomation main welcome message
- * @returns { void }
+ *  @function logWelcome
+ *  @description Log the Supomation main welcome message
+ *  @param { string } projectVersion
+ *  @param { string } date
+ *  @returns { void }
  */
-/*
 function logWelcome(projectVersion, date) {
     require('clear')(); // Clear the terminal
     const heading = header('WELCOME TO SUPOMATION CLI\n');
@@ -120,7 +121,6 @@ function logWelcome(projectVersion, date) {
     log(boxen(msg, { padding: 1, align: 'center' }));
     log(); // new line
 };
-*/
 
 /*************
 * * EXPORTS *
@@ -135,7 +135,7 @@ module.exports = {
     logInfo,
     logSuccess,
     logTitle,
-    //    logWelcome
+    logWelcome
 };
 
 // EOF //

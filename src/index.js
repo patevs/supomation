@@ -10,7 +10,9 @@
  * * IMPORTS *
  *************/
 
-//
+const globals = require('./globals');
+
+const utils = require('./utils/utilities');
 
 /***************
  * * FUNCTIONS *
@@ -23,7 +25,7 @@
  *****************************/
 
 (() => {
-    console.log('\nWELCOME TO SUPOMATION CLI\n');
+    utils.welcome(globals.PROJECT_VERSION);
 })();
 
 // EOF //
