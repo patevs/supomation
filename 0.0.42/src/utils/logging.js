@@ -49,7 +49,7 @@ const title = blue.bold.underline;
  */
 function logError(msg) {
     log(logSymbols.error, msg);
-}
+};
 
 // ------------------------------------------ //
 
@@ -61,7 +61,7 @@ function logError(msg) {
  */
 function logInfo(msg) {
     log(logSymbols.info, msg);
-}
+};
 
 // ------------------------------------------ //
 
@@ -73,7 +73,7 @@ function logInfo(msg) {
  */
 function logSuccess(msg) {
     log(logSymbols.success, msg);
-}
+};
 
 // ------------------------------------------ //
 
@@ -96,7 +96,7 @@ function logTitle(msg) {
     // Log title message
     log(boxen(titleMsg, { padding: pad }));
     log(); // new line
-}
+};
 
 // ------------------------------------------ //
 
@@ -118,7 +118,7 @@ function logWelcome(projectVersion, date) {
     // Log welcome message
     log(boxen(msg, { padding: 1, align: 'center' }));
     log(); // new line
-}
+};
 
 /*************
  * * EXPORTS *

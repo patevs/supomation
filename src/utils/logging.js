@@ -1,7 +1,7 @@
 /**
  *	`src/utils/logging.js`
  *
- *	* Supomation CLI Logging Utilities and Helper Functions
+ *	* Supomation CLI Logging Functions
  */
 
 'use strict';
