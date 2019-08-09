@@ -13,7 +13,7 @@
     },
     "main": "src/index.js",
     "scripts": {
-        "clean": "trash node_modules docs",
+        "clean": "trash node_modules lib docs",
         "start": "node src/index.js",
         "build": "babel src -d lib",
         "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
@@ -25,6 +25,7 @@
         "descriptions": {
             "clean": "Deletes node_modules and docs directories. Requires trash-cli to be installed globally",
             "start": "Start Supomation CLI",
+            "build": "Run babel build",
             "prettier": "Run prettier check style linting",
             "lint": "Run eslint check style linting",
             "test": "Run Supomation tests",
