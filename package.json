@@ -77,5 +77,10 @@
     "prettier": {
         "singleQuote": true,
         "semi": true
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ]
     }
 }
