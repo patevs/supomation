@@ -13,8 +13,22 @@
     },
     "main": "src/index.js",
     "scripts": {
+        "clean": "trash node_modules docs",
         "start": "node src/index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
+        "lint": "npm run prettier && eslint --fix src/**/*.js && echo. && echo Lint Completed!",
+        "test": "jest && echo. && echo Test Complete! && exit 0",
+        "docs": "cd scripts && gen-docs.cmd"
+    },
+    "ntl": {
+        "descriptions": {
+            "clean": "Deletes node_modules and docs directories. Requires trash-cli to be installed globally",
+            "start": "Start Supomation CLI",
+            "prettier": "Run prettier check style linting",
+            "lint": "Run eslint check style linting",
+            "test": "Run Supomation tests",
+            "docs": "Generate project documentation"
+        }
     },
     "devDependencies": {
         "eslint": "^6.1.0",
