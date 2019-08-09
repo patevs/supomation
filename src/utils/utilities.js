@@ -10,7 +10,7 @@
  * * IMPORTS *
  *************/
 
-// const logging = require('./logging');
+const logging = require('./logging');
 
 /***************
  * * FUNCTIONS *
@@ -21,12 +21,10 @@
 *  @description Get todays date string formatted as yyyy-mm-dd
 *  @returns { string } date string
 */
-/*
 const getDate = () => {
     const d = new Date();
     return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
 };
-*/
 
 // -------------------------------------------------------- //
 
@@ -35,11 +33,9 @@ const getDate = () => {
  *  @description Get todays date string formatted as 'day month date year'
  *  @returns { string } date string
  */
-/*
 const getDateFull = () => {
     return new Date().toDateString();
 };
-*/
 
 // -------------------------------------------------------- //
 
@@ -49,11 +45,9 @@ const getDateFull = () => {
  *  @param { string } projectVersion
  *  @returns { void }
  */
-/*
 const welcome = (projectVersion) => {
     console.log(projectVersion);
 };
-*/
 
 // -------------------------------------------------------- //
 
@@ -63,14 +57,12 @@ const welcome = (projectVersion) => {
  *  @param { string } projectVersion
  *  @returns { void }
  */
-/*
 const version = projectVersion => {
     logging.log(); // new line
     const msg = 'Supomation CLI version: ' + logging.magenta(projectVersion);
     logging.logInfo(msg);
     logging.log(); // new line
 };
-*/
 
 // -------------------------------------------------------- //
 
@@ -79,13 +71,12 @@ const version = projectVersion => {
  *  @description Print the Supomation help message
  *  @returns { void }
  */
-/*
+// TODO: Complete help message
 const help = () => {
     logging.log(); // new line
     logging.logInfo(' ---- ' + logging.magenta('HELP MESSAGE') + ' ---- ');
     logging.log(); // new line
 };
-*/
 
 // -------------------------------------------------------- //
 
@@ -94,7 +85,6 @@ const help = () => {
  *  @description Quit Supomation
  *  @returns { void }
  */
-/*
 const quit = () => {
     logging.log(); // new line
     logging.logError('Quitting Supomation CLI...');
@@ -102,18 +92,18 @@ const quit = () => {
     const exit = process.exit;
     exit(0);
 };
-*/
 
 /*************
 * * EXPORTS *
 *************/
 
 module.exports = {
-    //    getDate,
-    //    getDateFull,
-    //    quit,
-    //    version,
-    //    help
+    getDate,
+    getDateFull,
+    welcome,
+    version,
+    help,
+    quit
 };
 
 // EOF //
