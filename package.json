@@ -24,5 +24,39 @@
         "eslint-plugin-prettier": "^3.1.0",
         "jest": "^24.8.0",
         "prettier": "^1.18.2"
+    },
+    "eslintConfig": {
+        "env": {
+            "es6": true,
+            "node": true,
+            "jest": true
+        },
+        "extends": [
+            "eslint:recommended",
+            "prettier",
+            "plugin:jest/recommended",
+            "plugin:node/recommended"
+        ],
+        "parserOptions": {
+            "ecmaVersion": 2018
+        },
+        "plugins": [
+            "prettier",
+            "jest"
+        ],
+        "rules": {
+            "quotes": [
+                "error",
+                "single"
+            ],
+            "semi": [
+                "error",
+                "always"
+            ]
+        }
+    },
+    "prettier": {
+        "singleQuote": true,
+        "semi": true
     }
 }
