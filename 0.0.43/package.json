@@ -1,0 +1,18 @@
+{
+    "name": "supomation",
+    "version": "0.0.43",
+    "description": "Supomation CLI",
+    "author": "PatEvs <ppevans11@gmail.com> (https://github.com/patevs)",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/patevs/supomation.git"
+    },
+    "engines": {
+        "node": ">=12"
+    },
+    "main": "src/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
