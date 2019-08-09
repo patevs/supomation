@@ -15,6 +15,7 @@
     "scripts": {
         "clean": "trash node_modules docs",
         "start": "node src/index.js",
+        "build": "babel src -d lib",
         "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
         "lint": "npm run prettier && eslint --fix src/**/*.js && echo. && echo Lint Completed!",
         "test": "jest && echo. && echo Test Complete! && exit 0",
