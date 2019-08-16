@@ -129,7 +129,7 @@ const displayProductDataTable = productData => {
 module.exports = {
     ensureDateDirExists,
     writeProductDataFile,
-    readProductDataFile,
+    readProductDataFile
     // displayProductDataTable
 };
 

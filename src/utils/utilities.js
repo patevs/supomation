@@ -17,10 +17,10 @@ const logging = require('./logging');
  ***************/
 
 /**
-*  @function getDate
-*  @description Get todays date string formatted as yyyy-mm-dd
-*  @returns { string } date string
-*/
+ *  @function getDate
+ *  @description Get todays date string formatted as yyyy-mm-dd
+ *  @returns { string } date string
+ */
 const getDate = () => {
     const d = new Date();
     return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
@@ -45,7 +45,7 @@ const getDateFull = () => {
  *  @param { string } projectVersion
  *  @returns { void }
  */
-const welcome = (projectVersion) => {
+const welcome = projectVersion => {
     logging.logWelcome(projectVersion, getDateFull());
 };
 
@@ -94,8 +94,8 @@ const quit = () => {
 };
 
 /*************
-* * EXPORTS *
-*************/
+ * * EXPORTS *
+ *************/
 
 module.exports = {
     getDate,

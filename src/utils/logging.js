@@ -49,19 +49,19 @@ const title = blue.bold.underline;
  */
 function logSuccess(msg) {
     log(logSymbols.success, msg);
-};
+}
 
 // -------------------------------------------------------- //
 
 /**
-* @function logInfo
-* @description Log an information message
-* @param { string } msg - message to log as information
-* @returns { void }
-*/
+ * @function logInfo
+ * @description Log an information message
+ * @param { string } msg - message to log as information
+ * @returns { void }
+ */
 function logInfo(msg) {
     log(logSymbols.info, msg);
-};
+}
 
 // -------------------------------------------------------- //
 
@@ -73,7 +73,7 @@ function logInfo(msg) {
  */
 function logError(msg) {
     log(logSymbols.error, msg);
-};
+}
 
 // -------------------------------------------------------- //
 
@@ -96,7 +96,7 @@ function logTitle(msg) {
     // Log title message
     log(boxen(titleMsg, { padding: pad }));
     log(); // new line
-};
+}
 
 // -------------------------------------------------------- //
 
@@ -120,11 +120,11 @@ function logWelcome(projectVersion, date) {
     // Log welcome message
     log(boxen(msg, { padding: 1, align: 'center' }));
     log(); // new line
-};
+}
 
 /*************
-* * EXPORTS *
-*************/
+ * * EXPORTS *
+ *************/
 
 module.exports = {
     log,
