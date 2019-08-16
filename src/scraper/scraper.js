@@ -10,9 +10,9 @@
  * * IMPORTS *
  *************/
 
-const selectors = require('./selectors');
+// const selectors = require('./selectors');
 
-const cheerio = require('cheerio');
+// const cheerio = require('cheerio');
 
 /**********************
  * * HELPER FUNCTIONS *
@@ -26,6 +26,7 @@ const cheerio = require('cheerio');
  *  @param { object } productData
  *  @returns { object } product
  */
+/*
 const processProduct = (productName, productQuantity, productData) => {
     // Get the product's unique id
     const pid = productData.productId;
@@ -43,6 +44,7 @@ const processProduct = (productName, productQuantity, productData) => {
     // Return the processed product
     return product;
 };
+*/
 
 // ------------------------------------------ //
 
@@ -52,6 +54,7 @@ const processProduct = (productName, productQuantity, productData) => {
  *  @param { CheerioElement } productElem
  *  @returns { string } product quantity
  */
+/*
 const getProductQuantity = productElem => {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
@@ -60,6 +63,7 @@ const getProductQuantity = productElem => {
     // Remove whitespace and return the result
     return pquantity.trim();
 };
+*/
 
 // ------------------------------------------ //
 
@@ -69,6 +73,7 @@ const getProductQuantity = productElem => {
  *  @param { CheerioElement } productElem
  *  @returns { string } productName
  */
+/*
 const getProductName = productElem => {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
@@ -77,6 +82,7 @@ const getProductName = productElem => {
     // Remove whitespace and return the result
     return pname.trim();
 };
+*/
 
 // ------------------------------------------ //
 
@@ -86,6 +92,7 @@ const getProductName = productElem => {
  *  @param { CheerioElement }  productElem
  *  @returns { object } productData
  */
+/*
 const getProductData = productElem => {
     // Load product element into cheerio
     const $ = cheerio.load(productElem);
@@ -94,6 +101,7 @@ const getProductData = productElem => {
     // Parse product data as JSON and return the result
     return JSON.parse(pdata);
 };
+*/
 
 /***************
  * * FUNCTIONS *
@@ -105,6 +113,7 @@ const getProductData = productElem => {
  *  @param { string } pageHtmlContent
  *  @returns { Array[Products] } allProducts - array of all products
  */
+/*
 const scrapProductsFromPage = pageHtmlContent => {
     // Array of all products to return
     let allProducts = [];
@@ -135,13 +144,14 @@ const scrapProductsFromPage = pageHtmlContent => {
     // Return array containing all products
     return allProducts;
 };
+*/
 
 /*************
  * * EXPORTS *
  *************/
 
 module.exports = {
-    scrapProductsFromPage
+    // scrapProductsFromPage
 };
 
 // EOF //
