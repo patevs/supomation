@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 
-const Table = require('cli-table3');
+// const Table = require('cli-table3');
 
 /**********************
  * * HELPER FUNCTIONS *
@@ -106,6 +106,7 @@ const readProductDataFile = filePath => {
 
 // -------------------------------------------------------- //
 
+/*
 const displayProductDataTable = productData => {
     // instantiate
     var table = new Table({
@@ -119,6 +120,7 @@ const displayProductDataTable = productData => {
     }
     console.log(table.toString());
 };
+*/
 
 /*************
  * * EXPORTS *
@@ -128,7 +130,7 @@ module.exports = {
     ensureDateDirExists,
     writeProductDataFile,
     readProductDataFile,
-    displayProductDataTable
+    // displayProductDataTable
 };
 
 // EOF //
