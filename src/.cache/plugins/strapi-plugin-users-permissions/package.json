@@ -28,7 +28,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-beta.15.tgz",
   "_shasum": "c85f2f4e99d9e66f0473ed0295ece10412ca3b2d",
   "_spec": "strapi-plugin-users-permissions@3.0.0-beta.15",
-  "_where": "C:\\Users\\Patrick\\Desktop\\git\\supomation-api",
+  "_where": "C:\\Users\\Patrick\\Desktop\\git\\supomation\\src",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",

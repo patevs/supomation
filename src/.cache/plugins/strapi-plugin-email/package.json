@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/strapi-plugin-email/-/strapi-plugin-email-3.0.0-beta.15.tgz",
   "_shasum": "4df1037dcc46ef0b9f743c1d5deee3df51742dd6",
   "_spec": "strapi-plugin-email@3.0.0-beta.15",
-  "_where": "C:\\Users\\Patrick\\Desktop\\git\\supomation-api",
+  "_where": "C:\\Users\\Patrick\\Desktop\\git\\supomation\\src",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
