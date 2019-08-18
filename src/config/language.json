@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "defaultLocale": "en_nz",
+  "modes": [
+    "query",
+    "subdomain",
+    "cookie",
+    "header",
+    "url",
+    "tld"
+  ],
+  "cookieName": "locale"
+}
