@@ -1,23 +1,27 @@
 /**
- *
- * Block
- *
- */
+*
+* Block
+*
+*/
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
 function Block({ children }) {
-    return <div className={styles.block}>{children}</div>;
+  return (
+    <div className={styles.block}>
+      {children}
+    </div>
+  );
 }
 
 Block.defaultProps = {
-    children: null
+  children: null,
 };
 
 Block.propTypes = {
-    children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Block;

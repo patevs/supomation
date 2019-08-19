@@ -15,14 +15,14 @@ import PropTypes from 'prop-types';
 import { NotFound } from 'strapi-helper-plugin';
 
 export default class NotFoundPage extends React.Component {
-    // eslint-disable-line react/prefer-stateless-function
-    render() {
-        return <NotFound {...this.props} />;
-    }
+  // eslint-disable-line react/prefer-stateless-function
+  render() {
+    return <NotFound {...this.props} />;
+  }
 }
 
 NotFoundPage.propTypes = {
-    history: PropTypes.shape({
-        goBack: PropTypes.func.isRequired
-    }).isRequired
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
 };

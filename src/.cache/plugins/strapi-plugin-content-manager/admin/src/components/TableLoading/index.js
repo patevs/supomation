@@ -10,17 +10,17 @@ import { LoadingIndicator } from 'strapi-helper-plugin';
 import styles from './styles.scss';
 
 function TableLoading({ colspan }) {
-    return (
-        <tr className={styles.tableLoading}>
-            <td colSpan={colspan + 1}>
-                <LoadingIndicator />
-            </td>
-        </tr>
-    );
+  return (
+    <tr className={styles.tableLoading}>
+      <td colSpan={colspan + 1}>
+        <LoadingIndicator />
+      </td>
+    </tr>
+  );
 }
 
 TableLoading.propTypes = {
-    colspan: PropTypes.number.isRequired
+  colspan: PropTypes.number.isRequired,
 };
 
 export default TableLoading;

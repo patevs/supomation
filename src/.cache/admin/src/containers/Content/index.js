@@ -13,36 +13,32 @@ import { selectPlugins } from '../App/selectors';
 
 import styles from './styles.scss';
 
-export class Content extends React.Component {
-    // eslint-disable-line react/prefer-stateless-function
-    render() {
-        const style = this.props.showLeftMenu ? styles.content : styles.wrapper;
+export class Content extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  render() {
+    const style = this.props.showLeftMenu ? styles.content : styles.wrapper;
 
-        return (
-            <div className={style}>
-                {React.Children.toArray(this.props.children)}
-            </div>
-        );
-    }
+    return (
+      <div className={style}>
+        {React.Children.toArray(this.props.children)}
+      </div>
+    );
+  }
 }
 
 Content.propTypes = {
-    children: PropTypes.node.isRequired,
-    showLeftMenu: PropTypes.bool.isRequired
+  children: PropTypes.node.isRequired,
+  showLeftMenu: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = createSelector(
-    selectPlugins(),
-    plugins => ({ plugins })
+  selectPlugins(),
+  (plugins) => ({ plugins })
 );
 
 function mapDispatchToProps(dispatch) {
-    return {
-        dispatch
-    };
+  return {
+    dispatch,
+  };
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Content);
+export default connect(mapStateToProps, mapDispatchToProps)(Content);

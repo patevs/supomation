@@ -16,22 +16,22 @@ import zhHans from './zh-Hans.json';
 import zh from './zh.json';
 
 const trads = {
-    ar,
-    de,
-    en,
-    es,
-    fr,
-    it,
-    ja,
-    ko,
-    nl,
-    pl,
-    'pt-BR': ptBR,
-    pt,
-    ru,
-    tr,
-    'zh-Hans': zhHans,
-    zh
+  ar,
+  de,
+  en,
+  es,
+  fr,
+  it,
+  ja,
+  ko,
+  nl,
+  pl,
+  'pt-BR': ptBR,
+  pt,
+  ru,
+  tr,
+  'zh-Hans': zhHans,
+  zh,
 };
 
 export default trads;

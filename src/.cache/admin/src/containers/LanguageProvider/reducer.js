@@ -19,34 +19,34 @@ const localStorageKey = 'strapi-admin-language';
 
 // Detect user language.
 const userLanguage =
-    window.localStorage.getItem(localStorageKey) ||
-    window.navigator.language ||
-    window.navigator.userLanguage;
+  window.localStorage.getItem(localStorageKey) ||
+  window.navigator.language ||
+  window.navigator.userLanguage;
 
 let foundLanguage = includes(languages, userLanguage) && userLanguage;
 if (!foundLanguage) {
-    // Split user language in a correct format.
-    const userLanguageShort = get(split(userLanguage, '-'), '0');
+  // Split user language in a correct format.
+  const userLanguageShort = get(split(userLanguage, '-'), '0');
 
-    // Check that the language is included in the admin configuration.
-    foundLanguage = includes(languages, userLanguageShort) && userLanguageShort;
+  // Check that the language is included in the admin configuration.
+  foundLanguage = includes(languages, userLanguageShort) && userLanguageShort;
 }
 
 const initialState = fromJS({
-    locale: foundLanguage || first(languages) || 'en'
+  locale: foundLanguage || first(languages) || 'en',
 });
 
 function languageProviderReducer(state = initialState, action) {
-    switch (action.type) {
-        case CHANGE_LOCALE:
-            // Set user language in local storage.
-            window.localStorage.setItem(localStorageKey, action.locale);
-            strapi.currentLanguage = action.locale;
+  switch (action.type) {
+    case CHANGE_LOCALE:
+      // Set user language in local storage.
+      window.localStorage.setItem(localStorageKey, action.locale);
+      strapi.currentLanguage = action.locale;
 
-            return state.set('locale', action.locale);
-        default:
-            return state;
-    }
+      return state.set('locale', action.locale);
+    default:
+      return state;
+  }
 }
 
 export default languageProviderReducer;

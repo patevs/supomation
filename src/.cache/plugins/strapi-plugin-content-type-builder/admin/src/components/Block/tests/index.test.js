@@ -4,18 +4,18 @@ import { shallow } from 'enzyme';
 import Block from '../index';
 
 describe('<Block />', () => {
-    it('should not crash', () => {
-        shallow(<Block />);
-    });
+  it('should not crash', () => {
+    shallow(<Block />);
+  });
 
-    it('should render his children', () => {
-        const Child = () => <div>I am a child</div>;
-        const wrapper = shallow(
-            <Block>
-                <Child />
-            </Block>
-        );
+  it('should render his children', () => {
+    const Child = () => <div>I am a child</div>;
+    const wrapper = shallow(
+      <Block>
+        <Child />
+      </Block>
+    );
 
-        expect(wrapper.find(Child).exists()).toBe(true);
-    });
+    expect(wrapper.find(Child).exists()).toBe(true);
+  });
 });

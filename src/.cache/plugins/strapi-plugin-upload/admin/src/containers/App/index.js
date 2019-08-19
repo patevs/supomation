@@ -16,23 +16,19 @@ import HomePage from '../HomePage';
 import { NotFound } from 'strapi-helper-plugin';
 
 function App() {
-    return (
-        <div className={pluginId}>
-            <Switch>
-                <Route
-                    path={`/plugins/${pluginId}/configurations/:env`}
-                    component={ConfigPage}
-                    exact
-                />
-                <Route
-                    path={`/plugins/${pluginId}`}
-                    component={HomePage}
-                    exact
-                />
-                <Route component={NotFound} />
-            </Switch>
-        </div>
-    );
+  return (
+    <div className={pluginId}>
+      <Switch>
+        <Route
+          path={`/plugins/${pluginId}/configurations/:env`}
+          component={ConfigPage}
+          exact
+        />
+        <Route path={`/plugins/${pluginId}`} component={HomePage} exact />
+        <Route component={NotFound} />
+      </Switch>
+    </div>
+  );
 }
 
 export default App;
