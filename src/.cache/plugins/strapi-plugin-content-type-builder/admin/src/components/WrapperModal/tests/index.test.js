@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import WrapperModal from '../index';
 
 describe('<WrapperModal />', () => {
-  it('should not crash', () => {
-    shallow(<WrapperModal isOpen onToggle={jest.fn()} />);
-  });
+    it('should not crash', () => {
+        shallow(<WrapperModal isOpen onToggle={jest.fn()} />);
+    });
 });

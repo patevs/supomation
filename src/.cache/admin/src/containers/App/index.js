@@ -22,30 +22,32 @@ import AppLoader from '../AppLoader';
 import styles from './styles.scss';
 
 function App(props) {
-  return (
-    <div>
-      <NotificationProvider />
-      <AppLoader>
-        {({ shouldLoad }) => {
-          if (shouldLoad) {
-            return <LoadingIndicatorPage />;
-          }
+    return (
+        <div>
+            <NotificationProvider />
+            <AppLoader>
+                {({ shouldLoad }) => {
+                    if (shouldLoad) {
+                        return <LoadingIndicatorPage />;
+                    }
 
-          return (
-            <div className={styles.container}>
-              <Switch>
-                <Route
-                  path="/"
-                  render={router => <Admin {...props} {...router} />}
-                />
-                <Route path="" component={NotFoundPage} />
-              </Switch>
-            </div>
-          );
-        }}
-      </AppLoader>
-    </div>
-  );
+                    return (
+                        <div className={styles.container}>
+                            <Switch>
+                                <Route
+                                    path="/"
+                                    render={router => (
+                                        <Admin {...props} {...router} />
+                                    )}
+                                />
+                                <Route path="" component={NotFoundPage} />
+                            </Switch>
+                        </div>
+                    );
+                }}
+            </AppLoader>
+        </div>
+    );
 }
 
 App.propTypes = {};
