@@ -15,42 +15,42 @@ import { defaultsDeep } from 'lodash';
 import { selectLocale } from './selectors';
 
 export class LanguageProvider extends React.Component {
-    // eslint-disable-line react/prefer-stateless-function
-    render() {
-        const messages = defaultsDeep(
-            this.props.messages[this.props.locale],
-            this.props.messages.en
-        );
-        return (
-            <IntlProvider
-                locale={this.props.locale}
-                defaultLocale="en"
-                messages={messages}
-            >
-                {React.Children.only(this.props.children)}
-            </IntlProvider>
-        );
-    }
+  // eslint-disable-line react/prefer-stateless-function
+  render() {
+    const messages = defaultsDeep(
+      this.props.messages[this.props.locale],
+      this.props.messages.en,
+    );
+    return (
+      <IntlProvider
+        locale={this.props.locale}
+        defaultLocale="en"
+        messages={messages}
+      >
+        {React.Children.only(this.props.children)}
+      </IntlProvider>
+    );
+  }
 }
 
 LanguageProvider.propTypes = {
-    children: PropTypes.element.isRequired,
-    locale: PropTypes.string.isRequired,
-    messages: PropTypes.object.isRequired
+  children: PropTypes.element.isRequired,
+  locale: PropTypes.string.isRequired,
+  messages: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = createSelector(
-    selectLocale(),
-    locale => ({ locale })
+  selectLocale(),
+  locale => ({ locale }),
 );
 
 function mapDispatchToProps(dispatch) {
-    return {
-        dispatch
-    };
+  return {
+    dispatch,
+  };
 }
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps,
 )(LanguageProvider);

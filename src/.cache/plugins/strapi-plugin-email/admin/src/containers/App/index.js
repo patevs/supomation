@@ -14,27 +14,15 @@ import pluginId from '../../pluginId';
 import ConfigPage from '../ConfigPage';
 
 function App() {
-    return (
-        <div className={pluginId}>
-            <Switch>
-                <Route
-                    path={`/plugins/${pluginId}/configurations/:env`}
-                    component={ConfigPage}
-                    exact
-                />
-                <Route
-                    path={`/plugins/${pluginId}/configurations/`}
-                    component={ConfigPage}
-                    exact
-                />
-                <Route
-                    path={`/plugins/${pluginId}`}
-                    component={ConfigPage}
-                    exact
-                />
-            </Switch>
-        </div>
-    );
+  return (
+    <div className={pluginId}>
+      <Switch>
+        <Route path={`/plugins/${pluginId}/configurations/:env`} component={ConfigPage} exact />
+        <Route path={`/plugins/${pluginId}/configurations/`} component={ConfigPage} exact />
+        <Route path={`/plugins/${pluginId}`} component={ConfigPage} exact />
+      </Switch>
+    </div>
+  );
 }
 
 export default App;

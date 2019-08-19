@@ -17,65 +17,59 @@ import styles from './styles.scss';
 
 /* eslint-disable react/require-default-props  */
 class HeaderNav extends React.Component {
-    // eslint-disable-line react/prefer-stateless-function
-    render() {
-        const baseUrl = join(take(this.props.path.split('/'), 4), '/');
-        const component = this.props.renderListComponent ? (
-            <List {...this.props} />
-        ) : (
-            <EditForm {...this.props} />
-        );
-        let linkColor = '#F5F5F5';
+  // eslint-disable-line react/prefer-stateless-function
+  render() {
+    const baseUrl = join(take(this.props.path.split('/'), 4), '/');
+    const component = this.props.renderListComponent ? (
+      <List {...this.props} />
+    ) : (
+      <EditForm {...this.props} />
+    );
+    let linkColor = '#F5F5F5';
 
-        return (
-            <div className={styles.stmheaderNav}>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className={styles.stmheaderContainer}>
-                                {map(this.props.links, (link, key) => {
-                                    const notifActive = link.active ? (
-                                        <div className={styles.stmnotifPoint} />
-                                    ) : (
-                                        ''
-                                    );
-                                    linkColor = darken(linkColor, 2);
+    return (
+      <div className={styles.stmheaderNav}>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-12">
+              <div className={styles.stmheaderContainer}>
+                {map(this.props.links, (link, key) => {
+                  const notifActive = link.active ? (
+                    <div className={styles.stmnotifPoint} />
+                  ) : (
+                    ''
+                  );
+                  linkColor = darken(linkColor, 2);
 
-                                    return (
-                                        <NavLink
-                                            key={key}
-                                            className={styles.stmheaderLink}
-                                            style={{
-                                                backgroundColor: linkColor
-                                            }}
-                                            to={`${baseUrl}/${link.name}`}
-                                            activeClassName={
-                                                styles.stmlinkActive
-                                            }
-                                        >
-                                            <div
-                                                className={`${styles.stmlinkText} text-center`}
-                                            >
-                                                {link.name}
-                                                {notifActive}
-                                            </div>
-                                        </NavLink>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {component}
+                  return (
+                    <NavLink
+                      key={key}
+                      className={styles.stmheaderLink}
+                      style={{ backgroundColor: linkColor }}
+                      to={`${baseUrl}/${link.name}`}
+                      activeClassName={styles.stmlinkActive}
+                    >
+                      <div className={`${styles.stmlinkText} text-center`}>
+                        {link.name}
+                        {notifActive}
+                      </div>
+                    </NavLink>
+                  );
+                })}
+              </div>
             </div>
-        );
-    }
+          </div>
+        </div>
+        {component}
+      </div>
+    );
+  }
 }
 
 HeaderNav.propTypes = {
-    links: PropTypes.array,
-    path: PropTypes.string,
-    renderListComponent: PropTypes.bool
+  links: PropTypes.array,
+  path: PropTypes.string,
+  renderListComponent: PropTypes.bool,
 };
 
 export default HeaderNav;

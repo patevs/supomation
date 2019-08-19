@@ -6,8 +6,8 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-    header: {
-        id: 'app.components.InputText.header',
-        defaultMessage: 'This is the InputText component !'
-    }
+  header: {
+    id: 'app.components.InputText.header',
+    defaultMessage: 'This is the InputText component !',
+  },
 });
