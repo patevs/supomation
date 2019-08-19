@@ -1,10 +1,13 @@
 {
     "name": "supomation-api",
-    "private": true,
-    "version": "0.1.0",
+    "version": "0.0.1",
     "description": "Supomation API",
-    "author": "patevs",
+    "author": "PatEvs <ppevans11@gmail.com> (https://github.com/patevs)",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/patevs/supomation.git"
+    },
     "engines": {
         "node": ">=10.0.0",
         "npm": ">=6.0.0"
