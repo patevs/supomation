@@ -17,7 +17,8 @@
         "start": "strapi start",
         "build": "strapi build",
         "strapi": "strapi",
-        "lint": "eslint ."
+        "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
+        "lint": "npm run prettier && eslint --fix src /**/*.js && echo. && echo Lint Completed!"
     },
     "devDependencies": {
         "babel-eslint": "^10.0.0",
@@ -46,5 +47,36 @@
     },
     "strapi": {
         "uuid": "99dd530e-ffc4-4002-8a9a-3de772f3a2ea"
+    },
+    "eslintConfig": {
+        "env": {
+            "es6": true,
+            "node": true,
+            "jest": true
+        },
+        "extends": [
+            "eslint:recommended",
+            "prettier"
+        ],
+        "parserOptions": {
+            "ecmaVersion": 2018
+        },
+        "plugins": [
+            "prettier"
+        ],
+        "rules": {
+            "quotes": [
+                "error",
+                "single"
+            ],
+            "semi": [
+                "error",
+                "always"
+            ]
+        }
+    },
+    "prettier": {
+        "singleQuote": true,
+        "semi": true
     }
 }
