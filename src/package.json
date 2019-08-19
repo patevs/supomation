@@ -18,16 +18,7 @@
         "build": "strapi build",
         "strapi": "strapi",
         "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
-        "lint": "npm run prettier && eslint --fix src /**/*.js && echo. && echo Lint Completed!"
-    },
-    "devDependencies": {
-        "babel-eslint": "^10.0.0",
-        "eslint": "^6.2.0",
-        "eslint-config-prettier": "^6.0.0",
-        "eslint-plugin-import": "^2.18.0",
-        "eslint-plugin-prettier": "^3.1.0",
-        "eslint-plugin-react": "^7.14.0",
-        "prettier": "^1.18.2"
+        "lint": "npm run prettier && eslint --fix **/*.js && echo. && echo Lint Completed!"
     },
     "dependencies": {
         "lodash": "^4.17.5",
@@ -44,6 +35,15 @@
         "strapi-hook-knex": "3.0.0-beta.15",
         "knex": "latest",
         "sqlite3": "latest"
+    },
+    "devDependencies": {
+        "babel-eslint": "^10.0.0",
+        "eslint": "^6.2.0",
+        "eslint-config-prettier": "^6.0.0",
+        "eslint-plugin-import": "^2.18.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-react": "^7.14.0",
+        "prettier": "^1.18.2"
     },
     "strapi": {
         "uuid": "99dd530e-ffc4-4002-8a9a-3de772f3a2ea"
