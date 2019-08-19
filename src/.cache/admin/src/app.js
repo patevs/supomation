@@ -23,11 +23,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { merge } from 'lodash';
 import {
-    freezeApp,
-    pluginLoaded,
-    unfreezeApp,
-    updatePlugin,
-    getAppPluginsSucceeded,
+  freezeApp,
+  pluginLoaded,
+  unfreezeApp,
+  updatePlugin,
+  getAppPluginsSucceeded,
 } from './containers/App/actions';
 import { showNotification } from './containers/NotificationProvider/actions';
 
@@ -54,142 +54,142 @@ const initialState = {};
 const store = configureStore(initialState, history);
 const { dispatch } = store;
 const MOUNT_NODE =
-    document.getElementById('app') || document.createElement('div');
+  document.getElementById('app') || document.createElement('div');
 
 dispatch(getAppPluginsSucceeded(Object.keys(plugins)));
 
 Object.keys(plugins).forEach(plugin => {
-    const currentPlugin = plugins[plugin];
+  const currentPlugin = plugins[plugin];
 
-    const pluginTradsPrefixed = languages.reduce((acc, lang) => {
-        const currentLocale = currentPlugin.trads[lang];
+  const pluginTradsPrefixed = languages.reduce((acc, lang) => {
+    const currentLocale = currentPlugin.trads[lang];
 
-        if (currentLocale) {
-            const localeprefixedWithPluginId = Object.keys(currentLocale).reduce(
-                (acc2, current) => {
-                    acc2[`${plugins[plugin].id}.${current}`] = currentLocale[current];
+    if (currentLocale) {
+      const localeprefixedWithPluginId = Object.keys(currentLocale).reduce(
+        (acc2, current) => {
+          acc2[`${plugins[plugin].id}.${current}`] = currentLocale[current];
 
-                    return acc2;
-                },
-                {}
-            );
+          return acc2;
+        },
+        {}
+      );
 
-            acc[lang] = localeprefixedWithPluginId;
-        }
-
-        return acc;
-    }, {});
-
-    try {
-        merge(translationMessages, pluginTradsPrefixed);
-        dispatch(pluginLoaded(currentPlugin));
-    } catch (err) {
-        console.log({ err });
+      acc[lang] = localeprefixedWithPluginId;
     }
+
+    return acc;
+  }, {});
+
+  try {
+    merge(translationMessages, pluginTradsPrefixed);
+    dispatch(pluginLoaded(currentPlugin));
+  } catch (err) {
+    console.log({ err });
+  }
 });
 
 // TODO
 const remoteURL = (() => {
     // Relative URL (ex: /dashboard)
-    if (REMOTE_URL[0] === '/') {
-        return (window.location.origin + REMOTE_URL).replace(/\/$/, '');
-    }
+  if (REMOTE_URL[0] === '/') {
+    return (window.location.origin + REMOTE_URL).replace(/\/$/, '');
+  }
 
-    return REMOTE_URL.replace(/\/$/, '');
+  return REMOTE_URL.replace(/\/$/, '');
 })();
 
 const displayNotification = (message, status) => {
-    dispatch(showNotification(message, status));
+  dispatch(showNotification(message, status));
 };
 const lockApp = data => {
-    dispatch(freezeApp(data));
+  dispatch(freezeApp(data));
 };
 const unlockApp = () => {
-    dispatch(unfreezeApp());
+  dispatch(unfreezeApp());
 };
 
 window.strapi = Object.assign(window.strapi || {}, {
-    node: MODE || 'host',
-    remoteURL,
-    backendURL: BACKEND_URL === '/' ? window.location.origin : BACKEND_URL,
-    notification: {
-        success: message => {
-            displayNotification(message, 'success');
-        },
-        warning: message => {
-            displayNotification(message, 'warning');
-        },
-        error: message => {
-            displayNotification(message, 'error');
-        },
-        info: message => {
-            displayNotification(message, 'info');
-        },
+  node: MODE || 'host',
+  remoteURL,
+  backendURL: BACKEND_URL === '/' ? window.location.origin : BACKEND_URL,
+  notification: {
+    success: message => {
+      displayNotification(message, 'success');
     },
-    refresh: pluginId => ({
-        translationMessages: translationMessagesUpdated => {
-            render(merge({}, translationMessages, translationMessagesUpdated));
-        },
-        leftMenuSections: leftMenuSectionsUpdated => {
-            store.dispatch(
-                updatePlugin(pluginId, 'leftMenuSections', leftMenuSectionsUpdated)
-            );
-        },
-    }),
-    router: history,
-    languages,
-    currentLanguage:
-        window.localStorage.getItem('strapi-admin-language') ||
-        window.navigator.language ||
-        window.navigator.userLanguage ||
-        'en',
-    lockApp,
-    unlockApp,
-    injectReducer,
-    injectSaga,
-    store,
+    warning: message => {
+      displayNotification(message, 'warning');
+    },
+    error: message => {
+      displayNotification(message, 'error');
+    },
+    info: message => {
+      displayNotification(message, 'info');
+    },
+  },
+  refresh: pluginId => ({
+    translationMessages: translationMessagesUpdated => {
+      render(merge({}, translationMessages, translationMessagesUpdated));
+    },
+    leftMenuSections: leftMenuSectionsUpdated => {
+      store.dispatch(
+        updatePlugin(pluginId, 'leftMenuSections', leftMenuSectionsUpdated)
+      );
+    },
+  }),
+  router: history,
+  languages,
+  currentLanguage:
+    window.localStorage.getItem('strapi-admin-language') ||
+    window.navigator.language ||
+    window.navigator.userLanguage ||
+    'en',
+  lockApp,
+  unlockApp,
+  injectReducer,
+  injectSaga,
+  store,
 });
 
 const render = messages => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <LanguageProvider messages={messages}>
-                <BrowserRouter basename={basename}>
-                    <App store={store} />
-                </BrowserRouter>
-            </LanguageProvider>
-        </Provider>,
-        MOUNT_NODE
-    );
+  ReactDOM.render(
+    <Provider store={store}>
+      <LanguageProvider messages={messages}>
+        <BrowserRouter basename={basename}>
+          <App store={store} />
+        </BrowserRouter>
+      </LanguageProvider>
+    </Provider>,
+    MOUNT_NODE
+  );
 };
 
 if (module.hot) {
-    module.hot.accept(['./i18n', './containers/App'], () => {
-        ReactDOM.unmountComponentAtNode(MOUNT_NODE);
+  module.hot.accept(['./i18n', './containers/App'], () => {
+    ReactDOM.unmountComponentAtNode(MOUNT_NODE);
 
-        render(translationMessages);
-    });
+    render(translationMessages);
+  });
 }
 
 if (NODE_ENV !== 'test') {
-    // Chunked polyfill for browsers without Intl support
-    if (!window.Intl) {
-        new Promise(resolve => {
-            resolve(import('intl'));
-        })
-            .then(() =>
-                Promise.all([
-                    import('intl/locale-data/jsonp/en.js'),
-                    import('intl/locale-data/jsonp/de.js'),
-                ])
-            ) // eslint-disable-line prettier/prettier
-            .then(() => render(translationMessages))
-            .catch(err => {
-                throw err;
-            });
-    } else {
-        render(translationMessages);
-    }
+  // Chunked polyfill for browsers without Intl support
+  if (!window.Intl) {
+    new Promise(resolve => {
+      resolve(import('intl'));
+    })
+      .then(() =>
+        Promise.all([
+          import('intl/locale-data/jsonp/en.js'),
+          import('intl/locale-data/jsonp/de.js'),
+        ])
+      ) // eslint-disable-line prettier/prettier
+      .then(() => render(translationMessages))
+      .catch(err => {
+        throw err;
+      });
+  } else {
+    render(translationMessages);
+  }
 }
 
 // @Pierre Burgy exporting dispatch for the notifications...
@@ -197,5 +197,5 @@ export { dispatch };
 
 // TODO remove this for the new Cypress tests
 if (window.Cypress) {
-    window.__store__ = Object.assign(window.__store__ || {}, { store });
+  window.__store__ = Object.assign(window.__store__ || {}, { store });
 }
