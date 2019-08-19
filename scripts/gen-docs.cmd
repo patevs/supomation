@@ -71,6 +71,9 @@ REM :: CALL curl https://raw.githubusercontent.com/klaussinani/signale/master/re
 REM :: ECHO. && ECHO [96mWrite-Json-File: [0m
 REM :: CALL curl https://raw.githubusercontent.com/sindresorhus/write-json-file/master/readme.md -o write-json-file.md -#
 
+ECHO. && ECHO [96m - strapi - [0m
+CALL curl https://raw.githubusercontent.com/strapi/strapi/master/README.md -o strapi.md -#
+
 ECHO. && ECHO [92mDownloading Documentation for Project Development Dependencies... [0m
 
 REM :: Move into docs\dev-dependencies directory
