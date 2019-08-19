@@ -17,7 +17,7 @@
         "start": "strapi start",
         "build": "strapi build",
         "strapi": "strapi",
-        "prettier": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
+        "prettier": "prettier --check --write **/*.js && echo. && echo Prettier Completed!",
         "lint": "npm run prettier && eslint --fix **/*.js && echo. && echo Lint Completed!"
     },
     "dependencies": {
