@@ -17,54 +17,58 @@ import reducer from './reducer';
 import saga from './saga';
 
 class Initializer extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
-  componentDidMount() {
-    this.props.initialize();
-    this.props.unsetAppSecured();
-  }
-
-  componentDidUpdate(prevProps) {
-    const { shouldUpdate, updatePlugin } = this.props;
-
-    if (prevProps.shouldUpdate !== shouldUpdate) {
-      // Emit the event 'pluginReady' so the app can start
-      updatePlugin('users-permissions', 'isReady', true);
+    // eslint-disable-line react/prefer-stateless-function
+    componentDidMount() {
+        this.props.initialize();
+        this.props.unsetAppSecured();
     }
-  }
 
-  render() {
-    return null;
-  }
+    componentDidUpdate(prevProps) {
+        const { shouldUpdate, updatePlugin } = this.props;
+
+        if (prevProps.shouldUpdate !== shouldUpdate) {
+            // Emit the event 'pluginReady' so the app can start
+            updatePlugin('users-permissions', 'isReady', true);
+        }
+    }
+
+    render() {
+        return null;
+    }
 }
 
 Initializer.propTypes = {
-  initialize: PropTypes.func.isRequired,
-  shouldUpdate: PropTypes.bool.isRequired,
-  unsetAppSecured: PropTypes.func.isRequired,
-  updatePlugin: PropTypes.func.isRequired,
+    initialize: PropTypes.func.isRequired,
+    shouldUpdate: PropTypes.bool.isRequired,
+    unsetAppSecured: PropTypes.func.isRequired,
+    updatePlugin: PropTypes.func.isRequired
 };
 
 const mapStateToProps = makeSelectInitializer();
 
 export function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    {
-      initialize,
-    },
-    dispatch,
-  );
+    return bindActionCreators(
+        {
+            initialize
+        },
+        dispatch
+    );
 }
 
 const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
+    mapStateToProps,
+    mapDispatchToProps
 );
 
 /* Remove this line if the container doesn't have a route and
  *  check the documentation to see how to create the container's store
  */
 
-const withReducer = strapi.injectReducer({ key: 'initializer', reducer, pluginId });
+const withReducer = strapi.injectReducer({
+    key: 'initializer',
+    reducer,
+    pluginId
+});
 
 /* Remove the line below the container doesn't have a route and
  *  check the documentation to see how to create the container's store
@@ -73,7 +77,7 @@ const withSaga = strapi.injectSaga({ key: 'initializer', saga, pluginId });
 
 export { Initializer };
 export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
+    withReducer,
+    withSaga,
+    withConnect
 )(Initializer);

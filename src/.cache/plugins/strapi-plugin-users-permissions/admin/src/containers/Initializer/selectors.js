@@ -4,7 +4,8 @@ import pluginId from '../../pluginId';
 /**
  * Direct selector to the initializer state domain
  */
-const selectInitializerDomain = () => state => state.get(`${pluginId}_initializer`);
+const selectInitializerDomain = () => state =>
+    state.get(`${pluginId}_initializer`);
 
 /**
  * Other specific selectors
@@ -15,10 +16,10 @@ const selectInitializerDomain = () => state => state.get(`${pluginId}_initialize
  */
 
 const makeSelectInitializer = () =>
-  createSelector(
-    selectInitializerDomain(),
-    substate => substate.toJS(),
-  );
+    createSelector(
+        selectInitializerDomain(),
+        substate => substate.toJS()
+    );
 
 export default makeSelectInitializer;
 export { selectInitializerDomain };

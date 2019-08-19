@@ -16,35 +16,35 @@ import getInjectors from './sagaInjectors';
  *
  */
 export default ({ key, saga, mode, pluginId }) => WrappedComponent => {
-  class InjectSaga extends React.Component {
-    static WrappedComponent = WrappedComponent;
-    static displayName = `withSaga(${WrappedComponent.displayName ||
-      WrappedComponent.name ||
-      'Component'})`;
-    static contextTypes = {
-      store: PropTypes.object.isRequired,
-    };
+    class InjectSaga extends React.Component {
+        static WrappedComponent = WrappedComponent;
+        static displayName = `withSaga(${WrappedComponent.displayName ||
+            WrappedComponent.name ||
+            'Component'})`;
+        static contextTypes = {
+            store: PropTypes.object.isRequired
+        };
 
-    componentWillMount() {
-      const { injectSaga } = this.injectors;
-      const sagaName = pluginId ? `${pluginId}_${key}` : key;
+        componentWillMount() {
+            const { injectSaga } = this.injectors;
+            const sagaName = pluginId ? `${pluginId}_${key}` : key;
 
-      injectSaga(sagaName, { saga, mode }, this.props);
+            injectSaga(sagaName, { saga, mode }, this.props);
+        }
+
+        componentWillUnmount() {
+            const { ejectSaga } = this.injectors;
+            const sagaName = pluginId ? `${pluginId}_${key}` : key;
+
+            ejectSaga(sagaName);
+        }
+
+        injectors = getInjectors(this.context.store);
+
+        render() {
+            return <WrappedComponent {...this.props} />;
+        }
     }
 
-    componentWillUnmount() {
-      const { ejectSaga } = this.injectors;
-      const sagaName = pluginId ? `${pluginId}_${key}` : key;
-
-      ejectSaga(sagaName);
-    }
-
-    injectors = getInjectors(this.context.store);
-
-    render() {
-      return <WrappedComponent {...this.props} />;
-    }
-  }
-
-  return hoistNonReactStatics(InjectSaga, WrappedComponent);
+    return hoistNonReactStatics(InjectSaga, WrappedComponent);
 };

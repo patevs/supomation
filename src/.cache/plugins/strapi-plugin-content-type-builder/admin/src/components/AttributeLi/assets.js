@@ -11,17 +11,17 @@ import string from '../../assets/images/icon_string.png';
 import text from '../../assets/images/icon_text.png';
 
 const assets = {
-  boolean,
-  date,
-  email,
-  enumeration,
-  media,
-  json,
-  number,
-  password,
-  relation,
-  string,
-  text,
+    boolean,
+    date,
+    email,
+    enumeration,
+    media,
+    json,
+    number,
+    password,
+    relation,
+    string,
+    text
 };
 
 export default assets;

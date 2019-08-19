@@ -2,23 +2,23 @@
 import pluginId from '../pluginId';
 
 function didGetSecuredData() {
-  const {
-    props: { updatePlugin },
-  } = this;
-  const leftMenuSections = [
-    {
-      links: [
+    const {
+        props: { updatePlugin }
+    } = this;
+    const leftMenuSections = [
         {
-          label: 'Users',
-          destination: 'user',
-          plugin: 'content-manager',
-        },
-      ],
-      name: 'Content Types',
-    },
-  ];
+            links: [
+                {
+                    label: 'Users',
+                    destination: 'user',
+                    plugin: 'content-manager'
+                }
+            ],
+            name: 'Content Types'
+        }
+    ];
 
-  updatePlugin(pluginId, 'leftMenuSections', leftMenuSections);
+    updatePlugin(pluginId, 'leftMenuSections', leftMenuSections);
 }
 
 export default didGetSecuredData;
