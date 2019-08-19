@@ -30,20 +30,20 @@ import trads from './translations';
 
 // We dismiss pt-BR and zh-Hans locales since they are not supported by react-intl
 const locales = {
-  ar,
-  de,
-  en,
-  es,
-  fr,
-  it,
-  ja,
-  ko,
-  nl,
-  pl,
-  pt,
-  ru,
-  tr,
-  zh,
+    ar,
+    de,
+    en,
+    es,
+    fr,
+    it,
+    ja,
+    ko,
+    nl,
+    pl,
+    pt,
+    ru,
+    tr,
+    zh,
 };
 const languages = Object.keys(trads);
 
@@ -51,18 +51,18 @@ const languages = Object.keys(trads);
  * Dynamically generate `translationsMessages object`.
  */
 const translationMessages = reduce(
-  languages,
-  (result, language) => {
-    const obj = result;
-    obj[language] = trads[language];
+    languages,
+    (result, language) => {
+        const obj = result;
+        obj[language] = trads[language];
 
-    if (locales[language]) {
-      addLocaleData(locales[language]);
-    }
+        if (locales[language]) {
+            addLocaleData(locales[language]);
+        }
 
-    return obj;
-  },
-  {},
+        return obj;
+    },
+    {},
 );
 
 export { languages, translationMessages };

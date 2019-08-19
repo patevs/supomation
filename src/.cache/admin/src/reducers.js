@@ -12,10 +12,10 @@ import notificationProviderReducer from './containers/NotificationProvider/reduc
  * Creates the main reducer with the dynamically injected ones
  */
 export default function createReducer(injectedReducers) {
-  return combineReducers({
-    app: globalReducer,
-    language: languageProviderReducer,
-    notification: notificationProviderReducer,
-    ...injectedReducers,
-  });
+    return combineReducers({
+        app: globalReducer,
+        language: languageProviderReducer,
+        notification: notificationProviderReducer,
+        ...injectedReducers,
+    });
 }
