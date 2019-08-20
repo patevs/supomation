@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="434"
+   height="120"
+   viewBox="0 0 114.82917 31.750001"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="supomation-logo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="330.64387"
+     inkscape:cy="-79.364356"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:pagecheckerboard="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-265.24998)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="30.663382"
+       y="284.97229"
+       id="text4568"><tspan
+         sodipodi:role="line"
+         id="tspan4566"
+         x="30.663382"
+         y="284.97229"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.58333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.26458332;fill:#4caf50;fill-opacity:1">SUPOMATION</tspan></text>
+    <path
+       id="path4580"
+       d="m 12.299659,291.5159 q 0,0.93807 -0.580041,1.62356 -0.580057,0.68552 -1.373804,0.68552 -0.7937449,0 -1.3738012,-0.68552 -0.5800415,-0.68552 -0.5800415,-1.62356 0,-0.93806 0.5800415,-1.62358 0.5800563,-0.68552 1.3738012,-0.68552 0.793747,0 1.373804,0.68552 0.580041,0.68552 0.580041,1.62358 z m 13.676919,0 q 0,0.93807 -0.580042,1.62356 -0.580041,0.68552 -1.3738,0.68552 -0.793744,0 -1.3738,-0.68552 -0.580042,-0.68552 -0.580042,-1.62356 0,-0.93806 0.580042,-1.62358 0.580056,-0.68552 1.3738,-0.68552 0.793759,0 1.3738,0.68552 0.580042,0.68552 0.580042,1.62358 z m 1.953856,-19.62727 v 9.23636 q 0,0.43295 -0.251872,0.7667 -0.251858,0.33373 -0.618197,0.38786 l -15.936063,2.20085 q 0.198443,1.08238 0.198443,1.26278 0,0.28864 -0.366353,1.15454 h 14.043273 q 0.396871,0 0.6869,0.34276 0.290013,0.34276 0.290013,0.81181 0,0.46902 -0.290013,0.81177 -0.290029,0.34276 -0.6869,0.34276 H 9.3688997 q -0.3968869,0 -0.6869002,-0.34276 -0.2900282,-0.34275 -0.2900282,-0.81177 0,-0.19845 0.1221622,-0.56827 0.1221622,-0.3698 0.244221,-0.64945 0.1221622,-0.27963 0.3281836,-0.72159 0.2060803,-0.44195 0.2366135,-0.53217 L 6.6213431,270.73408 H 3.5074034 q -0.3968868,0 -0.6869003,-0.34275 -0.2900281,-0.34276 -0.2900281,-0.81181 0,-0.46904 0.2900281,-0.81178 0.2900135,-0.34276 0.6869003,-0.34276 h 3.9076838 q 0.2442359,0 0.4350423,0.1173 0.1908064,0.1173 0.2976503,0.27963 0.1067996,0.16236 0.1984435,0.44198 0.091584,0.27963 0.1221621,0.46904 0.030578,0.18942 0.083904,0.53218 0.053474,0.34275 0.068688,0.46902 H 26.95355 q 0.396873,0 0.686901,0.34276 0.290028,0.34275 0.290028,0.8118 z"
+       inkscape:connector-curvature="0"
+       style="fill:#4caf50;stroke-width:0.01659419" />
+  </g>
+</svg>
