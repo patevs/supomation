@@ -185,7 +185,7 @@ export class HomePage extends React.PureComponent {
 
         return (
             <div className={cn('container-fluid', styles.containerFluid)}>
-                <Helmet title="Supomation Admin - Home Page" />
+                <Helmet title="Supomation Admin - Home" />
                 <div className="row">
                     <div className="col-md-8 col-lg-8">
                         <Block>
