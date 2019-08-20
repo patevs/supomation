@@ -18,54 +18,54 @@ import styles from './styles.scss';
 
 /* eslint-disable jsx-a11y/alt-text */
 function getSrc(name) {
-    switch (name) {
-        case 'GitHub':
-            return Gh;
-        case 'Reddit':
-            return Reddit;
-        case 'Medium':
-            return Medium;
-        case 'Slack':
-            return Slack;
-        case 'Stack Overflow':
-            return So;
-        case 'Twitter':
-            return Twitter;
-        default:
-            return Gh;
-    }
+  switch (name) {
+    case 'GitHub':
+      return Gh;
+    case 'Reddit':
+      return Reddit;
+    case 'Medium':
+      return Medium;
+    case 'Slack':
+      return Slack;
+    case 'Stack Overflow':
+      return So;
+    case 'Twitter':
+      return Twitter;
+    default:
+      return Gh;
+  }
 }
 
 class SocialLink extends React.PureComponent {
-    state = { imgLoaded: false };
+  state = { imgLoaded: false };
 
-    handleImgLoaded = () => this.setState({ imgLoaded: true });
+  handleImgLoaded = () => this.setState({ imgLoaded: true });
 
-    render() {
-        const { link, name } = this.props;
-        const { imgLoaded } = this.state;
+  render() {
+    const { link, name } = this.props;
+    const { imgLoaded } = this.state;
 
-        return (
-            <div className={cn(styles.socialLink, 'col-md-6 col-lg-6')}>
-                <a href={link} target="_blank" rel="noopener noreferrer">
-                    <div>
-                        {!imgLoaded && (
-                            <div className={styles.spinner}>
-                                <div />
-                            </div>
-                        )}
-                        <img src={getSrc(name)} onLoad={this.handleImgLoaded} />
-                    </div>
-                    <span>{name}</span>
-                </a>
-            </div>
-        );
-    }
+    return (
+      <div className={cn(styles.socialLink, 'col-md-6 col-lg-6')}>
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          <div>
+            {!imgLoaded && (
+              <div className={styles.spinner}>
+                <div />
+              </div>
+            )}
+            <img src={getSrc(name)} onLoad={this.handleImgLoaded} />
+          </div>
+          <span>{name}</span>
+        </a>
+      </div>
+    );
+  }
 }
 
 SocialLink.propTypes = {
-    link: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+  link: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default SocialLink;

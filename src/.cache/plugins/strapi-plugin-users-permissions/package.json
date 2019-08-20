@@ -1,43 +1,16 @@
 {
-  "_from": "strapi-plugin-users-permissions@3.0.0-beta.15",
-  "_id": "strapi-plugin-users-permissions@3.0.0-beta.15",
-  "_inBundle": false,
-  "_integrity": "sha512-l7rlw131QUqCvLvbp1AptqkJj/wzjA033tXAl0bufM+iDt75p2vfuhYYFf5n9+zPlMoBsAFxoEe5ZwJsPpO8zA==",
-  "_location": "/strapi-plugin-users-permissions",
-  "_phantomChildren": {
-    "@babel/runtime": "7.5.5",
-    "hoist-non-react-statics": "3.3.0",
-    "invariant": "2.2.4",
-    "loose-envify": "1.4.0",
-    "prop-types": "15.7.2",
-    "react-is": "16.9.0"
+  "name": "strapi-plugin-users-permissions",
+  "version": "3.0.0-beta.15",
+  "description": "Protect your API with a full-authentication process based on JWT",
+  "strapi": {
+    "name": "Roles & Permissions",
+    "icon": "users",
+    "description": "users-permissions.plugin.description",
+    "required": true
   },
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "strapi-plugin-users-permissions@3.0.0-beta.15",
-    "name": "strapi-plugin-users-permissions",
-    "escapedName": "strapi-plugin-users-permissions",
-    "rawSpec": "3.0.0-beta.15",
-    "saveSpec": null,
-    "fetchSpec": "3.0.0-beta.15"
+  "scripts": {
+    "test": "echo \"no tests yet\""
   },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/strapi-plugin-users-permissions/-/strapi-plugin-users-permissions-3.0.0-beta.15.tgz",
-  "_shasum": "c85f2f4e99d9e66f0473ed0295ece10412ca3b2d",
-  "_spec": "strapi-plugin-users-permissions@3.0.0-beta.15",
-  "_where": "C:\\Users\\Patrick\\Desktop\\git\\supomation\\src",
-  "author": {
-    "name": "Strapi team",
-    "email": "hi@strapi.io",
-    "url": "http://strapi.io"
-  },
-  "bugs": {
-    "url": "https://github.com/strapi/strapi/issues"
-  },
-  "bundleDependencies": false,
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "classnames": "^2.2.6",
@@ -62,18 +35,14 @@
     "strapi-utils": "3.0.0-beta.15",
     "uuid": "^3.1.0"
   },
-  "deprecated": false,
-  "description": "Protect your API with a full-authentication process based on JWT",
   "devDependencies": {
     "koa": "^2.1.0"
   },
-  "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
+  "author": {
+    "name": "Strapi team",
+    "email": "hi@strapi.io",
+    "url": "http://strapi.io"
   },
-  "gitHead": "fe2c2dccb3e9a1b9ca684c6bcea22bfc5591cfdb",
-  "homepage": "https://github.com/strapi/strapi#readme",
-  "license": "MIT",
   "maintainers": [
     {
       "name": "Strapi team",
@@ -81,19 +50,14 @@
       "url": "http://strapi.io"
     }
   ],
-  "name": "strapi-plugin-users-permissions",
   "repository": {
     "type": "git",
     "url": "git://github.com/strapi/strapi.git"
   },
-  "scripts": {
-    "test": "echo \"no tests yet\""
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   },
-  "strapi": {
-    "name": "Roles & Permissions",
-    "icon": "users",
-    "description": "users-permissions.plugin.description",
-    "required": true
-  },
-  "version": "3.0.0-beta.15"
+  "license": "MIT",
+  "gitHead": "fe2c2dccb3e9a1b9ca684c6bcea22bfc5591cfdb"
 }

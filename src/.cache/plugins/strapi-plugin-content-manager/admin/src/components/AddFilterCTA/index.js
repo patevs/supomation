@@ -2,7 +2,7 @@
  *
  * AddFilterCTA
  *
- */
+ */ 
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -15,48 +15,38 @@ import Button from '../CustomButton';
 import styles from './styles.scss';
 
 class AddFilterCTA extends React.Component {
-    state = { imgLoaded: false };
+  state = { imgLoaded: false };
 
-    handleImgLoaded = () => this.setState({ imgLoaded: true });
+  handleImgLoaded = () => this.setState({ imgLoaded: true });
 
-    render() {
-        const { id, onClick, showHideText } = this.props;
-        const { imgLoaded } = this.state;
-        const textId = showHideText ? 'hide' : 'add';
+  render() {
+    const { id, onClick, showHideText } = this.props;
+    const { imgLoaded } = this.state;
+    const textId = showHideText ? 'hide' : 'add';
+    
+    return (
+      <Button type="button" onClick={onClick} marginTop id={id}>
+        <div className={styles.ctaWrapper}>
+          {!imgLoaded && <div className={styles.spinner}><div /></div>}
+          <img src={Logo} onLoad={this.handleImgLoaded} alt="filter_logo" className={styles.imgCta} />
+          <FormattedMessage id={`content-manager.components.AddFilterCTA.${textId}`} /> 
 
-        return (
-            <Button type="button" onClick={onClick} marginTop id={id}>
-                <div className={styles.ctaWrapper}>
-                    {!imgLoaded && (
-                        <div className={styles.spinner}>
-                            <div />
-                        </div>
-                    )}
-                    <img
-                        src={Logo}
-                        onLoad={this.handleImgLoaded}
-                        alt="filter_logo"
-                        className={styles.imgCta}
-                    />
-                    <FormattedMessage
-                        id={`content-manager.components.AddFilterCTA.${textId}`}
-                    />
-                </div>
-            </Button>
-        );
-    }
+        </div>
+      </Button>
+    );
+  }
 }
 
 AddFilterCTA.defaultProps = {
-    id: '',
-    onClick: () => {},
-    showHideText: false
+  id: '',
+  onClick: () => {},
+  showHideText: false,
 };
 
 AddFilterCTA.propTypes = {
-    id: PropTypes.string,
-    onClick: PropTypes.func,
-    showHideText: PropTypes.bool
+  id: PropTypes.string,
+  onClick: PropTypes.func,
+  showHideText: PropTypes.bool,
 };
 
 export default AddFilterCTA;

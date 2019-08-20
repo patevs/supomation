@@ -4,24 +4,24 @@ import { FormattedMessage } from 'react-intl';
 import styles from './styles.scss';
 
 const SectionTitle = ({ isSettings }) => {
-    const suffix = isSettings ? 'settings' : 'layout';
-    const msgId = `content-manager.containers.SettingPage.${suffix}`;
+  const suffix = isSettings ? 'settings' : 'layout';
+  const msgId = `content-manager.containers.SettingPage.${suffix}`;
 
-    return (
-        <div style={{ marginBottom: '18px' }}>
-            <FormattedMessage id={msgId}>
-                {msg => <span className={styles.sectionTitle}>{msg}</span>}
-            </FormattedMessage>
-        </div>
-    );
+  return (
+    <div style={{ marginBottom: '18px' }}>
+      <FormattedMessage id={msgId}>
+        {msg => <span className={styles.sectionTitle}>{msg}</span>}
+      </FormattedMessage>
+    </div>
+  );
 };
 
 SectionTitle.propTypes = {
-    isSettings: PropTypes.bool
+  isSettings: PropTypes.bool,
 };
 
 SectionTitle.defaultProps = {
-    isSettings: false
+  isSettings: false,
 };
 
 export default SectionTitle;

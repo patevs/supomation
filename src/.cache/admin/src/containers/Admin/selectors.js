@@ -14,16 +14,16 @@ const selectAdminDomain = () => state => state.get('admin');
  */
 
 const makeSelectAdmin = () =>
-    createSelector(
-        selectAdminDomain(),
-        substate => substate.toJS()
-    );
+  createSelector(
+    selectAdminDomain(),
+    substate => substate.toJS(),
+  );
 
 const makeSelectUuid = () =>
-    createSelector(
-        selectAdminDomain(),
-        substate => substate.get('uuid')
-    );
+  createSelector(
+    selectAdminDomain(),
+    substate => substate.get('uuid'),
+  );
 
 export default makeSelectAdmin;
 export { makeSelectUuid, selectAdminDomain };
