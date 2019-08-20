@@ -18,7 +18,7 @@ import {
     Button,
     InputText as Input,
     auth,
-    validateInput,
+    validateInput
 } from 'strapi-helper-plugin';
 
 import Block from '../../components/HomePageBlock';
@@ -46,73 +46,73 @@ import styles from './styles.scss';
 const FIRST_BLOCK = [
     {
         title: {
-            id: 'app.components.HomePage.welcome',
+            id: 'app.components.HomePage.welcome'
         },
-        content: () => <WelcomeContent />,
+        content: () => <WelcomeContent />
     },
     {
         title: {
-            id: 'app.components.HomePage.create',
+            id: 'app.components.HomePage.create'
         },
-        content: () => <CreateContent />,
-    },
+        content: () => <CreateContent />
+    }
 ];
 
 const FIRST_BLOCK_LINKS = [
     {
         link: 'https://strapi.io/documentation/',
         content: {
-            id: 'app.components.BlockLink.documentation.content',
+            id: 'app.components.BlockLink.documentation.content'
         },
         isDocumentation: true,
         title: {
-            id: 'app.components.BlockLink.documentation',
-        },
+            id: 'app.components.BlockLink.documentation'
+        }
     },
     {
         link: 'https://github.com/strapi/strapi-examples',
         content: {
-            id: 'app.components.BlockLink.code.content',
+            id: 'app.components.BlockLink.code.content'
         },
         isDocumentation: false,
         title: {
-            id: 'app.components.BlockLink.code',
-        },
-    },
+            id: 'app.components.BlockLink.code'
+        }
+    }
 ];
 
 const SECOND_BLOCK = {
     title: {
-        id: 'app.components.HomePage.community',
+        id: 'app.components.HomePage.community'
     },
-    content: () => <CommunityContent />,
+    content: () => <CommunityContent />
 };
 
 const SOCIAL_LINKS = [
     {
         name: 'GitHub',
-        link: 'https://github.com/strapi/strapi/',
+        link: 'https://github.com/strapi/strapi/'
     },
     {
         name: 'Slack',
-        link: 'https://slack.strapi.io/',
+        link: 'https://slack.strapi.io/'
     },
     {
         name: 'Medium',
-        link: 'https://medium.com/@strapi',
+        link: 'https://medium.com/@strapi'
     },
     {
         name: 'Twitter',
-        link: 'https://twitter.com/strapijs',
+        link: 'https://twitter.com/strapijs'
     },
     {
         name: 'Reddit',
-        link: 'https://www.reddit.com/r/Strapi/',
+        link: 'https://www.reddit.com/r/Strapi/'
     },
     {
         name: 'Stack Overflow',
-        link: 'https://stackoverflow.com/questions/tagged/strapi',
-    },
+        link: 'https://stackoverflow.com/questions/tagged/strapi'
+    }
 ];
 
 export class HomePage extends React.PureComponent {
@@ -138,25 +138,28 @@ export class HomePage extends React.PureComponent {
     };
 
     showFirstBlock = () =>
-        get(this.context.plugins, 'content-manager.leftMenuSections.0.links', [])
-            .length === 0;
+        get(
+            this.context.plugins,
+            'content-manager.leftMenuSections.0.links',
+            []
+        ).length === 0;
 
     renderButton = () => {
         /* eslint-disable indent */
         const data = this.showFirstBlock()
             ? {
-                className: styles.homePageTutorialButton,
-                href:
-                    'https://strapi.io/documentation/getting-started/quick-start.html#_3-create-a-content-type',
-                id: 'app.components.HomePage.button.quickStart',
-                primary: true,
-            }
+                  className: styles.homePageTutorialButton,
+                  href:
+                      'https://strapi.io/documentation/getting-started/quick-start.html#_3-create-a-content-type',
+                  id: 'app.components.HomePage.button.quickStart',
+                  primary: true
+              }
             : {
-                className: styles.homePageBlogButton,
-                id: 'app.components.HomePage.button.blog',
-                href: 'https://blog.strapi.io/',
-                primary: false,
-            };
+                  className: styles.homePageBlogButton,
+                  id: 'app.components.HomePage.button.blog',
+                  href: 'https://blog.strapi.io/',
+                  primary: false
+              };
         /* eslint-enable indent */
 
         return (
@@ -170,17 +173,17 @@ export class HomePage extends React.PureComponent {
 
     render() {
         const {
-            homePage: { articles, body },
+            homePage: { articles, body }
         } = this.props;
 
         const WELCOME_AGAIN_BLOCK = [
             {
                 title: {
-                    id: 'app.components.HomePage.welcome.again',
+                    id: 'app.components.HomePage.welcome.again'
                 },
                 name: upperFirst(`${get(auth.getUserInfo(), 'username')}!`),
-                content: () => <WelcomeContent hasContent />,
-            },
+                content: () => <WelcomeContent hasContent />
+            }
         ];
 
         return (
@@ -199,15 +202,21 @@ export class HomePage extends React.PureComponent {
                                     />
                                 ))}
                             {!this.showFirstBlock() &&
-                                WELCOME_AGAIN_BLOCK.concat(articles).map((value, key) => (
-                                    <Sub
-                                        key={key}
-                                        {...value}
-                                        bordered={key === 0}
-                                        style={key === 1 ? { marginBottom: '33px' } : {}}
-                                        underline={key === 0}
-                                    />
-                                ))}
+                                WELCOME_AGAIN_BLOCK.concat(articles).map(
+                                    (value, key) => (
+                                        <Sub
+                                            key={key}
+                                            {...value}
+                                            bordered={key === 0}
+                                            style={
+                                                key === 1
+                                                    ? { marginBottom: '33px' }
+                                                    : {}
+                                            }
+                                            underline={key === 0}
+                                        />
+                                    )
+                                )}
                             {this.renderButton()}
                             <div className={styles.homePageFlex}>
                                 {FIRST_BLOCK_LINKS.map((value, key) => (
@@ -231,17 +240,32 @@ export class HomePage extends React.PureComponent {
                                         <FormattedMessage id="app.components.HomePage.newsLetter" />
                                     </div>
                                     <form onSubmit={this.handleSubmit}>
-                                        <div className={cn(styles.homePageForm, 'row')}>
+                                        <div
+                                            className={cn(
+                                                styles.homePageForm,
+                                                'row'
+                                            )}
+                                        >
                                             <div className="col-md-12">
                                                 <Input
                                                     value={body.email}
-                                                    onChange={this.props.onChange}
+                                                    onChange={
+                                                        this.props.onChange
+                                                    }
                                                     name=""
                                                     placeholder="johndoe@gmail.com"
-                                                    error={!isEmpty(this.state.errors)}
+                                                    error={
+                                                        !isEmpty(
+                                                            this.state.errors
+                                                        )
+                                                    }
                                                 />
                                                 <FormattedMessage id="app.components.HomePage.cta">
-                                                    {message => <button type="submit">{message}</button>}
+                                                    {message => (
+                                                        <button type="submit">
+                                                            {message}
+                                                        </button>
+                                                    )}
                                                 </FormattedMessage>
                                             </div>
                                         </div>
@@ -268,19 +292,19 @@ export class HomePage extends React.PureComponent {
 }
 
 HomePage.contextTypes = {
-    plugins: PropTypes.object,
+    plugins: PropTypes.object
 };
 
 HomePage.propTypes = {
     getArticles: PropTypes.func.isRequired,
     homePage: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    submit: PropTypes.func.isRequired,
+    submit: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
     homePage: makeSelectHomePage(),
-    plugins: selectPlugins(),
+    plugins: selectPlugins()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -288,7 +312,7 @@ function mapDispatchToProps(dispatch) {
         {
             getArticles,
             onChange,
-            submit,
+            submit
         },
         dispatch
     );

@@ -1,16 +1,43 @@
 {
-  "name": "strapi-plugin-content-manager",
-  "version": "3.0.0-beta.15",
-  "description": "A powerful UI to easily manage your data.",
-  "strapi": {
-    "name": "Content Manager",
-    "icon": "plug",
-    "description": "content-manager.plugin.description",
-    "required": true
+  "_from": "strapi-plugin-content-manager@3.0.0-beta.15",
+  "_id": "strapi-plugin-content-manager@3.0.0-beta.15",
+  "_inBundle": false,
+  "_integrity": "sha512-YQQf7tE9HmDw8ZclxVcKv+YutDN1heT0MsKXIVMKU9Q9qnv3M3k9kE6+u9CSctY0qEqiuA2rkPcJgWVy7cXJOw==",
+  "_location": "/strapi-plugin-content-manager",
+  "_phantomChildren": {
+    "@babel/runtime": "7.5.5",
+    "hoist-non-react-statics": "3.3.0",
+    "invariant": "2.2.4",
+    "loose-envify": "1.4.0",
+    "prop-types": "15.7.2",
+    "react-is": "16.9.0"
   },
-  "scripts": {
-    "test": "echo \"no tests yet\""
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "strapi-plugin-content-manager@3.0.0-beta.15",
+    "name": "strapi-plugin-content-manager",
+    "escapedName": "strapi-plugin-content-manager",
+    "rawSpec": "3.0.0-beta.15",
+    "saveSpec": null,
+    "fetchSpec": "3.0.0-beta.15"
   },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.0.0-beta.15.tgz",
+  "_shasum": "422befb45ea04e5cf47a19f78e7cd4b1d31e8abe",
+  "_spec": "strapi-plugin-content-manager@3.0.0-beta.15",
+  "_where": "C:\\Users\\Patrick\\desktop\\git\\supomation\\src",
+  "author": {
+    "name": "Strapi team",
+    "email": "hi@strapi.io",
+    "url": "http://strapi.io"
+  },
+  "bugs": {
+    "url": "https://github.com/strapi/strapi/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "classnames": "^2.2.6",
     "codemirror": "^5.46.0",
@@ -36,11 +63,15 @@
     "strapi-utils": "3.0.0-beta.15",
     "styled-components": "^4.2.0"
   },
-  "author": {
-    "name": "Strapi team",
-    "email": "hi@strapi.io",
-    "url": "http://strapi.io"
+  "deprecated": false,
+  "description": "A powerful UI to easily manage your data.",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   },
+  "gitHead": "fe2c2dccb3e9a1b9ca684c6bcea22bfc5591cfdb",
+  "homepage": "https://github.com/strapi/strapi#readme",
+  "license": "MIT",
   "maintainers": [
     {
       "name": "Strapi team",
@@ -48,14 +79,19 @@
       "url": "http://strapi.io"
     }
   ],
+  "name": "strapi-plugin-content-manager",
   "repository": {
     "type": "git",
     "url": "git://github.com/strapi/strapi.git"
   },
-  "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
+  "scripts": {
+    "test": "echo \"no tests yet\""
   },
-  "license": "MIT",
-  "gitHead": "fe2c2dccb3e9a1b9ca684c6bcea22bfc5591cfdb"
+  "strapi": {
+    "name": "Content Manager",
+    "icon": "plug",
+    "description": "content-manager.plugin.description",
+    "required": true
+  },
+  "version": "3.0.0-beta.15"
 }
