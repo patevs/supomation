@@ -19,171 +19,171 @@ import WrapperModal from '../../components/WrapperModal';
 import attributes from './attributes.json';
 
 class AttributesPickerModal extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
-  state = { isDisplayed: false, nodeToFocus: 0 };
+    // eslint-disable-line react/prefer-stateless-function
+    state = { isDisplayed: false, nodeToFocus: 0 };
 
-  componentDidMount() {
-    const { isOpen } = this.props;
+    componentDidMount() {
+        const { isOpen } = this.props;
 
-    if (isOpen) {
-      this.addEventListener();
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { isOpen } = this.props;
-
-    if (prevProps.isOpen !== isOpen) {
-      this.updateNodeToFocus(0);
-
-      if (isOpen) {
-        this.addEventListener();
-      } else {
-        this.removeEventListener();
-      }
-    }
-  }
-
-  getAttributes = () => {
-    const { plugins } = this.context;
-    const appPlugins = plugins;
-
-    return attributes.filter(attr => {
-      if (appPlugins.hasOwnProperty('upload')) {
-        return true;
-      }
-
-      return attr.type !== 'media';
-    });
-  };
-
-  addEventListener = () => {
-    document.addEventListener('keydown', this.handleKeyDown);
-  };
-
-  removeEventListener = () => {
-    document.removeEventListener('keydown', this.handleKeyDown);
-  };
-
-  handleClick = type => {
-    const { emitEvent } = this.context;
-    const { push } = this.props;
-
-    emitEvent('didSelectContentTypeFieldType', { type });
-    push({
-      search: `modalType=attributeForm&attributeType=${type}&settingType=base&actionType=create`,
-    });
-  };
-
-  /* istanbul ignore next */
-  handleKeyDown = e => {
-    const { push } = this.props;
-
-    /* istanbul ignore next */
-    const { nodeToFocus } = this.state;
-    /* istanbul ignore next */
-    const attributesLength = this.getAttributes().length;
-    /* istanbul ignore next */
-    let next = 0;
-
-    // Disable the tab behavior
-    /* istanbul ignore next */
-    if (e.keyCode === 9) {
-      e.preventDefault();
+        if (isOpen) {
+            this.addEventListener();
+        }
     }
 
-    /* istanbul ignore next */
-    switch (e.keyCode) {
-      case 9: // Tab
-      case 39: // Right Arrow
-        next = attributesLength - 1 === nodeToFocus ? 0 : nodeToFocus + 1;
-        break;
-      case 37: // Left Arrow
-        next = nodeToFocus === 0 ? attributesLength - 1 : nodeToFocus - 1;
-        break;
-      case 13: // Enter
-        e.preventDefault();
+    componentDidUpdate(prevProps) {
+        const { isOpen } = this.props;
 
-        push({
-          search: `modalType=attributeForm&attributeType=${
-            attributes[nodeToFocus].type
-          }&settingType=base&actionType=create`,
+        if (prevProps.isOpen !== isOpen) {
+            this.updateNodeToFocus(0);
+
+            if (isOpen) {
+                this.addEventListener();
+            } else {
+                this.removeEventListener();
+            }
+        }
+    }
+
+    getAttributes = () => {
+        const { plugins } = this.context;
+        const appPlugins = plugins;
+
+        return attributes.filter(attr => {
+            if (appPlugins.hasOwnProperty('upload')) {
+                return true;
+            }
+
+            return attr.type !== 'media';
         });
-        break;
-      default:
-        next = 0;
-    }
+    };
+
+    addEventListener = () => {
+        document.addEventListener('keydown', this.handleKeyDown);
+    };
+
+    removeEventListener = () => {
+        document.removeEventListener('keydown', this.handleKeyDown);
+    };
+
+    handleClick = type => {
+        const { emitEvent } = this.context;
+        const { push } = this.props;
+
+        emitEvent('didSelectContentTypeFieldType', { type });
+        push({
+            search: `modalType=attributeForm&attributeType=${type}&settingType=base&actionType=create`
+        });
+    };
 
     /* istanbul ignore next */
-    this.updateNodeToFocus(next);
-  };
+    handleKeyDown = e => {
+        const { push } = this.props;
 
-  handleOnClosed = () =>
-    this.setState(prevState => ({ isDisplayed: !prevState.isDisplayed }));
+        /* istanbul ignore next */
+        const { nodeToFocus } = this.state;
+        /* istanbul ignore next */
+        const attributesLength = this.getAttributes().length;
+        /* istanbul ignore next */
+        let next = 0;
 
-  handleOnOpened = () =>
-    this.setState(prevState => ({ isDisplayed: !prevState.isDisplayed }));
+        // Disable the tab behavior
+        /* istanbul ignore next */
+        if (e.keyCode === 9) {
+            e.preventDefault();
+        }
 
-  handleToggle = () => {
-    const { push } = this.props;
+        /* istanbul ignore next */
+        switch (e.keyCode) {
+            case 9: // Tab
+            case 39: // Right Arrow
+                next =
+                    attributesLength - 1 === nodeToFocus ? 0 : nodeToFocus + 1;
+                break;
+            case 37: // Left Arrow
+                next =
+                    nodeToFocus === 0 ? attributesLength - 1 : nodeToFocus - 1;
+                break;
+            case 13: // Enter
+                e.preventDefault();
 
-    push({ search: '' });
-  };
+                push({
+                    search: `modalType=attributeForm&attributeType=${attributes[nodeToFocus].type}&settingType=base&actionType=create`
+                });
+                break;
+            default:
+                next = 0;
+        }
 
-  updateNodeToFocus = position => this.setState({ nodeToFocus: position });
+        /* istanbul ignore next */
+        this.updateNodeToFocus(next);
+    };
 
-  renderAttribute = (attribute, index) => {
-    const { isDisplayed, nodeToFocus } = this.state;
+    handleOnClosed = () =>
+        this.setState(prevState => ({ isDisplayed: !prevState.isDisplayed }));
 
-    return (
-      <AttributeOption
-        autoFocus={nodeToFocus === index}
-        key={attribute.type}
-        tabIndex={index}
-        isDisplayed={isDisplayed}
-        nodeToFocus={nodeToFocus}
-        onClick={this.handleClick}
-        {...attribute}
-      />
-    );
-  };
+    handleOnOpened = () =>
+        this.setState(prevState => ({ isDisplayed: !prevState.isDisplayed }));
 
-  render() {
-    const { isOpen } = this.props;
+    handleToggle = () => {
+        const { push } = this.props;
 
-    return (
-      <WrapperModal
-        isOpen={isOpen}
-        onToggle={this.handleToggle}
-        onClosed={this.handleOnClosed}
-        onOpened={this.handleOnOpened}
-      >
-        <HeaderModal>
-          <HeaderModalTitle
-            title={`${pluginId}.popUpForm.choose.attributes.header.title`}
-          />
-        </HeaderModal>
-        <BodyModal style={{ paddingTop: '2.3rem' }}>
-          {attributes.map(this.renderAttribute)}
-        </BodyModal>
-        <FooterModal />
-      </WrapperModal>
-    );
-  }
+        push({ search: '' });
+    };
+
+    updateNodeToFocus = position => this.setState({ nodeToFocus: position });
+
+    renderAttribute = (attribute, index) => {
+        const { isDisplayed, nodeToFocus } = this.state;
+
+        return (
+            <AttributeOption
+                autoFocus={nodeToFocus === index}
+                key={attribute.type}
+                tabIndex={index}
+                isDisplayed={isDisplayed}
+                nodeToFocus={nodeToFocus}
+                onClick={this.handleClick}
+                {...attribute}
+            />
+        );
+    };
+
+    render() {
+        const { isOpen } = this.props;
+
+        return (
+            <WrapperModal
+                isOpen={isOpen}
+                onToggle={this.handleToggle}
+                onClosed={this.handleOnClosed}
+                onOpened={this.handleOnOpened}
+            >
+                <HeaderModal>
+                    <HeaderModalTitle
+                        title={`${pluginId}.popUpForm.choose.attributes.header.title`}
+                    />
+                </HeaderModal>
+                <BodyModal style={{ paddingTop: '2.3rem' }}>
+                    {attributes.map(this.renderAttribute)}
+                </BodyModal>
+                <FooterModal />
+            </WrapperModal>
+        );
+    }
 }
 
 AttributesPickerModal.contextTypes = {
-  emitEvent: PropTypes.func,
-  plugins: PropTypes.object,
+    emitEvent: PropTypes.func,
+    plugins: PropTypes.object
 };
 
 AttributesPickerModal.defaultProps = {
-  isOpen: false,
+    isOpen: false
 };
 
 AttributesPickerModal.propTypes = {
-  isOpen: PropTypes.bool,
-  push: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool,
+    push: PropTypes.func.isRequired
 };
 
 export default AttributesPickerModal;

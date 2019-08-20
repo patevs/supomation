@@ -9,19 +9,17 @@ import { Editor } from 'draft-js';
 import PropTypes from 'prop-types';
 
 class WysiwygEditor extends React.Component {
-  render() {
-    return (
-      <Editor {...this.props} ref={this.props.setRef} />
-    );
-  }
+    render() {
+        return <Editor {...this.props} ref={this.props.setRef} />;
+    }
 }
 
 WysiwygEditor.defaultProps = {
-  setRef: () => {},
+    setRef: () => {}
 };
 
 WysiwygEditor.propTypes = {
-  setRef: PropTypes.func,
+    setRef: PropTypes.func
 };
 
 export default WysiwygEditor;

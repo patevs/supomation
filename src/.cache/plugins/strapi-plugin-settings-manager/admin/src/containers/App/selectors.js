@@ -8,40 +8,43 @@ import pluginId from '../../pluginId';
 const selectGlobalDomain = () => state => state.get(`${pluginId}_global`);
 
 const selectLocationState = () => {
-  let prevRoutingState;
-  let prevRoutingStateJS;
+    let prevRoutingState;
+    let prevRoutingStateJS;
 
-  return state => {
-    const routingState = state.get('route'); // or state.route
+    return state => {
+        const routingState = state.get('route'); // or state.route
 
-    if (!routingState.equals(prevRoutingState)) {
-      prevRoutingState = routingState;
-      prevRoutingStateJS = routingState.toJS();
-    }
+        if (!routingState.equals(prevRoutingState)) {
+            prevRoutingState = routingState;
+            prevRoutingStateJS = routingState.toJS();
+        }
 
-    return prevRoutingStateJS;
-  };
+        return prevRoutingStateJS;
+    };
 };
 
-const makeSelectSections = () => createSelector(
-  selectGlobalDomain(),
-  (globalSate) => globalSate.get('sections').toJS(),
-);
+const makeSelectSections = () =>
+    createSelector(
+        selectGlobalDomain(),
+        globalSate => globalSate.get('sections').toJS()
+    );
 
-const makeSelectEnvironments = () => createSelector(
-  selectGlobalDomain(),
-  (globalSate) => globalSate.get('environments').toJS(),
-);
+const makeSelectEnvironments = () =>
+    createSelector(
+        selectGlobalDomain(),
+        globalSate => globalSate.get('environments').toJS()
+    );
 
-const makeSelectLoading = () => createSelector(
-  selectGlobalDomain(),
-  (globalSate) => globalSate.get('loading'),
-);
+const makeSelectLoading = () =>
+    createSelector(
+        selectGlobalDomain(),
+        globalSate => globalSate.get('loading')
+    );
 
 export {
-  makeSelectEnvironments,
-  makeSelectLoading,
-  makeSelectSections,
-  selectLocationState,
+    makeSelectEnvironments,
+    makeSelectLoading,
+    makeSelectSections,
+    selectLocationState
 };
 export default selectGlobalDomain;

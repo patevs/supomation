@@ -6,67 +6,68 @@ import { GET_VIDEOS } from './constants';
 import { getVideosSucceeded, shouldOpenModal } from './actions';
 
 function* getVideos() {
-  try {
-    const data = yield call(
-      request,
-      'https://strapi.io/videos',
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-      false,
-      true,
-      { noAuth: true }
-    );
+    try {
+        const data = yield call(
+            request,
+            'https://strapi.io/videos',
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            },
+            false,
+            true,
+            { noAuth: true }
+        );
 
-    const storedVideo = JSON.parse(localStorage.getItem('videos')) || null;
+        const storedVideo = JSON.parse(localStorage.getItem('videos')) || null;
 
-    const videos = data
-      .map(video => {
-        const { end, startTime } = storedVideo
-          ? storedVideo.find(v => v.order === video.order)
-          : { end: false, startTime: 0 };
+        const videos = data
+            .map(video => {
+                const { end, startTime } = storedVideo
+                    ? storedVideo.find(v => v.order === video.order)
+                    : { end: false, startTime: 0 };
 
-        return {
-          ...video,
-          duration: null,
-          end,
-          isOpen: false,
-          key: video.order,
-          startTime,
-        };
-      })
-      .sort((a, b) => a.order - b.order);
+                return {
+                    ...video,
+                    duration: null,
+                    end,
+                    isOpen: false,
+                    key: video.order,
+                    startTime
+                };
+            })
+            .sort((a, b) => a.order - b.order);
 
-    localStorage.setItem('videos', JSON.stringify(videos));
+        localStorage.setItem('videos', JSON.stringify(videos));
 
-    yield put(getVideosSucceeded(videos));
+        yield put(getVideosSucceeded(videos));
 
-    const isFirstTime = JSON.parse(localStorage.getItem('onboarding')) || null;
+        const isFirstTime =
+            JSON.parse(localStorage.getItem('onboarding')) || null;
 
-    if (isFirstTime === null) {
-      yield new Promise(resolve => {
-        setTimeout(() => {
-          resolve();
-        }, 500);
-      });
+        if (isFirstTime === null) {
+            yield new Promise(resolve => {
+                setTimeout(() => {
+                    resolve();
+                }, 500);
+            });
 
-      yield put(shouldOpenModal(true));
-      localStorage.setItem('onboarding', true);
+            yield put(shouldOpenModal(true));
+            localStorage.setItem('onboarding', true);
+        }
+    } catch (err) {
+        console.log(err); // eslint-disable-line no-console
     }
-  } catch (err) {
-    console.log(err); // eslint-disable-line no-console
-  }
 }
 
 function* defaultSaga() {
-  try {
-    yield all([fork(takeLatest, GET_VIDEOS, getVideos)]);
-  } catch (err) {
-    console.log(err);
-  }
+    try {
+        yield all([fork(takeLatest, GET_VIDEOS, getVideos)]);
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 export default defaultSaga;

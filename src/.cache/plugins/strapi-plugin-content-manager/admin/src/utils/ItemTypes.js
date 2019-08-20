@@ -1,5 +1,5 @@
 export default {
-  NORMAL: 'normalAttr',
-  SORTABLEITEM: 'sortableItem',
-  VARIABLE: 'variableAttr',
+    NORMAL: 'normalAttr',
+    SORTABLEITEM: 'sortableItem',
+    VARIABLE: 'variableAttr'
 };

@@ -10,16 +10,16 @@ const selectLanguage = () => state => state.get('language');
  */
 
 const selectLocale = () =>
-  createSelector(
-    selectLanguage(),
-    languageState => languageState.get('locale'),
-  );
+    createSelector(
+        selectLanguage(),
+        languageState => languageState.get('locale')
+    );
 
 const makeSelectLocale = () =>
-  createSelector(
-    selectLocale(),
-    locale => ({ locale }),
-  );
+    createSelector(
+        selectLocale(),
+        locale => ({ locale })
+    );
 
 export default makeSelectLocale;
 export { selectLanguage, selectLocale };

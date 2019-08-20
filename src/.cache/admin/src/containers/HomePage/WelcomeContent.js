@@ -12,54 +12,56 @@ import styles from './styles.scss';
 
 /* eslint-disable jsx-a11y/accessible-emoji */
 function WelcomeContent({ hasContent }) {
-  return (
-    <React.Fragment>
-      <div className={styles.iconWave}>👋</div>
-      {!hasContent && (
-        <FormattedMessage id="app.components.HomePage.welcomeBlock.content">
-          {message => (
-            <p className={styles.welcomeContentP}>
-              {message}
-              <a
-                className={styles.welcomeContentA}
-                href="https://slack.strapi.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Slack
-              </a>
-              <FormattedMessage id="app.components.HomePage.welcomeBlock.content.raise" />
-              <FormattedMessage id="app.components.HomePage.welcomeBlock.content.issues">
-                {message => (
-                  <a
-                    className={styles.welcomeContentA}
-                    href="https://github.com/strapi/strapi/issues/new/choose"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {message}
-                  </a>
-                )}
-              </FormattedMessage>
-            </p>
-          )}
-        </FormattedMessage>
-      )}
-      {hasContent && (
-        <FormattedMessage id="app.components.HomePage.welcomeBlock.content.again">
-          {message => <p className={styles.welcomeContentP}>{message}</p>}
-        </FormattedMessage>
-      )}
-    </React.Fragment>
-  );
+    return (
+        <React.Fragment>
+            <div className={styles.iconWave}>👋</div>
+            {!hasContent && (
+                <FormattedMessage id="app.components.HomePage.welcomeBlock.content">
+                    {message => (
+                        <p className={styles.welcomeContentP}>
+                            {message}
+                            <a
+                                className={styles.welcomeContentA}
+                                href="https://slack.strapi.io/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Slack
+                            </a>
+                            <FormattedMessage id="app.components.HomePage.welcomeBlock.content.raise" />
+                            <FormattedMessage id="app.components.HomePage.welcomeBlock.content.issues">
+                                {message => (
+                                    <a
+                                        className={styles.welcomeContentA}
+                                        href="https://github.com/strapi/strapi/issues/new/choose"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {message}
+                                    </a>
+                                )}
+                            </FormattedMessage>
+                        </p>
+                    )}
+                </FormattedMessage>
+            )}
+            {hasContent && (
+                <FormattedMessage id="app.components.HomePage.welcomeBlock.content.again">
+                    {message => (
+                        <p className={styles.welcomeContentP}>{message}</p>
+                    )}
+                </FormattedMessage>
+            )}
+        </React.Fragment>
+    );
 }
 
 WelcomeContent.defaultProps = {
-  hasContent: false,
+    hasContent: false
 };
 
 WelcomeContent.propTypes = {
-  hasContent: PropTypes.bool,
+    hasContent: PropTypes.bool
 };
 
 export default WelcomeContent;
