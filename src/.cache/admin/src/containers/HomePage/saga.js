@@ -22,7 +22,7 @@ function* getArticles() {
       acc.push({
         title: curr.title,
         link: curr.slug,
-        content: `${content} [...]`,
+        content: `${content} [...]`
       });
 
       return acc;
@@ -39,7 +39,7 @@ function* submit() {
     const body = yield select(makeSelectBody());
     yield call(request, 'https://analytics.strapi.io/register', {
       method: 'POST',
-      body,
+      body
     });
   } catch (err) {
     // silent
@@ -52,7 +52,7 @@ function* submit() {
 function* defaultSaga() {
   yield all([
     fork(takeLatest, SUBMIT, submit),
-    fork(takeLatest, GET_ARTICLES, getArticles),
+    fork(takeLatest, GET_ARTICLES, getArticles)
   ]);
 }
 

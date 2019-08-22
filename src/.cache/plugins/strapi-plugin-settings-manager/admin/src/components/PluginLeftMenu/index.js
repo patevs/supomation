@@ -31,11 +31,11 @@ class PluginLeftMenu extends React.Component {
 PluginLeftMenu.propTypes = {
   environments: PropTypes.array.isRequired,
   envParams: PropTypes.string,
-  sections: PropTypes.array.isRequired,
+  sections: PropTypes.array.isRequired
 };
 
 PluginLeftMenu.defaultProps = {
-  envParams: '',
+  envParams: ''
 };
 
 export default PluginLeftMenu;

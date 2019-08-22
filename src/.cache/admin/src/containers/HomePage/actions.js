@@ -3,37 +3,37 @@ import {
   GET_ARTICLES_SUCCEEDED,
   ON_CHANGE,
   SUBMIT,
-  SUBMIT_SUCCEEDED,
+  SUBMIT_SUCCEEDED
 } from './constants';
 
 export function getArticles() {
   return {
-    type: GET_ARTICLES,
+    type: GET_ARTICLES
   };
 }
 
 export function getArticlesSucceeded(articles) {
   return {
     type: GET_ARTICLES_SUCCEEDED,
-    articles,
+    articles
   };
 }
 
 export function onChange({ target }) {
   return {
     type: ON_CHANGE,
-    value: target.value,
+    value: target.value
   };
 }
 
 export function submit() {
   return {
-    type: SUBMIT,
+    type: SUBMIT
   };
 }
 
 export function submitSucceeded() {
   return {
-    type: SUBMIT_SUCCEEDED,
+    type: SUBMIT_SUCCEEDED
   };
 }

@@ -28,7 +28,7 @@ class Button extends React.Component {
       'buttonSize',
       'handlei18n',
       'label',
-      'loader',
+      'loader'
     ];
 
     propsToDelete.map(value => delete buttonProps[value]);
@@ -56,7 +56,7 @@ class Button extends React.Component {
         className={cn(
           styles[stmClassNameSize],
           styles[stmClassName2],
-          styles.stmbutton,
+          styles.stmbutton
         )}
         {...buttonProps}
       >
@@ -73,7 +73,7 @@ Button.propTypes = {
   buttonSize: PropTypes.string,
   handlei18n: PropTypes.bool,
   label: PropTypes.string,
-  loader: PropTypes.bool,
+  loader: PropTypes.bool
 };
 
 export default Button;

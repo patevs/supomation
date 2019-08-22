@@ -9,7 +9,7 @@ describe('<AppLoader />', () => {
   beforeEach(() => {
     props = {
       appPlugins: [],
-      plugins: {},
+      plugins: {}
     };
   });
 

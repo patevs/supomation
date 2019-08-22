@@ -6,12 +6,12 @@ describe('<LocaleToggle /> selectors', () => {
   describe('selectLocaleToggle selector', () => {
     it('should select the global state', () => {
       const state = fromJS({
-        className: null,
+        className: null
       });
       const mockedState = fromJS({
-        localeToggle: state,
+        localeToggle: state
       });
-      
+
       expect(selectLocaleToggle()(mockedState)).toEqual(state);
     });
   });
@@ -19,15 +19,13 @@ describe('<LocaleToggle /> selectors', () => {
   describe('makeSelectLocaleToggle', () => {
     it('should select the global state (.toJS())', () => {
       const state = fromJS({
-        className: null,
+        className: null
       });
       const mockedState = fromJS({
-        localeToggle: state,
+        localeToggle: state
       });
 
       expect(makeSelectLocaleToggle()(mockedState)).toEqual(state.toJS());
     });
   });
 });
-
-

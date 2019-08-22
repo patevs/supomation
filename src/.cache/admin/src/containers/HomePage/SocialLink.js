@@ -65,7 +65,7 @@ class SocialLink extends React.PureComponent {
 
 SocialLink.propTypes = {
   link: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 };
 
 export default SocialLink;

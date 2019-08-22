@@ -13,7 +13,7 @@ describe('<NavTopRightWrapper />', () => {
     const renderedComponent = shallow(
       <NavTopRightWrapper>
         <Child />
-      </NavTopRightWrapper>,
+      </NavTopRightWrapper>
     );
 
     expect(renderedComponent.find(Child).exists()).toBe(true);

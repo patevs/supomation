@@ -41,13 +41,13 @@ class AttributeForm extends React.Component {
     const {
       alreadyTakenAttributes,
       attributeToEditName,
-      modifiedData,
+      modifiedData
     } = this.props;
 
     let formErrors = {};
     const formValidations = this.getFormValidations();
     const alreadyTakenAttributesUpdated = alreadyTakenAttributes.filter(
-      attribute => attribute !== attributeToEditName,
+      attribute => attribute !== attributeToEditName
     );
 
     if (isEmpty(modifiedData.name)) {
@@ -75,7 +75,7 @@ class AttributeForm extends React.Component {
 
     this.setState(prevState => ({
       didCheckErrors: !prevState.didCheckErrors,
-      formErrors,
+      formErrors
     }));
 
     return formErrors;
@@ -91,11 +91,11 @@ class AttributeForm extends React.Component {
         ...form[current].items.reduce((acc2, curr) => {
           acc2[curr.name] = {
             validations: curr.validations,
-            custom: curr.custom,
+            custom: curr.custom
           };
 
           return acc2;
-        }, {}),
+        }, {})
       };
     }, {});
   };
@@ -117,7 +117,7 @@ class AttributeForm extends React.Component {
     }
 
     push({
-      search: `modalType=attributeForm&attributeType=${attributeType}&settingType=${to}&actionType=${actionType}${attributeName}`,
+      search: `modalType=attributeForm&attributeType=${attributeType}&settingType=${to}&actionType=${actionType}${attributeName}`
     });
   };
 
@@ -214,7 +214,7 @@ class AttributeForm extends React.Component {
       actionType,
       attributeToEditName,
       attributeType,
-      isOpen,
+      isOpen
     } = this.props;
     const { showForm } = this.state;
     const currentForm = this.getCurrentForm();
@@ -269,7 +269,7 @@ class AttributeForm extends React.Component {
 }
 
 AttributeForm.contextTypes = {
-  emitEvent: PropTypes.func,
+  emitEvent: PropTypes.func
 };
 
 AttributeForm.defaultProps = {
@@ -282,7 +282,7 @@ AttributeForm.defaultProps = {
   modifiedData: {},
   onCancel: () => {},
   onChange: () => {},
-  push: () => {},
+  push: () => {}
 };
 
 AttributeForm.propTypes = {
@@ -297,7 +297,7 @@ AttributeForm.propTypes = {
   onChange: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
   onSubmitEdit: PropTypes.func.isRequired,
-  push: PropTypes.func,
+  push: PropTypes.func
 };
 
 export default AttributeForm;

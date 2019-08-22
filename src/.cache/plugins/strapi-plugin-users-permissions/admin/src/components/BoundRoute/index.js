@@ -1,8 +1,8 @@
 /**
-*
-* BoundRoute
-*
-*/
+ *
+ * BoundRoute
+ *
+ */
 
 import React from 'react';
 import { get, includes, map, tail, toLower } from 'lodash';
@@ -13,8 +13,10 @@ import styles from './styles.scss';
 
 function BoundRoute({ route }) {
   const title = get(route, 'handler');
-  const formattedRoute = get(route, 'path') ? tail(get(route, 'path').split('/')) : [];
-  const [ controller = '', action = '' ] = title ? title.split('.') : [];
+  const formattedRoute = get(route, 'path')
+    ? tail(get(route, 'path').split('/'))
+    : [];
+  const [controller = '', action = ''] = title ? title.split('.') : [];
 
   return (
     <div className="col-md-12">
@@ -47,12 +49,12 @@ BoundRoute.defaultProps = {
   route: {
     handler: 'Nocontroller.error',
     method: 'GET',
-    path: '/there-is-no-path',
-  },
+    path: '/there-is-no-path'
+  }
 };
 
 BoundRoute.propTypes = {
-  route: PropTypes.object,
+  route: PropTypes.object
 };
 
 export default BoundRoute;

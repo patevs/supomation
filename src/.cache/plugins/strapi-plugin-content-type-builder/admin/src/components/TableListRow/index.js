@@ -22,7 +22,7 @@ class TableListRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showWarning: false,
+      showWarning: false
     };
   }
 
@@ -33,7 +33,7 @@ class TableListRow extends React.Component {
     const {
       deleteTemporaryModel,
       onDelete,
-      rowItem: { name, isTemporary },
+      rowItem: { name, isTemporary }
     } = this.props;
 
     if (isTemporary) {
@@ -48,14 +48,14 @@ class TableListRow extends React.Component {
   handleEdit = () => {
     const {
       push,
-      rowItem: { name, source },
+      rowItem: { name, source }
     } = this.props;
 
     push({
       pathname: `/plugins/${pluginId}/models/${name}${
         source ? `&source=${source}` : ''
       }`,
-      search: `modalType=model&settingType=base&actionType=edit&modelName=${name}`,
+      search: `modalType=model&settingType=base&actionType=edit&modelName=${name}`
     });
   };
 
@@ -65,7 +65,7 @@ class TableListRow extends React.Component {
     push(
       `/plugins/${pluginId}/models/${this.props.rowItem.name}${
         this.props.rowItem.source ? `&source=${this.props.rowItem.source}` : ''
-      }`,
+      }`
     );
   };
 
@@ -80,7 +80,7 @@ class TableListRow extends React.Component {
       this.setState(prevState => ({ showWarning: !prevState.showWarning }));
     } else {
       strapi.notification.info(
-        `${pluginId}.notification.info.contentType.creating.notSaved`,
+        `${pluginId}.notification.info.contentType.creating.notSaved`
       );
     }
   };
@@ -116,8 +116,8 @@ class TableListRow extends React.Component {
           {
             icoType: 'trash',
             onClick: this.handleShowModalWarning,
-            id: `delete${name}`,
-          },
+            id: `delete${name}`
+          }
         ];
 
     return (
@@ -141,7 +141,7 @@ class TableListRow extends React.Component {
           toggleModal={this.toggleModalWarning}
           content={{
             message:
-              'content-type-builder.popUpWarning.bodyMessage.contentType.delete',
+              'content-type-builder.popUpWarning.bodyMessage.contentType.delete'
           }}
           popUpWarningType={'danger'}
           onConfirm={this.handleDelete}
@@ -153,7 +153,7 @@ class TableListRow extends React.Component {
 
 TableListRow.contextTypes = {
   plugins: PropTypes.object,
-  updatePlugin: PropTypes.func,
+  updatePlugin: PropTypes.func
 };
 
 TableListRow.propTypes = {
@@ -161,7 +161,7 @@ TableListRow.propTypes = {
   deleteTemporaryModel: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
-  rowItem: PropTypes.object.isRequired,
+  rowItem: PropTypes.object.isRequired
 };
 
 export default TableListRow;

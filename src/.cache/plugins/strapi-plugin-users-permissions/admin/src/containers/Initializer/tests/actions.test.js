@@ -5,7 +5,7 @@ describe('Initializer actions', () => {
   describe('Initialize Action', () => {
     it('has a type of INITIALIZE', () => {
       const expected = {
-        type: INITIALIZE,
+        type: INITIALIZE
       };
       expect(initialize()).toEqual(expected);
     });
@@ -16,7 +16,7 @@ describe('Initializer actions', () => {
       const data = { hasAdmin: true };
       const expected = {
         type: INITIALIZE_SUCCEEDED,
-        data,
+        data
       };
       expect(initializeSucceeded(data)).toEqual(expected);
     });

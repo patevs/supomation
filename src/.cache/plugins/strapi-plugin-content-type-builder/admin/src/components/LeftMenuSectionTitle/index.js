@@ -1,8 +1,8 @@
 /**
-*
-* LeftMenuSectionTitle
-*
-*/
+ *
+ * LeftMenuSectionTitle
+ *
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -19,11 +19,11 @@ function LeftMenuSectionTitle({ id }) {
 }
 
 LeftMenuSectionTitle.defaultProps = {
-  id: 'app.utils.defaultMessage',
+  id: 'app.utils.defaultMessage'
 };
 
 LeftMenuSectionTitle.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default LeftMenuSectionTitle;

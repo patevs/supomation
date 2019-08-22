@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * VariableEditIcon
  */
 
@@ -20,12 +20,12 @@ function VariableEditIcon({ onClick, withLongerHeight, ...rest }) {
 
 VariableEditIcon.defaultProps = {
   onClick: () => {},
-  withLongerHeight: false,
+  withLongerHeight: false
 };
 
 VariableEditIcon.propTypes = {
   onClick: PropTypes.func,
-  withLongerHeight: PropTypes.bool,
+  withLongerHeight: PropTypes.bool
 };
 
 export default VariableEditIcon;

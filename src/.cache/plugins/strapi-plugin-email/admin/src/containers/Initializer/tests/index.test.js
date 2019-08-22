@@ -14,6 +14,10 @@ describe('<Initializer />', () => {
 
     const wrapper = mount(<Initializer updatePlugin={updatePlugin} />);
 
-    expect(wrapper.prop('updatePlugin')).toHaveBeenCalledWith('email', 'isReady', true);
+    expect(wrapper.prop('updatePlugin')).toHaveBeenCalledWith(
+      'email',
+      'isReady',
+      true
+    );
   });
 });

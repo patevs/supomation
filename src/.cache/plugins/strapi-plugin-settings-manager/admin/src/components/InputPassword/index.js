@@ -13,7 +13,7 @@ import {
   reject,
   map,
   isObject,
-  size,
+  size
 } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import WithInput from '../WithInput';
@@ -27,7 +27,7 @@ class InputPassword extends React.Component {
     this.state = {
       errors: [],
       hasInitialValue: false,
-      type: true,
+      type: true
     };
   }
 
@@ -57,7 +57,7 @@ class InputPassword extends React.Component {
     return (
       size(this.props.errors) === size(nextProps.errors) &&
       this.props.errors.every(
-        (error, index) => error.id === nextProps.errors[index].id,
+        (error, index) => error.id === nextProps.errors[index].id
       )
     );
   };
@@ -66,35 +66,35 @@ class InputPassword extends React.Component {
     let errors = [];
     // handle i18n
     const requiredError = {
-      id: 'settings-manager.request.error.validation.required',
+      id: 'settings-manager.request.error.validation.required'
     };
     mapKeys(this.props.validations, (validationValue, validationKey) => {
       switch (validationKey) {
         case 'maxLength':
           if (value.length > validationValue) {
             errors.push({
-              id: 'settings-manager.request.error.validation.maxLength',
+              id: 'settings-manager.request.error.validation.maxLength'
             });
           }
           break;
         case 'minLength':
           if (value.length < validationValue) {
             errors.push({
-              id: 'settings-manager.request.error.validation.minLength',
+              id: 'settings-manager.request.error.validation.minLength'
             });
           }
           break;
         case 'required':
           if (value.length === 0) {
             errors.push({
-              id: 'settings-manager.request.error.validation.required',
+              id: 'settings-manager.request.error.validation.required'
             });
           }
           break;
         case 'regex':
           if (!new RegExp(validationValue).test(value)) {
             errors.push({
-              id: 'settings-manager.request.error.validation.regex',
+              id: 'settings-manager.request.error.validation.regex'
             });
           }
           break;
@@ -152,9 +152,7 @@ class InputPassword extends React.Component {
     return (
       <div className={`${bootStrapClass}`}>
         <div
-          className={`${
-            this.props.styles.stminputText
-          } ${bootStrapClassDanger}`}
+          className={`${this.props.styles.stminputText} ${bootStrapClassDanger}`}
         >
           <label htmlFor={this.props.name}>
             <FormattedMessage id={`settings-manager.${this.props.name}`} />
@@ -208,7 +206,7 @@ InputPassword.propTypes = {
   styles: PropTypes.object,
   target: PropTypes.string,
   validations: PropTypes.object,
-  value: PropTypes.string,
+  value: PropTypes.string
 };
 
 export default WithInput(InputPassword); // eslint-disable-line new-cap

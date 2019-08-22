@@ -43,7 +43,7 @@ class PluginLeftMenuSection extends React.Component {
 PluginLeftMenuSection.propTypes = {
   environments: PropTypes.array,
   envParams: PropTypes.string,
-  section: PropTypes.object,
+  section: PropTypes.object
 };
 
 export default PluginLeftMenuSection;

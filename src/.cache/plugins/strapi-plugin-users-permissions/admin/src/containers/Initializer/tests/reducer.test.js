@@ -9,7 +9,7 @@ describe('initializerReducer', () => {
   beforeEach(() => {
     state = fromJS({
       hasAdminUser: false,
-      shouldUpdate: false,
+      shouldUpdate: false
     });
   });
 
@@ -22,6 +22,8 @@ describe('initializerReducer', () => {
   it('should handle the initializeSucceeded action correctly', () => {
     const expected = state.set('hasAdminUser', true).set('shouldUpdate', true);
 
-    expect(initializerReducer(state, initializeSucceeded(true))).toEqual(expected);
+    expect(initializerReducer(state, initializeSucceeded(true))).toEqual(
+      expected
+    );
   });
 });

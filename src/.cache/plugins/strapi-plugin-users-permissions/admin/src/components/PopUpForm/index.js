@@ -20,7 +20,7 @@ import {
   startsWith,
   tail,
   take,
-  takeRight,
+  takeRight
 } from 'lodash';
 
 import { InputsIndex as Input } from 'strapi-helper-plugin';
@@ -104,7 +104,7 @@ class PopUpForm extends React.Component {
       didCheckErrors,
       formErrors,
       settingType,
-      values,
+      values
     } = this.props;
     const form = Object.keys(values.options || values || {}).reduce(
       (acc, current) => {
@@ -134,10 +134,10 @@ class PopUpForm extends React.Component {
         <div className={`row ${styles.providerDisabled}`}>
           <Input
             inputDescription={{
-              id: 'users-permissions.PopUpForm.Providers.enabled.description',
+              id: 'users-permissions.PopUpForm.Providers.enabled.description'
             }}
             label={{
-              id: 'users-permissions.PopUpForm.Providers.enabled.label',
+              id: 'users-permissions.PopUpForm.Providers.enabled.label'
             }}
             name={`${settingType}.${dataToEdit}.enabled`}
             onChange={this.handleChange}
@@ -164,7 +164,7 @@ class PopUpForm extends React.Component {
                   includes(value, 'callback') || includes(value, 'redirect_uri')
                     ? 'redirectURL.front-end'
                     : value
-                }.label`,
+                }.label`
               }}
               name={`${settingType}.${dataToEdit}.${value}`}
               onFocus={
@@ -192,7 +192,7 @@ class PopUpForm extends React.Component {
               customBootstrapClass="col-md-12"
               disabled
               label={{
-                id: `users-permissions.PopUpForm.Providers.${dataToEdit}.providerConfig.redirectURL`,
+                id: `users-permissions.PopUpForm.Providers.${dataToEdit}.providerConfig.redirectURL`
               }}
               name="noName"
               type="text"
@@ -214,7 +214,7 @@ class PopUpForm extends React.Component {
         >
           <FormattedMessage id="users-permissions.PopUpForm.Email.link.documentation" />
         </a>
-      ),
+      )
     };
 
     return (
@@ -257,7 +257,7 @@ class PopUpForm extends React.Component {
               id: includes(value, 'object')
                 ? 'users-permissions.PopUpForm.Email.email_templates.inputDescription'
                 : '',
-              params,
+              params
             }}
             onChange={this.props.onChange}
             placeholder={`users-permissions.PopUpForm.Email.${this.props.dataToEdit}.${value}.placeholder`}
@@ -331,11 +331,11 @@ class PopUpForm extends React.Component {
 }
 
 PopUpForm.contextTypes = {
-  unsetDataToEdit: PropTypes.func.isRequired,
+  unsetDataToEdit: PropTypes.func.isRequired
 };
 
 PopUpForm.defaultProps = {
-  settingType: 'providers',
+  settingType: 'providers'
   // showLoader: false,
 };
 
@@ -349,7 +349,7 @@ PopUpForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   settingType: PropTypes.string,
   // showLoader: PropTypes.bool,
-  values: PropTypes.object.isRequired,
+  values: PropTypes.object.isRequired
 };
 
 export default PopUpForm;

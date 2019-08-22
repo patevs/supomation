@@ -13,7 +13,7 @@ export class Initializer extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     const {
-      admin: { autoReload, currentEnvironment },
+      admin: { autoReload, currentEnvironment }
     } = this.props;
     let preventComponentRendering;
     let blockerComponentProps;
@@ -24,7 +24,7 @@ export class Initializer extends React.PureComponent {
         blockerComponentTitle: 'components.ProductionBlocker.header',
         blockerComponentDescription: 'components.ProductionBlocker.description',
         blockerComponentIcon: 'fa-ban',
-        blockerComponentContent: 'renderButton',
+        blockerComponentContent: 'renderButton'
       };
     } else {
       // Don't render the plugin if the server autoReload is disabled
@@ -33,13 +33,21 @@ export class Initializer extends React.PureComponent {
         blockerComponentTitle: 'components.AutoReloadBlocker.header',
         blockerComponentDescription: 'components.AutoReloadBlocker.description',
         blockerComponentIcon: 'fa-refresh',
-        blockerComponentContent: 'renderIde',
+        blockerComponentContent: 'renderIde'
       };
     }
 
     // Prevent the plugin from being rendered if currentEnvironment === PRODUCTION
-    this.props.updatePlugin(pluginId, 'preventComponentRendering', preventComponentRendering);
-    this.props.updatePlugin(pluginId, 'blockerComponentProps', blockerComponentProps);
+    this.props.updatePlugin(
+      pluginId,
+      'preventComponentRendering',
+      preventComponentRendering
+    );
+    this.props.updatePlugin(
+      pluginId,
+      'blockerComponentProps',
+      blockerComponentProps
+    );
     // Emit the event plugin ready
     this.props.updatePlugin(pluginId, 'isReady', true);
   }
@@ -51,7 +59,7 @@ export class Initializer extends React.PureComponent {
 
 Initializer.propTypes = {
   admin: PropTypes.object.isRequired,
-  updatePlugin: PropTypes.func.isRequired,
+  updatePlugin: PropTypes.func.isRequired
 };
 
 export default Initializer;

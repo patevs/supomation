@@ -22,7 +22,7 @@ import {
   map,
   replace,
   size,
-  toNumber,
+  toNumber
 } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import Helmet from 'react-helmet';
@@ -41,7 +41,7 @@ import PluginLeftMenu from '../../components/PluginLeftMenu';
 
 import {
   checkFormValidity,
-  getRequiredInputsDb,
+  getRequiredInputsDb
 } from '../../utils/inputValidations';
 import { formatLanguageLocale } from '../../utils/getFlag';
 import sendUpdatedParams from '../../utils/sendUpdatedParams';
@@ -64,7 +64,7 @@ import {
   newLanguagePost,
   newDatabasePost,
   setErrors,
-  specificDatabaseFetch,
+  specificDatabaseFetch
 } from './actions';
 import reducer from './reducer';
 import saga from './sagas';
@@ -82,13 +82,13 @@ export class HomePage extends React.Component {
       // editForm: EditForm,
       defaultComponent: EditForm,
       list: List,
-      defaultComponentWithEnvironments: HeaderNav,
+      defaultComponentWithEnvironments: HeaderNav
     };
 
     // allowing state only for database modal purpose
     this.state = {
       modal: false,
-      toggleDefaultConnection: false,
+      toggleDefaultConnection: false
     };
 
     this.sendUpdatedParams = sendUpdatedParams.bind(this);
@@ -103,7 +103,7 @@ export class HomePage extends React.Component {
           '0',
           'items',
           '0',
-          'slug',
+          'slug'
         ]) || 'application'}`
       );
     }
@@ -125,7 +125,7 @@ export class HomePage extends React.Component {
             '0',
             'items',
             '0',
-            'slug',
+            'slug'
           ])}`
         );
       }
@@ -203,7 +203,7 @@ export class HomePage extends React.Component {
     const configsDisplay = {
       name: this.props.home.configsDisplay.name,
       description: this.props.home.configsDisplay.description,
-      sections: [],
+      sections: []
     };
 
     // Find the index of the new setted language
@@ -275,9 +275,9 @@ export class HomePage extends React.Component {
                 {
                   target: name,
                   errors: [
-                    { id: 'settings-manager.request.error.database.exist' },
-                  ],
-                },
+                    { id: 'settings-manager.request.error.database.exist' }
+                  ]
+                }
               ]
             : [];
         this.props.setErrors(formErrors);
@@ -314,7 +314,7 @@ export class HomePage extends React.Component {
     const target = { name: 'database.defaultConnection', value };
     this.handleChange({ target });
     this.setState({
-      toggleDefaultConnection: !this.state.toggleDefaultConnection,
+      toggleDefaultConnection: !this.state.toggleDefaultConnection
     });
   };
 
@@ -601,8 +601,8 @@ export class HomePage extends React.Component {
               meta={[
                 {
                   name: 'Settings Manager Plugin',
-                  content: 'Modify your app settings',
-                },
+                  content: 'Modify your app settings'
+                }
               ]}
             />
             <ContentHeader
@@ -621,7 +621,7 @@ export class HomePage extends React.Component {
 const mapStateToProps = createStructuredSelector({
   environments: makeSelectEnvironments(),
   home: selectHomePage(),
-  menuSections: makeSelectSections(),
+  menuSections: makeSelectSections()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -642,14 +642,14 @@ function mapDispatchToProps(dispatch) {
       newDatabasePost,
       newLanguagePost,
       setErrors,
-      specificDatabaseFetch,
+      specificDatabaseFetch
     },
     dispatch
   );
 }
 
 HomePage.contextTypes = {
-  emitEvent: PropTypes.func,
+  emitEvent: PropTypes.func
 };
 
 HomePage.propTypes = {
@@ -674,7 +674,7 @@ HomePage.propTypes = {
   newDatabasePost: PropTypes.func.isRequired,
   newLanguagePost: PropTypes.func.isRequired,
   setErrors: PropTypes.func.isRequired,
-  specificDatabaseFetch: PropTypes.func.isRequired,
+  specificDatabaseFetch: PropTypes.func.isRequired
 };
 
 const withConnect = connect(
@@ -685,7 +685,7 @@ const withConnect = connect(
 const withReducer = strapi.injectReducer({
   key: 'homePage',
   reducer,
-  pluginId,
+  pluginId
 });
 const withSaga = strapi.injectSaga({ key: 'homePage', saga, pluginId });
 

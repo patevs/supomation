@@ -24,7 +24,7 @@ SelectManyDraggedItem.defaultProps = {
   index: 0,
   onClick: () => {},
   onRemove: () => {},
-  withLiWrapper: false,
+  withLiWrapper: false
 };
 
 SelectManyDraggedItem.propTypes = {
@@ -32,7 +32,7 @@ SelectManyDraggedItem.propTypes = {
   item: PropTypes.object.isRequired,
   onClick: PropTypes.func,
   onRemove: PropTypes.func,
-  withLiWrapper: PropTypes.bool,
+  withLiWrapper: PropTypes.bool
 };
 
 export default SelectManyDraggedItem;

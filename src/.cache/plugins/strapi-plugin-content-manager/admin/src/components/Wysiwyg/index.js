@@ -11,7 +11,7 @@ import {
   genKey,
   Modifier,
   RichUtils,
-  SelectionState,
+  SelectionState
 } from 'draft-js';
 import PropTypes from 'prop-types';
 import { isEmpty, isNaN, replace, words } from 'lodash';
@@ -34,14 +34,14 @@ import {
   getBlockStyle,
   getDefaultSelectionOffsets,
   getKeyCommandData,
-  getOffSets,
+  getOffSets
 } from './helpers';
 import {
   createNewBlock,
   getNextBlocksList,
   getSelectedBlocksList,
   onTab,
-  updateSelection,
+  updateSelection
 } from './utils';
 import styles from './styles.scss';
 
@@ -56,7 +56,7 @@ class Wysiwyg extends React.Component {
       isFocused: false,
       isFullscreen: false,
       isPreviewMode: false,
-      headerValue: '',
+      headerValue: ''
     };
     this.focus = () => {
       this.setState({ isFocused: true });
@@ -74,7 +74,7 @@ class Wysiwyg extends React.Component {
     html: this.props.value,
     isPreviewMode: this.state.isPreviewMode,
     isFullscreen: this.state.isFullscreen,
-    placeholder: this.props.placeholder,
+    placeholder: this.props.placeholder
   });
 
   componentDidMount() {
@@ -161,17 +161,17 @@ class Wysiwyg extends React.Component {
       defaultContent,
       startReplacer,
       endReplacer,
-      cursorPosition,
+      cursorPosition
     );
     // Merge the current selection with the new one
     const updatedSelection = this.getSelection().merge({
       anchorOffset,
-      focusOffset,
+      focusOffset
     });
     const newEditorState = EditorState.push(
       this.getEditorState(),
       textWithEntity,
-      'insert-character',
+      'insert-character'
     );
     // Update the parent reducer
     this.sendData(newEditorState);
@@ -179,17 +179,17 @@ class Wysiwyg extends React.Component {
     if (selectedText !== '') {
       return this.setState(
         {
-          editorState: newEditorState,
+          editorState: newEditorState
         },
         () => {
           this.focus();
-        },
+        }
       );
     }
 
     return this.setState({
       // Highlight the text if the selection wad empty
-      editorState: EditorState.forceSelection(newEditorState, updatedSelection),
+      editorState: EditorState.forceSelection(newEditorState, updatedSelection)
     });
   };
 
@@ -208,7 +208,7 @@ class Wysiwyg extends React.Component {
       // Retrieve all the blocks after the current position
       const nextBlocks = getNextBlocksList(
         newEditorState,
-        this.getSelection().getStartKey(),
+        this.getSelection().getStartKey()
       );
       let liNumber = 1;
 
@@ -217,8 +217,8 @@ class Wysiwyg extends React.Component {
         const previousContent =
           index === 0
             ? this.getEditorState()
-              .getCurrentContent()
-              .getBlockForKey(this.getCurrentAnchorKey())
+                .getCurrentContent()
+                .getBlockForKey(this.getCurrentAnchorKey())
             : newEditorState.getCurrentContent().getBlockBefore(block.getKey());
         // Check if there was an li before the position so we update the entire list bullets
         const number = previousContent
@@ -231,12 +231,12 @@ class Wysiwyg extends React.Component {
         const newBlock = createNewBlock(
           nextBlockText,
           'block-list',
-          block.getKey(),
+          block.getKey()
         );
         // Update the contentState
         const newContentState = this.createNewContentStateFromBlock(
           newBlock,
-          newEditorState.getCurrentContent(),
+          newEditorState.getCurrentContent()
         );
         newEditorState = EditorState.push(newEditorState, newContentState);
       });
@@ -247,14 +247,14 @@ class Wysiwyg extends React.Component {
       const updatedSelection = updateSelection(
         this.getSelection(),
         nextBlocks,
-        offset,
+        offset
       );
 
       return this.setState({
         editorState: EditorState.acceptSelection(
           newEditorState,
-          updatedSelection,
-        ),
+          updatedSelection
+        )
       });
     }
 
@@ -266,7 +266,7 @@ class Wysiwyg extends React.Component {
       const newBlock = createNewBlock(li, 'block-list', block.getKey());
       const newContentState = this.createNewContentStateFromBlock(
         newBlock,
-        newEditorState.getCurrentContent(),
+        newEditorState.getCurrentContent()
       );
       newEditorState = EditorState.push(newEditorState, newContentState);
     });
@@ -275,7 +275,7 @@ class Wysiwyg extends React.Component {
     this.sendData(newEditorState);
 
     return this.setState({
-      editorState: EditorState.moveFocusToEnd(newEditorState),
+      editorState: EditorState.moveFocusToEnd(newEditorState)
     });
   };
 
@@ -293,7 +293,7 @@ class Wysiwyg extends React.Component {
     if (getOffSets(this.getSelection()).start !== 0) {
       const nextBlocks = getNextBlocksList(
         newEditorState,
-        this.getSelection().getStartKey(),
+        this.getSelection().getStartKey()
       );
 
       nextBlocks.map((block, index) => {
@@ -302,25 +302,25 @@ class Wysiwyg extends React.Component {
         const newBlock = createNewBlock(
           nextBlockText,
           'block-list',
-          block.getKey(),
+          block.getKey()
         );
         const newContentState = this.createNewContentStateFromBlock(
           newBlock,
-          newEditorState.getCurrentContent(),
+          newEditorState.getCurrentContent()
         );
         newEditorState = EditorState.push(newEditorState, newContentState);
       });
       const updatedSelection = updateSelection(
         this.getSelection(),
         nextBlocks,
-        2,
+        2
       );
 
       return this.setState({
         editorState: EditorState.acceptSelection(
           newEditorState,
-          updatedSelection,
-        ),
+          updatedSelection
+        )
       });
     }
 
@@ -330,13 +330,13 @@ class Wysiwyg extends React.Component {
       const newBlock = createNewBlock(li, 'block-list', block.getKey());
       const newContentState = this.createNewContentStateFromBlock(
         newBlock,
-        newEditorState.getCurrentContent(),
+        newEditorState.getCurrentContent()
       );
       newEditorState = EditorState.push(newEditorState, newContentState);
     });
     this.sendData(newEditorState);
     return this.setState({
-      editorState: EditorState.moveFocusToEnd(newEditorState),
+      editorState: EditorState.moveFocusToEnd(newEditorState)
     });
   };
 
@@ -353,11 +353,11 @@ class Wysiwyg extends React.Component {
 
     return this.setState(
       {
-        editorState: newEditorState,
+        editorState: newEditorState
       },
       () => {
         this.focus();
-      },
+      }
     );
   };
 
@@ -378,33 +378,33 @@ class Wysiwyg extends React.Component {
     const { anchorOffset, focusOffset } = getDefaultSelectionOffsets(
       defaultContent,
       startReplacer,
-      endReplacer,
+      endReplacer
     );
     let newEditorState = this.createNewEditorState(
       newContentState,
-      defaultContent,
+      defaultContent
     );
     const updatedSelection =
       getOffSets(this.getSelection()).start === 0
         ? this.getSelection().merge({ anchorOffset, focusOffset })
         : new SelectionState({
-          anchorKey: newBlock.getKey(),
-          anchorOffset,
-          focusOffset,
-          focusKey: newBlock.getKey(),
-          isBackward: false,
-        });
+            anchorKey: newBlock.getKey(),
+            anchorOffset,
+            focusOffset,
+            focusKey: newBlock.getKey(),
+            isBackward: false
+          });
 
     newEditorState = EditorState.acceptSelection(
       newEditorState,
-      updatedSelection,
+      updatedSelection
     );
 
     return this.setState({
       editorState: EditorState.forceSelection(
         newEditorState,
-        newEditorState.getSelection(),
-      ),
+        newEditorState.getSelection()
+      )
     });
   };
 
@@ -424,7 +424,7 @@ class Wysiwyg extends React.Component {
       newEditorState = EditorState.push(
         this.getEditorState(),
         textWithEntity,
-        'insert-characters',
+        'insert-characters'
       );
     }
     return newEditorState;
@@ -441,10 +441,10 @@ class Wysiwyg extends React.Component {
 
   createNewContentStateFromBlock = (
     newBlock,
-    contentState = this.getEditorState().getCurrentContent(),
+    contentState = this.getEditorState().getCurrentContent()
   ) =>
     ContentState.createFromBlockArray(
-      this.createNewBlockMap(newBlock, contentState).toArray(),
+      this.createNewBlockMap(newBlock, contentState).toArray()
     )
       .set('selectionBefore', contentState.getSelectionBefore())
       .set('selectionAfter', contentState.getSelectionAfter());
@@ -499,7 +499,7 @@ class Wysiwyg extends React.Component {
       type: 'textarea',
       value: this.getEditorState()
         .getCurrentContent()
-        .getPlainText(),
+        .getPlainText()
     };
     this.props.onBlur({ target });
     this.blur();
@@ -604,7 +604,7 @@ class Wysiwyg extends React.Component {
       const newEditorState = RichUtils.onTab(
         e,
         this.state.editorState,
-        4 /* maxDepth */,
+        4 /* maxDepth */
       );
       if (newEditorState !== this.state.editorState) {
         this.onChange(newEditorState);
@@ -623,7 +623,7 @@ class Wysiwyg extends React.Component {
    */
   modifyBlockContent = (
     text,
-    contentState = this.getEditorState().getCurrentContent(),
+    contentState = this.getEditorState().getCurrentContent()
   ) => Modifier.replaceText(contentState, this.getSelection(), text);
 
   onChange = editorState => {
@@ -653,8 +653,8 @@ class Wysiwyg extends React.Component {
       target: {
         value: editorState.getCurrentContent().getPlainText(),
         name: this.props.name,
-        type: 'textarea',
-      },
+        type: 'textarea'
+      }
     });
   };
 
@@ -662,7 +662,7 @@ class Wysiwyg extends React.Component {
     e.preventDefault();
     this.setState({
       isFullscreen: !this.state.isFullscreen,
-      isPreviewMode: false,
+      isPreviewMode: false
     });
   };
 
@@ -670,14 +670,14 @@ class Wysiwyg extends React.Component {
     const formData = new FormData();
     formData.append('files', files[0]);
     const headers = {
-      'X-Forwarded-Host': 'strapi',
+      'X-Forwarded-Host': 'strapi'
     };
 
     let newEditorState = this.getEditorState();
 
     const nextBlocks = getNextBlocksList(
       newEditorState,
-      this.getSelection().getStartKey(),
+      this.getSelection().getStartKey()
     );
     // Loop to update each block after the inserted li
     nextBlocks.map((block, index) => {
@@ -689,12 +689,12 @@ class Wysiwyg extends React.Component {
       const newBlock = createNewBlock(
         nextBlockText,
         'unstyled',
-        block.getKey(),
+        block.getKey()
       );
       // Update the contentState
       const newContentState = this.createNewContentStateFromBlock(
         newBlock,
-        newEditorState.getCurrentContent(),
+        newEditorState.getCurrentContent()
       );
       newEditorState = EditorState.push(newEditorState, newContentState);
     });
@@ -703,20 +703,17 @@ class Wysiwyg extends React.Component {
     const updatedSelection = updateSelection(
       this.getSelection(),
       nextBlocks,
-      offset,
+      offset
     );
     this.setState({
-      editorState: EditorState.acceptSelection(
-        newEditorState,
-        updatedSelection,
-      ),
+      editorState: EditorState.acceptSelection(newEditorState, updatedSelection)
     });
 
     return request(
       '/upload',
       { method: 'POST', headers, body: formData },
       false,
-      false,
+      false
     )
       .then(response => {
         const nextBlockKey = newEditorState
@@ -724,22 +721,22 @@ class Wysiwyg extends React.Component {
           .getKeyAfter(newEditorState.getSelection().getStartKey());
         const content = `![text](${response[0].url})`;
         const newContentState = this.createNewContentStateFromBlock(
-          createNewBlock(content, 'unstyled', nextBlockKey),
+          createNewBlock(content, 'unstyled', nextBlockKey)
         );
 
         newEditorState = EditorState.push(newEditorState, newContentState);
         const updatedSelection = updateSelection(
           this.getSelection(),
           nextBlocks,
-          2,
+          2
         );
 
         this.sendData(newEditorState);
         this.setState({
           editorState: EditorState.acceptSelection(
             newEditorState,
-            updatedSelection,
-          ),
+            updatedSelection
+          )
         });
       })
       .catch(() => {
@@ -771,7 +768,7 @@ class Wysiwyg extends React.Component {
             !this.props.deactivateErrorHighlight &&
               this.props.error &&
               styles.editorError,
-            !isEmpty(this.props.className) && this.props.className,
+            !isEmpty(this.props.className) && this.props.className
           )}
           onClick={e => {
             if (isFullscreen) {
@@ -796,7 +793,7 @@ class Wysiwyg extends React.Component {
                   addContent: this.addContent,
                   addOlBlock: this.addOlBlock,
                   addSimpleBlockWithSelection: this.addSimpleBlockWithSelection,
-                  addUlBlock: this.addUlBlock,
+                  addUlBlock: this.addUlBlock
                 }}
                 onToggle={this.toggleInlineStyle}
                 onToggleBlock={this.toggleBlockType}
@@ -818,7 +815,7 @@ class Wysiwyg extends React.Component {
             <div
               className={cn(
                 styles.editor,
-                isFullscreen && styles.editorFullScreen,
+                isFullscreen && styles.editorFullScreen
               )}
               onClick={this.focus}
             >
@@ -877,7 +874,7 @@ Wysiwyg.childContextTypes = {
   isFullscreen: PropTypes.bool,
   isPreviewMode: PropTypes.bool,
   placeholder: PropTypes.string,
-  previewHTML: PropTypes.func,
+  previewHTML: PropTypes.func
 };
 
 Wysiwyg.defaultProps = {
@@ -891,7 +888,7 @@ Wysiwyg.defaultProps = {
   resetProps: false,
   style: {},
   tabIndex: '0',
-  value: '',
+  value: ''
 };
 
 Wysiwyg.propTypes = {
@@ -906,7 +903,7 @@ Wysiwyg.propTypes = {
   resetProps: PropTypes.bool,
   style: PropTypes.object,
   tabIndex: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.string
 };
 
 export default Wysiwyg;

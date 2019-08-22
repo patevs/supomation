@@ -38,7 +38,7 @@ import {
   setDataToEdit,
   setFormErrors,
   submit,
-  unsetDataToEdit,
+  unsetDataToEdit
 } from './actions';
 
 import reducer from './reducer';
@@ -55,7 +55,7 @@ export class HomePage extends React.Component {
     pathname: this.props.location.pathname,
     push: this.props.history.push,
     setDataToEdit: this.props.setDataToEdit,
-    unsetDataToEdit: this.props.unsetDataToEdit,
+    unsetDataToEdit: this.props.unsetDataToEdit
   });
 
   componentDidMount() {
@@ -122,9 +122,7 @@ export class HomePage extends React.Component {
       this.props.history.push(`${this.props.location.pathname}/create`);
     } else if (this.props.match.params.settingType === 'providers') {
       this.props.history.push(
-        `${this.props.location.pathname}#add::${
-          this.props.match.params.settingType
-        }`,
+        `${this.props.location.pathname}#add::${this.props.match.params.settingType}`
       );
     }
   };
@@ -133,16 +131,16 @@ export class HomePage extends React.Component {
     e.preventDefault();
     const modifiedObject = get(this.props.modifiedData, [
       this.getEndPoint(),
-      this.props.dataToEdit,
+      this.props.dataToEdit
     ]);
     const initObject = get(this.props.initialData, [
       this.getEndPoint(),
-      this.props.dataToEdit,
+      this.props.dataToEdit
     ]);
     const formErrors = checkFormValidity(
       this.props.match.params.settingType,
       modifiedObject,
-      this.props.dataToEdit,
+      this.props.dataToEdit
     );
 
     if (isEqual(initObject, modifiedObject)) {
@@ -160,20 +158,20 @@ export class HomePage extends React.Component {
   headerNavLinks = [
     {
       name: 'users-permissions.HeaderNav.link.roles',
-      to: '/plugins/users-permissions/roles',
+      to: '/plugins/users-permissions/roles'
     },
     {
       name: 'users-permissions.HeaderNav.link.providers',
-      to: '/plugins/users-permissions/providers',
+      to: '/plugins/users-permissions/providers'
     },
     {
       name: 'users-permissions.HeaderNav.link.emailTemplates',
-      to: '/plugins/users-permissions/email-templates',
+      to: '/plugins/users-permissions/email-templates'
     },
     {
       name: 'users-permissions.HeaderNav.link.advancedSettings',
-      to: '/plugins/users-permissions/advanced',
-    },
+      to: '/plugins/users-permissions/advanced'
+    }
   ];
 
   pluginHeaderActions = [
@@ -181,14 +179,14 @@ export class HomePage extends React.Component {
       label: 'users-permissions.EditPage.cancel',
       kind: 'secondary',
       onClick: () => this.props.cancelChanges(),
-      type: 'button',
+      type: 'button'
     },
     {
       kind: 'primary',
       label: 'users-permissions.EditPage.submit',
       onClick: () => this.props.submit(this.props.match.params.settingType),
-      type: 'submit',
-    },
+      type: 'submit'
+    }
   ];
 
   showLoaders = () => {
@@ -213,7 +211,7 @@ export class HomePage extends React.Component {
       modifiedData,
       initialData,
       match,
-      dataToEdit,
+      dataToEdit
     } = this.props;
     const headerActions =
       match.params.settingType === 'advanced' &&
@@ -249,7 +247,7 @@ export class HomePage extends React.Component {
             <PluginHeader
               title={{ id: 'users-permissions.HomePage.header.title' }}
               description={{
-                id: 'users-permissions.HomePage.header.description',
+                id: 'users-permissions.HomePage.header.description'
               }}
               actions={headerActions}
             />
@@ -277,11 +275,11 @@ HomePage.childContextTypes = {
   pathname: PropTypes.string,
   push: PropTypes.func,
   setDataToEdit: PropTypes.func,
-  unsetDataToEdit: PropTypes.func,
+  unsetDataToEdit: PropTypes.func
 };
 
 HomePage.contextTypes = {
-  emitEvent: PropTypes.func,
+  emitEvent: PropTypes.func
 };
 
 HomePage.defaultProps = {};
@@ -306,7 +304,7 @@ HomePage.propTypes = {
   setDataToEdit: PropTypes.func.isRequired,
   setFormErrors: PropTypes.func.isRequired,
   submit: PropTypes.func.isRequired,
-  unsetDataToEdit: PropTypes.func.isRequired,
+  unsetDataToEdit: PropTypes.func.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
@@ -320,9 +318,9 @@ function mapDispatchToProps(dispatch) {
       setDataToEdit,
       setFormErrors,
       submit,
-      unsetDataToEdit,
+      unsetDataToEdit
     },
-    dispatch,
+    dispatch
   );
 }
 
@@ -330,17 +328,17 @@ const mapStateToProps = selectHomePage();
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 );
 const withReducer = strapi.injectReducer({
   key: 'homePage',
   reducer,
-  pluginId,
+  pluginId
 });
 const withSaga = strapi.injectSaga({ key: 'homePage', saga, pluginId });
 
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(injectIntl(HomePage));

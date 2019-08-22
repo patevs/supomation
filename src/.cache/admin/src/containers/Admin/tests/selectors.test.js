@@ -13,10 +13,10 @@ describe('<Admin /> selectors', () => {
         layout: Map({}),
         showLeftMenu: true,
         strapiVersion: '3',
-        uuid: false,
+        uuid: false
       });
       const mockedState = fromJS({
-        admin: state,
+        admin: state
       });
 
       expect(selectAdminDomain()(mockedState)).toEqual(state);
@@ -33,10 +33,10 @@ describe('<Admin /> selectors', () => {
         layout: Map({}),
         showLeftMenu: true,
         strapiVersion: '3',
-        uuid: false,
+        uuid: false
       });
       const mockedState = fromJS({
-        admin: state,
+        admin: state
       });
 
       expect(makeSelectAdminDomain()(mockedState)).toEqual(state.toJS());

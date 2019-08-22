@@ -36,7 +36,7 @@ function SettingsRow({ destination, name, onClick }) {
 SettingsRow.propTypes = {
   destination: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default SettingsRow;

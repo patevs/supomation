@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap';
 
 import styles from './styles.scss';
 
@@ -17,22 +22,38 @@ class ModelPicker extends React.Component {
 
     return (
       <div className={styles.dropDown}>
-        <Dropdown isOpen={isOpen} toggle={this.toggle} style={{ backgroundColor: 'transparent' }}>
+        <Dropdown
+          isOpen={isOpen}
+          toggle={this.toggle}
+          style={{ backgroundColor: 'transparent' }}
+        >
           <DropdownToggle caret>
             <p>
               <i className="fa fa-caret-square-o-right" />
               {selectedModel}
-              {!!plugin && <span style={{ fontStyle: 'italic', fontWeight: '500' }}>&nbsp;({plugin})</span>}
+              {!!plugin && (
+                <span style={{ fontStyle: 'italic', fontWeight: '500' }}>
+                  &nbsp;({plugin})
+                </span>
+              )}
             </p>
           </DropdownToggle>
           <DropdownMenu>
             {models.map(model => {
               return (
-                <DropdownItem key={model.name} onClick={() => onClick(model)} className={styles.dropdownItem}>
+                <DropdownItem
+                  key={model.name}
+                  onClick={() => onClick(model)}
+                  className={styles.dropdownItem}
+                >
                   <p>
                     <i className="fa fa-caret-square-o-right" />
                     {model.name}
-                    {!!model.source && <span style={{ fontStyle: 'italic' }}>&nbsp;({model.source})</span>}
+                    {!!model.source && (
+                      <span style={{ fontStyle: 'italic' }}>
+                        &nbsp;({model.source})
+                      </span>
+                    )}
                   </p>
                 </DropdownItem>
               );
@@ -48,14 +69,14 @@ ModelPicker.defaultProps = {
   models: [],
   onClick: () => {},
   plugin: null,
-  selectedModel: '',
+  selectedModel: ''
 };
 
 ModelPicker.propTypes = {
   models: PropTypes.array,
   onClick: PropTypes.func,
   plugin: PropTypes.string,
-  selectedModel: PropTypes.string,
+  selectedModel: PropTypes.string
 };
 
 export default ModelPicker;

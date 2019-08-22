@@ -14,7 +14,7 @@ import {
   join,
   pullAt,
   split,
-  includes,
+  includes
 } from 'lodash';
 
 import InputNumber from '../InputNumber';
@@ -37,7 +37,7 @@ const WithFormSection = InnerComponent =>
       formErrors: PropTypes.array,
       onChange: PropTypes.func,
       section: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-      values: PropTypes.object,
+      values: PropTypes.object
     };
 
     constructor(props) {
@@ -45,7 +45,7 @@ const WithFormSection = InnerComponent =>
       this.state = {
         hasNestedInput: false,
         showNestedForm: false,
-        inputWithNestedForm: '',
+        inputWithNestedForm: ''
       };
 
       this.inputs = {
@@ -54,7 +54,7 @@ const WithFormSection = InnerComponent =>
         number: InputNumber,
         boolean: InputToggle,
         enum: InputEnum,
-        select: InputSelect,
+        select: InputSelect
       };
     }
 
@@ -73,7 +73,7 @@ const WithFormSection = InnerComponent =>
         this.setState({
           showNestedForm: false,
           hasNestedInput: false,
-          inputWithNestedForm: '',
+          inputWithNestedForm: ''
         });
         if (isObject(nextProps.section)) {
           this.checkForNestedForm(nextProps);
@@ -86,7 +86,7 @@ const WithFormSection = InnerComponent =>
         if (has(input, 'items')) {
           this.setState({
             hasNestedInput: true,
-            inputWithNestedForm: input.target,
+            inputWithNestedForm: input.target
           });
 
           if (props.values[input.target]) {
@@ -135,7 +135,7 @@ const WithFormSection = InnerComponent =>
 
       const errorIndex = findIndex(this.props.formErrors, [
         'target',
-        props.target,
+        props.target
       ]);
       const errors =
         errorIndex !== -1 ? this.props.formErrors[errorIndex].errors : [];

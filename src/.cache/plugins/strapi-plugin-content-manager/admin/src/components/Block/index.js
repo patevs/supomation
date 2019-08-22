@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * Block
  */
 
@@ -17,9 +17,7 @@ const Block = ({ children, description, style, title }) => (
       <div className={styles.ctmBlockTitle}>
         {!!title && <FormattedMessage id={title} />}
         {!!description && (
-          <FormattedMessage id={description}>
-            {renderMsg}
-          </FormattedMessage>
+          <FormattedMessage id={description}>{renderMsg}</FormattedMessage>
         )}
       </div>
       {children}
@@ -27,19 +25,18 @@ const Block = ({ children, description, style, title }) => (
   </div>
 );
 
-
 Block.defaultProps = {
   children: null,
   description: null,
   style: {},
-  title: null,
+  title: null
 };
 
 Block.propTypes = {
   children: PropTypes.any,
   description: PropTypes.string,
   style: PropTypes.object,
-  title: PropTypes.string,
+  title: PropTypes.string
 };
 
 export default Block;

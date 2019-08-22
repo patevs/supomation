@@ -16,8 +16,8 @@ export function PluginDispatcher(props) {
   const {
     global: { plugins },
     match: {
-      params: { pluginId },
-    },
+      params: { pluginId }
+    }
   } = props;
 
   const pluginToRender = get(plugins, pluginId, null);
@@ -31,7 +31,7 @@ export function PluginDispatcher(props) {
     blockerComponentProps,
     mainComponent,
     name,
-    preventComponentRendering,
+    preventComponentRendering
   } = pluginToRender;
   let PluginEntryComponent = preventComponentRendering
     ? BlockerComponent
@@ -58,9 +58,9 @@ PluginDispatcher.propTypes = {
   global: PropTypes.object.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      pluginId: PropTypes.string,
-    }),
-  }).isRequired,
+      pluginId: PropTypes.string
+    })
+  }).isRequired
 };
 
 export default memo(PluginDispatcher);

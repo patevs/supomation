@@ -18,7 +18,7 @@ import {
   isUndefined,
   isFunction,
   get,
-  findIndex,
+  findIndex
 } from 'lodash';
 
 import { request, templateObject } from 'strapi-helper-plugin';
@@ -33,7 +33,7 @@ class SelectOne extends React.Component {
     this.state = {
       isLoading: true,
       options: [],
-      toSkip: 0,
+      toSkip: 0
     };
   }
 
@@ -51,7 +51,7 @@ class SelectOne extends React.Component {
     const params = {
       _limit: 20,
       _start: this.state.toSkip,
-      source: this.props.relation.plugin || 'content-manager',
+      source: this.props.relation.plugin || 'content-manager'
     };
 
     // Set `query` parameter if necessary
@@ -72,26 +72,26 @@ class SelectOne extends React.Component {
     // Call our request helper (see 'utils/request')
     return request(requestUrl, {
       method: 'GET',
-      params,
+      params
     })
       .then(response => {
         const options = isArray(response)
           ? map(response, item => ({
-            value: item,
-            label: templateObject(
-              { mainField: this.props.relation.displayedAttribute },
-              item,
-            ).mainField,
-          }))
-          : [
-            {
-              value: response,
+              value: item,
               label: templateObject(
                 { mainField: this.props.relation.displayedAttribute },
-                response,
-              ).mainField,
-            },
-          ];
+                item
+              ).mainField
+            }))
+          : [
+              {
+                value: response,
+                label: templateObject(
+                  { mainField: this.props.relation.displayedAttribute },
+                  response
+                ).mainField
+              }
+            ];
 
         const newOptions = cloneDeep(this.state.options);
         options.map(option => {
@@ -105,12 +105,12 @@ class SelectOne extends React.Component {
 
         return this.setState({
           options: newOptions,
-          isLoading: false,
+          isLoading: false
         });
       })
       .catch(() => {
         strapi.notification.error(
-          'content-manager.notification.error.relationship.fetch',
+          'content-manager.notification.error.relationship.fetch'
         );
       });
   };
@@ -119,7 +119,7 @@ class SelectOne extends React.Component {
     const target = {
       name: `record.${this.props.relation.alias}`,
       value,
-      type: 'select',
+      type: 'select'
     };
 
     this.props.setRecordAttribute({ target });
@@ -128,7 +128,7 @@ class SelectOne extends React.Component {
   handleBottomScroll = () => {
     this.setState(prevState => {
       return {
-        toSkip: prevState.toSkip + 1,
+        toSkip: prevState.toSkip + 1
       };
     });
   };
@@ -138,14 +138,14 @@ class SelectOne extends React.Component {
     this.props.onRedirect({
       model: this.props.relation.collection || this.props.relation.model,
       id: item.value.id || item.value._id,
-      source: this.props.relation.plugin,
+      source: this.props.relation.plugin
     });
   };
 
   handleInputChange = value => {
     const clonedOptions = this.state.options;
     const filteredValues = clonedOptions.filter(data =>
-      includes(data.label, value),
+      includes(data.label, value)
     );
 
     if (filteredValues.length === 0) {
@@ -162,7 +162,7 @@ class SelectOne extends React.Component {
 
     const value = get(this.props.record, this.props.relation.alias);
     const excludeModel = ['role', 'permission', 'file'].includes(
-      this.props.relation.model || this.props.relation.collection,
+      this.props.relation.model || this.props.relation.collection
     ); // Temporary.
     const entryLink =
       isNull(value) || isUndefined(value) || excludeModel ? (
@@ -200,16 +200,16 @@ class SelectOne extends React.Component {
             isNull(value) || isUndefined(value)
               ? null
               : {
-                value: isFunction(value.toJS) ? value.toJS() : value,
-                label:
+                  value: isFunction(value.toJS) ? value.toJS() : value,
+                  label:
                     templateObject(
                       { mainField: this.props.relation.displayedAttribute },
-                      isFunction(value.toJS) ? value.toJS() : value,
+                      isFunction(value.toJS) ? value.toJS() : value
                     ).mainField ||
                     (isFunction(value.toJS)
                       ? get(value.toJS(), 'id')
-                      : get(value, 'id')),
-              }
+                      : get(value, 'id'))
+                }
           }
         />
       </div>
@@ -222,7 +222,7 @@ SelectOne.propTypes = {
   onRedirect: PropTypes.func.isRequired,
   record: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
   relation: PropTypes.object.isRequired,
-  setRecordAttribute: PropTypes.func.isRequired,
+  setRecordAttribute: PropTypes.func.isRequired
 };
 
 export default SelectOne;

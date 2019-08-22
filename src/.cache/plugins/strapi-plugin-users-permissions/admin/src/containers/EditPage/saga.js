@@ -6,19 +6,19 @@ import {
   getRoleSucceeded,
   getRoutesSucceeded,
   getUserSucceeded,
-  submitSucceeded,
+  submitSucceeded
 } from './actions';
 import {
   GET_PERMISSIONS,
   GET_POLICIES,
   GET_ROLE,
   GET_USER,
-  SUBMIT,
+  SUBMIT
 } from './constants';
 import {
   makeSelectActionType,
   makeSelectModifiedData,
-  makeSelectRoleId,
+  makeSelectRoleId
 } from './selectors';
 
 export function* fetchUser(action) {
@@ -26,7 +26,7 @@ export function* fetchUser(action) {
     const data = yield call(
       request,
       `/users-permissions/search/${action.user}`,
-      { method: 'GET' },
+      { method: 'GET' }
     );
 
     yield put(getUserSucceeded(data));
@@ -40,14 +40,14 @@ export function* permissionsGet() {
     const response = yield call(request, '/users-permissions/permissions', {
       method: 'GET',
       params: {
-        lang: strapi.currentLanguage,
-      },
+        lang: strapi.currentLanguage
+      }
     });
 
     yield put(getPermissionsSucceeded(response));
   } catch (err) {
     strapi.notification.error(
-      'users-permissions.EditPage.notification.permissions.error',
+      'users-permissions.EditPage.notification.permissions.error'
     );
   }
 }
@@ -56,14 +56,14 @@ export function* policiesGet() {
   try {
     const [policies, routes] = yield all([
       call(request, '/users-permissions/policies', { method: 'GET' }),
-      call(request, '/users-permissions/routes', { method: 'GET' }),
+      call(request, '/users-permissions/routes', { method: 'GET' })
     ]);
 
     yield put(getPoliciesSucceeded(policies));
     yield put(getRoutesSucceeded(routes));
   } catch (err) {
     strapi.notification.error(
-      'users-permissions.EditPage.notification.policies.error',
+      'users-permissions.EditPage.notification.policies.error'
     );
   }
 }
@@ -73,14 +73,14 @@ export function* roleGet(action) {
     const role = yield call(request, `/users-permissions/roles/${action.id}`, {
       method: 'GET',
       params: {
-        lang: strapi.currentLanguage,
-      },
+        lang: strapi.currentLanguage
+      }
     });
 
     yield put(getRoleSucceeded(role));
   } catch (err) {
     strapi.notification.error(
-      'users-permissions.EditPage.notification.role.error',
+      'users-permissions.EditPage.notification.role.error'
     );
   }
 }
@@ -92,7 +92,7 @@ export function* submit(action) {
     const roleId = yield select(makeSelectRoleId());
     const opts = {
       method: actionType,
-      body,
+      body
     };
 
     const requestURL =

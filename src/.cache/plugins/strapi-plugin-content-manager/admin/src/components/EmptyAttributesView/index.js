@@ -17,13 +17,13 @@ function EmptyAttributesView({ currentModelName, history, modelEntries }) {
     <div className={styles.container}>
       <PluginHeader
         title={{
-          id: currentModelName,
+          id: currentModelName
         }}
         description={{
           id: 'content-manager.containers.List.pluginHeaderDescription',
           values: {
-            label: modelEntries,
-          },
+            label: modelEntries
+          }
         }}
         actions={[]}
       />
@@ -42,7 +42,7 @@ function EmptyAttributesView({ currentModelName, history, modelEntries }) {
               <Button
                 onClick={() =>
                   history.push(
-                    `/plugins/content-type-builder/models/${currentModelName}#choose::attributes`,
+                    `/plugins/content-type-builder/models/${currentModelName}#choose::attributes`
                   )
                 }
                 primaryAddShape
@@ -59,7 +59,7 @@ function EmptyAttributesView({ currentModelName, history, modelEntries }) {
 EmptyAttributesView.propTypes = {
   currentModelName: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
-  modelEntries: PropTypes.number.isRequired,
+  modelEntries: PropTypes.number.isRequired
 };
 
 export default EmptyAttributesView;

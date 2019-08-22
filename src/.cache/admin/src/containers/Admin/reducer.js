@@ -14,7 +14,7 @@ import {
   SET_APP_SECURED,
   SHOW_LEFT_MENU,
   SHOW_LOGOUT,
-  UNSET_APP_SECURED,
+  UNSET_APP_SECURED
 } from './constants';
 
 const initialState = fromJS({
@@ -31,14 +31,14 @@ const initialState = fromJS({
   showMenu: true,
   showLogoutComponent: false,
   strapiVersion: '3',
-  uuid: false,
+  uuid: false
 });
 
 function adminReducer(state = initialState, action) {
   switch (action.type) {
     case GET_INIT_DATA_SUCCEEDED: {
       const {
-        data: { autoReload, currentEnvironment, layout, strapiVersion, uuid },
+        data: { autoReload, currentEnvironment, layout, strapiVersion, uuid }
       } = action;
 
       return state

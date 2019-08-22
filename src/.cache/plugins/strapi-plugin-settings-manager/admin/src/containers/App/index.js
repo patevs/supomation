@@ -76,14 +76,14 @@ App.propTypes = {
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   menuFetch: PropTypes.func.isRequired,
-  sections: PropTypes.array.isRequired,
+  sections: PropTypes.array.isRequired
 };
 
 export function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       menuFetch,
-      environmentsFetch,
+      environmentsFetch
     },
     dispatch
   );
@@ -91,7 +91,7 @@ export function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
-  sections: makeSelectSections(),
+  sections: makeSelectSections()
 });
 
 // Wrap the component to inject dispatch and state into it

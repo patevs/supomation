@@ -36,7 +36,7 @@ describe('<ModelForm />', () => {
         description: '',
         mainField: '',
         name: '',
-        attributes: {},
+        attributes: {}
       },
       onChangeExistingContentTypeMainInfos: jest.fn(),
       onChangeNewContentTypeMainInfos: jest.fn(),
@@ -44,7 +44,7 @@ describe('<ModelForm />', () => {
       push: jest.fn(),
       resetExistingContentTypeMainInfos: jest.fn(),
       resetNewContentTypeMainInfos: jest.fn(),
-      updateTempContentType: jest.fn(),
+      updateTempContentType: jest.fn()
     };
   });
 
@@ -77,8 +77,8 @@ describe('<ModelForm />', () => {
         onSubmit,
         resetExistingContentTypeMainInfos,
         resetNewContentTypeMainInfos,
-        updateTempContentType,
-      },
+        updateTempContentType
+      }
     } = ModelForm;
 
     expect(cancelNewContentType).toBeDefined();
@@ -188,7 +188,7 @@ describe('<ModelForm />', () => {
         expect(context.emitEvent).not.toHaveBeenCalled();
         expect(props.push).toHaveBeenCalledWith({
           search:
-            'modalType=model&settingType=base&actionType=edit&modelName=test',
+            'modalType=model&settingType=base&actionType=edit&modelName=test'
         });
       });
 
@@ -201,10 +201,10 @@ describe('<ModelForm />', () => {
         handleGoTo('advanced');
 
         expect(context.emitEvent).toHaveBeenCalledWith(
-          'didSelectContentTypeSettings',
+          'didSelectContentTypeSettings'
         );
         expect(props.push).toHaveBeenCalledWith({
-          search: 'modalType=model&settingType=advanced&actionType=create',
+          search: 'modalType=model&settingType=advanced&actionType=create'
         });
       });
     });
@@ -263,7 +263,7 @@ describe('<ModelForm />', () => {
         handleSubmit({ preventDefault: jest.fn() });
 
         expect(wrapper.state('formErrors')).toEqual({
-          name: [{ id: `${pluginId}.error.validation.required` }],
+          name: [{ id: `${pluginId}.error.validation.required` }]
         });
         expect(wrapper.prop('push')).not.toHaveBeenCalled();
       });
@@ -280,7 +280,7 @@ describe('<ModelForm />', () => {
         handleSubmit({ preventDefault: jest.fn() });
 
         expect(wrapper.state('formErrors')).toEqual({
-          name: [{ id: `${pluginId}.error.contentTypeName.taken` }],
+          name: [{ id: `${pluginId}.error.contentTypeName.taken` }]
         });
         expect(wrapper.prop('push')).not.toHaveBeenCalled();
       });
@@ -296,7 +296,7 @@ describe('<ModelForm />', () => {
         expect(wrapper.state('formErrors')).toEqual({});
         expect(props.push).toHaveBeenCalledWith({
           pathname: `/plugins/${pluginId}/models/test`,
-          search: 'modalType=chooseAttributes',
+          search: 'modalType=chooseAttributes'
         });
         expect(props.createTempContentType).toHaveBeenCalled();
         expect(props.updateTempContentType).not.toHaveBeenCalled();
@@ -317,7 +317,7 @@ describe('<ModelForm />', () => {
         expect(wrapper.state('formErrors')).toEqual({});
         expect(props.push).toHaveBeenCalledWith({
           pathname: '/plugins/content-type-builder/models/test',
-          search: '',
+          search: ''
         });
         expect(props.createTempContentType).not.toHaveBeenCalled();
         expect(props.updateTempContentType).toHaveBeenCalled();
@@ -337,7 +337,7 @@ describe('<ModelForm />', () => {
 
         expect(wrapper.state('formErrors')).toEqual({});
         expect(props.push).toHaveBeenCalledWith({
-          search: '',
+          search: ''
         });
         expect(props.updateTempContentType).not.toHaveBeenCalled();
         expect(props.createTempContentType).not.toHaveBeenCalled();

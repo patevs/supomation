@@ -24,7 +24,7 @@ describe('<App />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
@@ -32,7 +32,7 @@ describe('<App />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
@@ -40,9 +40,15 @@ describe('<App />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
-        { icon: 'fa-cube', name: 'product', description: 'super api', fields: 6, isTemporary: false },
+        {
+          icon: 'fa-cube',
+          name: 'product',
+          description: 'super api',
+          fields: 6,
+          isTemporary: false
+        }
       ],
       modifiedData: {},
       onChangeExistingContentTypeMainInfos: jest.fn(),
@@ -51,7 +57,7 @@ describe('<App />', () => {
       saveEditedAttributeRelation: jest.fn(),
       setTemporaryAttribute: jest.fn(),
       setTemporaryAttributeRelation: jest.fn(),
-      resetProps: jest.fn(),
+      resetProps: jest.fn()
     };
   });
 
@@ -95,7 +101,7 @@ describe('<App />', () => {
           name: 'test',
           description: 'super api',
           fields: 6,
-          isTemporary: true,
+          isTemporary: true
         });
         const wrapper = shallow(<App {...props} />);
         const { canOpenModal } = wrapper.instance();

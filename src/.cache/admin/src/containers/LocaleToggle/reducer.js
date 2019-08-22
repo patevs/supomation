@@ -8,7 +8,7 @@ import { fromJS } from 'immutable';
 import { RESET_DEFAULT_CLASSNAME, SET_CUSTOM_CLASSNAME } from './constants';
 
 const initialState = fromJS({
-  className: null,
+  className: null
 });
 
 function localeToggleReducer(state = initialState, action) {

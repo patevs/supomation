@@ -1,8 +1,8 @@
 /**
-*
-* ButtonModalSecondary
-*
-*/
+ *
+ * ButtonModalSecondary
+ *
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -24,13 +24,13 @@ function ButtonModalSecondary({ message, onClick, type }) {
 }
 
 ButtonModalSecondary.defaultProps = {
-  type: 'button',
+  type: 'button'
 };
 
 ButtonModalSecondary.propTypes = {
   message: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  type: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default ButtonModalSecondary;

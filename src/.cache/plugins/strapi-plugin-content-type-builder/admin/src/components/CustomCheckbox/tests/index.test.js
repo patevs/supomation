@@ -21,7 +21,7 @@ describe('<CustomCheckbox />', () => {
     props = {
       name: 'test',
       onChange: jest.fn(),
-      value: null,
+      value: null
     };
   });
   it('should not crash', () => {
@@ -60,7 +60,7 @@ describe('<CustomCheckbox />', () => {
     const spyOnHandleChange = jest.spyOn(wrapper.instance(), 'handleChange');
     const spyOnHandleChangeNumber = jest.spyOn(
       wrapper.instance(),
-      'handleInputNumberChange',
+      'handleInputNumberChange'
     );
     wrapper.instance().forceUpdate();
 
@@ -77,14 +77,14 @@ describe('<CustomCheckbox />', () => {
     inputNumber.prop('onChange')({ target: { name: 'test', value: '1' } });
 
     expect(props.onChange).toHaveBeenCalledWith({
-      target: { name: 'test', type: 'number', value: 1 },
+      target: { name: 'test', type: 'number', value: 1 }
     });
     expect(spyOnHandleChangeNumber).toHaveBeenCalled();
 
     input.simulate('change', { target: { checked: false } });
     expect(spyOnHandleChange).toHaveBeenCalled();
     expect(props.onChange).toHaveBeenCalledWith({
-      target: { name: 'test', value: null },
+      target: { name: 'test', value: null }
     });
 
     wrapper.unmount();

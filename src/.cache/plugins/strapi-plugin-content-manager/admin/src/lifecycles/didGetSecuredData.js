@@ -13,16 +13,16 @@ async function didGetSecuredData() {
 
   try {
     const {
-      models: { models },
+      models: { models }
     } = await request(requestURL, { method: 'GET' });
     const menu = [
       {
         name: 'Content Types',
         links: map(omit(models, 'plugins'), (model, key) => ({
           label: model.labelPlural || model.label || key,
-          destination: key,
-        })),
-      },
+          destination: key
+        }))
+      }
     ];
 
     updatePlugin(pluginId, 'leftMenuSections', menu);

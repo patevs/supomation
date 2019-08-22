@@ -39,14 +39,14 @@ function InputSearchLi({ onClick, isAdding, item }) {
 
 InputSearchLi.defaultProps = {
   item: {
-    name: '',
-  },
+    name: ''
+  }
 };
 
 InputSearchLi.propTypes = {
   isAdding: PropTypes.bool.isRequired,
   item: PropTypes.object,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default InputSearchLi;

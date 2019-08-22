@@ -53,7 +53,7 @@ LeftMenuLink.defaultProps = {
   isTemporary: false,
   name: null,
   source: null,
-  to: '',
+  to: ''
 };
 
 LeftMenuLink.propTypes = {
@@ -61,7 +61,7 @@ LeftMenuLink.propTypes = {
   isTemporary: PropTypes.bool,
   name: PropTypes.string,
   source: PropTypes.string,
-  to: PropTypes.string,
+  to: PropTypes.string
 };
 
 export default LeftMenuLink;

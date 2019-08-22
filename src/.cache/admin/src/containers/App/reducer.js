@@ -10,7 +10,7 @@ import {
   PLUGIN_LOADED,
   UNFREEZE_APP,
   UNSET_HAS_USERS_PLUGIN,
-  UPDATE_PLUGIN,
+  UPDATE_PLUGIN
 } from './constants';
 
 const initialState = fromJS({
@@ -20,7 +20,7 @@ const initialState = fromJS({
   hasUserPlugin: true,
   isAppLoading: true,
   plugins: {},
-  showGlobalAppBlocker: true,
+  showGlobalAppBlocker: true
 });
 
 function appReducer(state = initialState, action) {
@@ -46,7 +46,7 @@ function appReducer(state = initialState, action) {
     case UPDATE_PLUGIN:
       return state.setIn(
         ['plugins', action.pluginId, action.updatedKey],
-        fromJS(action.updatedValue),
+        fromJS(action.updatedValue)
       );
     case PLUGIN_DELETED:
       return state.deleteIn(['plugins', action.plugin]);

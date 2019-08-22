@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * ClickOverHint
  */
 
@@ -21,7 +21,7 @@ function ClickOverHint({ show }) {
 }
 
 ClickOverHint.propTypes = {
-  show: PropTypes.bool.isRequired,
+  show: PropTypes.bool.isRequired
 };
 
 export default ClickOverHint;

@@ -68,7 +68,7 @@ class Edit extends React.PureComponent {
 
         return acc;
       },
-      {},
+      {}
     );
   };
 
@@ -95,7 +95,7 @@ class Edit extends React.PureComponent {
         acc[current] = {
           description: '',
           label: upperFirst(current),
-          type: 'file',
+          type: 'file'
         };
       }
 
@@ -117,7 +117,7 @@ class Edit extends React.PureComponent {
     const details = get(this.props.schema, [
       'editDisplay',
       'availableFields',
-      attr,
+      attr
     ]);
     // Retrieve the input's bootstrapClass from the layout
     const layout = this.getInputLayout(attr);
@@ -177,7 +177,7 @@ Edit.defaultProps = {
   onChange: () => {},
   record: {},
   resetProps: false,
-  schema: {},
+  schema: {}
 };
 
 Edit.propTypes = {
@@ -190,7 +190,7 @@ Edit.propTypes = {
   onChange: PropTypes.func,
   record: PropTypes.object,
   resetProps: PropTypes.bool,
-  schema: PropTypes.object,
+  schema: PropTypes.object
 };
 
 export default Edit;

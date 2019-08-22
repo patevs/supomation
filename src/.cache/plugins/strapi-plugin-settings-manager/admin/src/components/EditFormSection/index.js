@@ -82,7 +82,7 @@ EditFormSection.propTypes = {
   section: PropTypes.object,
   showNestedForm: PropTypes.bool,
   styles: PropTypes.object,
-  values: PropTypes.object,
+  values: PropTypes.object
 };
 
 export default WithFormSection(EditFormSection); // eslint-disable-line new-cap

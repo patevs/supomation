@@ -31,14 +31,14 @@ class ListRow extends React.Component {
     let icons = [
       {
         icoType: 'pencil',
-        onClick: this.handleClick,
+        onClick: this.handleClick
       },
       {
         icoType: 'trash',
         onClick: () => {
           this.setState({ showModalDelete: true });
-        },
-      },
+        }
+      }
     ];
 
     switch (this.props.settingType) {
@@ -85,12 +85,12 @@ class ListRow extends React.Component {
             <div className="col-md-6" style={{ fontWeight: '500' }}>
               {get(this.props.values, [
                 get(this.props.item, 'name'),
-                'enabled',
+                'enabled'
               ]) ? (
-                  <span style={{ color: '#5A9E06' }}>Enabled</span>
-                ) : (
-                  <span style={{ color: '#F64D0A' }}>Disabled</span>
-                )}
+                <span style={{ color: '#5A9E06' }}>Enabled</span>
+              ) : (
+                <span style={{ color: '#F64D0A' }}>Disabled</span>
+              )}
             </div>
             <div className="col-md-2">
               <IcoContainer icons={icons} />
@@ -178,24 +178,24 @@ ListRow.contextTypes = {
   emitEvent: PropTypes.func,
   pathname: PropTypes.string,
   push: PropTypes.func,
-  setDataToEdit: PropTypes.func.isRequired,
+  setDataToEdit: PropTypes.func.isRequired
 };
 
 ListRow.defaultProps = {
   item: {
     name: 'Owner',
-    description: 'Rule them all. This role can\'t be deleted',
+    description: "Rule them all. This role can't be deleted",
     nb_users: 1,
-    icon: 'envelope',
+    icon: 'envelope'
   },
-  settingType: 'roles',
+  settingType: 'roles'
 };
 
 ListRow.propTypes = {
   deleteData: PropTypes.func.isRequired,
   item: PropTypes.object,
   settingType: PropTypes.string,
-  values: PropTypes.object.isRequired,
+  values: PropTypes.object.isRequired
 };
 
 export default ListRow;

@@ -11,7 +11,12 @@ describe('<DocumentationSection />', () => {
 
   it('should render a link', () => {
     const wrapper = shallow(<DocumentationSection />);
-    const insideCompo = shallow(wrapper.find(FormattedMessage).at(1).prop('children')());
+    const insideCompo = shallow(
+      wrapper
+        .find(FormattedMessage)
+        .at(1)
+        .prop('children')()
+    );
 
     expect(insideCompo.find('a')).toHaveLength(1);
   });

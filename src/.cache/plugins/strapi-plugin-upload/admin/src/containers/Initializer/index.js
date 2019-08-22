@@ -22,7 +22,7 @@ class Initializer extends React.PureComponent {
 }
 
 Initializer.propTypes = {
-  updatePlugin: PropTypes.func.isRequired,
+  updatePlugin: PropTypes.func.isRequired
 };
 
 export default Initializer;

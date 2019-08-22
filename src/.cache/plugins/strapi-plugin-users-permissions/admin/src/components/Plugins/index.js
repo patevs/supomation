@@ -54,11 +54,11 @@ class Plugins extends React.Component {
 }
 
 Plugins.defaultProps = {
-  plugins: {},
+  plugins: {}
 };
 
 Plugins.propTypes = {
-  plugins: PropTypes.object,
+  plugins: PropTypes.object
 };
 
 export default Plugins;

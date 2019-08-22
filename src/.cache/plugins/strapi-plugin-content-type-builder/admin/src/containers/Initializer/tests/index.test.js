@@ -8,9 +8,9 @@ describe('<Initializer />', () => {
     const props = {
       admin: {
         autoReload: true,
-        currentEnvironment: 'development',
+        currentEnvironment: 'development'
       },
-      updatePlugin: jest.fn(),
+      updatePlugin: jest.fn()
     };
 
     const renderedComponent = shallow(<Initializer {...props} />);
@@ -23,15 +23,15 @@ describe('<Initializer />', () => {
     const props = {
       admin: {
         autoReload: true,
-        currentEnvironment: 'development',
+        currentEnvironment: 'development'
       },
-      updatePlugin,
+      updatePlugin
     };
     const blockerComponentProps = {
       blockerComponentTitle: 'components.AutoReloadBlocker.header',
       blockerComponentDescription: 'components.AutoReloadBlocker.description',
       blockerComponentIcon: 'fa-refresh',
-      blockerComponentContent: 'renderIde',
+      blockerComponentContent: 'renderIde'
     };
 
     mount(<Initializer {...props} />);
@@ -40,15 +40,20 @@ describe('<Initializer />', () => {
       1,
       'content-type-builder',
       'preventComponentRendering',
-      false,
+      false
     );
     expect(updatePlugin).toHaveBeenNthCalledWith(
       2,
       'content-type-builder',
       'blockerComponentProps',
-      blockerComponentProps,
+      blockerComponentProps
     );
-    expect(updatePlugin).toHaveBeenNthCalledWith(3, 'content-type-builder', 'isReady', true);
+    expect(updatePlugin).toHaveBeenNthCalledWith(
+      3,
+      'content-type-builder',
+      'isReady',
+      true
+    );
   });
 
   it('should call the updatePlugin props to emit the event isReady with prevent the component from being rendererd if the autoReaload is disabled', () => {
@@ -56,15 +61,15 @@ describe('<Initializer />', () => {
     const props = {
       admin: {
         autoReload: false,
-        currentEnvironment: 'development',
+        currentEnvironment: 'development'
       },
-      updatePlugin,
+      updatePlugin
     };
     const blockerComponentProps = {
       blockerComponentTitle: 'components.AutoReloadBlocker.header',
       blockerComponentDescription: 'components.AutoReloadBlocker.description',
       blockerComponentIcon: 'fa-refresh',
-      blockerComponentContent: 'renderIde',
+      blockerComponentContent: 'renderIde'
     };
 
     mount(<Initializer {...props} />);
@@ -73,15 +78,20 @@ describe('<Initializer />', () => {
       1,
       'content-type-builder',
       'preventComponentRendering',
-      true,
+      true
     );
     expect(updatePlugin).toHaveBeenNthCalledWith(
       2,
       'content-type-builder',
       'blockerComponentProps',
-      blockerComponentProps,
+      blockerComponentProps
     );
-    expect(updatePlugin).toHaveBeenNthCalledWith(3, 'content-type-builder', 'isReady', true);
+    expect(updatePlugin).toHaveBeenNthCalledWith(
+      3,
+      'content-type-builder',
+      'isReady',
+      true
+    );
   });
 
   it('should call the updatePlugin props to emit the event isReady with prevent the component from being rendererd if in PRODUCTION', () => {
@@ -89,15 +99,15 @@ describe('<Initializer />', () => {
     const props = {
       admin: {
         autoReload: true,
-        currentEnvironment: 'production',
+        currentEnvironment: 'production'
       },
-      updatePlugin,
+      updatePlugin
     };
     const blockerComponentProps = {
       blockerComponentTitle: 'components.ProductionBlocker.header',
       blockerComponentDescription: 'components.ProductionBlocker.description',
       blockerComponentIcon: 'fa-ban',
-      blockerComponentContent: 'renderButton',
+      blockerComponentContent: 'renderButton'
     };
 
     mount(<Initializer {...props} />);
@@ -106,14 +116,19 @@ describe('<Initializer />', () => {
       1,
       'content-type-builder',
       'preventComponentRendering',
-      true,
+      true
     );
     expect(updatePlugin).toHaveBeenNthCalledWith(
       2,
       'content-type-builder',
       'blockerComponentProps',
-      blockerComponentProps,
+      blockerComponentProps
     );
-    expect(updatePlugin).toHaveBeenNthCalledWith(3, 'content-type-builder', 'isReady', true);
+    expect(updatePlugin).toHaveBeenNthCalledWith(
+      3,
+      'content-type-builder',
+      'isReady',
+      true
+    );
   });
 });

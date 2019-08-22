@@ -31,19 +31,19 @@ import {
   SET_SHOULD_DISPLAY_POLICIES_HINT,
   SUBMIT,
   SUBMIT_ERROR,
-  SUBMIT_SUCCEEDED,
+  SUBMIT_SUCCEEDED
 } from './constants';
 
 export function addUser(newUser) {
   return {
     type: ADD_USER,
-    newUser,
+    newUser
   };
 }
 
 export function getPermissions() {
   return {
-    type: GET_PERMISSIONS,
+    type: GET_PERMISSIONS
   };
 }
 
@@ -52,14 +52,13 @@ export function getPermissionsSucceeded(data) {
 
   return {
     type: GET_PERMISSIONS_SUCCEEDED,
-    permissions,
+    permissions
   };
 }
 
-
 export function getPolicies() {
   return {
-    type: GET_POLICIES,
+    type: GET_POLICIES
   };
 }
 
@@ -68,18 +67,20 @@ export function getPoliciesSucceeded(policies) {
     acc.push({ value: current });
 
     return acc;
-  },[]);
+  }, []);
 
   return {
     type: GET_POLICIES_SUCCEEDED,
-    policies: [{ name: 'users-permissions.Policies.InputSelect.empty', value: '' }].concat(formattedPolicies),
+    policies: [
+      { name: 'users-permissions.Policies.InputSelect.empty', value: '' }
+    ].concat(formattedPolicies)
   };
 }
 
 export function getRole(id) {
   return {
     type: GET_ROLE,
-    id,
+    id
   };
 }
 
@@ -88,39 +89,39 @@ export function getRoleSucceeded(data) {
     name: get(data, ['role', 'name']),
     description: get(data, ['role', 'description']),
     users: List(get(data, ['role', 'users'])),
-    permissions: Map(fromJS(get(data, ['role', 'permissions']))),
+    permissions: Map(fromJS(get(data, ['role', 'permissions'])))
   });
 
   return {
     type: GET_ROLE_SUCCEEDED,
-    form,
+    form
   };
 }
 
 export function getRoutesSucceeded(routes) {
   return {
     type: GET_ROUTES_SUCCEEDED,
-    routes,
+    routes
   };
 }
 
 export function getUser(user) {
   return {
     type: GET_USER,
-    user,
+    user
   };
 }
 
 export function getUserSucceeded(users) {
   return {
     type: GET_USER_SUCCEEDED,
-    users: users.filter(o => toString(o.role) !== '0'),
+    users: users.filter(o => toString(o.role) !== '0')
   };
 }
 
 export function onCancel() {
   return {
-    type: ON_CANCEL,
+    type: ON_CANCEL
   };
 }
 
@@ -130,31 +131,31 @@ export function onChangeInput({ target }) {
   return {
     type: ON_CHANGE_INPUT,
     keys,
-    value: target.value,
+    value: target.value
   };
 }
 
 export function onClickAdd(itemToAdd) {
   return {
     type: ON_CLICK_ADD,
-    itemToAdd,
+    itemToAdd
   };
 }
 
 export function onClickDelete(itemToDelete) {
   return {
     type: ON_CLICK_DELETE,
-    itemToDelete,
+    itemToDelete
   };
 }
 
 export const resetProps = () => ({
-  type: RESET_PROPS,
+  type: RESET_PROPS
 });
 
 export function resetShouldDisplayPoliciesHint() {
   return {
-    type: RESET_SHOULD_DISPLAY_POLICIES_HINT,
+    type: RESET_SHOULD_DISPLAY_POLICIES_HINT
   };
 }
 
@@ -162,7 +163,7 @@ export function selectAllActions(name, shouldEnable) {
   return {
     type: SELECT_ALL_ACTIONS,
     keys: ['modifiedData'].concat(name.split('.')),
-    shouldEnable,
+    shouldEnable
   };
 }
 
@@ -171,14 +172,14 @@ export function setActionType(action) {
 
   return {
     type: SET_ACTION_TYPE,
-    actionType,
+    actionType
   };
 }
 
 export function setErrors(formErrors) {
   return {
     type: SET_ERRORS,
-    formErrors,
+    formErrors
   };
 }
 
@@ -187,12 +188,12 @@ export function setForm() {
     name: '',
     description: '',
     users: List([]),
-    permissions: Map({}),
+    permissions: Map({})
   });
 
   return {
     type: SET_FORM,
-    form,
+    form
   };
 }
 
@@ -201,39 +202,39 @@ export function setInputPoliciesPath(path) {
 
   return {
     type: SET_INPUT_POLICIES_PATH,
-    inputPath,
+    inputPath
   };
 }
 
 export function setRoleId(roleId) {
   return {
     type: SET_ROLE_ID,
-    roleId,
+    roleId
   };
 }
 
 export function setShouldDisplayPolicieshint() {
   return {
-    type: SET_SHOULD_DISPLAY_POLICIES_HINT,
+    type: SET_SHOULD_DISPLAY_POLICIES_HINT
   };
 }
 
 export function submit(context) {
   return {
     type: SUBMIT,
-    context,
+    context
   };
 }
 
 export function submitError(errors) {
   return {
     type: SUBMIT_ERROR,
-    errors,
+    errors
   };
 }
 
 export function submitSucceeded() {
   return {
-    type: SUBMIT_SUCCEEDED,
+    type: SUBMIT_SUCCEEDED
   };
 }

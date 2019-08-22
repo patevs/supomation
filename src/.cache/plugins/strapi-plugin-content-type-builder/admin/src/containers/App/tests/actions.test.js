@@ -34,7 +34,7 @@ import {
   deleteModelAttribute,
   submitContentType,
   submitContentTypeSucceeded,
-  formatModelAttributes,
+  formatModelAttributes
 } from '../actions';
 import {
   ADD_ATTRIBUTE_RELATION,
@@ -69,7 +69,7 @@ import {
   ADD_ATTRIBUTE_TO_EXISITING_CONTENT_TYPE,
   DELETE_MODEL_ATTRIBUTE,
   SUBMIT_CONTENT_TYPE,
-  SUBMIT_CONTENT_TYPE_SUCCEEDED,
+  SUBMIT_CONTENT_TYPE_SUCCEEDED
 } from '../constants';
 
 describe('Content Type Builder Action utils', () => {
@@ -78,15 +78,15 @@ describe('Content Type Builder Action utils', () => {
       const attributes = [
         {
           name: 'type',
-          params: { type: 'string', required: true, configurable: false },
+          params: { type: 'string', required: true, configurable: false }
         },
         {
           name: 'controller',
-          params: { type: 'string', required: true, configurable: false },
+          params: { type: 'string', required: true, configurable: false }
         },
         {
           name: 'test',
-          params: { type: 'enumeration', enum: ['test', 'test1'] },
+          params: { type: 'enumeration', enum: ['test', 'test1'] }
         },
         {
           name: 'otherTest',
@@ -94,32 +94,32 @@ describe('Content Type Builder Action utils', () => {
             columnName: '',
             nature: 'oneWay',
             target: 'super',
-            targetColumnName: '',
-          },
-        },
+            targetColumnName: ''
+          }
+        }
       ];
       const expected = {
         type: fromJS({
           type: 'string',
           required: true,
-          configurable: false,
+          configurable: false
         }),
         controller: fromJS({
           type: 'string',
           required: true,
-          configurable: false,
+          configurable: false
         }),
         test: fromJS({
           type: 'enumeration',
-          enum: 'test\ntest1',
+          enum: 'test\ntest1'
         }),
         otherTest: fromJS({
           columnName: '',
           nature: 'oneWay',
           key: '-',
           target: 'super',
-          targetColumnName: '',
-        }),
+          targetColumnName: ''
+        })
       };
 
       expect(buildModelAttributes(attributes)).toEqual(expected);
@@ -129,9 +129,18 @@ describe('Content Type Builder Action utils', () => {
   describe('formatModelAttributes', () => {
     it('should generate an array of object', () => {
       const expected = [
-        { name: 'action', params: { type: 'string', required: true, configurable: false } },
-        { name: 'controller', params: { type: 'string', required: true, configurable: false } },
-        { name: 'enabled', params: { type: 'boolean', required: true, configurable: false } },
+        {
+          name: 'action',
+          params: { type: 'string', required: true, configurable: false }
+        },
+        {
+          name: 'controller',
+          params: { type: 'string', required: true, configurable: false }
+        },
+        {
+          name: 'enabled',
+          params: { type: 'boolean', required: true, configurable: false }
+        },
         { name: 'policy', params: { type: 'boolean', configurable: false } },
         {
           name: 'role',
@@ -141,8 +150,8 @@ describe('Content Type Builder Action utils', () => {
             pluginValue: 'users-permissions',
             plugin: true,
             configurable: false,
-            target: 'role',
-          },
+            target: 'role'
+          }
         },
         {
           name: 'test',
@@ -154,42 +163,45 @@ describe('Content Type Builder Action utils', () => {
             pluginValue: 'users-permissions',
             plugin: true,
             target: 'role2',
-            targetColumnName: 'test',
-          },
+            targetColumnName: 'test'
+          }
         },
-        { name: 'type', params: { type: 'string', required: true, configurable: true } },
+        {
+          name: 'type',
+          params: { type: 'string', required: true, configurable: true }
+        },
         {
           name: 'price',
           params: {
             type: 'integer',
             required: true,
-            min: 2,
-          },
+            min: 2
+          }
         },
         {
           name: 'otherTest',
-          params: { type: 'enumeration', enum: ['test', 'test1'] },
-        },
+          params: { type: 'enumeration', enum: ['test', 'test1'] }
+        }
       ];
       const data = {
         action: {
           type: 'string',
           required: true,
-          configurable: false,
+          configurable: false
         },
         controller: {
           type: 'string',
           required: true,
-          configurable: false,
+          configurable: false
         },
         enabled: {
           type: 'boolean',
           required: true,
-          configurable: false,
+          configurable: false
         },
         policy: {
           type: 'boolean',
-          configurable: false,
+          configurable: false
         },
         role: {
           configurable: false,
@@ -199,7 +211,7 @@ describe('Content Type Builder Action utils', () => {
           nature: 'manyToOne',
           plugin: 'users-permissions',
           targetColumnName: '',
-          target: 'role',
+          target: 'role'
         },
         test: {
           dominant: true,
@@ -208,23 +220,23 @@ describe('Content Type Builder Action utils', () => {
           plugin: 'users-permissions',
           targetColumnName: 'test',
           columnName: 'test2',
-          target: 'role2',
+          target: 'role2'
         },
         type: {
           type: 'string',
           required: true,
-          configurable: true,
+          configurable: true
         },
         price: {
           type: 'integer',
           required: true,
           max: null,
-          min: 2,
+          min: 2
         },
         otherTest: {
           type: 'enumeration',
-          enum: 'test\ntest1',
-        },
+          enum: 'test\ntest1'
+        }
       };
 
       expect(formatModelAttributes(data)).toEqual(expected);
@@ -240,10 +252,12 @@ describe('App actions', () => {
       const expected = {
         type: ADD_ATTRIBUTE_RELATION,
         isModelTemporary,
-        modelName,
+        modelName
       };
 
-      expect(addAttributeRelation(isModelTemporary, modelName)).toEqual(expected);
+      expect(addAttributeRelation(isModelTemporary, modelName)).toEqual(
+        expected
+      );
     });
   });
 
@@ -254,10 +268,12 @@ describe('App actions', () => {
       const expected = {
         type: ADD_ATTRIBUTE_TO_EXISITING_CONTENT_TYPE,
         attributeType,
-        contentTypeName,
+        contentTypeName
       };
 
-      expect(addAttributeToExistingContentType(contentTypeName, attributeType)).toEqual(expected);
+      expect(
+        addAttributeToExistingContentType(contentTypeName, attributeType)
+      ).toEqual(expected);
     });
   });
 
@@ -265,7 +281,7 @@ describe('App actions', () => {
     it('has a type ADD_ATTRIBUTE_TO_TEMP_CONTENT_TYPE and returns the correct data', () => {
       const expected = {
         type: ADD_ATTRIBUTE_TO_TEMP_CONTENT_TYPE,
-        attributeType: 'test',
+        attributeType: 'test'
       };
 
       expect(addAttributeToTempContentType('test')).toEqual(expected);
@@ -275,7 +291,7 @@ describe('App actions', () => {
   describe('CancelNewContentType', () => {
     it('has a type CANCEL_NEW_CONTENT_TYPE and returns the correct data', () => {
       const expected = {
-        type: CANCEL_NEW_CONTENT_TYPE,
+        type: CANCEL_NEW_CONTENT_TYPE
       };
 
       expect(cancelNewContentType()).toEqual(expected);
@@ -285,7 +301,7 @@ describe('App actions', () => {
   describe('clearTemporaryAttributeRelation', () => {
     it('has a type CLEAR_TEMPORARY_ATTRIBUTE and returns the correct data', () => {
       const expected = {
-        type: CLEAR_TEMPORARY_ATTRIBUTE_RELATION,
+        type: CLEAR_TEMPORARY_ATTRIBUTE_RELATION
       };
 
       expect(clearTemporaryAttributeRelation()).toEqual(expected);
@@ -295,7 +311,7 @@ describe('App actions', () => {
   describe('clearTemporaryAttribute', () => {
     it('has a type CLEAR_TEMPORARY_ATTRIBUTE and returns the correct data', () => {
       const expected = {
-        type: CLEAR_TEMPORARY_ATTRIBUTE,
+        type: CLEAR_TEMPORARY_ATTRIBUTE
       };
 
       expect(clearTemporaryAttribute()).toEqual(expected);
@@ -305,7 +321,7 @@ describe('App actions', () => {
   describe('CreateTempContentType', () => {
     it('has a type CREATE_TEMP_CONTENT_TYPE and returns the correct data', () => {
       const expected = {
-        type: CREATE_TEMP_CONTENT_TYPE,
+        type: CREATE_TEMP_CONTENT_TYPE
       };
 
       expect(createTempContentType()).toEqual(expected);
@@ -316,7 +332,7 @@ describe('App actions', () => {
     it('has a type DELETE_MODEL and returns the correct data', () => {
       const expected = {
         type: DELETE_MODEL,
-        modelName: 'test',
+        modelName: 'test'
       };
 
       expect(deleteModel('test')).toEqual(expected);
@@ -328,7 +344,7 @@ describe('App actions', () => {
       const keys = ['modifiedData', 'product', 'name'];
       const expected = {
         type: DELETE_MODEL_ATTRIBUTE,
-        keys,
+        keys
       };
 
       expect(deleteModelAttribute(keys)).toEqual(expected);
@@ -339,7 +355,7 @@ describe('App actions', () => {
     it('has a type DELETE_MODEL_SUCCEEDED and returns the correct data', () => {
       const expected = {
         type: DELETE_MODEL_SUCCEEDED,
-        modelName: 'test',
+        modelName: 'test'
       };
 
       expect(deleteModelSucceeded('test')).toEqual(expected);
@@ -349,7 +365,7 @@ describe('App actions', () => {
   describe('DeleteTemporaryModel', () => {
     it('has a type DELETE_TEMPORARY_MODEL and returns the correct data', () => {
       const expected = {
-        type: DELETE_TEMPORARY_MODEL,
+        type: DELETE_TEMPORARY_MODEL
       };
 
       expect(deleteTemporaryModel()).toEqual(expected);
@@ -359,7 +375,7 @@ describe('App actions', () => {
   describe('GetData', () => {
     it('has a type of GET_DATA', () => {
       const expected = {
-        type: GET_DATA,
+        type: GET_DATA
       };
 
       expect(getData()).toEqual(expected);
@@ -375,8 +391,8 @@ describe('App actions', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
-        },
+          isTemporary: false
+        }
       ];
       const allModels = [
         {
@@ -388,14 +404,14 @@ describe('App actions', () => {
           attributes: [
             {
               name: 'type',
-              params: { type: 'string', required: true, configurable: false },
+              params: { type: 'string', required: true, configurable: false }
             },
             {
               name: 'controller',
-              params: { type: 'string', required: true, configurable: false },
-            },
-          ],
-        },
+              params: { type: 'string', required: true, configurable: false }
+            }
+          ]
+        }
       ];
       const initialData = {
         permission: {
@@ -409,26 +425,28 @@ describe('App actions', () => {
               type: {
                 type: 'string',
                 required: true,
-                configurable: false,
+                configurable: false
               },
               controller: {
                 type: 'string',
                 required: true,
-                configurable: false,
-              },
-            }),
-          ),
-        },
+                configurable: false
+              }
+            })
+          )
+        }
       };
       const connections = ['default'];
       const expected = {
         type: GET_DATA_SUCCEEDED,
         models,
         initialData,
-        connections,
+        connections
       };
 
-      expect(getDataSucceeded({ models, allModels }, connections)).toEqual(expected);
+      expect(getDataSucceeded({ models, allModels }, connections)).toEqual(
+        expected
+      );
     });
   });
 
@@ -437,13 +455,13 @@ describe('App actions', () => {
       const e = {
         target: {
           name: 'name',
-          value: 'testWith spaces and stuff ',
-        },
+          value: 'testWith spaces and stuff '
+        }
       };
       const expected = {
         type: ON_CHANGE_EXISTING_CONTENT_TYPE_MAIN_INFOS,
         keys: ['name'],
-        value: 'testwithspacesandstuff',
+        value: 'testwithspacesandstuff'
       };
 
       expect(onChangeExistingContentTypeMainInfos(e)).toEqual(expected);
@@ -453,13 +471,13 @@ describe('App actions', () => {
       const e = {
         target: {
           name: 'test',
-          value: 'testWith spaces and stuff',
-        },
+          value: 'testWith spaces and stuff'
+        }
       };
       const expected = {
         type: ON_CHANGE_EXISTING_CONTENT_TYPE_MAIN_INFOS,
         keys: ['test'],
-        value: 'testWith spaces and stuff',
+        value: 'testWith spaces and stuff'
       };
 
       expect(onChangeExistingContentTypeMainInfos(e)).toEqual(expected);
@@ -471,13 +489,13 @@ describe('App actions', () => {
       const e = {
         target: {
           name: 'name',
-          value: 'testWith spaces and stuff ',
-        },
+          value: 'testWith spaces and stuff '
+        }
       };
       const expected = {
         type: ON_CHANGE_NEW_CONTENT_TYPE_MAIN_INFOS,
         keys: ['name'],
-        value: 'testwithspacesandstuff',
+        value: 'testwithspacesandstuff'
       };
 
       expect(onChangeNewContentTypeMainInfos(e)).toEqual(expected);
@@ -487,13 +505,13 @@ describe('App actions', () => {
       const e = {
         target: {
           name: 'test',
-          value: 'testWith spaces and stuff',
-        },
+          value: 'testWith spaces and stuff'
+        }
       };
       const expected = {
         type: ON_CHANGE_NEW_CONTENT_TYPE_MAIN_INFOS,
         keys: ['test'],
-        value: 'testWith spaces and stuff',
+        value: 'testWith spaces and stuff'
       };
 
       expect(onChangeNewContentTypeMainInfos(e)).toEqual(expected);
@@ -505,13 +523,13 @@ describe('App actions', () => {
       const e = {
         target: {
           name: 'test',
-          value: 'test ',
-        },
+          value: 'test '
+        }
       };
       const expected = {
         type: ON_CHANGE_ATTRIBUTE,
         keys: ['test'],
-        value: 'test ',
+        value: 'test '
       };
 
       expect(onChangeAttribute(e)).toEqual(expected);
@@ -521,13 +539,13 @@ describe('App actions', () => {
       const e = {
         target: {
           name: 'name',
-          value: 'attribute with space',
-        },
+          value: 'attribute with space'
+        }
       };
       const expected = {
         type: ON_CHANGE_ATTRIBUTE,
         keys: ['name'],
-        value: 'attributewithspace',
+        value: 'attributewithspace'
       };
 
       expect(onChangeAttribute(e)).toEqual(expected);
@@ -540,7 +558,7 @@ describe('App actions', () => {
       const expected = {
         type: ON_CHANGE_RELATION,
         keys: ['test'],
-        value: 'supertest',
+        value: 'supertest'
       };
 
       expect(onChangeRelation({ target })).toEqual(expected);
@@ -554,7 +572,7 @@ describe('App actions', () => {
       const expected = {
         type: ON_CHANGE_RELATION_NATURE,
         nature,
-        currentModel,
+        currentModel
       };
 
       expect(onChangeRelationNature(nature, currentModel)).toEqual(expected);
@@ -569,7 +587,7 @@ describe('App actions', () => {
         type: ON_CHANGE_RELATION_TARGET,
         currentModel,
         model,
-        isEditing: false,
+        isEditing: false
       };
 
       expect(onChangeRelationTarget(model, currentModel)).toEqual(expected);
@@ -585,10 +603,12 @@ describe('App actions', () => {
         type: SAVE_EDITED_ATTRIBUTE,
         attributeName,
         isModelTemporary,
-        modelName,
+        modelName
       };
 
-      expect(saveEditedAttribute(attributeName, isModelTemporary, modelName)).toEqual(expected);
+      expect(
+        saveEditedAttribute(attributeName, isModelTemporary, modelName)
+      ).toEqual(expected);
     });
   });
 
@@ -601,17 +621,19 @@ describe('App actions', () => {
         type: SET_TEMPORARY_ATTRIBUTE,
         attributeName,
         isModelTemporary,
-        modelName,
+        modelName
       };
 
-      expect(setTemporaryAttribute(attributeName, isModelTemporary, modelName)).toEqual(expected);
+      expect(
+        setTemporaryAttribute(attributeName, isModelTemporary, modelName)
+      ).toEqual(expected);
     });
   });
 
   describe('ResetNewContentTypeMainInfos', () => {
     it('has a TYPE RESET_NEW_CONTENT_TYPE_MAIN_INFOS', () => {
       const expected = {
-        type: RESET_NEW_CONTENT_TYPE_MAIN_INFOS,
+        type: RESET_NEW_CONTENT_TYPE_MAIN_INFOS
       };
 
       expect(resetNewContentTypeMainInfos()).toEqual(expected);
@@ -623,7 +645,7 @@ describe('App actions', () => {
       const contentTypeName = 'test';
       const expected = {
         type: RESET_EDIT_EXISTING_CONTENT_TYPE,
-        contentTypeName,
+        contentTypeName
       };
 
       expect(resetEditExistingContentType(contentTypeName)).toEqual(expected);
@@ -635,17 +657,19 @@ describe('App actions', () => {
       const contentTypeName = 'test';
       const expected = {
         type: RESET_EXISTING_CONTENT_TYPE_MAIN_INFOS,
-        contentTypeName,
+        contentTypeName
       };
 
-      expect(resetExistingContentTypeMainInfos(contentTypeName)).toEqual(expected);
+      expect(resetExistingContentTypeMainInfos(contentTypeName)).toEqual(
+        expected
+      );
     });
   });
 
   describe('ResetEditTempContentType', () => {
     it('has a type RESET_EDIT_TEMP_CONTENT_TYPE', () => {
       const expected = {
-        type: RESET_EDIT_TEMP_CONTENT_TYPE,
+        type: RESET_EDIT_TEMP_CONTENT_TYPE
       };
 
       expect(resetEditTempContentType()).toEqual(expected);
@@ -655,7 +679,7 @@ describe('App actions', () => {
   describe('ResetProps', () => {
     it('has a type RESET_PROPS', () => {
       const expected = {
-        type: RESET_PROPS,
+        type: RESET_PROPS
       };
 
       expect(resetProps()).toEqual(expected);
@@ -671,10 +695,12 @@ describe('App actions', () => {
         type: SAVE_EDITED_ATTRIBUTE_RELATION,
         attributeName,
         isModelTemporary,
-        modelName,
+        modelName
       };
 
-      expect(saveEditedAttributeRelation(attributeName, isModelTemporary, modelName)).toEqual(expected);
+      expect(
+        saveEditedAttributeRelation(attributeName, isModelTemporary, modelName)
+      ).toEqual(expected);
     });
   });
 
@@ -690,12 +716,18 @@ describe('App actions', () => {
         isEditing: false,
         isModelTemporary,
         source,
-        target,
+        target
       };
 
-      expect(setTemporaryAttributeRelation(target, isModelTemporary, source, attributeName, false)).toEqual(
-        expected,
-      );
+      expect(
+        setTemporaryAttributeRelation(
+          target,
+          isModelTemporary,
+          source,
+          attributeName,
+          false
+        )
+      ).toEqual(expected);
     });
   });
 
@@ -706,21 +738,21 @@ describe('App actions', () => {
           action: {
             type: 'string',
             required: true,
-            configurable: false,
+            configurable: false
           },
           controller: {
             type: 'string',
             required: true,
-            configurable: false,
+            configurable: false
           },
           enabled: {
             type: 'boolean',
             required: true,
-            configurable: false,
+            configurable: false
           },
           policy: {
             type: 'boolean',
-            configurable: false,
+            configurable: false
           },
           role: {
             configurable: false,
@@ -728,19 +760,19 @@ describe('App actions', () => {
             nature: 'manyToOne',
             plugin: 'users-permissions',
             targetColumnName: '',
-            target: 'role',
+            target: 'role'
           },
           type: {
             type: 'string',
             required: true,
-            configurable: false,
-          },
+            configurable: false
+          }
         },
         collectionName: 'users-permissions_permission',
         connection: 'default',
         description: '',
         mainField: '',
-        name: 'permission',
+        name: 'permission'
       };
       const expectedData = {
         collectionName: 'users-permissions_permission',
@@ -749,9 +781,18 @@ describe('App actions', () => {
         mainField: '',
         name: 'permission',
         attributes: [
-          { name: 'action', params: { type: 'string', required: true, configurable: false } },
-          { name: 'controller', params: { type: 'string', required: true, configurable: false } },
-          { name: 'enabled', params: { type: 'boolean', required: true, configurable: false } },
+          {
+            name: 'action',
+            params: { type: 'string', required: true, configurable: false }
+          },
+          {
+            name: 'controller',
+            params: { type: 'string', required: true, configurable: false }
+          },
+          {
+            name: 'enabled',
+            params: { type: 'boolean', required: true, configurable: false }
+          },
           { name: 'policy', params: { type: 'boolean', configurable: false } },
           {
             name: 'role',
@@ -761,11 +802,14 @@ describe('App actions', () => {
               pluginValue: 'users-permissions',
               plugin: true,
               configurable: false,
-              target: 'role',
-            },
+              target: 'role'
+            }
           },
-          { name: 'type', params: { type: 'string', required: true, configurable: false } },
-        ],
+          {
+            name: 'type',
+            params: { type: 'string', required: true, configurable: false }
+          }
+        ]
       };
       const context = {};
       const expected = {
@@ -773,17 +817,19 @@ describe('App actions', () => {
         oldContentTypeName: 'permission',
         body: expectedData,
         source: null,
-        context,
+        context
       };
 
-      expect(submitContentType('permission', data, context, null)).toEqual(expected);
+      expect(submitContentType('permission', data, context, null)).toEqual(
+        expected
+      );
     });
   });
 
   describe('SubmitContentTypeSucceeded', () => {
     it('should have a type SUBMIT_CONTENT_TYPE_SUCCEEDED and returns the correct data', () => {
       const expected = {
-        type: SUBMIT_CONTENT_TYPE_SUCCEEDED,
+        type: SUBMIT_CONTENT_TYPE_SUCCEEDED
       };
 
       expect(submitContentTypeSucceeded()).toEqual(expected);
@@ -797,21 +843,21 @@ describe('App actions', () => {
           action: {
             type: 'string',
             required: true,
-            configurable: false,
+            configurable: false
           },
           controller: {
             type: 'string',
             required: true,
-            configurable: false,
+            configurable: false
           },
           enabled: {
             type: 'boolean',
             required: true,
-            configurable: false,
+            configurable: false
           },
           policy: {
             type: 'boolean',
-            configurable: false,
+            configurable: false
           },
           role: {
             configurable: false,
@@ -819,19 +865,19 @@ describe('App actions', () => {
             nature: 'manyToOne',
             plugin: 'users-permissions',
             targetColumnName: '',
-            target: 'role',
+            target: 'role'
           },
           type: {
             type: 'string',
             required: true,
-            configurable: false,
-          },
+            configurable: false
+          }
         },
         collectionName: 'users-permissions_permission',
         connection: 'default',
         description: '',
         mainField: '',
-        name: 'permission',
+        name: 'permission'
       };
       const expectedData = {
         collectionName: 'users-permissions_permission',
@@ -840,9 +886,18 @@ describe('App actions', () => {
         mainField: '',
         name: 'permission',
         attributes: [
-          { name: 'action', params: { type: 'string', required: true, configurable: false } },
-          { name: 'controller', params: { type: 'string', required: true, configurable: false } },
-          { name: 'enabled', params: { type: 'boolean', required: true, configurable: false } },
+          {
+            name: 'action',
+            params: { type: 'string', required: true, configurable: false }
+          },
+          {
+            name: 'controller',
+            params: { type: 'string', required: true, configurable: false }
+          },
+          {
+            name: 'enabled',
+            params: { type: 'boolean', required: true, configurable: false }
+          },
           { name: 'policy', params: { type: 'boolean', configurable: false } },
           {
             name: 'role',
@@ -852,17 +907,20 @@ describe('App actions', () => {
               pluginValue: 'users-permissions',
               plugin: true,
               configurable: false,
-              target: 'role',
-            },
+              target: 'role'
+            }
           },
-          { name: 'type', params: { type: 'string', required: true, configurable: false } },
-        ],
+          {
+            name: 'type',
+            params: { type: 'string', required: true, configurable: false }
+          }
+        ]
       };
       const context = {};
       const expected = {
         type: SUBMIT_TEMP_CONTENT_TYPE,
         body: expectedData,
-        context,
+        context
       };
 
       expect(submitTempContentType(data, context)).toEqual(expected);
@@ -872,7 +930,7 @@ describe('App actions', () => {
   describe('SubmitTempContentTypeSucceeded', () => {
     it('has a type SUBMIT_TEMP_CONTENT_TYPE_SUCCEEDED and returns the correct data', () => {
       const expected = {
-        type: SUBMIT_TEMP_CONTENT_TYPE_SUCCEEDED,
+        type: SUBMIT_TEMP_CONTENT_TYPE_SUCCEEDED
       };
 
       expect(submitTempContentTypeSucceeded()).toEqual(expected);
@@ -882,7 +940,7 @@ describe('App actions', () => {
   describe('UpdateTempContentType', () => {
     it('has a type UPDATE_TEMP_CONTENT_TYPE', () => {
       const expected = {
-        type: UPDATE_TEMP_CONTENT_TYPE,
+        type: UPDATE_TEMP_CONTENT_TYPE
       };
 
       expect(updateTempContentType()).toEqual(expected);

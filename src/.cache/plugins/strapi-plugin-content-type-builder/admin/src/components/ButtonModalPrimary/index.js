@@ -29,14 +29,14 @@ ButtonModalPrimary.defaultProps = {
   add: false,
   message: 'app.utils.defaultMessage',
   onClick: () => {},
-  type: 'button',
+  type: 'button'
 };
 
 ButtonModalPrimary.propTypes = {
   add: PropTypes.bool,
   message: PropTypes.string,
   onClick: PropTypes.func,
-  type: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default ButtonModalPrimary;

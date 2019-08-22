@@ -69,7 +69,7 @@ class HeaderNav extends React.Component {
 HeaderNav.propTypes = {
   links: PropTypes.array,
   path: PropTypes.string,
-  renderListComponent: PropTypes.bool,
+  renderListComponent: PropTypes.bool
 };
 
 export default HeaderNav;

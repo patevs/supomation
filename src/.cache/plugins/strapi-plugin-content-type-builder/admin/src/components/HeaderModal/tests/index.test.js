@@ -10,7 +10,11 @@ describe('<HeaderModal />', () => {
 
   it('should render its children', () => {
     const Child = () => <div>Some child</div>;
-    const wrapper = shallow(<HeaderModal><Child /></HeaderModal>);
+    const wrapper = shallow(
+      <HeaderModal>
+        <Child />
+      </HeaderModal>
+    );
 
     expect(wrapper.find(Child).exists()).toBe(true);
   });

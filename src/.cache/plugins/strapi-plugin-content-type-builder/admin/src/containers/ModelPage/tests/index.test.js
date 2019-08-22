@@ -32,7 +32,7 @@ const renderComponent = (props = {}) =>
       <ModelPage {...props} />
     </BrowserRouter>,
     messages,
-    context,
+    context
   );
 
 describe('<ModelPage />', () => {
@@ -50,19 +50,19 @@ describe('<ModelPage />', () => {
       createTempContentType: jest.fn(),
       deleteModelAttribute: jest.fn(),
       history: {
-        push: jest.fn(),
+        push: jest.fn()
       },
       location: {
         search: '',
-        pathname: `${basePath}/user&source=users-permissions`,
+        pathname: `${basePath}/user&source=users-permissions`
       },
       match: {
         isExact: true,
         params: {
-          modelName: 'user&source=users-permissions',
+          modelName: 'user&source=users-permissions'
         },
         path: `${basePath}/user&source=users-permissions`,
-        url: `${basePath}/:modelName`,
+        url: `${basePath}/:modelName`
       },
       initialData: cloneDeep(initialData),
       modifiedData: cloneDeep(initialData),
@@ -73,7 +73,7 @@ describe('<ModelPage />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
@@ -81,7 +81,7 @@ describe('<ModelPage />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
@@ -89,22 +89,22 @@ describe('<ModelPage />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
           name: 'product',
           description: 'super api',
           fields: 6,
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
           name: 'test1',
           description: 'super api',
           fields: 6,
-          isTemporary: true,
-        },
+          isTemporary: true
+        }
       ],
       newContentType: {
         collectionName: '',
@@ -112,7 +112,7 @@ describe('<ModelPage />', () => {
         description: '',
         mainField: '',
         name: '',
-        attributes: {},
+        attributes: {}
       },
       onChangeExistingContentTypeMainInfos: jest.fn(),
       onChangeNewContentTypeMainInfos: jest.fn(),
@@ -140,9 +140,9 @@ describe('<ModelPage />', () => {
         nature: 'oneWay',
         plugin: '',
         target: '',
-        unique: false,
+        unique: false
       },
-      updateTempContentType: jest.fn(),
+      updateTempContentType: jest.fn()
     };
   });
 
@@ -159,7 +159,7 @@ describe('<ModelPage />', () => {
 
       expect(redirect.length).toEqual(1);
     });
-    it('should display the EmptyAttributeBlock if the model\'s attributes are empty', () => {
+    it("should display the EmptyAttributeBlock if the model's attributes are empty", () => {
       props.initialData.user.attributes = {};
       props.modifiedData.user.attributes = {};
 
@@ -168,24 +168,24 @@ describe('<ModelPage />', () => {
       expect(wrapper.find(EmptyAttributesBlock)).toHaveLength(1);
     });
 
-    it('should display the Block if the model\'s attributes are not empty', () => {
+    it("should display the Block if the model's attributes are not empty", () => {
       const wrapper = shallow(<ModelPage {...props} />);
 
       expect(wrapper.find(Block)).toHaveLength(1);
     });
 
-    it('should display a singular text if the model\'s attributes relationship is one', () => {
+    it("should display a singular text if the model's attributes relationship is one", () => {
       const wrapper = shallow(<ModelPage {...props} />);
 
       expect(
         wrapper
           .find(FormattedMessage)
           .last()
-          .prop('id'),
+          .prop('id')
       ).toContain('singular');
     });
 
-    it('should display a plural text if the model\'s attributes relationships is more than one', () => {
+    it("should display a plural text if the model's attributes relationships is more than one", () => {
       props.match.params.modelName = 'role&source=users-permissions';
       props.match.path = `${basePath}/role&source=users-permissions`;
       const wrapper = shallow(<ModelPage {...props} />);
@@ -194,7 +194,7 @@ describe('<ModelPage />', () => {
         wrapper
           .find(FormattedMessage)
           .last()
-          .prop('id'),
+          .prop('id')
       ).toContain('plural');
     });
 
@@ -207,7 +207,7 @@ describe('<ModelPage />', () => {
       const wrapper = shallow(<ModelPage {...props} />);
       const spyOnClick = jest.spyOn(
         wrapper.instance(),
-        'handleClickOpenModalChooseAttributes',
+        'handleClickOpenModalChooseAttributes'
       );
       wrapper.instance().forceUpdate();
 
@@ -228,7 +228,7 @@ describe('<ModelPage />', () => {
 
       it('should return the newContentType if the url matches', () => {
         (props.location.pathname = `${basePath}/test1`),
-        (props.match.params.modelName = 'test1');
+          (props.match.params.modelName = 'test1');
         props.newContentType.name = 'test1';
 
         const { getModel } = shallow(<ModelPage {...props} />).instance();
@@ -238,9 +238,9 @@ describe('<ModelPage />', () => {
     });
 
     describe('GetModelAttributes', () => {
-      it('should return the model\'s attributes', () => {
+      it("should return the model's attributes", () => {
         const { getModelAttributes } = shallow(
-          <ModelPage {...props} />,
+          <ModelPage {...props} />
         ).instance();
 
         expect(getModelAttributes()).toEqual(initialData.user.attributes);
@@ -248,9 +248,9 @@ describe('<ModelPage />', () => {
     });
 
     describe('GetModelAttributesLength', () => {
-      it('should return the model\'s attributes length', () => {
+      it("should return the model's attributes length", () => {
         const { getModelAttributesLength } = shallow(
-          <ModelPage {...props} />,
+          <ModelPage {...props} />
         ).instance();
 
         expect(getModelAttributesLength()).toEqual(8);
@@ -258,9 +258,9 @@ describe('<ModelPage />', () => {
     });
 
     describe('GetModelDescription', () => {
-      it('should return the model\'s description field', () => {
+      it("should return the model's description field", () => {
         const { getModelDescription } = shallow(
-          <ModelPage {...props} />,
+          <ModelPage {...props} />
         ).instance();
 
         expect(getModelDescription()).toEqual('user model');
@@ -268,7 +268,7 @@ describe('<ModelPage />', () => {
     });
 
     describe('GetModelName', () => {
-      it('should return the model\'s name field', () => {
+      it("should return the model's name field", () => {
         const { getModelName } = shallow(<ModelPage {...props} />).instance();
 
         expect(getModelName()).toEqual('user');
@@ -278,7 +278,7 @@ describe('<ModelPage />', () => {
     describe('GetModelsNumber', () => {
       it('should return the number of models', () => {
         const { getModelsNumber } = shallow(
-          <ModelPage {...props} />,
+          <ModelPage {...props} />
         ).instance();
 
         expect(getModelsNumber()).toEqual(5);
@@ -288,12 +288,12 @@ describe('<ModelPage />', () => {
     describe('GetModelRelationShips', () => {
       it('should return the model`s relations', () => {
         const { getModelRelationShips } = shallow(
-          <ModelPage {...props} />,
+          <ModelPage {...props} />
         ).instance();
         const {
           user: {
-            attributes: { role },
-          },
+            attributes: { role }
+          }
         } = initialData;
 
         expect(getModelRelationShips()).toEqual({ role });
@@ -306,7 +306,7 @@ describe('<ModelPage />', () => {
         props.match.path = `${basePath}/product`;
 
         const { getModelRelationShipsLength } = shallow(
-          <ModelPage {...props} />,
+          <ModelPage {...props} />
         ).instance();
 
         expect(getModelRelationShipsLength()).toEqual(0);
@@ -327,7 +327,7 @@ describe('<ModelPage />', () => {
         props.models = [props.models[1]];
 
         const { getSectionTitle } = shallow(
-          <ModelPage {...props} />,
+          <ModelPage {...props} />
         ).instance();
 
         expect(getSectionTitle()).toContain('singular');
@@ -380,19 +380,19 @@ describe('<ModelPage /> lifecycle', () => {
       createTempContentType: jest.fn(),
       deleteModelAttribute: jest.fn(),
       history: {
-        push: jest.fn(),
+        push: jest.fn()
       },
       location: {
         search: '',
-        pathname: `${basePath}/product`,
+        pathname: `${basePath}/product`
       },
       match: {
         isExact: true,
         params: {
-          modelName: 'product',
+          modelName: 'product'
         },
         path: `${basePath}/product`,
-        url: `${basePath}/:modelName`,
+        url: `${basePath}/:modelName`
       },
       initialData: cloneDeep(initialData),
       modifiedData: cloneDeep(initialData),
@@ -403,7 +403,7 @@ describe('<ModelPage /> lifecycle', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
@@ -411,7 +411,7 @@ describe('<ModelPage /> lifecycle', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
@@ -419,22 +419,22 @@ describe('<ModelPage /> lifecycle', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
           name: 'product',
           description: 'super api',
           fields: 6,
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
           name: 'test1',
           description: 'super api',
           fields: 6,
-          isTemporary: true,
-        },
+          isTemporary: true
+        }
       ],
       newContentType: {
         collectionName: '',
@@ -442,7 +442,7 @@ describe('<ModelPage /> lifecycle', () => {
         description: '',
         mainField: '',
         name: '',
-        attributes: {},
+        attributes: {}
       },
       onChangeExistingContentTypeMainInfos: jest.fn(),
       onChangeNewContentTypeMainInfos: jest.fn(),
@@ -470,9 +470,9 @@ describe('<ModelPage /> lifecycle', () => {
         nature: 'oneWay',
         plugin: '',
         target: '',
-        unique: false,
+        unique: false
       },
-      updateTempContentType: jest.fn(),
+      updateTempContentType: jest.fn()
     };
   });
 
@@ -495,11 +495,11 @@ describe('<ModelPage /> lifecycle', () => {
       await wait();
 
       expect(context.emitEvent).toHaveBeenCalledWith(
-        'willEditFieldOfContentType',
+        'willEditFieldOfContentType'
       );
       expect(props.history.push).toHaveBeenCalledWith({
         search:
-          'modalType=attributeForm&attributeType=string&settingType=base&actionType=edit&attributeName=username',
+          'modalType=attributeForm&attributeType=string&settingType=base&actionType=edit&attributeName=username'
       });
     });
 
@@ -517,11 +517,11 @@ describe('<ModelPage /> lifecycle', () => {
       await wait();
 
       expect(context.emitEvent).toHaveBeenCalledWith(
-        'willEditFieldOfContentType',
+        'willEditFieldOfContentType'
       );
       expect(props.history.push).toHaveBeenCalledWith({
         search:
-          'modalType=attributeForm&attributeType=number&settingType=base&actionType=edit&attributeName=username',
+          'modalType=attributeForm&attributeType=number&settingType=base&actionType=edit&attributeName=username'
       });
     });
   });
@@ -536,7 +536,7 @@ describe('<ModelPage /> lifecycle', () => {
       const spyOnWait = jest.spyOn(wrapper.instance(), 'wait');
       const spyOnDisplayNotification = jest.spyOn(
         wrapper.instance(),
-        'displayNotificationCTNotSaved',
+        'displayNotificationCTNotSaved'
       );
       const { handleClickEditModelMainInfos } = wrapper.instance();
 
@@ -547,7 +547,7 @@ describe('<ModelPage /> lifecycle', () => {
       await wait();
 
       expect(context.emitEvent).not.toHaveBeenCalledWith(
-        'willEditNameOfContentType',
+        'willEditNameOfContentType'
       );
       expect(props.history.push).not.toHaveBeenCalled();
       expect(spyOnDisplayNotification).toHaveBeenCalled();
@@ -568,11 +568,11 @@ describe('<ModelPage /> lifecycle', () => {
       await wait();
 
       expect(context.emitEvent).toHaveBeenCalledWith(
-        'willEditNameOfContentType',
+        'willEditNameOfContentType'
       );
       expect(props.history.push).toHaveBeenCalledWith({
         search:
-          'modalType=model&settingType=base&actionType=edit&modelName=product',
+          'modalType=model&settingType=base&actionType=edit&modelName=product'
       });
     });
   });
@@ -587,7 +587,7 @@ describe('<ModelPage /> lifecycle', () => {
       const spyOnWait = jest.spyOn(wrapper.instance(), 'wait');
       const spyOnDisplayNotification = jest.spyOn(
         wrapper.instance(),
-        'displayNotificationCTNotSaved',
+        'displayNotificationCTNotSaved'
       );
       const { handleClickOpenModalChooseAttributes } = wrapper.instance();
 
@@ -616,10 +616,10 @@ describe('<ModelPage /> lifecycle', () => {
       await wait();
 
       expect(context.emitEvent).toHaveBeenCalledWith(
-        'willEditNameOfContentType',
+        'willEditNameOfContentType'
       );
       expect(props.history.push).toHaveBeenCalledWith({
-        search: 'modalType=chooseAttributes',
+        search: 'modalType=chooseAttributes'
       });
     });
   });
@@ -632,7 +632,7 @@ describe('<ModelPage /> lifecycle', () => {
       const wrapper = topCompo.find(ModelPage);
       const spyOnDisplayNotification = jest.spyOn(
         wrapper.instance(),
-        'displayNotificationCTNotSaved',
+        'displayNotificationCTNotSaved'
       );
       const { handleClickOpenModalCreateCT } = wrapper.instance();
 
@@ -652,7 +652,7 @@ describe('<ModelPage /> lifecycle', () => {
       handleClickOpenModalCreateCT();
 
       expect(props.history.push).toHaveBeenCalledWith({
-        search: 'modalType=model&settingType=base&actionType=create',
+        search: 'modalType=model&settingType=base&actionType=create'
       });
     });
   });
@@ -665,14 +665,14 @@ describe('<ModelPage /> lifecycle', () => {
       const wrapper = topCompo.find(ModelPage);
       const spyOnDisplayNotification = jest.spyOn(
         wrapper.instance(),
-        'displayNotificationCTNotSaved',
+        'displayNotificationCTNotSaved'
       );
       const { handleClickOnTrashIcon } = wrapper.instance();
 
       handleClickOnTrashIcon('username');
 
       expect(context.emitEvent).not.toHaveBeenCalledWith(
-        'willDeleteFieldOfContentType',
+        'willDeleteFieldOfContentType'
       );
       expect(spyOnDisplayNotification).toHaveBeenCalled();
     });
@@ -689,10 +689,10 @@ describe('<ModelPage /> lifecycle', () => {
       expect(wrapper.state()).toEqual({
         showWarning: true,
         removePrompt: false,
-        attrToDelete: 'username',
+        attrToDelete: 'username'
       });
       expect(context.emitEvent).toHaveBeenCalledWith(
-        'willDeleteFieldOfContentType',
+        'willDeleteFieldOfContentType'
       );
     });
   });

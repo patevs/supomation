@@ -31,7 +31,7 @@ const trads = {
   ru,
   tr,
   'zh-Hans': zhHans,
-  zh,
+  zh
 };
 
 export default trads;

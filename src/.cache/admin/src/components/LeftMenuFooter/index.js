@@ -19,13 +19,13 @@ function LeftMenuFooter({ version, ...rest }) {
     {
       icon: 'book',
       label: 'documentation',
-      destination: 'https://strapi.io/documentation',
+      destination: 'https://strapi.io/documentation'
     },
     {
       icon: 'question-circle',
       label: 'help',
-      destination: 'https://strapi.io/help',
-    },
+      destination: 'https://strapi.io/help'
+    }
   ];
 
   return (
@@ -65,7 +65,7 @@ function LeftMenuFooter({ version, ...rest }) {
 }
 
 LeftMenuFooter.propTypes = {
-  version: PropTypes.string.isRequired,
+  version: PropTypes.string.isRequired
 };
 
 export default LeftMenuFooter;

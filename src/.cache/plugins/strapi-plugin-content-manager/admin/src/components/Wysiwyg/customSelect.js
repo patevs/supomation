@@ -19,7 +19,7 @@ class CustomSelect extends React.Component {
       isPreviewMode,
       headerValue,
       isFullscreen,
-      handleChangeSelect,
+      handleChangeSelect
     } = this.context;
     const selectClassName = isFullscreen
       ? styles.selectFullscreen
@@ -43,7 +43,7 @@ CustomSelect.contextTypes = {
   handleChangeSelect: PropTypes.func,
   headerValue: PropTypes.string,
   isPreviewMode: PropTypes.bool,
-  isFullscreen: PropTypes.bool,
+  isFullscreen: PropTypes.bool
 };
 
 export default CustomSelect;

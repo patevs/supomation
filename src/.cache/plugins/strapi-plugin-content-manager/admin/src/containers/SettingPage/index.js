@@ -16,7 +16,7 @@ import {
   ButtonDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
+  DropdownItem
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import {
@@ -25,7 +25,7 @@ import {
   InputsIndex as Input,
   InputSelect,
   PluginHeader,
-  PopUpWarning,
+  PopUpWarning
 } from 'strapi-helper-plugin';
 
 import pluginId from '../../pluginId';
@@ -51,7 +51,7 @@ import {
   onRemoveEditViewRelationAttr,
   onReset,
   onSubmit,
-  setLayout,
+  setLayout
 } from '../App/actions';
 import {
   makeSelectAddedField,
@@ -61,13 +61,13 @@ import {
   makeSelectInitDragLine,
   makeSelectModifiedSchema,
   makeSelectShouldResetGrid,
-  makeSelectSubmitSuccess,
+  makeSelectSubmitSuccess
 } from '../App/selectors';
 
 import {
   onClickEditField,
   onClickEditListItem,
-  onClickEditRelation,
+  onClickEditRelation
 } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -87,7 +87,7 @@ class SettingPage extends React.PureComponent {
     showWarning: false,
     showWarningCancel: false,
     shouldSelectField: false,
-    shouldSelectRelation: false,
+    shouldSelectRelation: false
   };
 
   componentDidMount() {
@@ -108,22 +108,22 @@ class SettingPage extends React.PureComponent {
     const prevDisplayedFields = get(
       schema,
       ['models', ...this.getPath().split('.'), 'editDisplay', 'fields'],
-      [],
+      []
     );
     const prevDisplayedRelations = get(
       schema,
       ['models', ...this.getPath().split('.'), 'editDisplay', 'relations'],
-      [],
+      []
     );
     const currentDisplayedFields = get(
       this.props.schema,
       ['models', ...this.getPath().split('.'), 'editDisplay', 'fields'],
-      [],
+      []
     );
     const currentDisplayedRelations = get(
       this.props.schema,
       ['models', ...this.getPath().split('.'), 'editDisplay', 'relations'],
-      [],
+      []
     );
 
     if (prevProps.submitSuccess !== this.props.submitSuccess) {
@@ -170,7 +170,7 @@ class SettingPage extends React.PureComponent {
     const name = get(
       this.props.schema,
       `models.${this.getPath()}.primaryKey`,
-      'id',
+      'id'
     );
     // The id attribute is not present on the schema so we need to add it manually
     const defaultAttr = {
@@ -179,12 +179,12 @@ class SettingPage extends React.PureComponent {
         label: 'Id',
         type: 'string',
         searchable: true,
-        sortable: true,
-      },
+        sortable: true
+      }
     };
     const attributes = Object.assign(
       get(this.props.schema, `models.${this.getPath()}.attributes`, {}),
-      defaultAttr,
+      defaultAttr
     );
 
     return Object.keys(attributes)
@@ -202,7 +202,7 @@ class SettingPage extends React.PureComponent {
           name: attr,
           label: upperFirst(attr),
           searchable,
-          sortable: searchable,
+          sortable: searchable
         });
 
         return obj;
@@ -232,8 +232,8 @@ class SettingPage extends React.PureComponent {
       'models.'.concat(this.getPath().concat('.editDisplay')),
       {
         fields: [],
-        relations: [],
-      },
+        relations: []
+      }
     );
   };
 
@@ -250,9 +250,9 @@ class SettingPage extends React.PureComponent {
         'models',
         ...this.getPath().split('.'),
         'editDisplay',
-        'availableFields',
+        'availableFields'
       ],
-      {},
+      {}
     );
 
   getEditPagePossibleEntryTitleFields = () => {
@@ -270,9 +270,9 @@ class SettingPage extends React.PureComponent {
   getLayout = () => {
     const {
       match: {
-        params: { slug, endPoint },
+        params: { slug, endPoint }
       },
-      schema: { layout },
+      schema: { layout }
     } = this.props;
 
     return get(layout, [endPoint || slug, 'attributes'], {});
@@ -284,8 +284,8 @@ class SettingPage extends React.PureComponent {
   getModelName = () => {
     const {
       match: {
-        params: { slug, endPoint },
-      },
+        params: { slug, endPoint }
+      }
     } = this.props;
 
     return endPoint || slug;
@@ -294,8 +294,8 @@ class SettingPage extends React.PureComponent {
   getPath = () => {
     const {
       match: {
-        params: { slug, source, endPoint },
-      },
+        params: { slug, source, endPoint }
+      }
     } = this.props;
 
     return [slug, source, endPoint]
@@ -307,7 +307,7 @@ class SettingPage extends React.PureComponent {
     const attrLabel = get(
       this.props.schema,
       ['models', ...this.getPath().split('.'), 'relations', attrName, 'label'],
-      'iii',
+      'iii'
     );
 
     return attrLabel;
@@ -317,7 +317,7 @@ class SettingPage extends React.PureComponent {
     const relations = get(
       this.props.schema,
       'models.'.concat(this.getPath()).concat('.relations'),
-      {},
+      {}
     );
 
     return Object.keys(relations).filter(relation => {
@@ -355,7 +355,7 @@ class SettingPage extends React.PureComponent {
         label: 'content-manager.popUpWarning.button.cancel',
         kind: 'secondary',
         onClick: this.handleReset,
-        type: 'button',
+        type: 'button'
       },
       {
         kind: 'primary',
@@ -364,8 +364,8 @@ class SettingPage extends React.PureComponent {
           this.context.emitEvent('willSaveContentTypeLayout');
           this.handleSubmit(e);
         },
-        type: 'submit',
-      },
+        type: 'submit'
+      }
     ];
   };
 
@@ -373,7 +373,7 @@ class SettingPage extends React.PureComponent {
     get(
       this.props.schema,
       ['models', this.getModelName()].concat(['primaryKey']),
-      'id',
+      'id'
     );
 
   getValue = (keys, type) => {
@@ -385,8 +385,8 @@ class SettingPage extends React.PureComponent {
   getViewType = () => {
     const {
       match: {
-        params: { viewType },
-      },
+        params: { viewType }
+      }
     } = this.props;
 
     return viewType;
@@ -395,8 +395,8 @@ class SettingPage extends React.PureComponent {
   generateHeaderNavLinks = () => {
     const {
       match: {
-        params: { slug, source, endPoint },
-      },
+        params: { slug, source, endPoint }
+      }
     } = this.props;
     const suffix = [source, endPoint].reduce((acc, curr) => {
       if (curr) {
@@ -409,12 +409,12 @@ class SettingPage extends React.PureComponent {
     return [
       {
         name: 'content-manager.containers.SettingPage.listSettings.title',
-        to: `/plugins/content-manager/ctm-configurations/list-settings/${suffix}`,
+        to: `/plugins/content-manager/ctm-configurations/list-settings/${suffix}`
       },
       {
         name: 'content-manager.containers.SettingPage.editSettings.title',
-        to: `/plugins/content-manager/ctm-configurations/edit-settings/${suffix}`,
-      },
+        to: `/plugins/content-manager/ctm-configurations/edit-settings/${suffix}`
+      }
     ];
   };
 
@@ -428,12 +428,12 @@ class SettingPage extends React.PureComponent {
 
     if (isDisablingDefaultSort) {
       const enableAttrsSort = this.getSelectOptions({
-        name: 'defaultSort',
+        name: 'defaultSort'
       }).filter(attr => attr !== attrName);
 
       if (enableAttrsSort.length === 0) {
         strapi.notification.info(
-          'content-manager.notification.info.SettingPage.disableSort',
+          'content-manager.notification.info.SettingPage.disableSort'
         );
       } else {
         const newDefaultSort =
@@ -442,7 +442,7 @@ class SettingPage extends React.PureComponent {
             : enableAttrsSort[0];
         const target = {
           name: `${this.getPath()}.defaultSort`,
-          value: newDefaultSort,
+          value: newDefaultSort
         };
         this.props.onChangeSettings({ target });
         this.props.onChangeSettings(e);
@@ -458,7 +458,7 @@ class SettingPage extends React.PureComponent {
       ['models']
         .concat(this.getPath().split('.'))
         .concat(['listDisplay', index]),
-      {},
+      {}
     );
     this.props.onClickEditListItem(attrToEdit);
   };
@@ -467,7 +467,7 @@ class SettingPage extends React.PureComponent {
     const fieldToEditName = get(
       this.props.schema,
       ['models', ...this.getPath().split('.'), 'editDisplay', 'fields', index],
-      '',
+      ''
     );
     const fieldToEdit = get(
       this.props.schema,
@@ -476,9 +476,9 @@ class SettingPage extends React.PureComponent {
         ...this.getPath().split('.'),
         'editDisplay',
         'availableFields',
-        fieldToEditName,
+        fieldToEditName
       ],
-      {},
+      {}
     );
 
     return this.props.onClickEditField(fieldToEdit);
@@ -488,13 +488,13 @@ class SettingPage extends React.PureComponent {
     const relationToEditName = get(
       this.getEditPageDisplayedRelations(),
       index,
-      '',
+      ''
     );
     const relationToEdit = get(this.props.schema, [
       'models',
       ...this.getPath().split('.'),
       'relations',
-      relationToEditName,
+      relationToEditName
     ]);
 
     return this.props.onClickEditRelation(relationToEdit);
@@ -514,13 +514,13 @@ class SettingPage extends React.PureComponent {
 
     if (isRemovingDefaultSort) {
       const enableAttrsSort = this.getSelectOptions({
-        name: 'defaultSort',
+        name: 'defaultSort'
       }).filter(attr => attr !== attrToRemove.name);
       const newDefaultSort =
         enableAttrsSort.length > 1 ? enableAttrsSort[0] : this.getPrimaryKey();
       const target = {
         name: `${this.getPath()}.defaultSort`,
-        value: newDefaultSort,
+        value: newDefaultSort
       };
       this.props.onChangeSettings({ target });
     }
@@ -530,24 +530,24 @@ class SettingPage extends React.PureComponent {
 
   handleRemoveField = (index, keys) => {
     const {
-      settingPage: { fieldToEdit },
+      settingPage: { fieldToEdit }
     } = this.props;
     const fieldToEditName = get(
       this.props.schema,
       ['models', ...keys.split('.'), 'fields', index],
-      '',
+      ''
     );
     this.manageRemove(index, keys, fieldToEditName, fieldToEdit, false);
   };
 
   handleRemoveRelation = (index, keys) => {
     const {
-      settingPage: { relationToEdit },
+      settingPage: { relationToEdit }
     } = this.props;
     const relationToRemoveName = get(this.props.schema, [
       'models',
       ...keys.split('.'),
-      index,
+      index
     ]);
     this.manageRemove(index, keys, relationToRemoveName, relationToEdit);
   };
@@ -566,10 +566,10 @@ class SettingPage extends React.PureComponent {
           'models',
           ...this.getPath().split('.'),
           'editDisplay',
-          'availableFields',
+          'availableFields'
         ],
-        {},
-      ),
+        {}
+      )
     );
 
     if (
@@ -578,7 +578,7 @@ class SettingPage extends React.PureComponent {
       allFields.length === 0
     ) {
       return strapi.notification.info(
-        'content-manager.notification.error.displayedFields',
+        'content-manager.notification.error.displayedFields'
       );
     }
 
@@ -588,7 +588,7 @@ class SettingPage extends React.PureComponent {
       allRelations.length === 0
     ) {
       return strapi.notification.info(
-        'content-manager.notification.error.displayedFields',
+        'content-manager.notification.error.displayedFields'
       );
     }
 
@@ -633,18 +633,18 @@ class SettingPage extends React.PureComponent {
         if (isRelation) {
           this.props.onClickAddAttrField(
             toAdd,
-            `${this.getPath()}.editDisplay.fields`,
+            `${this.getPath()}.editDisplay.fields`
           );
           this.setState(prevState => ({
-            shouldSelectField: !prevState.shouldSelectField,
+            shouldSelectField: !prevState.shouldSelectField
           }));
         } else {
           this.props.onClickAddAttr(
             toAdd,
-            `${this.getPath()}.editDisplay.relations`,
+            `${this.getPath()}.editDisplay.relations`
           );
           this.setState(prevState => ({
-            shouldSelectRelation: !prevState.shouldSelectRelation,
+            shouldSelectRelation: !prevState.shouldSelectRelation
           }));
         }
       }
@@ -663,7 +663,7 @@ class SettingPage extends React.PureComponent {
 
   findIndexFieldToEdit = () => {
     const {
-      settingPage: { fieldToEdit },
+      settingPage: { fieldToEdit }
     } = this.props;
 
     if (isEmpty(fieldToEdit)) {
@@ -678,7 +678,7 @@ class SettingPage extends React.PureComponent {
   findIndexListItemToEdit = () => {
     const index = findIndex(this.getListDisplay(), [
       'name',
-      get(this.props.settingPage, ['listItemToEdit', 'name']),
+      get(this.props.settingPage, ['listItemToEdit', 'name'])
     ]);
 
     return index === -1 ? 0 : index;
@@ -686,7 +686,7 @@ class SettingPage extends React.PureComponent {
 
   findIndexRelationItemToEdit = () => {
     const {
-      settingPage: { relationToEdit },
+      settingPage: { relationToEdit }
     } = this.props;
 
     if (isEmpty(relationToEdit)) {
@@ -694,7 +694,7 @@ class SettingPage extends React.PureComponent {
     }
 
     const index = this.getEditPageDisplayedRelations().indexOf(
-      relationToEdit.alias,
+      relationToEdit.alias
     );
 
     return index;
@@ -706,7 +706,7 @@ class SettingPage extends React.PureComponent {
 
   isEditingTextField = () => {
     const {
-      settingPage: { fieldToEdit },
+      settingPage: { fieldToEdit }
     } = this.props;
     const type = get(fieldToEdit, 'type', null);
 
@@ -731,7 +731,7 @@ class SettingPage extends React.PureComponent {
 
   toggleWarningCancel = () =>
     this.setState(prevState => ({
-      showWarningCancel: !prevState.showWarningCancel,
+      showWarningCancel: !prevState.showWarningCancel
     }));
 
   toggleDropdown = () => {
@@ -749,7 +749,7 @@ class SettingPage extends React.PureComponent {
   toggleDropdownRelations = () => {
     if (this.getDropDownRelationsItems().length > 0) {
       this.setState(prevState => ({
-        isOpenRelation: !prevState.isOpenRelation,
+        isOpenRelation: !prevState.isOpenRelation
       }));
     }
   };
@@ -757,7 +757,7 @@ class SettingPage extends React.PureComponent {
   // We need to remove the Over state on the DraggableAttr component
   updateSiblingHoverState = () => {
     this.setState(prevState => ({
-      isDraggingSibling: !prevState.isDraggingSibling,
+      isDraggingSibling: !prevState.isDraggingSibling
     }));
   };
 
@@ -831,7 +831,7 @@ class SettingPage extends React.PureComponent {
         onClick={() =>
           this.props.onClickAddAttrField(
             item,
-            `${this.getPath()}.editDisplay.fields`,
+            `${this.getPath()}.editDisplay.fields`
           )
         }
       >
@@ -847,7 +847,7 @@ class SettingPage extends React.PureComponent {
         onClick={() =>
           this.props.onClickAddAttr(
             item,
-            `${this.getPath()}.editDisplay.relations`,
+            `${this.getPath()}.editDisplay.relations`
           )
         }
       >
@@ -873,12 +873,12 @@ class SettingPage extends React.PureComponent {
 
   renderForm = () => {
     const {
-      settingPage: { fieldToEdit, relationToEdit },
+      settingPage: { fieldToEdit, relationToEdit }
     } = this.props;
 
     if (isEmpty(fieldToEdit)) {
       return forms.editView.relationForm.map(
-        this.renderFormEditSettingsRelation,
+        this.renderFormEditSettingsRelation
       );
     }
 
@@ -894,15 +894,15 @@ class SettingPage extends React.PureComponent {
       onChangeSettings,
       schema,
       settingPage: {
-        fieldToEdit: { name },
-      },
+        fieldToEdit: { name }
+      }
     } = this.props;
     const path = [
       ...this.getPath().split('.'),
       'editDisplay',
       'availableFields',
       name,
-      input.name,
+      input.name
     ];
     const value = get(schema, ['models', ...path], '');
 
@@ -922,8 +922,8 @@ class SettingPage extends React.PureComponent {
       onChangeSettings,
       schema,
       settingPage: {
-        relationToEdit: { alias },
-      },
+        relationToEdit: { alias }
+      }
     } = this.props;
     const path = [...this.getPath().split('.'), 'relations', alias, input.name];
     const value = get(schema, ['models', ...path], '');
@@ -988,12 +988,12 @@ class SettingPage extends React.PureComponent {
     const displayedFieldPath = [
       ...this.getPath().split('.'),
       'editDisplay',
-      'displayedField',
+      'displayedField'
     ];
     const value = get(
       this.props.schema,
       ['models', ...displayedFieldPath],
-      null,
+      null
     );
 
     return (
@@ -1001,7 +1001,7 @@ class SettingPage extends React.PureComponent {
         style={{
           marginBottom: '13px',
           paddingBottom: '30px',
-          paddingTop: '25px',
+          paddingTop: '25px'
         }}
       >
         <SectionTitle isSettings />
@@ -1032,7 +1032,7 @@ class SettingPage extends React.PureComponent {
             className={cn(
               'col-md-8',
               styles.draggedDescription,
-              styles.edit_settings,
+              styles.edit_settings
             )}
           >
             <FormTitle
@@ -1045,7 +1045,7 @@ class SettingPage extends React.PureComponent {
               <CustomDragLayer />
               <div className={cn('row', styles.noPadding)}>
                 {this.getEditPageDisplayedFields().map(
-                  this.renderDraggableAttrEditSettingsField,
+                  this.renderDraggableAttrEditSettingsField
                 )}
                 <div className={cn('col-md-6')}>
                   <div
@@ -1054,7 +1054,7 @@ class SettingPage extends React.PureComponent {
                       styles.dropdownWrapper,
                       isOpenField && styles.dropdownWrapperOpen,
                       this.shouldDisplayCursorNotAllowed('fields') &&
-                        styles.dropDownNotAllowed,
+                        styles.dropDownNotAllowed
                     )}
                   >
                     <ButtonDropdown
@@ -1068,7 +1068,7 @@ class SettingPage extends React.PureComponent {
                       </DropdownToggle>
                       <DropdownMenu>
                         {this.getDropDownFieldItems().map(
-                          this.renderDropDownItemSettingField,
+                          this.renderDropDownItemSettingField
                         )}
                       </DropdownMenu>
                     </ButtonDropdown>
@@ -1084,7 +1084,7 @@ class SettingPage extends React.PureComponent {
               className={cn(
                 'col-md-4',
                 styles.draggedDescription,
-                styles.edit_settings,
+                styles.edit_settings
               )}
             >
               <FormTitle
@@ -1095,7 +1095,7 @@ class SettingPage extends React.PureComponent {
                 <div className="row">
                   {/* DRAGGABLE BLOCK */}
                   {this.getEditPageDisplayedRelations().map(
-                    this.renderDraggableAttrEditSettingsRelation,
+                    this.renderDraggableAttrEditSettingsRelation
                   )}
                   {/* DRAGGABLE BLOCK */}
                   <div
@@ -1104,7 +1104,7 @@ class SettingPage extends React.PureComponent {
                       styles.dropdownWrapper,
                       isOpenRelation && styles.dropdownWrapperOpen,
                       this.shouldDisplayCursorNotAllowed('relations') &&
-                        styles.dropDownNotAllowed,
+                        styles.dropDownNotAllowed
                     )}
                   >
                     <ButtonDropdown
@@ -1118,7 +1118,7 @@ class SettingPage extends React.PureComponent {
                       </DropdownToggle>
                       <DropdownMenu>
                         {this.getDropDownRelationsItems().map(
-                          this.renderDropDownItemEditSettingsRelation,
+                          this.renderDropDownItemEditSettingsRelation
                         )}
                       </DropdownMenu>
                     </ButtonDropdown>
@@ -1156,7 +1156,7 @@ class SettingPage extends React.PureComponent {
         style={{
           marginBottom: '13px',
           paddingBottom: '30px',
-          paddingTop: '25px',
+          paddingTop: '25px'
         }}
       >
         <SectionTitle isSettings />
@@ -1188,7 +1188,7 @@ class SettingPage extends React.PureComponent {
                 styles.dropdownWrapper,
                 isOpen && styles.dropdownWrapperOpen,
                 this.shouldDisplayCursorNotAllowed('list') &&
-                  styles.dropDownNotAllowed,
+                  styles.dropDownNotAllowed
               )}
             >
               <ButtonDropdown isOpen={isOpen} toggle={this.toggleDropdown}>
@@ -1199,7 +1199,7 @@ class SettingPage extends React.PureComponent {
                 </DropdownToggle>
                 <DropdownMenu>
                   {this.getDropDownItems().map(
-                    this.renderDropDownItemListSettings,
+                    this.renderDropDownItemListSettings
                   )}
                 </DropdownMenu>
               </ButtonDropdown>
@@ -1223,10 +1223,10 @@ class SettingPage extends React.PureComponent {
   renderInputWysiwyg = () => {
     const {
       match: {
-        params: { slug, endPoint },
+        params: { slug, endPoint }
       },
       onChangeInputType,
-      settingPage: { fieldToEdit },
+      settingPage: { fieldToEdit }
     } = this.props;
 
     const inputName = get(fieldToEdit, 'name', null);
@@ -1250,9 +1250,9 @@ class SettingPage extends React.PureComponent {
     const { showWarning, showWarningCancel } = this.state;
     const {
       match: {
-        params: { viewType },
+        params: { viewType }
       },
-      onSubmit,
+      onSubmit
     } = this.props;
     const content =
       viewType === 'list-settings'
@@ -1268,7 +1268,7 @@ class SettingPage extends React.PureComponent {
             title={`Content Manager - ${upperFirst(this.getModelName())}`}
             description={{
               id:
-                'content-manager.containers.SettingPage.pluginHeaderDescription',
+                'content-manager.containers.SettingPage.pluginHeaderDescription'
             }}
           />
           <PopUpWarning
@@ -1278,7 +1278,7 @@ class SettingPage extends React.PureComponent {
               title: 'content-manager.popUpWarning.title',
               message: 'content-manager.popUpWarning.warning.updateAllSettings',
               cancel: 'content-manager.popUpWarning.button.cancel',
-              confirm: 'content-manager.popUpWarning.button.confirm',
+              confirm: 'content-manager.popUpWarning.button.confirm'
             }}
             popUpWarningType="danger"
             onConfirm={() => onSubmit(this.context)}
@@ -1290,7 +1290,7 @@ class SettingPage extends React.PureComponent {
               title: 'content-manager.popUpWarning.title',
               message: 'content-manager.popUpWarning.warning.cancelAllSettings',
               cancel: 'content-manager.popUpWarning.button.cancel',
-              confirm: 'content-manager.popUpWarning.button.confirm',
+              confirm: 'content-manager.popUpWarning.button.confirm'
             }}
             popUpWarningType="danger"
             onConfirm={this.handleConfirmReset}
@@ -1305,12 +1305,12 @@ class SettingPage extends React.PureComponent {
 }
 
 SettingPage.contextTypes = {
-  emitEvent: PropTypes.func,
+  emitEvent: PropTypes.func
 };
 
 SettingPage.defaultProps = {
   draggedItemName: null,
-  grid: [],
+  grid: []
 };
 
 SettingPage.propTypes = {
@@ -1342,7 +1342,7 @@ SettingPage.propTypes = {
   setLayout: PropTypes.func.isRequired,
   settingPage: PropTypes.object.isRequired,
   shouldResetGrid: PropTypes.bool.isRequired,
-  submitSuccess: PropTypes.bool.isRequired,
+  submitSuccess: PropTypes.bool.isRequired
 };
 
 const mapDispatchToProps = dispatch =>
@@ -1365,9 +1365,9 @@ const mapDispatchToProps = dispatch =>
       onRemoveEditViewRelationAttr,
       onReset,
       onSubmit,
-      setLayout,
+      setLayout
     },
-    dispatch,
+    dispatch
   );
 const mapStateToProps = createStructuredSelector({
   addedField: makeSelectAddedField(),
@@ -1378,21 +1378,21 @@ const mapStateToProps = createStructuredSelector({
   schema: makeSelectModifiedSchema(),
   settingPage: makeSelectSettingPage(),
   shouldResetGrid: makeSelectShouldResetGrid(),
-  submitSuccess: makeSelectSubmitSuccess(),
+  submitSuccess: makeSelectSubmitSuccess()
 });
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 );
 const withReducer = strapi.injectReducer({
   key: 'settingPage',
   reducer,
-  pluginId,
+  pluginId
 });
 const withSaga = strapi.injectSaga({ key: 'settingPage', saga, pluginId });
 
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(DragDropContext(HTML5Backend)(SettingPage));

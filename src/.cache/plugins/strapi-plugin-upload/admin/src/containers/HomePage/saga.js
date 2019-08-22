@@ -11,7 +11,7 @@ import {
   getDataSuccess,
   onSearchSuccess,
   setLoading,
-  unsetLoading,
+  unsetLoading
 } from './actions';
 import { DELETE_DATA, GET_DATA, ON_DROP, ON_SEARCH } from './constants';
 import { makeSelectParams, makeSelectSearch } from './selectors';
@@ -35,11 +35,11 @@ function* dataGet() {
     const params = {
       _limit: pageParams._limit,
       _sort: pageParams._sort,
-      _start,
+      _start
     };
     const data = yield all([
       call(request, '/upload/files', { method: 'GET', params }),
-      call(request, '/upload/files/count', { method: 'GET' }),
+      call(request, '/upload/files/count', { method: 'GET' })
     ]);
     const entries = data[0].length === 0 ? [] : data[0].map(obj => Map(obj));
     yield put(getDataSuccess(entries, data[1].count));
@@ -52,14 +52,14 @@ function* uploadFiles(action) {
   try {
     yield put(setLoading());
     const headers = {
-      'X-Forwarded-Host': 'strapi',
+      'X-Forwarded-Host': 'strapi'
     };
     const response = yield call(
       request,
       '/upload',
       { method: 'POST', headers, body: action.formData },
       false,
-      false,
+      false
     );
     const newFiles = response.map(file => Map(file));
 
@@ -67,12 +67,12 @@ function* uploadFiles(action) {
 
     if (newFiles.length > 1) {
       strapi.notification.success({
-        id: 'upload.notification.dropFile.success',
+        id: 'upload.notification.dropFile.success'
       });
     } else {
       strapi.notification.success({
         id: 'upload.notification.dropFiles.success',
-        values: { number: newFiles.length },
+        values: { number: newFiles.length }
       });
     }
   } catch (error) {
@@ -82,7 +82,7 @@ function* uploadFiles(action) {
       'message',
       '0',
       'messages',
-      '0',
+      '0'
     ]);
     if (isObject(message))
       message = { ...message, id: `${pluginId}.${message.id}` };
@@ -103,10 +103,10 @@ function* search() {
       : '/upload/files';
     const params = isEmpty(search)
       ? {
-        _limit: pageParams._limit,
-        _sort: pageParams._sort,
-        _start,
-      }
+          _limit: pageParams._limit,
+          _sort: pageParams._sort,
+          _start
+        }
       : {};
     const response = yield call(request, requestURL, { method: 'GET', params });
     const entries = response.length === 0 ? [] : response.map(obj => Map(obj));

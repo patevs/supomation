@@ -43,7 +43,7 @@ const locales = {
   pt,
   ru,
   tr,
-  zh,
+  zh
 };
 const languages = Object.keys(trads);
 
@@ -62,7 +62,7 @@ const translationMessages = reduce(
 
     return obj;
   },
-  {},
+  {}
 );
 
 export { languages, translationMessages };

@@ -22,7 +22,7 @@ const RelationBox = ({
   selectedModel,
   plugin,
   source,
-  value,
+  value
 }) => {
   return (
     <InlineBlock>
@@ -76,7 +76,7 @@ RelationBox.defaultProps = {
   onClick: () => {},
   plugin: null,
   selectedModel: null,
-  source: null,
+  source: null
 };
 
 RelationBox.propTypes = {
@@ -92,7 +92,7 @@ RelationBox.propTypes = {
   plugin: PropTypes.string,
   selectedModel: PropTypes.string,
   source: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
 };
 
 export default RelationBox;

@@ -26,7 +26,7 @@ describe('CTB <HomePage />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
@@ -34,7 +34,7 @@ describe('CTB <HomePage />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
@@ -42,15 +42,15 @@ describe('CTB <HomePage />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
+          isTemporary: false
         },
         {
           icon: 'fa-cube',
           name: 'product',
           description: 'super api',
           fields: 6,
-          isTemporary: false,
-        },
+          isTemporary: false
+        }
       ],
       modifiedData: {},
       newContentType: {
@@ -59,16 +59,16 @@ describe('CTB <HomePage />', () => {
         description: '',
         mainField: '',
         name: '',
-        attributes: {},
+        attributes: {}
       },
       onChangeNewContentTypeMainInfos: jest.fn(),
       history: {
-        push: jest.fn(),
+        push: jest.fn()
       },
       location: {
         search: '',
-        pathname: `/plugins/${pluginId}`,
-      },
+        pathname: `/plugins/${pluginId}`
+      }
     };
   });
 
@@ -96,7 +96,7 @@ describe('CTB <HomePage />', () => {
 
       expect(table).toHaveLength(1);
       expect(table.prop('title')).toEqual(
-        `${pluginId}.table.contentType.title.plural`,
+        `${pluginId}.table.contentType.title.plural`
       );
     });
 
@@ -108,8 +108,8 @@ describe('CTB <HomePage />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
-        },
+          isTemporary: false
+        }
       ];
 
       const context = { emitEvent: jest.fn() };
@@ -118,7 +118,7 @@ describe('CTB <HomePage />', () => {
 
       expect(table).toHaveLength(1);
       expect(table.prop('title')).toEqual(
-        `${pluginId}.table.contentType.title.singular`,
+        `${pluginId}.table.contentType.title.singular`
       );
     });
   });
@@ -143,7 +143,7 @@ describe('CTB <HomePage />', () => {
       expect(spyOnClick).toHaveBeenCalled();
       expect(context.emitEvent).toHaveBeenCalledWith('willCreateContentType');
       expect(props.history.push).toHaveBeenCalledWith({
-        search: 'modalType=model&settingType=base&actionType=create',
+        search: 'modalType=model&settingType=base&actionType=create'
       });
       expect(form.prop('isOpen')).toBe(true);
     });
@@ -162,7 +162,7 @@ describe('CTB <HomePage />', () => {
       expect(props.history.push).not.toHaveBeenCalled();
       expect(strapi.notification.info).toHaveBeenCalled();
       expect(strapi.notification.info).toHaveBeenCalledWith(
-        `${pluginId}.notification.info.contentType.creating.notSaved`,
+        `${pluginId}.notification.info.contentType.creating.notSaved`
       );
       expect(form.prop('isOpen')).toBe(false);
     });

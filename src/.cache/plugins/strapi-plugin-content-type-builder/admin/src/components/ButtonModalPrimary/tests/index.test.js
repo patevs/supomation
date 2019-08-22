@@ -10,7 +10,7 @@ describe('<ButtonModalPrimary />', () => {
 
   it('should use the defaultProps', () => {
     const {
-      defaultProps: { onClick },
+      defaultProps: { onClick }
     } = ButtonModalPrimary;
 
     expect(onClick).toBeDefined();

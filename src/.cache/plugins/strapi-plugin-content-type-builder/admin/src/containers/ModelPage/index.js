@@ -19,7 +19,7 @@ import {
   PluginHeader,
   PopUpWarning,
   routerPropTypes,
-  getQueryParameters,
+  getQueryParameters
 } from 'strapi-helper-plugin';
 
 import pluginId from '../../pluginId';
@@ -48,7 +48,7 @@ import {
   resetEditExistingContentType,
   resetEditTempContentType,
   submitContentType,
-  submitTempContentType,
+  submitTempContentType
 } from '../App/actions';
 
 import CustomLink from './CustomLink';
@@ -73,7 +73,7 @@ export class ModelPage extends React.Component {
       setTemporaryAttribute(
         this.getAttributeName(),
         this.isUpdatingTemporaryContentType(),
-        this.getModelName(),
+        this.getModelName()
       );
     }
   }
@@ -82,9 +82,9 @@ export class ModelPage extends React.Component {
     const {
       location: { search },
       match: {
-        params: { modelName },
+        params: { modelName }
       },
-      resetEditExistingContentType,
+      resetEditExistingContentType
     } = prevProps;
 
     if (
@@ -143,7 +143,7 @@ export class ModelPage extends React.Component {
     const description = get(
       initialData,
       [this.getModelName(), 'description'],
-      null,
+      null
     );
 
     /* istanbul ignore if */
@@ -151,15 +151,15 @@ export class ModelPage extends React.Component {
     return !!description
       ? description
       : {
-          id: `${pluginId}.modelPage.contentHeader.emptyDescription.description`,
+          id: `${pluginId}.modelPage.contentHeader.emptyDescription.description`
         };
   };
 
   getModelName = () => {
     const {
       match: {
-        params: { modelName },
-      },
+        params: { modelName }
+      }
     } = this.props;
 
     return modelName.split('&')[0];
@@ -191,14 +191,14 @@ export class ModelPage extends React.Component {
       resetEditExistingContentType,
       resetEditTempContentType,
       submitContentType,
-      submitTempContentType,
+      submitTempContentType
     } = this.props;
     /* istanbul ignore if */
     const shouldShowActions = this.isUpdatingTemporaryContentType()
       ? this.getModelAttributesLength() > 0
       : !isEqual(
           modifiedData[this.getModelName()],
-          initialData[this.getModelName()],
+          initialData[this.getModelName()]
         );
     /* eslint-disable indent */
     const handleSubmit = this.isUpdatingTemporaryContentType()
@@ -208,9 +208,9 @@ export class ModelPage extends React.Component {
             this.getModelName(),
             get(modifiedData, this.getModelName()),
             Object.assign(this.context, {
-              history: this.props.history,
+              history: this.props.history
             }),
-            this.getSource(),
+            this.getSource()
           );
         };
     /* istanbul ignore next */
@@ -226,15 +226,15 @@ export class ModelPage extends React.Component {
           label: `${pluginId}.form.button.cancel`,
           onClick: handleCancel,
           kind: 'secondary',
-          type: 'button',
+          type: 'button'
         },
         {
           label: `${pluginId}.form.button.save`,
           onClick: handleSubmit,
           kind: 'primary',
           type: 'submit',
-          id: 'saveData',
-        },
+          id: 'saveData'
+        }
       ];
     }
 
@@ -255,7 +255,7 @@ export class ModelPage extends React.Component {
 
   getSearch = () => {
     const {
-      location: { search },
+      location: { search }
     } = this.props;
 
     return search;
@@ -271,8 +271,8 @@ export class ModelPage extends React.Component {
   getSource = () => {
     const {
       match: {
-        params: { modelName },
-      },
+        params: { modelName }
+      }
     } = this.props;
 
     const source = getQueryParameters(modelName, 'source');
@@ -285,13 +285,13 @@ export class ModelPage extends React.Component {
     const {
       canOpenModal,
       history: { push },
-      setTemporaryAttribute,
+      setTemporaryAttribute
     } = this.props;
     const attributeType = [
       'integer',
       'biginteger',
       'float',
-      'decimal',
+      'decimal'
     ].includes(type)
       ? 'number'
       : type;
@@ -300,7 +300,7 @@ export class ModelPage extends React.Component {
       setTemporaryAttribute(
         attributeName,
         this.isUpdatingTemporaryContentType(),
-        this.getModelName(),
+        this.getModelName()
       );
 
       await this.wait();
@@ -308,7 +308,7 @@ export class ModelPage extends React.Component {
       emitEvent('willEditFieldOfContentType');
       push({
         search: `modalType=attributeForm&attributeType=${attributeType ||
-          'relation'}&settingType=base&actionType=edit&attributeName=${attributeName}`,
+          'relation'}&settingType=base&actionType=edit&attributeName=${attributeName}`
       });
     } else {
       this.displayNotificationCTNotSaved();
@@ -323,7 +323,7 @@ export class ModelPage extends React.Component {
 
     if (canOpenModal || this.isUpdatingTemporaryContentType()) {
       this.props.history.push({
-        search: `modalType=model&settingType=base&actionType=edit&modelName=${this.getModelName()}`,
+        search: `modalType=model&settingType=base&actionType=edit&modelName=${this.getModelName()}`
       });
       emitEvent('willEditNameOfContentType');
     } else {
@@ -334,7 +334,7 @@ export class ModelPage extends React.Component {
   handleClickOpenModalChooseAttributes = async () => {
     const {
       canOpenModal,
-      history: { push },
+      history: { push }
     } = this.props;
 
     await this.wait();
@@ -349,12 +349,12 @@ export class ModelPage extends React.Component {
   handleClickOpenModalCreateCT = () => {
     const {
       canOpenModal,
-      history: { push },
+      history: { push }
     } = this.props;
 
     if (canOpenModal) {
       push({
-        search: 'modalType=model&settingType=base&actionType=create',
+        search: 'modalType=model&settingType=base&actionType=create'
       });
     } else {
       this.displayNotificationCTNotSaved();
@@ -392,14 +392,14 @@ export class ModelPage extends React.Component {
       addAttributeToExistingContentType,
       addAttributeToTempContentType,
       history: { push },
-      location: { search },
+      location: { search }
     } = this.props;
     const attributeType = getQueryParameters(search, 'attributeType');
 
     if (this.getAttributeType() === 'relation') {
       addAttributeRelation(
         this.isUpdatingTemporaryContentType(),
-        this.getModelName(),
+        this.getModelName()
       );
     } else {
       if (this.isUpdatingTemporaryContentType()) {
@@ -417,7 +417,7 @@ export class ModelPage extends React.Component {
     const {
       history: { push },
       saveEditedAttribute,
-      saveEditedAttributeRelation,
+      saveEditedAttributeRelation
     } = this.props;
     const attributeName = this.getAttributeName();
 
@@ -425,13 +425,13 @@ export class ModelPage extends React.Component {
       saveEditedAttributeRelation(
         attributeName,
         this.isUpdatingTemporaryContentType(),
-        this.getModelName(),
+        this.getModelName()
       );
     } else {
       saveEditedAttribute(
         attributeName,
         this.isUpdatingTemporaryContentType(),
-        this.getModelName(),
+        this.getModelName()
       );
     }
 
@@ -452,7 +452,7 @@ export class ModelPage extends React.Component {
     const { models } = this.props;
     /* istanbul ignore next */
     const currentModel = models.find(model => model.name === modelName) || {
-      isTemporary: true,
+      isTemporary: true
     };
 
     const { isTemporary } = currentModel;
@@ -465,7 +465,7 @@ export class ModelPage extends React.Component {
   isTryingToEditAnUnknownAttribute = () => {
     const hasAttribute =
       Object.keys(this.getModelAttributes()).indexOf(
-        this.getAttributeName(),
+        this.getAttributeName()
       ) !== -1;
 
     return (
@@ -494,7 +494,7 @@ export class ModelPage extends React.Component {
 
   displayNotificationCTNotSaved = () =>
     strapi.notification.info(
-      `${pluginId}.notification.info.contentType.creating.notSaved`,
+      `${pluginId}.notification.info.contentType.creating.notSaved`
     );
 
   renderLinks = () => {
@@ -556,7 +556,7 @@ export class ModelPage extends React.Component {
       setTemporaryAttributeRelation,
       temporaryAttribute,
       temporaryAttributeRelation,
-      updateTempContentType,
+      updateTempContentType
     } = this.props;
     const { showWarning, removePrompt } = this.state;
 
@@ -661,7 +661,7 @@ export class ModelPage extends React.Component {
                     <div>
                       <Ul id="attributesList">
                         {Object.keys(this.getModelAttributes()).map(
-                          this.renderLi,
+                          this.renderLi
                         )}
                       </Ul>
                     </div>
@@ -715,7 +715,7 @@ export class ModelPage extends React.Component {
           isOpen={showWarning}
           toggleModal={this.toggleModalWarning}
           content={{
-            message: `${pluginId}.popUpWarning.bodyMessage.attribute.delete`,
+            message: `${pluginId}.popUpWarning.bodyMessage.attribute.delete`
           }}
           popUpWarningType="danger"
           onConfirm={this.handleDeleteAttribute}
@@ -749,12 +749,12 @@ ModelPage.contextTypes = {
   emitEvent: PropTypes.func,
   plugins: PropTypes.object,
   router: PropTypes.object,
-  updatePlugin: PropTypes.func,
+  updatePlugin: PropTypes.func
 };
 
 ModelPage.defaultProps = {
   connections: ['default'],
-  canOpenModal: true,
+  canOpenModal: true
 };
 
 ModelPage.propTypes = {
@@ -791,7 +791,7 @@ ModelPage.propTypes = {
   temporaryAttribute: PropTypes.object.isRequired,
   temporaryAttributeRelation: PropTypes.object.isRequired,
   updateTempContentType: PropTypes.func.isRequired,
-  ...routerPropTypes({ params: PropTypes.string }).isRequired,
+  ...routerPropTypes({ params: PropTypes.string }).isRequired
 };
 
 export function mapDispatchToProps(dispatch) {
@@ -805,15 +805,15 @@ export function mapDispatchToProps(dispatch) {
       resetEditExistingContentType,
       resetEditTempContentType,
       submitContentType,
-      submitTempContentType,
+      submitTempContentType
     },
-    dispatch,
+    dispatch
   );
 }
 
 const withConnect = connect(
   null,
-  mapDispatchToProps,
+  mapDispatchToProps
 );
 
 export default compose(withConnect)(ModelPage);

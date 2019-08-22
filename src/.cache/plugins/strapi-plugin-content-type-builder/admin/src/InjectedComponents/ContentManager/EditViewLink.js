@@ -27,7 +27,7 @@ function EditViewLink(props) {
 EditViewLink.propTypes = {
   getContentTypeBuilderBaseUrl: PropTypes.func.isRequired,
   getModelName: PropTypes.func.isRequired,
-  getSource: PropTypes.func.isRequired,
+  getSource: PropTypes.func.isRequired
 };
 
 export default EditViewLink;

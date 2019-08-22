@@ -40,7 +40,7 @@ class ConfigPage extends React.Component {
     // Redirect the user to the email list after modifying is provider
     if (prevProps.submitSuccess !== this.props.submitSuccess) {
       this.props.history.push(
-        `/plugins/email/configurations/${this.props.match.params.env}`,
+        `/plugins/email/configurations/${this.props.match.params.env}`
       );
     }
   }
@@ -48,7 +48,7 @@ class ConfigPage extends React.Component {
   getSelectedProviderIndex = () =>
     findIndex(this.props.settings.providers, [
       'provider',
-      get(this.props.modifiedData, 'provider'),
+      get(this.props.modifiedData, 'provider')
     ]);
 
   /**
@@ -59,8 +59,8 @@ class ConfigPage extends React.Component {
   getSettings = props => {
     const {
       match: {
-        params: { env },
-      },
+        params: { env }
+      }
     } = props;
     this.props.getSettings(env);
   };
@@ -69,7 +69,7 @@ class ConfigPage extends React.Component {
     const headerNavLinks = this.props.appEnvironments
       .reduce((acc, current) => {
         const link = Object.assign(current, {
-          to: `/plugins/email/configurations/${current.name}`,
+          to: `/plugins/email/configurations/${current.name}`
         });
         acc.push(link);
         return acc;
@@ -85,13 +85,13 @@ class ConfigPage extends React.Component {
       get(
         this.props.settings,
         ['providers', this.getSelectedProviderIndex(), 'auth'],
-        {},
-      ),
+        {}
+      )
     ).reduce((acc, current) => {
       if (isEmpty(get(this.props.modifiedData, current, ''))) {
         acc.push({
           name: current,
-          errors: [{ id: 'components.Input.error.validation.required' }],
+          errors: [{ id: 'components.Input.error.validation.required' }]
         });
       }
       return acc;
@@ -109,14 +109,14 @@ class ConfigPage extends React.Component {
       kind: 'secondary',
       label: 'app.components.Button.cancel',
       onClick: this.props.onCancel,
-      type: 'button',
+      type: 'button'
     },
     {
       kind: 'primary',
       label: 'app.components.Button.save',
       onClick: this.handleSubmit,
-      type: 'submit',
-    },
+      type: 'submit'
+    }
   ];
 
   render() {
@@ -151,8 +151,8 @@ ConfigPage.defaultProps = {
   appEnvironments: [],
   formErrors: [],
   settings: {
-    providers: [],
-  },
+    providers: []
+  }
 };
 
 ConfigPage.propTypes = {
@@ -168,7 +168,7 @@ ConfigPage.propTypes = {
   setErrors: PropTypes.func.isRequired,
   settings: PropTypes.object,
   submit: PropTypes.func.isRequired,
-  submitSuccess: PropTypes.bool.isRequired,
+  submitSuccess: PropTypes.bool.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
@@ -178,9 +178,9 @@ function mapDispatchToProps(dispatch) {
       onCancel,
       onChange,
       setErrors,
-      submit,
+      submit
     },
-    dispatch,
+    dispatch
   );
 }
 
@@ -188,18 +188,18 @@ const mapStateToProps = selectConfigPage();
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 );
 
 const withReducer = strapi.injectReducer({
   key: 'configPage',
   reducer,
-  pluginId,
+  pluginId
 });
 const withSaga = strapi.injectSaga({ key: 'configPage', saga, pluginId });
 
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(ConfigPage);

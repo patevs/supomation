@@ -11,7 +11,7 @@ describe('<EditViewLink />', () => {
     props = {
       getContentTypeBuilderBaseUrl: jest.fn(() => '/plugins/'),
       getModelName: jest.fn(() => 'test'),
-      getSource: jest.fn(),
+      getSource: jest.fn()
     };
   });
 

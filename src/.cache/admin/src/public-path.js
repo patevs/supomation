@@ -31,7 +31,7 @@ $body.removeAttribute('back');
 
 window.strapi = {
   remoteURL: devFrontURL || remoteURL,
-  backendURL: devBackendURL || backendURL,
+  backendURL: devBackendURL || backendURL
 };
 
 __webpack_public_path__ =

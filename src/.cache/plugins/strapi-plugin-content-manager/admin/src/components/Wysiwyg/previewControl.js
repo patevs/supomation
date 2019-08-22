@@ -19,11 +19,11 @@ const PreviewControl = ({ onClick }) => (
 );
 
 PreviewControl.defaultProps = {
-  onClick: () => {},
+  onClick: () => {}
 };
 
 PreviewControl.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func
 };
 
 export default PreviewControl;

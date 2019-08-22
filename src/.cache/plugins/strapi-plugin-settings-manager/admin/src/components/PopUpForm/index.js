@@ -32,11 +32,11 @@ class PopUpForm extends React.Component {
                     return this.props.renderPopUpForm(
                       section,
                       this.props,
-                      styles,
+                      styles
                     );
                   }
                   return map(section.items, (item, key) =>
-                    this.props.renderInput(item, key),
+                    this.props.renderInput(item, key)
                   );
                 })}
               </div>
@@ -52,7 +52,7 @@ PopUpForm.propTypes = {
   renderInput: PropTypes.func,
   renderPopUpForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   resetToggleDefaultConnection: PropTypes.func,
-  sections: PropTypes.array,
+  sections: PropTypes.array
 };
 
 export default WithFormSection(PopUpForm); // eslint-disable-line new-cap

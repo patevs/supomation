@@ -18,12 +18,12 @@ import {
   SET_FORM_ERRORS,
   SUBMIT,
   SUBMIT_SUCCEEDED,
-  UNSET_DATA_TO_EDIT,
+  UNSET_DATA_TO_EDIT
 } from './constants';
 
 export function cancelChanges() {
   return {
-    type: CANCEL_CHANGES,
+    type: CANCEL_CHANGES
   };
 }
 
@@ -31,28 +31,28 @@ export function deleteData(dataToDelete, deleteEndPoint) {
   return {
     type: DELETE_DATA,
     dataToDelete,
-    deleteEndPoint,
+    deleteEndPoint
   };
 }
 
 export function deleteDataSucceeded(indexDataToDelete) {
   return {
     type: DELETE_DATA_SUCCEEDED,
-    indexDataToDelete,
+    indexDataToDelete
   };
 }
 
 export function fetchData(endPoint) {
   return {
     type: FETCH_DATA,
-    endPoint,
+    endPoint
   };
 }
 
 export function fetchDataSucceeded(data) {
   if (!isArray(data)) {
     const list = Object.keys(data).reduce((acc, current) => {
-      const obj = Object.assign({ name: current}, data[current]);
+      const obj = Object.assign({ name: current }, data[current]);
       acc.push(obj);
 
       return acc;
@@ -61,14 +61,14 @@ export function fetchDataSucceeded(data) {
     return {
       type: FETCH_DATA_SUCCEEDED,
       data: list,
-      modifiedData: fromJS(data),
+      modifiedData: fromJS(data)
     };
   }
 
   return {
     type: FETCH_DATA_SUCCEEDED,
     data,
-    modifiedData: fromJS({}),
+    modifiedData: fromJS({})
   };
 }
 
@@ -76,34 +76,34 @@ export function onChange({ target }) {
   return {
     type: ON_CHANGE,
     keys: ['modifiedData'].concat(target.name.split('.')),
-    value: target.value,
+    value: target.value
   };
 }
 
 export function resetProps() {
   return {
-    type: RESET_PROPS,
+    type: RESET_PROPS
   };
 }
 
 export function setDataToEdit(dataToEdit) {
   return {
     type: SET_DATA_TO_EDIT,
-    dataToEdit,
+    dataToEdit
   };
 }
 
 export function setForm(data) {
   return {
     type: SET_FORM,
-    form: fromJS(data),
+    form: fromJS(data)
   };
 }
 
 export function setFormErrors(formErrors) {
   return {
     type: SET_FORM_ERRORS,
-    formErrors,
+    formErrors
   };
 }
 
@@ -111,18 +111,18 @@ export function submit(endPoint, context) {
   return {
     type: SUBMIT,
     endPoint,
-    context,
+    context
   };
 }
 
 export function submitSucceeded() {
   return {
-    type: SUBMIT_SUCCEEDED,
+    type: SUBMIT_SUCCEEDED
   };
 }
 
 export function unsetDataToEdit() {
   return {
-    type: UNSET_DATA_TO_EDIT,
+    type: UNSET_DATA_TO_EDIT
   };
 }

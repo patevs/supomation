@@ -71,7 +71,7 @@ class AttributesPickerModal extends React.Component {
 
     emitEvent('didSelectContentTypeFieldType', { type });
     push({
-      search: `modalType=attributeForm&attributeType=${type}&settingType=base&actionType=create`,
+      search: `modalType=attributeForm&attributeType=${type}&settingType=base&actionType=create`
     });
   };
 
@@ -105,9 +105,7 @@ class AttributesPickerModal extends React.Component {
         e.preventDefault();
 
         push({
-          search: `modalType=attributeForm&attributeType=${
-            attributes[nodeToFocus].type
-          }&settingType=base&actionType=create`,
+          search: `modalType=attributeForm&attributeType=${attributes[nodeToFocus].type}&settingType=base&actionType=create`
         });
         break;
       default:
@@ -174,16 +172,16 @@ class AttributesPickerModal extends React.Component {
 
 AttributesPickerModal.contextTypes = {
   emitEvent: PropTypes.func,
-  plugins: PropTypes.object,
+  plugins: PropTypes.object
 };
 
 AttributesPickerModal.defaultProps = {
-  isOpen: false,
+  isOpen: false
 };
 
 AttributesPickerModal.propTypes = {
   isOpen: PropTypes.bool,
-  push: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired
 };
 
 export default AttributesPickerModal;

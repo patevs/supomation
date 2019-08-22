@@ -19,7 +19,7 @@ import {
   InputsIndex as Input,
   LoadingIndicator,
   LoadingIndicatorPage,
-  PluginHeader,
+  PluginHeader
 } from 'strapi-helper-plugin';
 
 import InputSearch from '../../components/InputSearchContainer';
@@ -47,7 +47,7 @@ import {
   setShouldDisplayPolicieshint,
   submit,
   resetProps,
-  resetShouldDisplayPoliciesHint,
+  resetShouldDisplayPoliciesHint
 } from './actions';
 
 // Selectors
@@ -65,7 +65,7 @@ export class EditPage extends React.Component {
     selectAllActions: this.props.selectAllActions,
     setInputPoliciesPath: this.props.setInputPoliciesPath,
     setShouldDisplayPolicieshint: this.props.setShouldDisplayPolicieshint,
-    resetShouldDisplayPoliciesHint: this.props.resetShouldDisplayPoliciesHint,
+    resetShouldDisplayPoliciesHint: this.props.resetShouldDisplayPoliciesHint
   });
 
   componentDidMount() {
@@ -104,8 +104,8 @@ export class EditPage extends React.Component {
       return this.props.setErrors([
         {
           name: 'name',
-          errors: [{ id: 'users-permissions.EditPage.form.roles.name.error' }],
-        },
+          errors: [{ id: 'users-permissions.EditPage.form.roles.name.error' }]
+        }
       ]);
     }
 
@@ -116,8 +116,8 @@ export class EditPage extends React.Component {
     const {
       editPage: { modifiedData },
       match: {
-        params: { actionType },
-      },
+        params: { actionType }
+      }
     } = this.props;
 
     return actionType !== 'create' && isEmpty(modifiedData);
@@ -125,7 +125,7 @@ export class EditPage extends React.Component {
 
   showLoaderPermissions = () => {
     const {
-      editPage: { modifiedData },
+      editPage: { modifiedData }
     } = this.props;
 
     return isEmpty(get(modifiedData, ['permissions']));
@@ -141,7 +141,7 @@ export class EditPage extends React.Component {
             errors={get(this.props.editPage, [
               'formErrors',
               findIndex(this.props.editPage.formErrors, ['name', 'name']),
-              'errors',
+              'errors'
             ])}
             didCheckErrors={this.props.editPage.didCheckErrors}
             label={{ id: 'users-permissions.EditPage.form.roles.label.name' }}
@@ -156,7 +156,7 @@ export class EditPage extends React.Component {
           <Input
             customBootstrapClass="col-md-12"
             label={{
-              id: 'users-permissions.EditPage.form.roles.label.description',
+              id: 'users-permissions.EditPage.form.roles.label.description'
             }}
             name="description"
             onChange={this.props.onChangeInput}
@@ -175,8 +175,8 @@ export class EditPage extends React.Component {
         label={{
           id: 'users-permissions.EditPage.form.roles.label.users',
           params: {
-            number: size(get(this.props.editPage, ['modifiedData', 'users'])),
-          },
+            number: size(get(this.props.editPage, ['modifiedData', 'users']))
+          }
         }}
         onClickAdd={itemToAdd => {
           this.context.emitEvent('didAssociateUserToRole');
@@ -209,7 +209,7 @@ export class EditPage extends React.Component {
         label: 'users-permissions.EditPage.cancel',
         kind: 'secondary',
         onClick: this.props.onCancel,
-        type: 'button',
+        type: 'button'
       },
       {
         kind: 'primary',
@@ -218,9 +218,9 @@ export class EditPage extends React.Component {
         type: 'submit',
         disabled: isEqual(
           this.props.editPage.modifiedData,
-          this.props.editPage.initialData,
-        ),
-      },
+          this.props.editPage.initialData
+        )
+      }
     ];
 
     if (this.showLoaderForm()) {
@@ -235,15 +235,15 @@ export class EditPage extends React.Component {
             title={{
               id: pluginHeaderTitle,
               values: {
-                name: get(this.props.editPage.initialData, 'name'),
-              },
+                name: get(this.props.editPage.initialData, 'name')
+              }
             }}
             description={{
               id: pluginHeaderDescription,
               values: {
                 description:
-                  get(this.props.editPage.initialData, 'description') || '',
-              },
+                  get(this.props.editPage.initialData, 'description') || ''
+              }
             }}
             actions={pluginHeaderActions}
           />
@@ -276,7 +276,7 @@ export class EditPage extends React.Component {
                       <Plugins
                         plugins={get(this.props.editPage, [
                           'modifiedData',
-                          'permissions',
+                          'permissions'
                         ])}
                       />
                     )}
@@ -305,11 +305,11 @@ EditPage.childContextTypes = {
   selectAllActions: PropTypes.func.isRequired,
   setInputPoliciesPath: PropTypes.func.isRequired,
   setShouldDisplayPolicieshint: PropTypes.func.isRequired,
-  resetShouldDisplayPoliciesHint: PropTypes.func.isRequired,
+  resetShouldDisplayPoliciesHint: PropTypes.func.isRequired
 };
 
 EditPage.contextTypes = {
-  emitEvent: PropTypes.func,
+  emitEvent: PropTypes.func
 };
 
 EditPage.propTypes = {
@@ -334,11 +334,11 @@ EditPage.propTypes = {
   setInputPoliciesPath: PropTypes.func.isRequired,
   setRoleId: PropTypes.func.isRequired,
   setShouldDisplayPolicieshint: PropTypes.func.isRequired,
-  submit: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  editPage: makeSelectEditPage(),
+  editPage: makeSelectEditPage()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -362,25 +362,25 @@ function mapDispatchToProps(dispatch) {
       setShouldDisplayPolicieshint,
       submit,
       resetProps,
-      resetShouldDisplayPoliciesHint,
+      resetShouldDisplayPoliciesHint
     },
-    dispatch,
+    dispatch
   );
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 );
 const withReducer = strapi.injectReducer({
   key: 'editPage',
   reducer,
-  pluginId,
+  pluginId
 });
 const withSaga = strapi.injectSaga({ key: 'editPage', saga, pluginId });
 
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(EditPage);

@@ -3,38 +3,41 @@ import {
   DOWNLOAD_PLUGIN_SUCCEEDED,
   GET_AVAILABLE_AND_INSTALLED_PLUGINS,
   GET_AVAILABLE_AND_INSTALLED_PLUGINS_SUCCEEDED,
-  RESET_PROPS,
+  RESET_PROPS
 } from './constants';
 
 export function downloadPlugin(pluginToDownload) {
   return {
     type: DOWNLOAD_PLUGIN,
-    pluginToDownload,
+    pluginToDownload
   };
 }
 
 export function downloadPluginSucceeded() {
   return {
-    type: DOWNLOAD_PLUGIN_SUCCEEDED,
+    type: DOWNLOAD_PLUGIN_SUCCEEDED
   };
 }
 
 export function getAvailableAndInstalledPlugins() {
   return {
-    type: GET_AVAILABLE_AND_INSTALLED_PLUGINS,
+    type: GET_AVAILABLE_AND_INSTALLED_PLUGINS
   };
 }
 
-export function getAvailableAndInstalledPluginsSucceeded(availablePlugins, installedPlugins) {
+export function getAvailableAndInstalledPluginsSucceeded(
+  availablePlugins,
+  installedPlugins
+) {
   return {
     type: GET_AVAILABLE_AND_INSTALLED_PLUGINS_SUCCEEDED,
     availablePlugins,
-    installedPlugins,
+    installedPlugins
   };
 }
 
 export function resetProps() {
   return {
-    type: RESET_PROPS,
+    type: RESET_PROPS
   };
 }

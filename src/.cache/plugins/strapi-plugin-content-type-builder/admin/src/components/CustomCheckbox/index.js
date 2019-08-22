@@ -13,7 +13,7 @@ import { InputNumberWithErrors as InputNumber } from 'strapi-helper-plugin';
 class CustomCheckbox extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   state = {
-    isChecked: this.props.value !== null && this.props.value !== undefined,
+    isChecked: this.props.value !== null && this.props.value !== undefined
   };
 
   handleChange = ({ target: { checked } }) => {
@@ -31,7 +31,7 @@ class CustomCheckbox extends React.Component {
     const target = {
       name,
       type: 'number',
-      value: parseInt(value, 10),
+      value: parseInt(value, 10)
     };
 
     onChange({ target });
@@ -81,21 +81,21 @@ CustomCheckbox.defaultProps = {
   didCheckErrors: false,
   errors: [],
   label: {
-    id: 'app.utils.defaultMessage',
+    id: 'app.utils.defaultMessage'
   },
   name: '',
-  value: null,
+  value: null
 };
 
 CustomCheckbox.propTypes = {
   didCheckErrors: PropTypes.bool,
   errors: PropTypes.array,
   label: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.string
   }),
   name: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default CustomCheckbox;

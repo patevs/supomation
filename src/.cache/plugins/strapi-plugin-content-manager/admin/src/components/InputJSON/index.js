@@ -36,7 +36,7 @@ const THEMES = [
   '3024-day',
   '3024-night',
   'liquibyte',
-  'xq-dark',
+  'xq-dark'
 ];
 
 class InputJSON extends React.Component {
@@ -57,7 +57,7 @@ class InputJSON extends React.Component {
       smartIndent: true,
       styleSelectedText: true,
       tabSize: 2,
-      theme: DEFAULT_THEME,
+      theme: DEFAULT_THEME
     });
     this.codeMirror.on('change', this.handleChange);
     this.codeMirror.on('blur', this.handleBlur);
@@ -115,7 +115,7 @@ class InputJSON extends React.Component {
     const markedText = this.codeMirror.markText(
       { line, ch: chStart },
       { line, ch: chEnd },
-      { className: styles.colored },
+      { className: styles.colored }
     );
     this.setState({ markedText });
   };
@@ -131,8 +131,8 @@ class InputJSON extends React.Component {
         target: {
           name,
           type: 'json',
-          value: this.getValue(),
-        },
+          value: this.getValue()
+        }
       });
     }
   };
@@ -153,8 +153,8 @@ class InputJSON extends React.Component {
       target: {
         name,
         value,
-        type: 'json',
-      },
+        type: 'json'
+      }
     });
 
     if (!hasInitValue) {
@@ -170,7 +170,7 @@ class InputJSON extends React.Component {
     clearTimeout(this.timer);
     this.timer = setTimeout(
       () => this.testJSON(this.codeMirror.getValue()),
-      WAIT,
+      WAIT
     );
   };
 
@@ -215,7 +215,7 @@ InputJSON.defaultProps = {
   disabled: false,
   onBlur: () => {},
   onChange: () => {},
-  value: null,
+  value: null
 };
 
 InputJSON.propTypes = {
@@ -223,7 +223,7 @@ InputJSON.propTypes = {
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  value: PropTypes.object,
+  value: PropTypes.object
 };
 
 export default InputJSON;

@@ -17,11 +17,11 @@ const SectionTitle = ({ isSettings }) => {
 };
 
 SectionTitle.propTypes = {
-  isSettings: PropTypes.bool,
+  isSettings: PropTypes.bool
 };
 
 SectionTitle.defaultProps = {
-  isSettings: false,
+  isSettings: false
 };
 
 export default SectionTitle;

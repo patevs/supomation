@@ -26,12 +26,12 @@ export class AppLoader extends React.Component {
 AppLoader.propTypes = {
   appPlugins: PropTypes.array.isRequired,
   children: PropTypes.func.isRequired,
-  plugins: PropTypes.object.isRequired,
+  plugins: PropTypes.object.isRequired
 };
 
 const mapStateToProps = makeSelectApp();
 
 export default connect(
   mapStateToProps,
-  null,
+  null
 )(AppLoader);

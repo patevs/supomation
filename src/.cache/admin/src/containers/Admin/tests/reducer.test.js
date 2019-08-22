@@ -9,7 +9,7 @@ import {
   setAppSecured,
   showLeftMenu,
   showLogout,
-  unsetAppSecured,
+  unsetAppSecured
 } from '../actions';
 import adminReducer from '../reducer';
 
@@ -29,7 +29,7 @@ describe('adminReducer', () => {
       showLogoutComponent: false,
       showMenu: true,
       strapiVersion: '3',
-      uuid: false,
+      uuid: false
     });
   });
 
@@ -54,7 +54,7 @@ describe('adminReducer', () => {
       isLoading: false,
       layout: {},
       strapiVersion: '3.0.0-beta',
-      uuid: 'uuid',
+      uuid: 'uuid'
     };
     const expected = state
       .set('autoReload', true)

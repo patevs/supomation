@@ -22,13 +22,13 @@ import getFilters from './filterTypes';
 const defaultInputStyle = {
   width: '210px',
   marginRight: '10px',
-  paddingTop: '4px',
+  paddingTop: '4px'
 };
 const midSelectStyle = {
   minWidth: '130px',
   maxWidth: '200px',
   marginLeft: '10px',
-  marginRight: '10px',
+  marginRight: '10px'
 };
 
 function FilterOptions({
@@ -40,7 +40,7 @@ function FilterOptions({
   onClickRemove,
   schema,
   show,
-  showAddButton,
+  showAddButton
 }) {
   const selectStyle = { minWidth: '170px', maxWidth: '200px' };
   const attrType = get(schema, [filter.attr, 'type'], 'string');
@@ -53,7 +53,7 @@ function FilterOptions({
   const isDate = get(schema, [filter.attr, 'type'], 'string') === 'date';
   const isBool = get(schema, [filter.attr, 'type']) === 'boolean';
   const selectOptionsSchema = Object.keys(schema).filter(
-    x => schema[x].type !== 'json',
+    x => schema[x].type !== 'json'
   );
 
   return (
@@ -111,7 +111,7 @@ FilterOptions.defaultProps = {
   onClickRemove: () => {},
   schema: {},
   show: false,
-  showAddButton: false,
+  showAddButton: false
 };
 
 FilterOptions.propTypes = {
@@ -123,7 +123,7 @@ FilterOptions.propTypes = {
   onClickRemove: PropTypes.func,
   schema: PropTypes.object,
   show: PropTypes.bool,
-  showAddButton: PropTypes.bool,
+  showAddButton: PropTypes.bool
 };
 
 export default FilterOptions;

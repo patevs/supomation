@@ -7,7 +7,7 @@ import {
   // take,
   // cancel,
   select,
-  call,
+  call
 } from 'redux-saga/effects';
 
 import { request } from 'strapi-helper-plugin';
@@ -16,7 +16,7 @@ import {
   deleteDataSucceeded,
   fetchDataSucceeded,
   setForm,
-  submitSucceeded,
+  submitSucceeded
 } from './actions';
 
 import { DELETE_DATA, FETCH_DATA, SUBMIT } from './constants';
@@ -25,7 +25,7 @@ import {
   makeSelectAllData,
   makeSelectDataToDelete,
   makeSelectDeleteEndPoint,
-  makeSelectModifiedData,
+  makeSelectModifiedData
 } from './selectors';
 
 export function* dataDelete() {
@@ -35,7 +35,7 @@ export function* dataDelete() {
     const endPointAPI = yield select(makeSelectDeleteEndPoint());
     const indexDataToDelete = findIndex(allData[endPointAPI], [
       'name',
-      dataToDelete.name,
+      dataToDelete.name
     ]);
 
     if (indexDataToDelete !== -1) {
@@ -46,7 +46,7 @@ export function* dataDelete() {
       if (response.ok) {
         yield put(deleteDataSucceeded(indexDataToDelete));
         strapi.notification.success(
-          'users-permissions.notification.success.delete',
+          'users-permissions.notification.success.delete'
         );
       }
     }
@@ -60,7 +60,7 @@ export function* dataFetch(action) {
     const response = yield call(
       request,
       `/users-permissions/${action.endPoint}`,
-      { method: 'GET' },
+      { method: 'GET' }
     );
 
     if (action.endPoint === 'advanced') {
@@ -82,7 +82,7 @@ export function* submitData(action) {
       body:
         action.endPoint === 'advanced'
           ? get(body, ['advanced', 'settings'], {})
-          : body,
+          : body
     };
 
     yield call(request, `/users-permissions/${action.endPoint}`, opts);
@@ -95,7 +95,7 @@ export function* submitData(action) {
 
     yield put(submitSucceeded());
     strapi.notification.success(
-      'users-permissions.notification.success.submit',
+      'users-permissions.notification.success.submit'
     );
   } catch (error) {
     strapi.notification.error('notification.error');

@@ -8,7 +8,7 @@ import makeSelectApp, {
   makeSelectBlockApp,
   makeSelectOverlayBlockerProps,
   makeSelectIsAppLoading,
-  makeSelectShowGlobalAppBlocker,
+  makeSelectShowGlobalAppBlocker
 } from '../selectors';
 
 describe('<App /> selectors', () => {
@@ -16,7 +16,7 @@ describe('<App /> selectors', () => {
     it('should select the global state', () => {
       const appState = fromJS({});
       const mockedState = fromJS({
-        app: appState,
+        app: appState
       });
 
       expect(selectApp()(mockedState)).toEqual(appState);
@@ -27,7 +27,7 @@ describe('<App /> selectors', () => {
     it('should select the appState (.toJS())', () => {
       const appState = fromJS({});
       const mockedState = fromJS({
-        app: appState,
+        app: appState
       });
 
       expect(makeSelectApp()(mockedState)).toEqual(appState.toJS());
@@ -37,10 +37,10 @@ describe('<App /> selectors', () => {
   describe('selectHasUserPlugin', () => {
     it('should select the hasUserPlugin', () => {
       const appState = fromJS({
-        hasUserPlugin: true,
+        hasUserPlugin: true
       });
       const mockedState = fromJS({
-        app: appState,
+        app: appState
       });
 
       expect(selectHasUserPlugin()(mockedState)).toEqual(true);
@@ -52,8 +52,8 @@ describe('<App /> selectors', () => {
       const plugins = fromJS({ email: { isReady: true } });
       const mockedState = fromJS({
         app: {
-          plugins,
-        },
+          plugins
+        }
       });
 
       expect(selectPlugins()(mockedState)).toEqual(plugins);
@@ -65,8 +65,8 @@ describe('<App /> selectors', () => {
       const plugins = ['email'];
       const mockedState = fromJS({
         app: {
-          appPlugins: plugins,
-        },
+          appPlugins: plugins
+        }
       });
 
       expect(makeSelectAppPlugins()(mockedState)).toEqual(plugins);
@@ -77,8 +77,8 @@ describe('<App /> selectors', () => {
     it('should select the blockApp', () => {
       const mockedState = fromJS({
         app: {
-          blockApp: true,
-        },
+          blockApp: true
+        }
       });
 
       expect(makeSelectBlockApp()(mockedState)).toEqual(true);
@@ -90,12 +90,12 @@ describe('<App /> selectors', () => {
       const overlayBlockerData = fromJS({ title: 'title' });
       const mockedState = fromJS({
         app: {
-          overlayBlockerData,
-        },
+          overlayBlockerData
+        }
       });
 
       expect(makeSelectOverlayBlockerProps()(mockedState)).toEqual(
-        overlayBlockerData,
+        overlayBlockerData
       );
     });
   });
@@ -104,8 +104,8 @@ describe('<App /> selectors', () => {
     it('should select the isAppLoading', () => {
       const mockedState = fromJS({
         app: {
-          isAppLoading: true,
-        },
+          isAppLoading: true
+        }
       });
 
       expect(makeSelectIsAppLoading()(mockedState)).toEqual(true);
@@ -116,8 +116,8 @@ describe('<App /> selectors', () => {
     it('should select the showGlobalAppBlocker', () => {
       const mockedState = fromJS({
         app: {
-          showGlobalAppBlocker: true,
-        },
+          showGlobalAppBlocker: true
+        }
       });
 
       expect(makeSelectShowGlobalAppBlocker()(mockedState)).toEqual(true);

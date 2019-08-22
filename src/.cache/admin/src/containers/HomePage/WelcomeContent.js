@@ -55,11 +55,11 @@ function WelcomeContent({ hasContent }) {
 }
 
 WelcomeContent.defaultProps = {
-  hasContent: false,
+  hasContent: false
 };
 
 WelcomeContent.propTypes = {
-  hasContent: PropTypes.bool,
+  hasContent: PropTypes.bool
 };
 
 export default WelcomeContent;

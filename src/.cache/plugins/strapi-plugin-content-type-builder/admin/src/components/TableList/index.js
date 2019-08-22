@@ -22,7 +22,7 @@ class TableList extends React.Component {
     const {
       canOpenModalAddContentType,
       deleteTemporaryModel,
-      push,
+      push
     } = this.props;
 
     return (
@@ -58,7 +58,7 @@ class TableList extends React.Component {
                     <div className="col-md-5 text-center">
                       <FormattedMessage
                         {...{
-                          id: `${pluginId}.table.contentType.head.description`,
+                          id: `${pluginId}.table.contentType.head.description`
                         }}
                       />
                     </div>
@@ -90,7 +90,7 @@ class TableList extends React.Component {
 }
 
 TableList.defaultProps = {
-  canOpenModalAddContentType: true,
+  canOpenModalAddContentType: true
 };
 
 TableList.propTypes = {
@@ -102,7 +102,7 @@ TableList.propTypes = {
   onDelete: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
   rowItems: PropTypes.array.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default TableList;

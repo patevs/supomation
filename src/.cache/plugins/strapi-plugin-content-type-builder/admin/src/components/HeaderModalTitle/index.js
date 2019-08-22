@@ -1,8 +1,8 @@
 /**
-*
-* HeaderModalTitle
-*
-*/
+ *
+ * HeaderModalTitle
+ *
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -18,7 +18,7 @@ function HeaderModalTitle({ title }) {
 }
 
 HeaderModalTitle.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default HeaderModalTitle;

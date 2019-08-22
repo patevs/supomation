@@ -23,12 +23,12 @@ import {
   makeSelectCurrentEnv,
   makeSelectPluginDeleteAction,
   makeSelectPlugins,
-  makeSelectIsLoading,
+  makeSelectIsLoading
 } from './selectors';
 import {
   getPlugins,
   onDeletePluginClick,
-  onDeletePluginConfirm,
+  onDeletePluginConfirm
 } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -37,7 +37,7 @@ import styles from './styles.scss';
 export class ListPluginsPage extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   getChildContext = () => ({
-    currentEnvironment: this.props.currentEnvironment,
+    currentEnvironment: this.props.currentEnvironment
   });
 
   componentDidMount() {
@@ -65,10 +65,10 @@ export class ListPluginsPage extends React.Component {
         <div className={cn('container-fluid', styles.listPluginsPage)}>
           <PluginHeader
             title={{
-              id: 'app.components.ListPluginsPage.title',
+              id: 'app.components.ListPluginsPage.title'
             }}
             description={{
-              id: 'app.components.ListPluginsPage.description',
+              id: 'app.components.ListPluginsPage.description'
             }}
             actions={[]}
           />
@@ -86,7 +86,7 @@ export class ListPluginsPage extends React.Component {
 }
 
 ListPluginsPage.childContextTypes = {
-  currentEnvironment: PropTypes.string.isRequired,
+  currentEnvironment: PropTypes.string.isRequired
 };
 
 ListPluginsPage.contextTypes = {};
@@ -99,14 +99,14 @@ ListPluginsPage.propTypes = {
   onDeletePluginClick: PropTypes.func.isRequired,
   onDeletePluginConfirm: PropTypes.func.isRequired,
   pluginActionSucceeded: PropTypes.bool.isRequired,
-  plugins: PropTypes.object.isRequired,
+  plugins: PropTypes.object.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
   currentEnvironment: makeSelectCurrentEnv(),
   isLoading: makeSelectIsLoading(),
   pluginActionSucceeded: makeSelectPluginDeleteAction(),
-  plugins: makeSelectPlugins(),
+  plugins: makeSelectPlugins()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -114,15 +114,15 @@ function mapDispatchToProps(dispatch) {
     {
       getPlugins,
       onDeletePluginClick,
-      onDeletePluginConfirm,
+      onDeletePluginConfirm
     },
-    dispatch,
+    dispatch
   );
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 );
 
 /* Remove this line if the container doesn't have a route and
@@ -138,5 +138,5 @@ const withSaga = injectSaga({ key: 'listPluginsPage', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(ListPluginsPage);

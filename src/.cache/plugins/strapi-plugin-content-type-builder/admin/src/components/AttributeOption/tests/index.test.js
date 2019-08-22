@@ -10,7 +10,8 @@ import AttributeOption from '../index';
 
 const messages = formatMessagesWithPluginId(pluginId, pluginTradsEn);
 
-const renderComponent = (props = {}) => mountWithIntl(<AttributeOption {...props} />, messages);
+const renderComponent = (props = {}) =>
+  mountWithIntl(<AttributeOption {...props} />, messages);
 
 describe('<AttributeOption />', () => {
   it('should not crash', () => {
@@ -22,11 +23,14 @@ describe('<AttributeOption />', () => {
       isDisplayed: false,
       nodeToFocus: 0,
       tabIndex: 0,
-      type: 'string',
+      type: 'string'
     };
     const wrapper = renderComponent(props);
     const spyOnFocusNode = jest.spyOn(wrapper.instance(), 'focusNode');
-    const spyOnFocusAction = jest.spyOn(wrapper.instance().button.current, 'focus');
+    const spyOnFocusAction = jest.spyOn(
+      wrapper.instance().button.current,
+      'focus'
+    );
 
     wrapper.instance().forceUpdate();
 
@@ -41,11 +45,14 @@ describe('<AttributeOption />', () => {
       isDisplayed: true,
       nodeToFocus: 0,
       tabIndex: 1,
-      type: 'string',
+      type: 'string'
     };
     const wrapper = renderComponent(props);
     const spyOnFocusNode = jest.spyOn(wrapper.instance(), 'focusNode');
-    const spyOnFocusAction = jest.spyOn(wrapper.instance().button.current, 'focus');
+    const spyOnFocusAction = jest.spyOn(
+      wrapper.instance().button.current,
+      'focus'
+    );
 
     wrapper.instance().forceUpdate();
 
@@ -58,7 +65,7 @@ describe('<AttributeOption />', () => {
   it('should call the onClick prop with its type as argument', () => {
     const props = {
       onClick: jest.fn(),
-      type: 'string',
+      type: 'string'
     };
     const wrapper = renderComponent(props);
     wrapper.find('button').simulate('click');

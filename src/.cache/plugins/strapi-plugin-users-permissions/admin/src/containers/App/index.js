@@ -57,12 +57,12 @@ class App extends React.Component {
 
 App.contextTypes = {
   plugins: PropTypes.object,
-  updatePlugin: PropTypes.func,
+  updatePlugin: PropTypes.func
 };
 
 App.propTypes = {
   history: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default App;

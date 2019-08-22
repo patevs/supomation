@@ -34,7 +34,7 @@ class List extends React.Component {
       modal: false,
       // isPopUpFormValid: true,
       requiredInputs: [],
-      loader: false,
+      loader: false
     };
   }
 
@@ -134,9 +134,7 @@ class List extends React.Component {
           >
             <ModalHeader
               toggle={this.toggle}
-              className={`${styles.stmnoBorder} ${styles.stmpadded} ${
-                styles.stmmHeader
-              }`}
+              className={`${styles.stmnoBorder} ${styles.stmpadded} ${styles.stmmHeader}`}
             >
               <FormattedMessage
                 id={`settings-manager.${this.props.listButtonLabel}`}
@@ -182,7 +180,7 @@ List.propTypes = {
   listItems: PropTypes.array,
   listTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   noListButtonPopUp: PropTypes.bool,
-  renderRow: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  renderRow: PropTypes.oneOfType([PropTypes.bool, PropTypes.func])
 };
 
 export default List;

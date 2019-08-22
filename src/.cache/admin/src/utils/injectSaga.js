@@ -22,7 +22,7 @@ export default ({ key, saga, mode, pluginId }) => WrappedComponent => {
       WrappedComponent.name ||
       'Component'})`;
     static contextTypes = {
-      store: PropTypes.object.isRequired,
+      store: PropTypes.object.isRequired
     };
 
     componentWillMount() {

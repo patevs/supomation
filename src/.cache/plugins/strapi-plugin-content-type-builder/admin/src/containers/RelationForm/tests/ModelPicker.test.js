@@ -10,7 +10,7 @@ describe('<ModelPicker />', () => {
 
   it('should use the defaultProps', () => {
     const {
-      defaultProps: { onClick },
+      defaultProps: { onClick }
     } = ModelPicker;
 
     expect(onClick).toBeDefined();
@@ -26,10 +26,10 @@ describe('<ModelPicker />', () => {
           description: '',
           fields: 6,
           source: 'users-permissions',
-          isTemporary: false,
-        },
+          isTemporary: false
+        }
       ],
-      onClick: jest.fn(),
+      onClick: jest.fn()
     };
 
     const wrapper = shallow(<ModelPicker {...props} />);
@@ -46,7 +46,7 @@ describe('<ModelPicker />', () => {
   it('should display the plugin if the model has one', () => {
     const props = {
       plugin: 'test',
-      onClick: jest.fn(),
+      onClick: jest.fn()
     };
 
     const wrapper = shallow(<ModelPicker {...props} />);

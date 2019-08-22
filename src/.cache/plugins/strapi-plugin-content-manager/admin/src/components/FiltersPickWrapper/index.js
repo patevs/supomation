@@ -68,7 +68,7 @@ class FiltersPickWrapper extends React.PureComponent {
       onClick: () => {
         this.props.close();
         this.props.removeAllFilters();
-      },
+      }
     },
     {
       label:
@@ -78,8 +78,8 @@ class FiltersPickWrapper extends React.PureComponent {
       onClick: e => {
         this.context.emitEvent('didFilterEntries');
         this.props.onSubmit(e);
-      },
-    },
+      }
+    }
   ];
 
   handleChange = ({ target }) => {
@@ -154,7 +154,7 @@ class FiltersPickWrapper extends React.PureComponent {
               actions={this.generateActions()}
               description={{
                 id:
-                  'content-manager.components.FiltersPickWrapper.PluginHeader.description',
+                  'content-manager.components.FiltersPickWrapper.PluginHeader.description'
               }}
               title={this.renderTitle()}
             />
@@ -190,14 +190,14 @@ class FiltersPickWrapper extends React.PureComponent {
 }
 
 FiltersPickWrapper.contextTypes = {
-  emitEvent: PropTypes.func,
+  emitEvent: PropTypes.func
 };
 
 FiltersPickWrapper.defaultProps = {
   appliedFilters: [],
   filterToFocus: null,
   modelName: '',
-  schema: {},
+  schema: {}
 };
 
 FiltersPickWrapper.propTypes = {
@@ -211,7 +211,7 @@ FiltersPickWrapper.propTypes = {
   removeAllFilters: PropTypes.func.isRequired,
   removeFilter: PropTypes.func.isRequired,
   schema: PropTypes.object,
-  show: PropTypes.bool.isRequired,
+  show: PropTypes.bool.isRequired
 };
 
 export default FiltersPickWrapper;

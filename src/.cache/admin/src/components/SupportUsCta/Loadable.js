@@ -4,5 +4,5 @@ import { LoadingIndicator } from 'strapi-helper-plugin';
 
 export default Loadable({
   loader: () => import('./index'),
-  loading: LoadingIndicator,
+  loading: LoadingIndicator
 });

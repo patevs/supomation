@@ -9,7 +9,7 @@ import { compose } from 'redux';
 import {
   disableGlobalOverlayBlocker,
   enableGlobalOverlayBlocker,
-  updatePlugin,
+  updatePlugin
 } from '../../App/actions';
 
 import { LoadingIndicatorPage, OverlayBlocker } from 'strapi-helper-plugin';
@@ -27,7 +27,7 @@ import localeToggleReducer from '../../LocaleToggle/reducer';
 
 import {
   resetLocaleDefaultClassName,
-  setLocaleCustomClassName,
+  setLocaleCustomClassName
 } from '../../LocaleToggle/actions';
 
 import { Admin, mapDispatchToProps } from '../index';
@@ -35,7 +35,7 @@ import {
   getInitData,
   hideLeftMenu,
   setAppError,
-  showLeftMenu,
+  showLeftMenu
 } from '../actions';
 
 import styles from '../styles.scss';
@@ -45,7 +45,7 @@ const store = configureStore(initialState, history);
 
 const withLocaleToggleReducer = injectReducer({
   key: 'localeToggle',
-  reducer: localeToggleReducer,
+  reducer: localeToggleReducer
 });
 const WithAdmin = compose(withLocaleToggleReducer)(Admin);
 
@@ -61,8 +61,8 @@ const renderComponent = properties =>
           </IntlProvider>
         </Provider>
       ),
-      properties,
-    ),
+      properties
+    )
   );
 
 describe('<Admin />, (with Redux), React lifecycle', () => {
@@ -82,7 +82,7 @@ describe('<Admin />, (with Redux), React lifecycle', () => {
         showMenu: true,
         securedData: {},
         strapiVersion: '3',
-        uuid: false,
+        uuid: false
       },
       disableGlobalOverlayBlocker: jest.fn(),
       emitEvent: jest.fn(),
@@ -97,7 +97,7 @@ describe('<Admin />, (with Redux), React lifecycle', () => {
         hasUserPlugin: true,
         isAppLoading: true,
         plugins: {},
-        showGlobalAppBlocker: true,
+        showGlobalAppBlocker: true
       },
       localeToggle: {},
       hideLeftMenu: jest.fn(),
@@ -110,7 +110,7 @@ describe('<Admin />, (with Redux), React lifecycle', () => {
       showLogout: jest.fn(),
       showGlobalAppBlocker: jest.fn(),
       unsetAppSecured: jest.fn(),
-      updatePlugin: jest.fn(),
+      updatePlugin: jest.fn()
     };
   });
 
@@ -125,7 +125,7 @@ describe('<Admin />, (with Redux), React lifecycle', () => {
       expect(props.getSecuredData).not.toHaveBeenCalled();
 
       wrapper.setProps({
-        admin: { isSecured: true },
+        admin: { isSecured: true }
       });
 
       expect(props.getSecuredData).toHaveBeenCalled();
@@ -140,7 +140,7 @@ describe('<Admin />, (with Redux), React lifecycle', () => {
       const renderedComponent = renderComponent(props);
       renderedComponent.setProps({
         admin: { isLoading: false },
-        location: { pathname: '/admin/marketPlace' },
+        location: { pathname: '/admin/marketPlace' }
       });
 
       expect(props.getHook).toHaveBeenCalledWith('willSecure');
@@ -154,7 +154,7 @@ describe('<Admin />, (with Redux), React lifecycle', () => {
       expect(props.getHook).not.toHaveBeenCalled();
 
       wrapper.setProps({
-        admin: { didGetSecuredData: true },
+        admin: { didGetSecuredData: true }
       });
 
       expect(props.getHook).toHaveBeenCalledWith('didGetSecuredData');
@@ -181,7 +181,7 @@ describe('<Admin />', () => {
         showLogoutComponent: false,
         showMenu: true,
         strapiVersion: '3',
-        uuid: false,
+        uuid: false
       },
       disableGlobalOverlayBlocker: jest.fn(),
       emitEvent: jest.fn(),
@@ -196,7 +196,7 @@ describe('<Admin />', () => {
         hasUserPlugin: true,
         isAppLoading: true,
         plugins: {},
-        showGlobalAppBlocker: true,
+        showGlobalAppBlocker: true
       },
       localeToggle: {},
       hideLeftMenu: jest.fn(),
@@ -209,7 +209,7 @@ describe('<Admin />', () => {
       showLogout: jest.fn(),
       showGlobalAppBlocker: jest.fn(),
       unsetAppSecured: jest.fn(),
-      updatePlugin: jest.fn(),
+      updatePlugin: jest.fn()
     };
   });
 
@@ -221,7 +221,7 @@ describe('<Admin />', () => {
     it('should not display the header if the showMenu prop is false', () => {
       const adminProps = Object.assign(props.admin, {
         isLoading: false,
-        showMenu: false,
+        showMenu: false
       });
       const renderedComponent = shallow(<Admin {...props} {...adminProps} />);
 
@@ -251,7 +251,7 @@ describe('<Admin />', () => {
     it('should display the OverlayBlocker if blockApp and showGlobalOverlayBlocker are true', () => {
       const globalProps = Object.assign(props.global, {
         blockApp: true,
-        isAppLoading: false,
+        isAppLoading: false
       });
       props.admin.isLoading = false;
       const renderedComponent = shallow(<Admin {...props} {...globalProps} />);
@@ -270,7 +270,7 @@ describe('<Admin />', () => {
     it('should return true if a plugin is not ready', () => {
       props.global.plugins = {
         test: { isReady: true },
-        other: { isReady: false },
+        other: { isReady: false }
       };
 
       const wrapper = shallow(<Admin {...props} />);
@@ -282,7 +282,7 @@ describe('<Admin />', () => {
     it('should return false if all plugins are ready', () => {
       props.global.plugins = {
         test: { isReady: true },
-        other: { isReady: true },
+        other: { isReady: true }
       };
 
       const wrapper = shallow(<Admin {...props} />);
@@ -362,8 +362,8 @@ describe('<Admin />', () => {
         test: {
           initializer: Initializer,
           isReady: false,
-          id: 'test',
-        },
+          id: 'test'
+        }
       };
 
       const wrapper = shallow(<Admin {...props} />);

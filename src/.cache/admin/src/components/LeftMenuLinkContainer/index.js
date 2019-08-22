@@ -29,8 +29,8 @@ function LeftMenuLinkContainer({ plugins, ...rest }) {
                 : plugins[current].id;
 
               return link;
-            }),
-          ),
+            })
+          )
         };
       }
     });
@@ -93,13 +93,13 @@ function LeftMenuLinkContainer({ plugins, ...rest }) {
     {
       icon: 'list',
       label: messages.listPlugins.id,
-      destination: '/list-plugins',
+      destination: '/list-plugins'
     },
     {
       icon: 'shopping-basket',
       label: messages.installNewPlugin.id,
-      destination: '/marketplace',
-    },
+      destination: '/marketplace'
+    }
   ];
 
   return (
@@ -134,7 +134,7 @@ function LeftMenuLinkContainer({ plugins, ...rest }) {
 }
 
 LeftMenuLinkContainer.propTypes = {
-  plugins: PropTypes.object.isRequired,
+  plugins: PropTypes.object.isRequired
 };
 
 export default LeftMenuLinkContainer;

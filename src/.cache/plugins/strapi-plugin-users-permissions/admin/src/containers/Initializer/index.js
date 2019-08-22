@@ -41,7 +41,7 @@ Initializer.propTypes = {
   initialize: PropTypes.func.isRequired,
   shouldUpdate: PropTypes.bool.isRequired,
   unsetAppSecured: PropTypes.func.isRequired,
-  updatePlugin: PropTypes.func.isRequired,
+  updatePlugin: PropTypes.func.isRequired
 };
 
 const mapStateToProps = makeSelectInitializer();
@@ -49,22 +49,26 @@ const mapStateToProps = makeSelectInitializer();
 export function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      initialize,
+      initialize
     },
-    dispatch,
+    dispatch
   );
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 );
 
 /* Remove this line if the container doesn't have a route and
  *  check the documentation to see how to create the container's store
  */
 
-const withReducer = strapi.injectReducer({ key: 'initializer', reducer, pluginId });
+const withReducer = strapi.injectReducer({
+  key: 'initializer',
+  reducer,
+  pluginId
+});
 
 /* Remove the line below the container doesn't have a route and
  *  check the documentation to see how to create the container's store
@@ -75,5 +79,5 @@ export { Initializer };
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(Initializer);

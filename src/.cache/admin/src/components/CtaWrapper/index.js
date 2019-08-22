@@ -15,11 +15,11 @@ const style = {
   top: '0',
   right: '0',
   display: 'flex',
-  zIndex: '1050',
+  zIndex: '1050'
 };
 
 CTAWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default CTAWrapper;

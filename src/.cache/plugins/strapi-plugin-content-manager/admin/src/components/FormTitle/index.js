@@ -15,12 +15,12 @@ const FormTitle = ({ description, title }) => (
 
 FormTitle.propTypes = {
   description: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.string
 };
 
 FormTitle.defaultProps = {
   description: null,
-  title: null,
+  title: null
 };
 
 export default FormTitle;

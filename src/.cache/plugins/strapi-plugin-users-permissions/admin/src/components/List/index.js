@@ -95,7 +95,7 @@ function List({
   onButtonClick,
   settingType,
   showLoaders,
-  values,
+  values
 }) {
   const object = omitBy(data, v => v.name === 'server'); // Remove the server key when displaying providers
 
@@ -125,7 +125,7 @@ function List({
         className={cn(
           styles.ulContainer,
           showLoaders && styles.loadingContainer,
-          showLoaders && settingType === 'roles' && styles.loadingContainerRole,
+          showLoaders && settingType === 'roles' && styles.loadingContainerRole
         )}
       >
         {showLoaders ? (
@@ -151,7 +151,7 @@ function List({
 List.defaultProps = {
   noButton: false,
   onButtonClick: () => {},
-  showLoaders: true,
+  showLoaders: true
 };
 
 List.propTypes = {
@@ -161,7 +161,7 @@ List.propTypes = {
   onButtonClick: PropTypes.func,
   settingType: PropTypes.string.isRequired,
   showLoaders: PropTypes.bool,
-  values: PropTypes.object.isRequired,
+  values: PropTypes.object.isRequired
 };
 
 export default List;

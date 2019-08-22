@@ -14,65 +14,65 @@ import {
   PLUGIN_LOADED,
   UNFREEZE_APP,
   UNSET_HAS_USERS_PLUGIN,
-  UPDATE_PLUGIN,
+  UPDATE_PLUGIN
 } from './constants';
 
 export function disableGlobalOverlayBlocker() {
   return {
-    type: DISABLE_GLOBAL_OVERLAY_BLOCKER,
+    type: DISABLE_GLOBAL_OVERLAY_BLOCKER
   };
 }
 
 export function enableGlobalOverlayBlocker() {
   return {
-    type: ENABLE_GLOBAL_OVERLAY_BLOCKER,
+    type: ENABLE_GLOBAL_OVERLAY_BLOCKER
   };
 }
 
 export function freezeApp(data) {
   return {
     type: FREEZE_APP,
-    data,
+    data
   };
 }
 
 export function getAppPluginsSucceeded(plugins) {
   return {
     type: GET_APP_PLUGINS_SUCCEEDED,
-    appPlugins: plugins.map(plugin => plugin.id),
+    appPlugins: plugins.map(plugin => plugin.id)
   };
 }
 
 export function loadPlugin(newPlugin) {
   return {
     type: LOAD_PLUGIN,
-    plugin: newPlugin,
+    plugin: newPlugin
   };
 }
 
 export function pluginDeleted(plugin) {
   return {
     type: PLUGIN_DELETED,
-    plugin,
+    plugin
   };
 }
 
 export function pluginLoaded(newPlugin) {
   return {
     type: PLUGIN_LOADED,
-    plugin: newPlugin,
+    plugin: newPlugin
   };
 }
 
 export function unfreezeApp() {
   return {
-    type: UNFREEZE_APP,
+    type: UNFREEZE_APP
   };
 }
 
 export function unsetHasUserPlugin() {
   return {
-    type: UNSET_HAS_USERS_PLUGIN,
+    type: UNSET_HAS_USERS_PLUGIN
   };
 }
 
@@ -81,6 +81,6 @@ export function updatePlugin(pluginId, updatedKey, updatedValue) {
     type: UPDATE_PLUGIN,
     pluginId,
     updatedKey,
-    updatedValue,
+    updatedValue
   };
 }

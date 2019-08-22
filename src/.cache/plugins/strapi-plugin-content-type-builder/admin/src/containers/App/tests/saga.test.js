@@ -9,7 +9,7 @@ import defaultSaga, {
   deleteModel,
   getData,
   submitCT,
-  submitTempCT,
+  submitTempCT
 } from '../saga';
 
 import { deleteModelSucceeded, getDataSucceeded } from '../actions';
@@ -17,7 +17,7 @@ import {
   DELETE_MODEL,
   GET_DATA,
   SUBMIT_CONTENT_TYPE,
-  SUBMIT_TEMP_CONTENT_TYPE,
+  SUBMIT_TEMP_CONTENT_TYPE
 } from '../constants';
 
 const response = [
@@ -28,8 +28,8 @@ const response = [
         name: 'permission',
         description: '',
         fields: 6,
-        source: 'users-permissions',
-      },
+        source: 'users-permissions'
+      }
     ],
     allModels: [
       {
@@ -41,17 +41,17 @@ const response = [
         attributes: [
           {
             name: 'type',
-            params: { type: 'string', required: true, configurable: false },
+            params: { type: 'string', required: true, configurable: false }
           },
           {
             name: 'controller',
-            params: { type: 'string', required: true, configurable: false },
-          },
-        ],
-      },
-    ],
+            params: { type: 'string', required: true, configurable: false }
+          }
+        ]
+      }
+    ]
   },
-  { connections: ['default'] },
+  { connections: ['default'] }
 ];
 
 describe('CTB <App /> DeleteModel saga', () => {
@@ -60,7 +60,7 @@ describe('CTB <App /> DeleteModel saga', () => {
   beforeEach(() => {
     deleteModelGenerator = deleteModel({
       context: { plugins: {}, updatePlugin: jest.fn() },
-      modelName: 'test',
+      modelName: 'test'
     });
     const callDescriptor = deleteModelGenerator.next({ ok: true }).value;
 
@@ -128,7 +128,7 @@ describe('defaultSaga Saga', () => {
         fork(takeLatest, GET_DATA, getData),
         fork(takeLatest, DELETE_MODEL, deleteModel),
         fork(takeLatest, SUBMIT_CONTENT_TYPE, submitCT),
-        fork(takeLatest, SUBMIT_TEMP_CONTENT_TYPE, submitTempCT),
+        fork(takeLatest, SUBMIT_TEMP_CONTENT_TYPE, submitTempCT)
       ])
     );
   });

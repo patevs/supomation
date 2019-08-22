@@ -16,7 +16,7 @@ class PluginLeftMenuLink extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      environmentIndex: 0,
+      environmentIndex: 0
     };
   }
 
@@ -32,15 +32,15 @@ class PluginLeftMenuLink extends React.Component {
       this.setState({
         environmentIndex: findIndex(nextProps.environments, [
           'name',
-          nextProps.envParams,
-        ]),
+          nextProps.envParams
+        ])
       });
     }
 
     if (nextProps.envParams && nextProps.envParams !== this.props.envParams) {
       const environmentIndex = findIndex(nextProps.environments, [
         'name',
-        nextProps.envParams,
+        nextProps.envParams
       ]);
       this.setState({ environmentIndex });
     }
@@ -52,9 +52,9 @@ class PluginLeftMenuLink extends React.Component {
     if (!isEmpty(this.props.environments)) {
       url = this.props.environmentsRequired
         ? `${this.props.link.slug}/${get(this.props.environments, [
-          this.state.environmentIndex,
-          'name',
-        ])}`
+            this.state.environmentIndex,
+            'name'
+          ])}`
         : `${this.props.link.slug}`;
     }
 
@@ -81,11 +81,11 @@ PluginLeftMenuLink.propTypes = {
   environments: PropTypes.array.isRequired,
   environmentsRequired: PropTypes.bool.isRequired,
   envParams: PropTypes.string,
-  link: PropTypes.object.isRequired,
+  link: PropTypes.object.isRequired
 };
 
 PluginLeftMenuLink.defaultProps = {
-  envParams: '',
+  envParams: ''
 };
 
 export default PluginLeftMenuLink;

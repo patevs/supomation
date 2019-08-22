@@ -28,11 +28,11 @@ const plugin = {
       key: 'content-type-builder.link',
       props: {
         message: {
-          id: 'content-manager.containers.Edit.Link.Fields',
+          id: 'content-manager.containers.Edit.Link.Fields'
         },
-        icon: 'fa-cog',
-      },
-    },
+        icon: 'fa-cog'
+      }
+    }
   ],
   layout: null,
   lifecycles,
@@ -41,7 +41,7 @@ const plugin = {
   mainComponent: Comp,
   name: pluginPkg.strapi.name,
   preventComponentRendering: false,
-  trads,
+  trads
 };
 
 export default plugin;

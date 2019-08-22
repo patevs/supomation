@@ -27,7 +27,7 @@ import {
   pluginLoaded,
   unfreezeApp,
   updatePlugin,
-  getAppPluginsSucceeded,
+  getAppPluginsSucceeded
 } from './containers/App/actions';
 import { showNotification } from './containers/NotificationProvider/actions';
 
@@ -90,7 +90,7 @@ Object.keys(plugins).forEach(plugin => {
 
 // TODO
 const remoteURL = (() => {
-    // Relative URL (ex: /dashboard)
+  // Relative URL (ex: /dashboard)
   if (REMOTE_URL[0] === '/') {
     return (window.location.origin + REMOTE_URL).replace(/\/$/, '');
   }
@@ -124,7 +124,7 @@ window.strapi = Object.assign(window.strapi || {}, {
     },
     info: message => {
       displayNotification(message, 'info');
-    },
+    }
   },
   refresh: pluginId => ({
     translationMessages: translationMessagesUpdated => {
@@ -134,7 +134,7 @@ window.strapi = Object.assign(window.strapi || {}, {
       store.dispatch(
         updatePlugin(pluginId, 'leftMenuSections', leftMenuSectionsUpdated)
       );
-    },
+    }
   }),
   router: history,
   languages,
@@ -147,7 +147,7 @@ window.strapi = Object.assign(window.strapi || {}, {
   unlockApp,
   injectReducer,
   injectSaga,
-  store,
+  store
 });
 
 const render = messages => {
@@ -180,7 +180,7 @@ if (NODE_ENV !== 'test') {
       .then(() =>
         Promise.all([
           import('intl/locale-data/jsonp/en.js'),
-          import('intl/locale-data/jsonp/de.js'),
+          import('intl/locale-data/jsonp/de.js')
         ])
       ) // eslint-disable-line prettier/prettier
       .then(() => render(translationMessages))

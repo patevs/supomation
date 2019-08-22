@@ -91,7 +91,7 @@ Table.defaultProps = {
   entriesToDelete: [],
   handleDelete: () => {},
   search: '',
-  showLoader: false,
+  showLoader: false
 };
 
 Table.propTypes = {
@@ -113,7 +113,7 @@ Table.propTypes = {
   routeParams: PropTypes.object.isRequired,
   search: PropTypes.string,
   showLoader: PropTypes.bool,
-  sort: PropTypes.string.isRequired,
+  sort: PropTypes.string.isRequired
 };
 
 export default Table;

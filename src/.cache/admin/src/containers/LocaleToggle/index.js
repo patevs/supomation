@@ -15,7 +15,7 @@ import {
   ButtonDropdown,
   DropdownItem,
   DropdownMenu,
-  DropdownToggle,
+  DropdownToggle
 } from 'reactstrap';
 
 import makeSelectLocale from '../LanguageProvider/selectors';
@@ -54,7 +54,7 @@ export class LocaleToggle extends React.Component {
   render() {
     const {
       currentLocale: { locale },
-      localeToggle: { className },
+      localeToggle: { className }
     } = this.props;
     const style = cn(styles.localeDropdownMenu, styles[className]);
 
@@ -73,7 +73,7 @@ export class LocaleToggle extends React.Component {
                 onClick={() => this.props.changeLocale(language)}
                 className={cn(
                   styles.localeToggleItem,
-                  locale === language ? styles.localeToggleItemActive : '',
+                  locale === language ? styles.localeToggleItemActive : ''
                 )}
               >
                 {language.toUpperCase()}
@@ -89,26 +89,26 @@ export class LocaleToggle extends React.Component {
 LocaleToggle.propTypes = {
   changeLocale: PropTypes.func.isRequired,
   currentLocale: PropTypes.object.isRequired,
-  localeToggle: PropTypes.object.isRequired,
+  localeToggle: PropTypes.object.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
   currentLocale: makeSelectLocale(),
-  localeToggle: makeSelectLocaleToggle(),
+  localeToggle: makeSelectLocaleToggle()
 });
 
 export function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      changeLocale,
+      changeLocale
     },
-    dispatch,
+    dispatch
   );
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 );
 
 export default compose(withConnect)(LocaleToggle);

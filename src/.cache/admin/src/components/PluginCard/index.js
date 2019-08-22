@@ -22,7 +22,7 @@ class PluginCard extends React.Component {
   state = {
     boostrapCol: 'col-lg-4',
     showModalAutoReload: false,
-    showModalEnv: false,
+    showModalEnv: false
   };
 
   componentDidMount() {
@@ -53,7 +53,7 @@ class PluginCard extends React.Component {
     if (this.props.plugin.id !== 'support-us') {
       this.props.history.push({
         pathname: this.props.history.location.pathname,
-        hash: `${this.props.plugin.id}::description`,
+        hash: `${this.props.plugin.id}::description`
       });
     } else {
       this.aTag.click();
@@ -79,7 +79,7 @@ class PluginCard extends React.Component {
       downloadPlugin,
       history: { push },
       isAlreadyInstalled,
-      plugin: { id },
+      plugin: { id }
     } = this.props;
 
     if (!autoReload) {
@@ -129,7 +129,7 @@ class PluginCard extends React.Component {
         ) : (
           this.props.plugin.description.long ||
           this.props.plugin.description.short
-        ),
+        )
     };
 
     return (
@@ -213,7 +213,7 @@ class PluginCard extends React.Component {
             title:
               'app.components.PluginCard.PopUpWarning.install.impossible.title',
             confirm:
-              'app.components.PluginCard.PopUpWarning.install.impossible.confirm',
+              'app.components.PluginCard.PopUpWarning.install.impossible.confirm'
           }}
           isOpen={this.state.showModalAutoReload}
           onlyConfirmButton
@@ -227,7 +227,7 @@ class PluginCard extends React.Component {
             title:
               'app.components.PluginCard.PopUpWarning.install.impossible.title',
             confirm:
-              'app.components.PluginCard.PopUpWarning.install.impossible.confirm',
+              'app.components.PluginCard.PopUpWarning.install.impossible.confirm'
           }}
           isOpen={this.state.showModalEnv}
           onlyConfirmButton
@@ -246,8 +246,8 @@ PluginCard.defaultProps = {
     id: '',
     name: '',
     price: 0,
-    ratings: 5,
-  },
+    ratings: 5
+  }
 };
 
 PluginCard.propTypes = {
@@ -255,7 +255,7 @@ PluginCard.propTypes = {
   downloadPlugin: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   isAlreadyInstalled: PropTypes.bool,
-  plugin: PropTypes.object,
+  plugin: PropTypes.object
 };
 
 export default PluginCard;

@@ -20,8 +20,8 @@ export function* emitter(action) {
           method: 'POST',
           body: JSON.stringify({ event, uuid, properties }),
           headers: {
-            'Content-Type': 'application/json',
-          },
+            'Content-Type': 'application/json'
+          }
         }
       );
     }
@@ -36,13 +36,13 @@ export function* getData() {
       'gaConfig',
       'strapiVersion',
       'currentEnvironment',
-      'layout',
+      'layout'
     ];
     const [
       { uuid },
       { strapiVersion },
       { autoReload, currentEnvironment },
-      { layout },
+      { layout }
     ] = yield all(
       endPoints.map(endPoint =>
         call(request, `/admin/${endPoint}`, { method: 'GET' })
@@ -55,7 +55,7 @@ export function* getData() {
         uuid,
         strapiVersion,
         currentEnvironment,
-        layout,
+        layout
       })
     );
   } catch (err) {
@@ -79,6 +79,6 @@ export default function* defaultSaga() {
   yield all([
     fork(takeLatest, EMIT_EVENT, emitter),
     fork(takeLatest, GET_INIT_DATA, getData),
-    fork(takeLatest, GET_SECURED_DATA, getSecuredData),
+    fork(takeLatest, GET_SECURED_DATA, getSecuredData)
   ]);
 }

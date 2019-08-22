@@ -24,28 +24,28 @@ const assets = {
   oneWay: {
     name: 'oneWay',
     icon: oneWay,
-    iconSelected: oneWaySelected,
+    iconSelected: oneWaySelected
   },
   oneToOne: {
     name: 'oneToOne',
     icon: oneToOne,
-    iconSelected: oneToOneSelected,
+    iconSelected: oneToOneSelected
   },
   oneToMany: {
     name: 'oneToMany',
     icon: oneToMany,
-    iconSelected: oneToManySelected,
+    iconSelected: oneToManySelected
   },
   manyToOne: {
     name: 'manyToOne',
     icon: manyToOne,
-    iconSelected: manyToOneSelected,
+    iconSelected: manyToOneSelected
   },
   manyToMany: {
     name: 'manyToMany',
     icon: manyToMany,
-    iconSelected: manyToManySelected,
-  },
+    iconSelected: manyToManySelected
+  }
 };
 
 const availableRelations = ['manyToMany', 'oneToMany', 'oneToOne', 'oneWay'];
@@ -58,14 +58,14 @@ const NaturePicker = ({ modelName, onClick, nature, target }) => {
         rightName: pluralize(
           target,
           ['manyToMany', 'oneToMany', 'manyToOne'].includes(nature) ? 2 : 1
-        ),
+        )
       }
     : {
         leftName: target,
         rightName: pluralize(
           modelName,
           ['manyToMany', 'oneToMany', 'manyToOne'].includes(nature) ? 2 : 1
-        ),
+        )
       };
 
   return (
@@ -102,14 +102,14 @@ NaturePicker.defaultProps = {
   modelName: '',
   nature: 'oneWay',
   onClick: () => {},
-  target: '',
+  target: ''
 };
 
 NaturePicker.propTypes = {
   modelName: PropTypes.string,
   nature: PropTypes.string,
   onClick: PropTypes.func,
-  target: PropTypes.string,
+  target: PropTypes.string
 };
 
 export default NaturePicker;

@@ -13,11 +13,11 @@ function HeaderModalNavContainer({ children }) {
 }
 
 HeaderModalNavContainer.defaultProps = {
-  children: null,
+  children: null
 };
 
 HeaderModalNavContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default HeaderModalNavContainer;

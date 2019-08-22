@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 import {
   resetLocaleDefaultClassName,
-  setLocaleCustomClassName,
+  setLocaleCustomClassName
 } from '../actions';
 import localeToggleReducer from '../reducer';
 
@@ -10,7 +10,7 @@ describe('<LocaleToggle />, reducer', () => {
 
   beforeEach(() => {
     state = fromJS({
-      className: null,
+      className: null
     });
   });
 
@@ -24,12 +24,16 @@ describe('<LocaleToggle />, reducer', () => {
     const expected = state;
     state.set('className', 'foo');
 
-    expect(localeToggleReducer(state, resetLocaleDefaultClassName())).toEqual(expected);
+    expect(localeToggleReducer(state, resetLocaleDefaultClassName())).toEqual(
+      expected
+    );
   });
 
   it('should handle the setLocaleCustomClassName correctly', () => {
     const expected = state.set('className', 'foo');
 
-    expect(localeToggleReducer(state, setLocaleCustomClassName('foo'))).toEqual(expected);
+    expect(localeToggleReducer(state, setLocaleCustomClassName('foo'))).toEqual(
+      expected
+    );
   });
 });

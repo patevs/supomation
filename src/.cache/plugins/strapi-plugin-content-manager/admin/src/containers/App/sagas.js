@@ -3,7 +3,7 @@ import { request } from 'strapi-helper-plugin';
 import {
   getModelEntriesSucceeded,
   loadedModels,
-  submitSucceeded,
+  submitSucceeded
 } from './actions';
 import { GET_MODEL_ENTRIES, LOAD_MODELS, ON_SUBMIT } from './constants';
 import { makeSelectModifiedSchema } from './selectors';
@@ -24,7 +24,7 @@ export function* modelEntriesGet(action) {
 export function* getModels() {
   try {
     const response = yield call(request, '/content-manager/models', {
-      method: 'GET',
+      method: 'GET'
     });
 
     yield put(loadedModels(response));
@@ -38,7 +38,7 @@ export function* submit(action) {
     const schema = yield select(makeSelectModifiedSchema());
     yield call(request, '/content-manager/models', {
       method: 'PUT',
-      body: { schema },
+      body: { schema }
     });
 
     action.context.emitEvent('didSaveContentTypeLayout');

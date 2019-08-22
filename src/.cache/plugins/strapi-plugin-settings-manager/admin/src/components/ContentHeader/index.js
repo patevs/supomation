@@ -32,7 +32,7 @@ function ContentHeader({ name, description }) {
 
 ContentHeader.propTypes = {
   description: PropTypes.string,
-  name: PropTypes.string,
+  name: PropTypes.string
 };
 
 export default ContentHeader;

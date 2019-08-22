@@ -58,7 +58,7 @@ InputEnum.propTypes = {
   name: PropTypes.string,
   selectOptions: PropTypes.array,
   target: PropTypes.string,
-  value: PropTypes.any,
+  value: PropTypes.any
 };
 
 export default InputEnum;

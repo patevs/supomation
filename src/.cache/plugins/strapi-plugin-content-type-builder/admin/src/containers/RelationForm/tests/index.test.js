@@ -28,7 +28,7 @@ describe('<RelationForm />', () => {
       modifiedData: {
         key: '',
         name: '',
-        source: '',
+        source: ''
       },
       onCancel: jest.fn(),
       onChange: jest.fn(),
@@ -37,7 +37,7 @@ describe('<RelationForm />', () => {
       onSubmit: jest.fn(),
       onSubmitEdit: jest.fn(),
       push: jest.fn(),
-      source: null,
+      source: null
     };
   });
 
@@ -56,7 +56,7 @@ describe('<RelationForm />', () => {
     const compo = wrapper.find(RelationForm);
     const spyOnRenderAdvancedSettings = jest.spyOn(
       compo.instance(),
-      'renderAdvancedSettings',
+      'renderAdvancedSettings'
     );
     compo.instance().forceUpdate();
 
@@ -70,7 +70,7 @@ describe('<RelationForm />', () => {
 
       expect(getFormErrors()).toEqual({
         name: [{ id: 'content-type-builder.error.validation.required' }],
-        key: [{ id: 'content-type-builder.error.validation.required' }],
+        key: [{ id: 'content-type-builder.error.validation.required' }]
       });
     });
 
@@ -80,7 +80,7 @@ describe('<RelationForm />', () => {
       const { getFormErrors } = wrapper.find(RelationForm).instance();
 
       expect(getFormErrors()).toEqual({
-        key: [{ id: 'content-type-builder.error.validation.required' }],
+        key: [{ id: 'content-type-builder.error.validation.required' }]
       });
     });
 
@@ -93,7 +93,7 @@ describe('<RelationForm />', () => {
       const { getFormErrors } = wrapper.find(RelationForm).instance();
 
       expect(getFormErrors()).toEqual({
-        name: [{ id: 'content-type-builder.error.attribute.key.taken' }],
+        name: [{ id: 'content-type-builder.error.attribute.key.taken' }]
       });
     });
 
@@ -106,7 +106,7 @@ describe('<RelationForm />', () => {
       const { getFormErrors } = wrapper.find(RelationForm).instance();
 
       expect(getFormErrors()).toEqual({
-        key: [{ id: 'content-type-builder.error.attribute.key.taken' }],
+        key: [{ id: 'content-type-builder.error.attribute.key.taken' }]
       });
     });
 
@@ -137,7 +137,7 @@ describe('<RelationForm />', () => {
         expect(props.onChangeRelationTarget).toHaveBeenLastCalledWith(
           'strapi',
           'test',
-          false,
+          false
         );
       });
 
@@ -153,7 +153,7 @@ describe('<RelationForm />', () => {
         expect(props.onChangeRelationTarget).toHaveBeenLastCalledWith(
           'strapi',
           'test',
-          true,
+          true
         );
       });
     });
@@ -181,10 +181,10 @@ describe('<RelationForm />', () => {
 
       expect(props.push).toHaveBeenCalledWith({
         search:
-          'modalType=attributeForm&attributeType=relation&settingType=advanced&actionType=create',
+          'modalType=attributeForm&attributeType=relation&settingType=advanced&actionType=create'
       });
       expect(context.emitEvent).toHaveBeenCalledWith(
-        'didSelectContentTypeFieldSettings',
+        'didSelectContentTypeFieldSettings'
       );
     });
 
@@ -199,10 +199,10 @@ describe('<RelationForm />', () => {
 
       expect(props.push).toHaveBeenCalledWith({
         search:
-          'modalType=attributeForm&attributeType=relation&settingType=advanced&actionType=edit&attributeName=test',
+          'modalType=attributeForm&attributeType=relation&settingType=advanced&actionType=edit&attributeName=test'
       });
       expect(context.emitEvent).toHaveBeenCalledWith(
-        'didSelectContentTypeFieldSettings',
+        'didSelectContentTypeFieldSettings'
       );
     });
 
@@ -216,7 +216,7 @@ describe('<RelationForm />', () => {
 
       expect(props.push).toHaveBeenCalledWith({
         search:
-          'modalType=attributeForm&attributeType=relation&settingType=base&actionType=create',
+          'modalType=attributeForm&attributeType=relation&settingType=base&actionType=create'
       });
       expect(context.emitEvent).not.toHaveBeenCalled();
     });
@@ -258,7 +258,7 @@ describe('<RelationForm />', () => {
         false,
         'test',
         '',
-        false,
+        false
       );
     });
 
@@ -282,7 +282,7 @@ describe('<RelationForm />', () => {
         false,
         undefined,
         'test',
-        true,
+        true
       );
     });
   });
@@ -293,7 +293,7 @@ describe('<RelationForm />', () => {
         name: 'test',
         nature: 'oneWay',
         target: 'test',
-        key: '-',
+        key: '-'
       };
       wrapper = renderComponent(props);
       const { handleSubmit } = wrapper.instance();
@@ -319,7 +319,7 @@ describe('<RelationForm />', () => {
         name: 'test',
         nature: 'oneWay',
         target: 'test',
-        key: '-',
+        key: '-'
       };
       wrapper = renderComponent(props);
       const { handleSubmitAndContinue } = wrapper.instance();
