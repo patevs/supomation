@@ -160,3 +160,14 @@ supomation/ui
 ```
 
 ---
+
+### Unused Scripts
+
+```json
+  "scripts":{
+      "eject": "react-scripts eject",
+      "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
+  }
+```
+
+---
