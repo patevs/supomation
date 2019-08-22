@@ -1,4 +1,4 @@
-# [Supomation-Dash](https://github.com/patevs/supomation-dash)
+# [Supomation-UI](https://github.com/patevs/supomation)
 
 > Forked from: [creativetimeofficial/material-dashboard-react](https://github.com/creativetimofficial/material-dashboard-react)
 
@@ -15,15 +15,12 @@ The documentation for the Material Dashboard React is hosted at our [website](ht
 Within the download you'll find the following directories and files:
 
 ```md
-material-dashboard-react
+supomation/ui
 .
 ├── LICENSE.md
 ├── README.md
 ├── bower.json
 ├── package.json
-├── documentation
-│   ├── assets
-│   └── tutorial-components.html
 ├── public
 │   ├── favicon.ico
 │   ├── index.html
@@ -115,6 +112,21 @@ material-dashboard-react
 ---
 
 ### Babel Config
+
+```json
+{
+  "presets": ["es2015"],
+  "plugins": [
+    "transform-class-properties",
+    "transform-react-jsx",
+    "transform-object-rest-spread",
+    ["module-resolver", {
+      "root": ["./src"]
+      }],
+      ["import-rename", {"^(.*)\\.jsx$": "$1"}]
+    ]
+  }
+```
 
 ```json
   "scripts": {
