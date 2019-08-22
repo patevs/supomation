@@ -87,7 +87,6 @@
 		}
 	},
 	"eslintIgnore": [
-		"build",
-		"documentation"
+		"build"
 	]
 }
