@@ -15,7 +15,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "strapi build && trash build/favicon.ico && cp favicon.ico build/favicon.ico && echo. && echo Build Completed!",
     "strapi": "strapi",
     "prettier": "prettier --check --write \"**/*.js\" && echo. && echo Prettier Completed!",
     "lint": "npm run prettier && eslint --fix **/*.js --ignore-pattern .cache && echo. && echo Lint Completed!"
