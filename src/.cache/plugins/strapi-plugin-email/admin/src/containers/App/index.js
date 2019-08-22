@@ -17,16 +17,8 @@ function App() {
   return (
     <div className={pluginId}>
       <Switch>
-        <Route
-          path={`/plugins/${pluginId}/configurations/:env`}
-          component={ConfigPage}
-          exact
-        />
-        <Route
-          path={`/plugins/${pluginId}/configurations/`}
-          component={ConfigPage}
-          exact
-        />
+        <Route path={`/plugins/${pluginId}/configurations/:env`} component={ConfigPage} exact />
+        <Route path={`/plugins/${pluginId}/configurations/`} component={ConfigPage} exact />
         <Route path={`/plugins/${pluginId}`} component={ConfigPage} exact />
       </Switch>
     </div>

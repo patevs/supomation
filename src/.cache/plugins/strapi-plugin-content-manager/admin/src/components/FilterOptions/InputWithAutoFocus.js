@@ -11,7 +11,7 @@ import {
   InputDate,
   InputNumber,
   InputSelect,
-  InputText
+  InputText,
 } from 'strapi-helper-plugin';
 
 const getInputType = attrType => {
@@ -65,7 +65,7 @@ class InputWithAutoFocus extends React.Component {
 }
 
 InputWithAutoFocus.defaultProps = {
-  filterToFocus: null
+  filterToFocus: null,
 };
 
 InputWithAutoFocus.propTypes = {
@@ -75,7 +75,7 @@ InputWithAutoFocus.propTypes = {
   inputStyle: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  schema: PropTypes.object.isRequired
+  schema: PropTypes.object.isRequired,
 };
 
 export default InputWithAutoFocus;

@@ -11,17 +11,26 @@ import cn from 'classnames';
 import styles from './styles.scss';
 
 function HomePageBlock({ children, className }) {
-  return <div className={cn(className, styles.homePageBlock)}>{children}</div>;
+  return (
+    <div
+      className={cn(
+        className,
+        styles.homePageBlock,
+      )}
+    >
+      {children}
+    </div>
+  );
 }
 
 HomePageBlock.defaultProps = {
   children: '',
-  className: ''
+  className: '',
 };
 
 HomePageBlock.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default HomePageBlock;

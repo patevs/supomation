@@ -27,21 +27,21 @@ import {
   RESET_DISPLAYED_FIELDS,
   SET_DISPLAYED_FIELDS,
   SET_PARAMS,
-  SUBMIT
+  SUBMIT,
 } from './constants';
 
 export function addAttr(attr, index) {
   return {
     type: ADD_ATTR,
     attr,
-    index
+    index,
   };
 }
 
 export function addFilter(filter) {
   return {
     type: ADD_FILTER,
-    filter
+    filter,
   };
 }
 
@@ -49,7 +49,7 @@ export function changeParams({ target }) {
   return {
     type: CHANGE_PARAMS,
     keys: target.name.split('.'),
-    value: target.value
+    value: target.value,
   };
 }
 
@@ -59,14 +59,14 @@ export function deleteData(id, modelName, source, context) {
     id,
     modelName,
     source,
-    context
+    context,
   };
 }
 
 export function deleteDataSuccess(id) {
   return {
     type: DELETE_DATA_SUCCESS,
-    id
+    id,
   };
 }
 
@@ -75,13 +75,13 @@ export function deleteSeveralData(entriesToDelete, model, source) {
     type: DELETE_SEVERAL_DATA,
     entriesToDelete,
     model,
-    source
+    source,
   };
 }
 
 export function deleteSeveralDataSuccess() {
   return {
-    type: DELETE_SEVERAL_DATA_SUCCESS
+    type: DELETE_SEVERAL_DATA_SUCCESS,
   };
 }
 
@@ -90,14 +90,14 @@ export function getData(currentModel, source, setUpdatingParams = false) {
     type: GET_DATA,
     currentModel,
     setUpdatingParams,
-    source
+    source,
   };
 }
 
 export function getDataSucceeded(data) {
   return {
     type: GET_DATA_SUCCEEDED,
-    data
+    data,
   };
 }
 
@@ -106,80 +106,80 @@ export function onChange(index, key, value) {
     type: ON_CHANGE,
     index,
     key,
-    value
+    value,
   };
 }
 
 export function onClickRemove(index) {
   return {
     type: ON_CLICK_REMOVE,
-    index
+    index,
   };
 }
 
 export function onClickSelect({ target }) {
   return {
     type: ON_CLICK_SELECT,
-    id: target.name
+    id: target.name,
   };
 }
 
 export function onClickSelectAll() {
   return {
-    type: ON_CLICK_SELECT_ALL
+    type: ON_CLICK_SELECT_ALL,
   };
 }
 
 export function openFiltersWithSelections(index) {
   return {
     type: OPEN_FILTERS_WITH_SELECTION,
-    index
+    index,
   };
 }
 
 export function onToggleDeleteAll() {
   return {
-    type: ON_TOGGLE_DELETE_ALL
+    type: ON_TOGGLE_DELETE_ALL,
   };
 }
 
 export function onToggleFilters() {
   return {
-    type: ON_TOGGLE_FILTERS
+    type: ON_TOGGLE_FILTERS,
   };
 }
 
 export function removeAllFilters() {
   return {
-    type: REMOVE_ALL_FILTERS
+    type: REMOVE_ALL_FILTERS,
   };
 }
 
 export function removeAttr(index) {
   return {
     type: REMOVE_ATTR,
-    index
+    index,
   };
 }
 
 export function removeFilter(index) {
   return {
     type: REMOVE_FILTER,
-    index
+    index,
   };
 }
 
 export function resetDisplayedFields(fields) {
   return {
     type: RESET_DISPLAYED_FIELDS,
-    fields
+    fields,
   };
 }
 
 export function setDisplayedFields(fields) {
   return {
     type: SET_DISPLAYED_FIELDS,
-    fields
+    fields,
   };
 }
 
@@ -187,12 +187,12 @@ export function setParams(params, filters) {
   return {
     type: SET_PARAMS,
     params,
-    filters
+    filters,
   };
 }
 
 export function submit() {
   return {
-    type: SUBMIT
+    type: SUBMIT,
   };
 }

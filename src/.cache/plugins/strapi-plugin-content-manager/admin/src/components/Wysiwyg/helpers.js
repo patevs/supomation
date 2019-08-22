@@ -15,55 +15,55 @@ export function getBlockContent(style) {
       return {
         innerContent: 'link',
         endReplacer: ')',
-        startReplacer: '![text]('
+        startReplacer: '![text](',
       };
     case 'CODE':
       return {
         innerContent: 'code block',
         endReplacer: '`',
-        startReplacer: '`'
+        startReplacer: '`',
       };
     case 'BLOCKQUOTE':
       return {
         innerContent: 'quote',
         endReplacer: '',
-        startReplacer: '> '
+        startReplacer: '> ',
       };
     case 'BOLD':
       return {
         innerContent: 'bold text',
         endReplacer: '*',
-        startReplacer: '*'
+        startReplacer: '*',
       };
     case 'ITALIC':
       return {
         innerContent: 'italic text',
         endReplacer: '*',
-        startReplacer: '*'
+        startReplacer: '*',
       };
     case 'STRIKED':
       return {
         innerContent: 'striked out',
         endReplacer: '~',
-        startReplacer: '~'
+        startReplacer: '~',
       };
     case 'UNDERLINE':
       return {
         innerContent: 'underlined text',
         endReplacer: '_',
-        startReplacer: '_'
+        startReplacer: '_',
       };
     case 'LINK':
       return {
         innerContent: 'link',
         endReplacer: ')',
-        startReplacer: '[text]('
+        startReplacer: '[text](',
       };
     default:
       return {
         innerContent: '',
         endReplacer: '',
-        startReplacer: ''
+        startReplacer: '',
       };
   }
 }
@@ -72,11 +72,10 @@ export const getDefaultSelectionOffsets = (
   content,
   startReplacer,
   endReplacer,
-  initPosition = 0
+  initPosition = 0,
 ) => ({
-  anchorOffset:
-    initPosition + content.length - trimStart(content, startReplacer).length,
-  focusOffset: initPosition + trimEnd(content, endReplacer).length
+  anchorOffset: initPosition + content.length - trimStart(content, startReplacer).length,
+  focusOffset: initPosition + trimEnd(content, endReplacer).length,
 });
 
 /**
@@ -87,7 +86,7 @@ export const getDefaultSelectionOffsets = (
 export function getOffSets(selection) {
   return {
     end: selection.getEndOffset(),
-    start: selection.getStartOffset()
+    start: selection.getStartOffset(),
   };
 }
 

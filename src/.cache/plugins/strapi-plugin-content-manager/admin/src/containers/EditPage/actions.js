@@ -24,14 +24,14 @@ import {
   SET_FORM_ERRORS,
   SUBMIT,
   SUBMIT_SUCCESS,
-  UNSET_LOADER
+  UNSET_LOADER,
 } from './constants';
 
 export function addRelationItem({ key, value }) {
   return {
     type: ADD_RELATION_ITEM,
     key,
-    value
+    value,
   };
 }
 
@@ -39,13 +39,13 @@ export function changeData({ target }) {
   return {
     type: CHANGE_DATA,
     keys: target.name.split('.'),
-    value: target.value
+    value: target.value,
   };
 }
 
 export function deleteData() {
   return {
-    type: DELETE_DATA
+    type: DELETE_DATA,
   };
 }
 
@@ -54,7 +54,7 @@ export function getData(id, source, mainField) {
     type: GET_DATA,
     id,
     source,
-    mainField
+    mainField,
   };
 }
 
@@ -63,7 +63,7 @@ export function getDataSucceeded(id, data, pluginHeaderTitle) {
     type: GET_DATA_SUCCEEDED,
     id,
     data,
-    pluginHeaderTitle
+    pluginHeaderTitle,
   };
 }
 
@@ -72,14 +72,14 @@ export function initModelProps(
   isCreating,
   source,
   attributes,
-  displayedAttributes
+  displayedAttributes,
 ) {
   const formValidations = getValidationsFromForm(
     Object.keys(attributes).map(attr => ({
       name: attr,
-      validations: get(attributes, attr, {})
+      validations: get(attributes, attr, {}),
     })),
-    []
+    [],
   ).filter(field => {
     if (get(field, ['validations', 'required'], false) === true) {
       return displayedAttributes.indexOf(field.name) !== -1;
@@ -104,7 +104,7 @@ export function initModelProps(
     isCreating,
     modelName,
     record,
-    source
+    source,
   };
 }
 
@@ -113,19 +113,19 @@ export function moveAttr(dragIndex, hoverIndex, keys) {
     type: MOVE_ATTR,
     dragIndex,
     hoverIndex,
-    keys
+    keys,
   };
 }
 
 export function moveAttrEnd() {
   return {
-    type: MOVE_ATTR_END
+    type: MOVE_ATTR_END,
   };
 }
 
 export function onCancel() {
   return {
-    type: ON_CANCEL
+    type: ON_CANCEL,
   };
 }
 
@@ -133,51 +133,51 @@ export function onRemoveRelationItem({ key, index }) {
   return {
     type: ON_REMOVE_RELATION_ITEM,
     key,
-    index
+    index,
   };
 }
 
 export function resetProps() {
   return {
-    type: RESET_PROPS
+    type: RESET_PROPS,
   };
 }
 
 export function setFileRelations(fileRelations) {
   return {
     type: SET_FILE_RELATIONS,
-    fileRelations
+    fileRelations,
   };
 }
 
 export function setFormErrors(formErrors) {
   return {
     type: SET_FORM_ERRORS,
-    formErrors
+    formErrors,
   };
 }
 
 export function setLoader() {
   return {
-    type: SET_LOADER
+    type: SET_LOADER,
   };
 }
 
 export function submit(context) {
   return {
     type: SUBMIT,
-    context
+    context,
   };
 }
 
 export function submitSuccess() {
   return {
-    type: SUBMIT_SUCCESS
+    type: SUBMIT_SUCCESS,
   };
 }
 
 export function unsetLoader() {
   return {
-    type: UNSET_LOADER
+    type: UNSET_LOADER,
   };
 }

@@ -7,21 +7,21 @@ import App from '../index';
 
 const messages = {
   'app.components.NotFoundPage.back': 'Back to homepage',
-  'app.components.NotFoundPage.description': 'Not Found'
+  'app.components.NotFoundPage.description': 'Not Found',
 };
 
 const renderComponent = properties =>
   mount(
     React.createElement(
       props => (
-        <IntlProvider locale="en" defaultLocale="en" messages={messages}>
+        <IntlProvider locale='en' defaultLocale='en' messages={messages}>
           <Router>
             <App {...props} />
           </Router>
         </IntlProvider>
       ),
-      properties
-    )
+      properties,
+    ),
   );
 
 describe('<App />', () => {
@@ -30,11 +30,11 @@ describe('<App />', () => {
   beforeEach(() => {
     props = {
       history: {
-        push: jest.fn()
+        push: jest.fn(),
       },
       location: {
-        pathname: '/plugins/users-permissions'
-      }
+        pathname: '/plugins/users-permissions',
+      },
     };
   });
 
@@ -45,16 +45,14 @@ describe('<App />', () => {
   it('should redirect the user on mount if the url has two params', () => {
     const renderedComponent = renderComponent(props);
 
-    expect(props.history.push).toHaveBeenCalledWith(
-      '/plugins/users-permissions/roles'
-    );
+    expect(props.history.push).toHaveBeenCalledWith('/plugins/users-permissions/roles');
 
     renderedComponent.unmount();
   });
 
   it('should not redirect the user on mount if the url more than two params', () => {
     const otherProps = Object.assign(props, {
-      location: { pathname: '/plugins/users-permissions/roles' }
+      location: { pathname: '/plugins/users-permissions/roles' },
     });
     const renderedComponent = renderComponent(otherProps);
 
@@ -65,30 +63,24 @@ describe('<App />', () => {
 
   it('should redirect the user on update if the url more has two params', () => {
     const otherProps = Object.assign(props, {
-      location: { pathname: '/plugins/users-permissions/roles' }
+      location: { pathname: '/plugins/users-permissions/roles' },
     });
     const renderedComponent = renderComponent(otherProps);
 
-    renderedComponent.setProps({
-      location: { pathname: '/plugins/users-permissions' }
-    });
+    renderedComponent.setProps({ location: { pathname: '/plugins/users-permissions' } });
 
-    expect(props.history.push).toHaveBeenCalledWith(
-      '/plugins/users-permissions/roles'
-    );
+    expect(props.history.push).toHaveBeenCalledWith('/plugins/users-permissions/roles');
 
     renderedComponent.unmount();
   });
 
   it('should n ot redirect the user on update if the url more has more than two params', () => {
     const otherProps = Object.assign(props, {
-      location: { pathname: '/plugins/users-permissions/roles' }
+      location: { pathname: '/plugins/users-permissions/roles' },
     });
     const renderedComponent = renderComponent(otherProps);
 
-    renderedComponent.setProps({
-      location: { pathname: '/plugins/users-permissions/auth/login' }
-    });
+    renderedComponent.setProps({ location: { pathname: '/plugins/users-permissions/auth/login' } });
     expect(props.history.push).not.toHaveBeenCalled();
 
     renderedComponent.unmount();

@@ -1,5 +1,5 @@
 /**
- *
+ * 
  * InputCheckbox
  */
 
@@ -12,17 +12,13 @@ function InputCheckbox({ name, onChange, value }) {
   return (
     <div
       className={cn(styles.inputCheckboxCTM, 'col-md-12')}
-      onClick={e => {
+      onClick={(e) => {
         e.stopPropagation();
       }}
     >
       <div className="form-check">
         <label
-          className={cn(
-            'form-check-label',
-            styles.inputCheckbockCTMLabel,
-            value && styles.checked
-          )}
+          className={cn('form-check-label', styles.inputCheckbockCTMLabel, value && styles.checked)}
           htmlFor={name}
         >
           <input
@@ -42,13 +38,13 @@ function InputCheckbox({ name, onChange, value }) {
 
 InputCheckbox.defaultProps = {
   onChange: () => {},
-  value: false
+  value: false,
 };
 
 InputCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  value: PropTypes.bool
+  value: PropTypes.bool,
 };
 
 export default InputCheckbox;

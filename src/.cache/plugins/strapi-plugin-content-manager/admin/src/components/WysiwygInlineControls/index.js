@@ -11,16 +11,13 @@ import cn from 'classnames';
 import styles from './styles.scss';
 
 class StyleButton extends React.Component {
-  handleClick = e => {
+  handleClick = (e) => {
     e.preventDefault();
 
     if (!this.props.disabled) {
-      this.props.handlers[this.props.handler](
-        this.props.text,
-        this.props.style
-      );
+      this.props.handlers[this.props.handler](this.props.text, this.props.style);
     }
-  };
+  }
 
   render() {
     return (
@@ -29,7 +26,7 @@ class StyleButton extends React.Component {
           this.props.active && styles.styleButtonActive,
           styles.styleButton,
           this.props.className && styles[this.props.className],
-          this.props.disabled && styles.styleButtonDisabled
+          this.props.disabled && styles.styleButtonDisabled,
         )}
         onMouseDown={this.handleClick}
       >
@@ -39,14 +36,7 @@ class StyleButton extends React.Component {
   }
 }
 
-const WysiwygInlineControls = ({
-  buttons,
-  disabled,
-  editorState,
-  handlers,
-  onToggle,
-  onToggleBlock
-}) => {
+const  WysiwygInlineControls = ({ buttons, disabled, editorState, handlers, onToggle, onToggleBlock }) => {
   const selection = editorState.getSelection();
   const blockType = editorState
     .getCurrentContent()
@@ -87,7 +77,7 @@ StyleButton.defaultProps = {
   onToggle: () => {},
   onToggleBlock: () => {},
   style: '',
-  text: ''
+  text: '',
 };
 
 StyleButton.propTypes = {
@@ -99,14 +89,14 @@ StyleButton.propTypes = {
   hideLabel: PropTypes.bool,
   label: PropTypes.string,
   style: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
 };
 
 WysiwygInlineControls.defaultProps = {
   buttons: [],
   disabled: false,
   onToggle: () => {},
-  onToggleBlock: () => {}
+  onToggleBlock: () => {},
 };
 
 WysiwygInlineControls.propTypes = {
@@ -115,7 +105,7 @@ WysiwygInlineControls.propTypes = {
   editorState: PropTypes.object.isRequired,
   handlers: PropTypes.object.isRequired,
   onToggle: PropTypes.func,
-  onToggleBlock: PropTypes.func
+  onToggleBlock: PropTypes.func,
 };
 
 export default WysiwygInlineControls;

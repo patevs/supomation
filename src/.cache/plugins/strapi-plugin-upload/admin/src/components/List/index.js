@@ -29,7 +29,10 @@ function List(props) {
         <ul className={styles.ulList}>
           <ListHeader changeSort={props.changeSort} sort={props.sort} />
           {props.data.map((item, key) => (
-            <Li key={item.hash || key} item={item} />
+            <Li
+              key={item.hash || key}
+              item={item}
+            />
           ))}
           {props.data.length === 0 && <EmptyLi />}
         </ul>
@@ -39,13 +42,13 @@ function List(props) {
 }
 
 List.defaultProps = {
-  sort: 'id'
+  sort: 'id',
 };
 
 List.propTypes = {
   changeSort: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  sort: PropTypes.string
+  sort: PropTypes.string,
 };
 
 export default List;

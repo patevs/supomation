@@ -20,7 +20,7 @@ class EditFormSectionNested extends React.Component {
     this.state = {
       hasNestedInput: false,
       showNestedForm: false,
-      inputWithNestedForm: ''
+      inputWithNestedForm: '',
     };
   }
   componentDidMount() {
@@ -45,7 +45,7 @@ class EditFormSectionNested extends React.Component {
             this.setState({
               hasNestedInput: true,
               inputWithNestedForm: input.target,
-              section: item.items
+              section: item.items,
             });
 
             if (props.values[input.target] === item.value) {
@@ -62,7 +62,9 @@ class EditFormSectionNested extends React.Component {
   render() {
     return (
       <div
-        className={`${this.props.styles.stmpadded} ${this.props.styles.stmnesTedFormContainer}`}
+        className={`${this.props.styles.stmpadded} ${
+          this.props.styles.stmnesTedFormContainer
+        }`}
       >
         <div className="row">
           {map(this.props.section, (item, key) => {
@@ -95,7 +97,7 @@ EditFormSectionNested.propTypes = {
   section: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   styles: PropTypes.object,
   value: PropTypes.object,
-  values: PropTypes.object
+  values: PropTypes.object,
 };
 
 export default WithFormSection(EditFormSectionNested); // eslint-disable-line new-cap

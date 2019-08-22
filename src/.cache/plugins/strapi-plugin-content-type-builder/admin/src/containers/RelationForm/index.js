@@ -42,11 +42,11 @@ class RelationForm extends React.Component {
       actionType,
       alreadyTakenAttributes,
       attributeToEditName,
-      modifiedData
+      modifiedData,
     } = this.props;
     const formValidations = {
       name: { required: true, unique: true },
-      key: { required: true, unique: true }
+      key: { required: true, unique: true },
     };
 
     const alreadyTakenAttributesUpdated = alreadyTakenAttributes.filter(
@@ -58,7 +58,7 @@ class RelationForm extends React.Component {
         }
 
         return attribute !== attributeToEditName;
-      }
+      },
     );
 
     let formErrors = {};
@@ -84,7 +84,7 @@ class RelationForm extends React.Component {
 
     this.setState(prevState => ({
       didCheckErrors: !prevState.didCheckErrors,
-      formErrors
+      formErrors,
     }));
 
     return formErrors;
@@ -113,7 +113,7 @@ class RelationForm extends React.Component {
     }
 
     push({
-      search: `modalType=attributeForm&attributeType=relation&settingType=${to}&actionType=${actionType}${attributeName}`
+      search: `modalType=attributeForm&attributeType=relation&settingType=${to}&actionType=${actionType}${attributeName}`,
     });
   };
 
@@ -131,7 +131,7 @@ class RelationForm extends React.Component {
       initData,
       isUpdatingTemporaryContentType,
       models,
-      modelToEditName
+      modelToEditName,
     } = this.props;
     const [{ name, source }] = models;
     const target = actionType === 'edit' ? modelToEditName : name;
@@ -141,7 +141,7 @@ class RelationForm extends React.Component {
       isUpdatingTemporaryContentType,
       source,
       attributeToEditName,
-      actionType === 'edit'
+      actionType === 'edit',
     );
     this.setState({ showForm: true });
   };
@@ -222,7 +222,7 @@ class RelationForm extends React.Component {
       modelToEditName,
       onChange,
       onChangeRelationNature,
-      source
+      source,
     } = this.props;
     const { formErrors, didCheckErrors } = this.state;
 
@@ -318,7 +318,7 @@ class RelationForm extends React.Component {
 }
 
 RelationForm.contextTypes = {
-  emitEvent: PropTypes.func
+  emitEvent: PropTypes.func,
 };
 
 RelationForm.defaultProps = {
@@ -330,7 +330,7 @@ RelationForm.defaultProps = {
   isUpdatingTemporaryContentType: false,
   models: [],
   modelToEditName: '',
-  source: null
+  source: null,
 };
 
 RelationForm.propTypes = {
@@ -351,7 +351,7 @@ RelationForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onSubmitEdit: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
-  source: PropTypes.string
+  source: PropTypes.string,
 };
 
 export default RelationForm;

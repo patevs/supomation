@@ -16,40 +16,40 @@ import {
   ON_SEARCH_SUCCESS,
   SET_LOADING,
   SET_PARAMS,
-  UNSET_LOADING
+  UNSET_LOADING,
 } from './constants';
 
 export function changeParams({ target }) {
   return {
     type: CHANGE_PARAMS,
     keys: target.name.split('.'),
-    value: target.value
+    value: target.value,
   };
 }
 
 export function deleteData(dataToDelete) {
   return {
     type: DELETE_DATA,
-    dataToDelete
+    dataToDelete,
   };
 }
 
 export function deleteSuccess() {
   return {
-    type: DELETE_SUCCESS
+    type: DELETE_SUCCESS,
   };
 }
 
 export function dropSuccess(newFiles) {
   return {
     type: DROP_SUCCESS,
-    newFiles
+    newFiles,
   };
 }
 
 export function getData() {
   return {
-    type: GET_DATA
+    type: GET_DATA,
   };
 }
 
@@ -57,7 +57,7 @@ export function getDataSuccess(data, entriesNumber) {
   return {
     type: GET_DATA_SUCCESS,
     data,
-    entriesNumber
+    entriesNumber,
   };
 }
 
@@ -69,39 +69,39 @@ export function onDrop({ dataTransfer: { files } }) {
 
   return {
     type: ON_DROP,
-    formData
+    formData,
   };
 }
 
 export function onSearch({ target }) {
   return {
     type: ON_SEARCH,
-    value: target.value
+    value: target.value,
   };
 }
 
 export function setLoading() {
   return {
-    type: SET_LOADING
+    type: SET_LOADING,
   };
 }
 
 export function setParams(params) {
   return {
     type: SET_PARAMS,
-    params
+    params,
   };
 }
 
 export function onSearchSuccess(data) {
   return {
     type: ON_SEARCH_SUCCESS,
-    data
+    data,
   };
 }
 
 export function unsetLoading() {
   return {
-    type: UNSET_LOADING
+    type: UNSET_LOADING,
   };
 }

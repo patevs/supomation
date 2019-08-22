@@ -11,7 +11,7 @@ import { Manager } from 'strapi-helper-plugin';
 const stateUpdater = (obj, array, keys) =>
   obj.updateIn(
     ['modifiedSchema', 'models', ...keys.split('.'), 'fields'],
-    () => array
+    () => array,
   );
 
 /**
@@ -109,7 +109,7 @@ const reorderList = (manager, list) => {
 
           return acc;
         },
-        [...curr]
+        [...curr],
       );
 
       return acc.concat(line);
@@ -158,5 +158,5 @@ export {
   getElementsOnALine,
   getLines,
   removeColsLine,
-  reorderList
+  reorderList,
 };

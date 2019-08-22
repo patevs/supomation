@@ -18,7 +18,7 @@ class InputSelect extends React.Component {
     if (this.props.selectOptions[0].value !== '' && isEmpty(this.props.value)) {
       const target = {
         name: this.props.target,
-        value: this.props.selectOptions[0].value
+        value: this.props.selectOptions[0].value,
       };
       this.props.handleChange({ target });
     }
@@ -57,7 +57,7 @@ class InputSelect extends React.Component {
               <option value={option.value} key={key}>
                 {option.name}
               </option>
-            )
+            ),
           )}
         </select>
       </div>
@@ -73,7 +73,7 @@ InputSelect.propTypes = {
   selectOptions: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   target: PropTypes.string,
   validations: PropTypes.object,
-  value: PropTypes.string
+  value: PropTypes.string,
 };
 
 export default InputSelect;

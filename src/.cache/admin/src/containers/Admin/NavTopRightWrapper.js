@@ -6,7 +6,7 @@ const style = {
   top: '0',
   right: '0',
   display: 'flex',
-  zIndex: '1050'
+  zIndex: '1050',
 };
 
 function NavWrapper({ children }) {
@@ -14,11 +14,11 @@ function NavWrapper({ children }) {
 }
 
 NavWrapper.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 NavWrapper.defaultProps = {
-  children: null
+  children: null,
 };
 
 export default NavWrapper;

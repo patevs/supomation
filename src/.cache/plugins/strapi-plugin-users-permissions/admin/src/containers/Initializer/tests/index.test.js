@@ -12,7 +12,7 @@ describe('<Initializer />', () => {
       initialize: jest.fn(),
       shouldUpdate: false,
       unsetAppSecured: jest.fn(),
-      updatePlugin: jest.fn()
+      updatePlugin: jest.fn(),
     };
   });
 
@@ -37,9 +37,11 @@ describe('<Initializer />', () => {
 
     renderedComponent.setProps({ shouldUpdate: true });
 
-    expect(
-      renderedComponent.instance().props.updatePlugin
-    ).toHaveBeenCalledWith('users-permissions', 'isReady', true);
+    expect(renderedComponent.instance().props.updatePlugin).toHaveBeenCalledWith(
+      'users-permissions',
+      'isReady',
+      true,
+    );
   });
 
   it('should not call the updatePlugin prop when the shouldUpdate prop has changed', () => {
@@ -47,9 +49,7 @@ describe('<Initializer />', () => {
 
     renderedComponent.setProps({ shouldUpdate: false });
 
-    expect(
-      renderedComponent.instance().props.updatePlugin
-    ).not.toHaveBeenCalled();
+    expect(renderedComponent.instance().props.updatePlugin).not.toHaveBeenCalled();
   });
 });
 

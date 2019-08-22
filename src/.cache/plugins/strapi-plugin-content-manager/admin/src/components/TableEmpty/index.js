@@ -26,24 +26,21 @@ function TableEmpty({ colspan, contentType, filters, search }) {
   return (
     <tr className={styles.tableEmpty}>
       <td colSpan={colspan + 1}>
-        <FormattedMessage
-          id={`content-manager.components.TableEmpty.${id}`}
-          values={values}
-        />
+        <FormattedMessage id={`content-manager.components.TableEmpty.${id}`} values={values} />
       </td>
     </tr>
   );
 }
 
 TableEmpty.defaultProps = {
-  search: ''
+  search: '',
 };
 
 TableEmpty.propTypes = {
   colspan: PropTypes.number.isRequired,
   contentType: PropTypes.string.isRequired,
   filters: PropTypes.array.isRequired,
-  search: PropTypes.string
+  search: PropTypes.string,
 };
 
 export default TableEmpty;

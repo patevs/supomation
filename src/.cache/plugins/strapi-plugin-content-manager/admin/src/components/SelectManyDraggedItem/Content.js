@@ -39,14 +39,14 @@ function Content({ index, item, onClick, onRemove }) {
 Content.defaultProps = {
   index: 0,
   onClick: () => {},
-  onRemove: () => {}
+  onRemove: () => {},
 };
 
 Content.propTypes = {
   index: PropTypes.number,
   item: PropTypes.object.isRequired,
   onClick: PropTypes.func,
-  onRemove: PropTypes.func
+  onRemove: PropTypes.func,
 };
 
 export default Content;

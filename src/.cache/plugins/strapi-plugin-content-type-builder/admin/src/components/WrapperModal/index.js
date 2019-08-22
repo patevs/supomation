@@ -12,12 +12,7 @@ import styles from './styles.scss';
 function WrapperModal({ children, isOpen, onToggle, ...rest }) {
   return (
     <div className={styles.wrapperModal}>
-      <Modal
-        isOpen={isOpen}
-        toggle={onToggle}
-        className={styles.modal}
-        {...rest}
-      >
+      <Modal isOpen={isOpen} toggle={onToggle} className={styles.modal} {...rest}>
         <ModalHeader className={styles.headerModalWrapper} toggle={onToggle} />
         {children}
       </Modal>
@@ -26,13 +21,13 @@ function WrapperModal({ children, isOpen, onToggle, ...rest }) {
 }
 
 WrapperModal.defaultProps = {
-  children: null
+  children: null,
 };
 
 WrapperModal.propTypes = {
   children: PropTypes.node,
   isOpen: PropTypes.bool.isRequired,
-  onToggle: PropTypes.func.isRequired
+  onToggle: PropTypes.func.isRequired,
 };
 
 export default WrapperModal;

@@ -3,5 +3,5 @@ import Loader from './Loader';
 
 export default Loadable({
   loader: () => import('./index'),
-  loading: Loader
+  loading: Loader,
 });

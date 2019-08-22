@@ -13,13 +13,13 @@ function willSecure() {
       showLeftMenu,
       showLogout,
       store,
-      unsetAppSecured
-    }
+      unsetAppSecured,
+    },
   } = this;
 
   const cb = () =>
     this.setState({
-      shouldSecureAfterAllPluginsAreMounted: false
+      shouldSecureAfterAllPluginsAreMounted: false,
     });
 
   const initializerReducer = store

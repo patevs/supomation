@@ -27,7 +27,7 @@ class Policies extends React.Component {
       this.props.inputSelectName.split('.'),
       'permissions',
       'controllers',
-      'policy'
+      'policy',
     );
     const controllerRoutes = get(
       this.props.routes,
@@ -35,14 +35,14 @@ class Policies extends React.Component {
         this.props.inputSelectName.split('.'),
         'permissions',
         'controllers',
-        'policy'
-      )[0]
+        'policy',
+      )[0],
     );
     const routes = isEmpty(controllerRoutes)
       ? []
       : controllerRoutes.filter(
-          o => toLower(o.handler) === toLower(takeRight(path, 2).join('.'))
-        );
+        o => toLower(o.handler) === toLower(takeRight(path, 2).join('.')),
+      );
 
     return (
       <div className={cn('col-md-5', styles.policies)}>
@@ -69,8 +69,8 @@ class Policies extends React.Component {
           <div className="row">
             {!this.props.shouldDisplayPoliciesHint
               ? map(routes, (route, key) => (
-                  <BoundRoute key={key} route={route} />
-                ))
+                <BoundRoute key={key} route={route} />
+              ))
               : ''}
           </div>
         </div>
@@ -80,11 +80,11 @@ class Policies extends React.Component {
 }
 
 Policies.contextTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 Policies.defaultProps = {
-  routes: {}
+  routes: {},
 };
 
 Policies.propTypes = {
@@ -92,7 +92,7 @@ Policies.propTypes = {
   routes: PropTypes.object,
   selectOptions: PropTypes.array.isRequired,
   shouldDisplayPoliciesHint: PropTypes.bool.isRequired,
-  values: PropTypes.object.isRequired
+  values: PropTypes.object.isRequired,
 };
 
 export default Policies;

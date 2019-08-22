@@ -58,9 +58,9 @@ Sub.defaultProps = {
   title: {
     id: 'app.utils.defaultMessage',
     defaultMessage: 'app.utils.defaultMessage',
-    values: {}
+    values: {},
   },
-  underline: false
+  underline: false,
 };
 
 Sub.propTypes = {
@@ -70,7 +70,7 @@ Sub.propTypes = {
   name: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  underline: PropTypes.bool
+  underline: PropTypes.bool,
 };
 
 export default Sub;

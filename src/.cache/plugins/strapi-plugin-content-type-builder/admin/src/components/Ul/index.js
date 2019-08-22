@@ -1,8 +1,8 @@
 /**
- *
- * Ul
- *
- */
+*
+* Ul
+*
+*/
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -18,12 +18,12 @@ function Ul({ children, id }) {
 
 Ul.defaultProps = {
   children: null,
-  id: null
+  id: null,
 };
 
 Ul.propTypes = {
   children: PropTypes.node,
-  id: PropTypes.string
+  id: PropTypes.string,
 };
 
 export default Ul;

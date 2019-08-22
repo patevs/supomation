@@ -11,7 +11,7 @@ const converterOptions = {
   strikethrough: true,
   tables: true,
   tasklists: true,
-  underline: true
+  underline: true,
 };
 
 const converter = new showdown.Converter(converterOptions);

@@ -24,13 +24,13 @@ export function showNotification(message, status) {
     type: SHOW_NOTIFICATION,
     message,
     status,
-    id: nextNotificationId
+    id: nextNotificationId,
   };
 }
 
 export function hideNotification(id) {
   return {
     type: HIDE_NOTIFICATION,
-    id
+    id,
   };
 }

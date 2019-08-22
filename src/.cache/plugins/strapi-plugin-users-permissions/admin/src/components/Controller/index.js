@@ -99,20 +99,20 @@ class Controller extends React.Component {
 }
 
 Controller.contextTypes = {
-  selectAllActions: PropTypes.func.isRequired
+  selectAllActions: PropTypes.func.isRequired,
 };
 
 Controller.defaultProps = {
   actions: {},
   inputNamePath: 'permissions.application',
-  name: ''
+  name: '',
 };
 
 Controller.propTypes = {
   actions: PropTypes.object,
   inputNamePath: PropTypes.string,
   isOpen: PropTypes.bool.isRequired,
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 export default Controller;

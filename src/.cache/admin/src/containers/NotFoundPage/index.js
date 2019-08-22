@@ -23,6 +23,6 @@ export default class NotFoundPage extends React.Component {
 
 NotFoundPage.propTypes = {
   history: PropTypes.shape({
-    goBack: PropTypes.func.isRequired
-  }).isRequired
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
 };

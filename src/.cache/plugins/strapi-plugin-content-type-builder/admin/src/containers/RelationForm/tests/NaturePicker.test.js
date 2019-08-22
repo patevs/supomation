@@ -10,7 +10,7 @@ describe('<NaturePicker />', () => {
 
   it('should use the defaultProps', () => {
     const {
-      defaultProps: { onClick }
+      defaultProps: { onClick },
     } = NaturePicker;
 
     expect(onClick).toBeDefined();
@@ -20,7 +20,7 @@ describe('<NaturePicker />', () => {
   it('should pass the correct data', () => {
     const props = {
       modelName: 'test',
-      onClick: jest.fn()
+      onClick: jest.fn(),
     };
 
     const wrapper = shallow(<NaturePicker {...props} />);
@@ -35,7 +35,7 @@ describe('<NaturePicker />', () => {
     const props = {
       modelName: 'test',
       nature: 'oneWay',
-      target: 'othertest'
+      target: 'othertest',
     };
 
     const wrapper = shallow(<NaturePicker {...props} />);
@@ -51,7 +51,7 @@ describe('<NaturePicker />', () => {
     const props = {
       modelName: 'test',
       nature: 'oneToOne',
-      target: 'othertest'
+      target: 'othertest',
     };
 
     const wrapper = shallow(<NaturePicker {...props} />);
@@ -67,7 +67,7 @@ describe('<NaturePicker />', () => {
     const props = {
       modelName: 'test',
       nature: 'manyToMany',
-      target: 'othertest'
+      target: 'othertest',
     };
 
     const wrapper = shallow(<NaturePicker {...props} />);
@@ -83,7 +83,7 @@ describe('<NaturePicker />', () => {
     const props = {
       modelName: 'test',
       nature: 'manyToOne',
-      target: 'othertest'
+      target: 'othertest',
     };
 
     const wrapper = shallow(<NaturePicker {...props} />);
@@ -99,7 +99,7 @@ describe('<NaturePicker />', () => {
     const props = {
       modelName: 'test',
       nature: 'oneToMany',
-      target: 'othertest'
+      target: 'othertest',
     };
 
     const wrapper = shallow(<NaturePicker {...props} />);

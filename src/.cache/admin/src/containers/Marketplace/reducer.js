@@ -4,14 +4,14 @@ import {
   DOWNLOAD_PLUGIN,
   DOWNLOAD_PLUGIN_SUCCEEDED,
   GET_AVAILABLE_AND_INSTALLED_PLUGINS_SUCCEEDED,
-  RESET_PROPS
+  RESET_PROPS,
 } from './constants';
 
 const initialState = fromJS({
   availablePlugins: List([]),
   installedPlugins: List([]),
   isLoading: true,
-  pluginToDownload: null
+  pluginToDownload: null,
 });
 
 function marketplaceReducer(state = initialState, action) {
@@ -20,9 +20,7 @@ function marketplaceReducer(state = initialState, action) {
       return state.update('pluginToDownload', () => action.pluginToDownload);
     case DOWNLOAD_PLUGIN_SUCCEEDED:
       return state
-        .update('installedPlugins', list =>
-          list.push(state.get('pluginToDownload'))
-        )
+        .update('installedPlugins', list => list.push(state.get('pluginToDownload')))
         .update('pluginToDownload', () => null);
     case GET_AVAILABLE_AND_INSTALLED_PLUGINS_SUCCEEDED:
       return state

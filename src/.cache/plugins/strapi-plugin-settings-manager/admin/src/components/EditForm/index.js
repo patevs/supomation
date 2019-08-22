@@ -81,7 +81,7 @@ EditForm.propTypes = {
   onSubmit: PropTypes.func,
   sections: PropTypes.array,
   showLoader: PropTypes.bool,
-  values: PropTypes.object
+  values: PropTypes.object,
 };
 
 export default EditForm;

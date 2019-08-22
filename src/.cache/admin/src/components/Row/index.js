@@ -37,7 +37,7 @@ class Row extends React.Component {
     const {
       history: { push },
       name,
-      plugin: { required }
+      plugin: { required },
     } = this.props;
     const { currentEnvironment } = this.context;
 
@@ -55,7 +55,7 @@ class Row extends React.Component {
           e.preventDefault();
           e.stopPropagation();
           push(settingsPath);
-        }
+        },
       });
     }
 
@@ -63,7 +63,7 @@ class Row extends React.Component {
       icons.push({
         icoType: 'trash',
         id: name,
-        onClick: this.handleClick
+        onClick: this.handleClick,
       });
     }
 
@@ -107,7 +107,7 @@ class Row extends React.Component {
 }
 
 Row.contextTypes = {
-  currentEnvironment: PropTypes.string
+  currentEnvironment: PropTypes.string,
 };
 
 Row.propTypes = {
@@ -116,7 +116,7 @@ Row.propTypes = {
   onDeleteClick: PropTypes.func.isRequired,
   onDeleteConfirm: PropTypes.func.isRequired,
   plugin: PropTypes.object.isRequired,
-  pluginActionSucceeded: PropTypes.bool.isRequired
+  pluginActionSucceeded: PropTypes.bool.isRequired,
 };
 
 export default withRouter(Row);

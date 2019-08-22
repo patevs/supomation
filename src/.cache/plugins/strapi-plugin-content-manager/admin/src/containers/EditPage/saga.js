@@ -7,7 +7,7 @@ import {
   includes,
   isNumber,
   isString,
-  map
+  map,
 } from 'lodash';
 import { all, call, fork, put, select, takeLatest } from 'redux-saga/effects';
 // Utils.
@@ -19,7 +19,7 @@ import {
   setFormErrors,
   setLoader,
   submitSuccess,
-  unsetLoader
+  unsetLoader,
 } from './actions';
 import { DELETE_DATA, GET_DATA, SUBMIT } from './constants';
 import {
@@ -27,7 +27,7 @@ import {
   makeSelectIsCreating,
   makeSelectModelName,
   makeSelectRecord,
-  makeSelectSource
+  makeSelectSource,
 } from './selectors';
 
 function* dataGet(action) {
@@ -37,8 +37,8 @@ function* dataGet(action) {
     const [response] = yield all([
       call(request, `/content-manager/explorer/${modelName}/${action.id}`, {
         method: 'GET',
-        params
-      })
+        params,
+      }),
     ]);
     const pluginHeaderTitle = yield call(
       templateObject,
@@ -110,7 +110,7 @@ export function* submit(action) {
                 currentModelName,
                 'fields',
                 current,
-                'type'
+                'type',
               ],
               null
             )
@@ -151,7 +151,7 @@ export function* submit(action) {
           // Send an empty array if relation is manyToManyMorph else an object
           const data = get(fileRelations, [
             findIndex(fileRelations, ['name', current]),
-            'multiple'
+            'multiple',
           ])
             ? []
             : {};
@@ -173,7 +173,7 @@ export function* submit(action) {
     const params = { source };
     // Change the request helper default headers so we can pass a FormData
     const headers = {
-      'X-Forwarded-Host': 'strapi'
+      'X-Forwarded-Host': 'strapi',
     };
 
     const requestUrl = `/content-manager/explorer/${currentModelName}/${id}`;
@@ -190,7 +190,7 @@ export function* submit(action) {
         method: isCreating ? 'POST' : 'PUT',
         headers,
         body: recordCleaned,
-        params
+        params,
       },
       false,
       false
@@ -229,7 +229,7 @@ export function* submit(action) {
         'messages',
         '0',
         'field',
-        '0'
+        '0',
       ]);
 
       yield put(setFormErrors([{ name, errors }]));

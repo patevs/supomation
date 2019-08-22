@@ -92,12 +92,12 @@ class Li extends React.Component {
       // },
       {
         icoType: 'eye',
-        onClick: this.handleClick
+        onClick: this.handleClick,
       },
       {
         icoType: 'trash',
-        onClick: () => this.setState({ isOpen: true })
-      }
+        onClick: () => this.setState({ isOpen: true }),
+      },
     ];
 
     return (
@@ -167,7 +167,7 @@ class Li extends React.Component {
 }
 
 Li.contextTypes = {
-  deleteData: PropTypes.func.isRequired
+  deleteData: PropTypes.func.isRequired,
 };
 
 Li.defaultProps = {
@@ -177,12 +177,12 @@ Li.defaultProps = {
     name: 'avatar.pdf',
     updated: '20/11/2017 19:29:54',
     size: '24 B',
-    relatedTo: 'John Doe'
-  }
+    relatedTo: 'John Doe',
+  },
 };
 
 Li.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
 };
 
 export default Li;

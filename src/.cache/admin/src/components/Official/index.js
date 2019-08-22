@@ -1,8 +1,8 @@
 /*
- *
- * Official
- *
- */
+*
+* Official
+*
+*/
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -19,11 +19,11 @@ function Official(props) {
 }
 
 Official.defaultProps = {
-  style: {}
+  style: {},
 };
 
 Official.propTypes = {
-  style: PropTypes.object
+  style: PropTypes.object,
 };
 
 export default Official;

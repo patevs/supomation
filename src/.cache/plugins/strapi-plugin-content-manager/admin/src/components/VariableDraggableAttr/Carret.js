@@ -1,5 +1,5 @@
 /**
- *
+ * 
  * Carret
  */
 
@@ -12,11 +12,11 @@ const Carret = ({ style }) => {
 };
 
 Carret.defaultProps = {
-  style: {}
+  style: {},
 };
 
 Carret.propTypes = {
-  style: PropTypes.object
+  style: PropTypes.object,
 };
 
 export default Carret;

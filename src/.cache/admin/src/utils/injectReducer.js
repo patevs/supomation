@@ -18,7 +18,7 @@ export default ({ key, reducer, pluginId }) => WrappedComponent => {
       WrappedComponent.name ||
       'Component'})`;
     static contextTypes = {
-      store: PropTypes.object
+      store: PropTypes.object,
     };
 
     componentWillMount() {

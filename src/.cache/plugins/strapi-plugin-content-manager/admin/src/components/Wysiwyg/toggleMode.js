@@ -16,11 +16,7 @@ const ToggleMode = props => {
 
   return (
     <div className={styles.toggleModeWrapper}>
-      <button
-        type="button"
-        className={styles.toggleModeButton}
-        onClick={props.onClick}
-      >
+      <button type="button" className={styles.toggleModeButton} onClick={props.onClick}>
         <FormattedMessage id={label} />
       </button>
     </div>
@@ -29,12 +25,12 @@ const ToggleMode = props => {
 
 ToggleMode.defaultProps = {
   isPreviewMode: false,
-  onClick: () => {}
+  onClick: () => {},
 };
 
 ToggleMode.propTypes = {
   isPreviewMode: PropTypes.bool,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default ToggleMode;

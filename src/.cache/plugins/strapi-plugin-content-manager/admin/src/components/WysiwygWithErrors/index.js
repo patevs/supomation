@@ -14,7 +14,7 @@ import {
   InputDescription,
   InputErrors,
   InputSpacer,
-  validateInput
+  validateInput,
 } from 'strapi-helper-plugin';
 
 import Wysiwyg from '../Wysiwyg';
@@ -90,7 +90,7 @@ class WysiwygWithErrors extends React.Component {
       resetProps,
       style,
       tabIndex,
-      value
+      value,
     } = this.props;
     const handleBlur = isFunction(onBlur) ? onBlur : this.handleBlur;
 
@@ -105,7 +105,7 @@ class WysiwygWithErrors extends React.Component {
         className={cn(
           styles.containerWysiwyg,
           customBootstrapClass,
-          !isEmpty(className) && className
+          !isEmpty(className) && className,
         )}
         style={style}
       >
@@ -171,7 +171,7 @@ WysiwygWithErrors.defaultProps = {
   resetProps: false,
   style: {},
   tabIndex: '0',
-  validations: {}
+  validations: {},
 };
 
 WysiwygWithErrors.propTypes = {
@@ -190,8 +190,8 @@ WysiwygWithErrors.propTypes = {
     PropTypes.func,
     PropTypes.shape({
       id: PropTypes.string,
-      params: PropTypes.object
-    })
+      params: PropTypes.object,
+    }),
   ]),
   inputDescriptionClassName: PropTypes.string,
   inputDescriptionStyle: PropTypes.object,
@@ -201,8 +201,8 @@ WysiwygWithErrors.propTypes = {
     PropTypes.func,
     PropTypes.shape({
       id: PropTypes.string,
-      params: PropTypes.object
-    })
+      params: PropTypes.object,
+    }),
   ]),
   labelClassName: PropTypes.string,
   labelStyle: PropTypes.object,
@@ -215,7 +215,7 @@ WysiwygWithErrors.propTypes = {
   style: PropTypes.object,
   tabIndex: PropTypes.string,
   validations: PropTypes.object,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
 
 export default WysiwygWithErrors;

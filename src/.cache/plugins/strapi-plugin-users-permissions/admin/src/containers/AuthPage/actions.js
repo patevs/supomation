@@ -11,13 +11,13 @@ import {
   SET_FORM,
   SUBMIT,
   SUBMIT_ERROR,
-  SUBMIT_SUCCEEDED
+  SUBMIT_SUCCEEDED,
 } from './constants';
 
 export function hideLoginErrorsInput(value) {
   return {
     type: HIDE_LOGIN_ERRORS_INPUT,
-    value
+    value,
   };
 }
 
@@ -25,14 +25,14 @@ export function onChangeInput({ target }) {
   return {
     type: ON_CHANGE_INPUT,
     key: target.name,
-    value: target.value
+    value: target.value,
   };
 }
 
 export function setErrors(formErrors) {
   return {
     type: SET_ERRORS,
-    formErrors
+    formErrors,
   };
 }
 
@@ -42,7 +42,7 @@ export function setForm(formType, email) {
   switch (formType) {
     case 'forgot-password':
       data = {
-        email: ''
+        email: '',
       };
 
       break;
@@ -50,7 +50,7 @@ export function setForm(formType, email) {
       data = {
         identifier: '',
         password: '',
-        rememberMe: true
+        rememberMe: true,
       };
 
       break;
@@ -60,19 +60,19 @@ export function setForm(formType, email) {
         password: '',
         confirmPassword: '',
         email: '',
-        news: false
+        news: false,
       };
       break;
     case 'register-success':
       data = {
-        email
+        email,
       };
       break;
     case 'reset-password':
       data = {
         password: '',
         passwordConfirmation: '',
-        code: email
+        code: email,
       };
       break;
     default:
@@ -82,26 +82,26 @@ export function setForm(formType, email) {
   return {
     type: SET_FORM,
     data,
-    formType
+    formType,
   };
 }
 
 export function submit(context) {
   return {
     type: SUBMIT,
-    context
+    context,
   };
 }
 
 export function submitError(formErrors) {
   return {
     type: SUBMIT_ERROR,
-    formErrors
+    formErrors,
   };
 }
 
 export function submitSucceeded() {
   return {
-    type: SUBMIT_SUCCEEDED
+    type: SUBMIT_SUCCEEDED,
   };
 }

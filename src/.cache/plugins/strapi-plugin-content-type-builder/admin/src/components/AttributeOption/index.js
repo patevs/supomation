@@ -74,7 +74,7 @@ AttributeOption.defaultProps = {
   nodeToFocus: -1,
   onClick: () => {},
   tabIndex: 0,
-  type: 'string'
+  type: 'string',
 };
 
 AttributeOption.propTypes = {
@@ -83,7 +83,7 @@ AttributeOption.propTypes = {
   nodeToFocus: PropTypes.number,
   onClick: PropTypes.func,
   tabIndex: PropTypes.number,
-  type: PropTypes.string
+  type: PropTypes.string,
 };
 
 export default AttributeOption;

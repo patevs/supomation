@@ -14,7 +14,7 @@ import {
   ContentBlock,
   genKey,
   Entity,
-  CharacterMetadata
+  CharacterMetadata,
 } from 'draft-js';
 import { List, OrderedSet, Repeat, fromJS } from 'immutable';
 import cn from 'classnames';
@@ -26,7 +26,7 @@ import {
   findAtomicEntities,
   findLinkEntities,
   findImageEntities,
-  findVideoEntities
+  findVideoEntities,
 } from './strategies';
 
 import Image from './image';
@@ -60,30 +60,29 @@ function getBlockStyle(block) {
 const decorator = new CompositeDecorator([
   {
     strategy: findLinkEntities,
-    component: Link
+    component: Link,
   },
   {
     strategy: findImageEntities,
-    component: Image
+    component: Image,
   },
   {
     strategy: findVideoEntities,
-    component: Video
+    component: Video,
   },
   {
     strategy: findAtomicEntities,
-    component: Link
-  }
+    component: Link,
+  },
 ]);
 
 const getBlockSpecForElement = aElement => ({
   contentType: 'link',
   aHref: aElement.href,
-  aInnerHTML: aElement.innerHTML
+  aInnerHTML: aElement.innerHTML,
 });
 
-const elementToBlockSpecElement = element =>
-  wrapBlockSpec(getBlockSpecForElement(element));
+const elementToBlockSpecElement = element => wrapBlockSpec(getBlockSpecForElement(element));
 
 const wrapBlockSpec = blockSpec => {
   if (blockSpec == null) {
@@ -104,8 +103,7 @@ const replaceElement = (oldEl, newEl) => {
   return parentNode.replaceChild(newEl, oldEl);
 };
 
-const aReplacer = aElement =>
-  replaceElement(aElement, elementToBlockSpecElement(aElement));
+const aReplacer = aElement => replaceElement(aElement, elementToBlockSpecElement(aElement));
 
 const createContentBlock = (blockData = {}) => {
   const { key, type, text, data, inlineStyles, entityData } = blockData;
@@ -113,7 +111,7 @@ const createContentBlock = (blockData = {}) => {
   let blockSpec = {
     type: type !== null && type !== undefined ? type : 'unstyled',
     text: text !== null && text !== undefined ? text : '',
-    key: key !== null && key !== undefined ? key : genKey()
+    key: key !== null && key !== undefined ? key : genKey(),
   };
 
   if (data) {
@@ -131,7 +129,7 @@ const createContentBlock = (blockData = {}) => {
     const style = OrderedSet(inlineStyles || []);
     const charData = CharacterMetadata.applyEntity(
       CharacterMetadata.create({ style, entityKey }),
-      entityKey
+      entityKey,
     );
     blockSpec.characterList = List(Repeat(charData, text.length));
   }
@@ -174,11 +172,7 @@ class PreviewWysiwyg extends React.PureComponent {
 
   getClassName = () => {
     if (this.context.isFullscreen) {
-      return cn(
-        styles.editor,
-        styles.editorFullScreen,
-        styles.fullscreenPreviewEditor
-      );
+      return cn(styles.editor, styles.editorFullScreen, styles.fullscreenPreviewEditor);
     }
 
     return styles.editor;
@@ -186,12 +180,9 @@ class PreviewWysiwyg extends React.PureComponent {
 
   previewHTML = rawContent => {
     const initHtml = isEmpty(rawContent) ? '<p></p>' : rawContent;
-    const html = new DOMParser().parseFromString(
-      converter.makeHtml(initHtml),
-      'text/html'
-    );
+    const html = new DOMParser().parseFromString(converter.makeHtml(initHtml), 'text/html');
     toArray(html.getElementsByTagName('a')) // Retrieve all the links <a> tags
-      .filter(value => value.getElementsByTagName('img').length > 0) // Filter by checking if they have any <img> children
+      .filter((value) => value.getElementsByTagName('img').length > 0) // Filter by checking if they have any <img> children
       .forEach(aReplacer); // Change those links into <blockquote> elements so we can set some metacharacters with the img content
 
     // TODO:
@@ -210,13 +201,13 @@ class PreviewWysiwyg extends React.PureComponent {
               mutability: 'IMMUTABLE',
               data: {
                 aHref,
-                aInnerHTML
-              }
+                aInnerHTML,
+              },
             };
 
             const blockSpec = Object.assign(
               { type: 'atomic', text: ' ', key: block.getKey() },
-              { entityData }
+              { entityData },
             );
             const atomicBlock = createContentBlock(blockSpec); // Create an atomic block so we can identify it easily
 
@@ -231,9 +222,7 @@ class PreviewWysiwyg extends React.PureComponent {
 
       const contentState = ContentState.createFromBlockArray(blocksFromHTML);
 
-      return this.setState({
-        editorState: EditorState.createWithContent(contentState, decorator)
-      });
+      return this.setState({ editorState: EditorState.createWithContent(contentState, decorator) });
     }
 
     return this.setState({ editorState: EditorState.createEmpty() });
@@ -250,12 +239,7 @@ class PreviewWysiwyg extends React.PureComponent {
           onChange={() => {}}
           placeholder={placeholder}
         />
-        <input
-          className={styles.editorInput}
-          value=""
-          onChange={() => {}}
-          tabIndex="-1"
-        />
+        <input className={styles.editorInput} value="" onChange={() => {}} tabIndex="-1" />
       </div>
     );
   }
@@ -263,15 +247,15 @@ class PreviewWysiwyg extends React.PureComponent {
 
 PreviewWysiwyg.contextTypes = {
   isFullscreen: PropTypes.bool,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 };
 
 PreviewWysiwyg.defaultProps = {
-  data: ''
+  data: '',
 };
 
 PreviewWysiwyg.propTypes = {
-  data: PropTypes.string
+  data: PropTypes.string,
 };
 
 export default PreviewWysiwyg;

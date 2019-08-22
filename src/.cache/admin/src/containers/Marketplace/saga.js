@@ -6,11 +6,11 @@ import { request } from 'strapi-helper-plugin';
 import { selectLocale } from '../LanguageProvider/selectors';
 import {
   getAvailableAndInstalledPluginsSucceeded,
-  downloadPluginSucceeded
+  downloadPluginSucceeded,
 } from './actions';
 import {
   DOWNLOAD_PLUGIN,
-  GET_AVAILABLE_AND_INSTALLED_PLUGINS
+  GET_AVAILABLE_AND_INSTALLED_PLUGINS,
 } from './constants';
 import { makeSelectPluginToDownload } from './selectors';
 
@@ -20,7 +20,7 @@ export function* pluginDownload() {
     const overlayblockerParams = {
       enabled: true,
       title: 'app.components.InstallPluginPage.Download.title',
-      description: 'app.components.InstallPluginPage.Download.description'
+      description: 'app.components.InstallPluginPage.Download.description',
     };
     strapi.lockApp(overlayblockerParams);
 
@@ -29,8 +29,8 @@ export function* pluginDownload() {
       method: 'POST',
       body: {
         plugin: pluginToDownload,
-        port: window.location.port
-      }
+        port: window.location.port,
+      },
     };
 
     const response = yield call(
@@ -58,15 +58,15 @@ export function* getData() {
     const opts = {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       params: {
-        lang: locale
-      }
+        lang: locale,
+      },
     };
     const [availablePlugins, { plugins }] = yield all([
       call(request, 'https://marketplace.strapi.io/plugins', opts),
-      call(request, '/admin/plugins', { method: 'GET' })
+      call(request, '/admin/plugins', { method: 'GET' }),
     ]);
 
     yield put(

@@ -15,11 +15,13 @@ class EditFormSectionSubNested extends React.Component {
   render() {
     return (
       <div
-        className={`${this.props.styles.stmpadded} ${this.props.styles.stmsubNestedFormContainer}`}
+        className={`${this.props.styles.stmpadded} ${
+          this.props.styles.stmsubNestedFormContainer
+        }`}
       >
         <div className="row">
           {map(this.props.section, (item, key) =>
-            this.props.renderInput(item, key)
+            this.props.renderInput(item, key),
           )}
         </div>
       </div>
@@ -30,7 +32,7 @@ class EditFormSectionSubNested extends React.Component {
 EditFormSectionSubNested.propTypes = {
   renderInput: PropTypes.func,
   section: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-  styles: PropTypes.object
+  styles: PropTypes.object,
 };
 
 export default WithFormSection(EditFormSectionSubNested); // eslint-disable-line new-cap

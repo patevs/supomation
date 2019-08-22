@@ -13,13 +13,13 @@ import {
   SET_ERRORS,
   SUBMIT,
   SUBMIT_ERROR,
-  SUBMIT_SUCCEEDED
+  SUBMIT_SUCCEEDED,
 } from './constants';
 
 export function getSettings(env) {
   return {
     type: GET_SETTINGS,
-    env
+    env,
   };
 }
 
@@ -28,51 +28,50 @@ export function getSettingsSucceeded(settings, appEnvironments) {
     type: GET_SETTINGS_SUCCEEDED,
     appEnvironments,
     settings,
-    initialData: settings.config
+    initialData: settings.config,
   };
 }
 
 export function onCancel() {
   return {
-    type: ON_CANCEL
+    type: ON_CANCEL,
   };
 }
 
 export function onChange({ target }) {
   const keys = ['modifiedData'].concat(target.name.split('.'));
-  const value =
-    target.name === 'sizeLimit' ? Number(target.value) * 1000 : target.value;
+  const value = target.name === 'sizeLimit' ? Number(target.value) * 1000 : target.value;
 
   return {
     type: ON_CHANGE,
     keys,
-    value
+    value,
   };
 }
 
 export function setErrors(errors) {
   return {
     type: SET_ERRORS,
-    errors
+    errors,
   };
 }
 
 export function submit() {
   return {
-    type: SUBMIT
+    type: SUBMIT,
   };
 }
 
 export function submitError(errors) {
   return {
     type: SUBMIT_ERROR,
-    errors
+    errors,
   };
 }
 
 export function submitSucceeded(data) {
   return {
     type: SUBMIT_SUCCEEDED,
-    data
+    data,
   };
 }

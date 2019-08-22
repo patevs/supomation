@@ -39,7 +39,7 @@ import {
   union,
   findIndex,
   uniqBy,
-  size
+  size,
 } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import WithInput from '../WithInput';
@@ -51,7 +51,7 @@ class InputText extends React.Component {
     super(props);
     this.state = {
       errors: [],
-      hasInitialValue: false
+      hasInitialValue: false,
     };
   }
 
@@ -79,7 +79,7 @@ class InputText extends React.Component {
     return (
       size(this.props.errors) === size(nextProps.errors) &&
       this.props.errors.every(
-        (error, index) => error.id === nextProps.errors[index].id
+        (error, index) => error.id === nextProps.errors[index].id,
       )
     );
   };
@@ -92,7 +92,7 @@ class InputText extends React.Component {
       // specific check for db
       const indexErrorDbExist = findIndex(this.props.errors, [
         'id',
-        'settings-manager.request.error.database.exist'
+        'settings-manager.request.error.database.exist',
       ]);
       const errors =
         indexErrorDbExist !== -1
@@ -108,35 +108,35 @@ class InputText extends React.Component {
     let errors = [];
     // handle i18n
     const requiredError = {
-      id: 'settings-manager.request.error.validation.required'
+      id: 'settings-manager.request.error.validation.required',
     };
     mapKeys(this.props.validations, (validationValue, validationKey) => {
       switch (validationKey) {
         case 'maxLength':
           if (value.length > validationValue) {
             errors.push({
-              id: 'settings-manager.request.error.validation.maxLength'
+              id: 'settings-manager.request.error.validation.maxLength',
             });
           }
           break;
         case 'minLength':
           if (value.length < validationValue) {
             errors.push({
-              id: 'settings-manager.request.error.validation.minLength'
+              id: 'settings-manager.request.error.validation.minLength',
             });
           }
           break;
         case 'required':
           if (value.length === 0) {
             errors.push({
-              id: 'settings-manager.request.error.validation.required'
+              id: 'settings-manager.request.error.validation.required',
             });
           }
           break;
         case 'regex':
           if (!new RegExp(validationValue).test(value)) {
             errors.push({
-              id: 'settings-manager.request.error.validation.regex'
+              id: 'settings-manager.request.error.validation.regex',
             });
           }
           break;
@@ -174,7 +174,7 @@ class InputText extends React.Component {
     handleBlur,
     inputValue,
     placeholder,
-    marginBottom
+    marginBottom,
   ) => (
     <FormattedMessage id={`settings-manager.${placeholder}`}>
       {message => (
@@ -228,7 +228,7 @@ class InputText extends React.Component {
         handleBlur,
         inputValue,
         placeholder,
-        marginBottomInput
+        marginBottomInput,
       )
     ) : (
       <input
@@ -256,7 +256,9 @@ class InputText extends React.Component {
       marginTopSmall = '-1.2rem';
     return (
       <div
-        className={`${this.props.styles.stminputText} ${bootStrapClass} ${requiredClass} ${bootStrapClassDanger}`}
+        className={`${
+          this.props.styles.stminputText
+        } ${bootStrapClass} ${requiredClass} ${bootStrapClassDanger}`}
         style={spacer}
       >
         {label}
@@ -285,7 +287,7 @@ InputText.propTypes = {
   styles: PropTypes.object,
   target: PropTypes.string,
   validations: PropTypes.object,
-  value: PropTypes.string
+  value: PropTypes.string,
 };
 
 export default WithInput(InputText); // eslint-disable-line new-cap

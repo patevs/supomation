@@ -33,7 +33,7 @@ if (!foundLanguage) {
 }
 
 const initialState = fromJS({
-  locale: foundLanguage || first(languages) || 'en'
+  locale: foundLanguage || first(languages) || 'en',
 });
 
 function languageProviderReducer(state = initialState, action) {

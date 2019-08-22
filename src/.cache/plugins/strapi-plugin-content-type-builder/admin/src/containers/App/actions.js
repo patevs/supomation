@@ -38,56 +38,53 @@ import {
   SUBMIT_TEMP_CONTENT_TYPE,
   SUBMIT_TEMP_CONTENT_TYPE_SUCCEEDED,
   UPDATE_TEMP_CONTENT_TYPE,
-  ON_CHANGE_EXISTING_CONTENT_TYPE_MAIN_INFOS
+  ON_CHANGE_EXISTING_CONTENT_TYPE_MAIN_INFOS,
 } from './constants';
 
 export function addAttributeRelation(isModelTemporary, modelName) {
   return {
     type: ADD_ATTRIBUTE_RELATION,
     isModelTemporary,
-    modelName
+    modelName,
   };
 }
 
-export function addAttributeToExistingContentType(
-  contentTypeName,
-  attributeType
-) {
+export function addAttributeToExistingContentType(contentTypeName, attributeType) {
   return {
     type: ADD_ATTRIBUTE_TO_EXISITING_CONTENT_TYPE,
     attributeType,
-    contentTypeName
+    contentTypeName,
   };
 }
 
 export function addAttributeToTempContentType(attributeType) {
   return {
     type: ADD_ATTRIBUTE_TO_TEMP_CONTENT_TYPE,
-    attributeType
+    attributeType,
   };
 }
 
 export function cancelNewContentType() {
   return {
-    type: CANCEL_NEW_CONTENT_TYPE
+    type: CANCEL_NEW_CONTENT_TYPE,
   };
 }
 
 export function clearTemporaryAttribute() {
   return {
-    type: CLEAR_TEMPORARY_ATTRIBUTE
+    type: CLEAR_TEMPORARY_ATTRIBUTE,
   };
 }
 
 export function clearTemporaryAttributeRelation() {
   return {
-    type: CLEAR_TEMPORARY_ATTRIBUTE_RELATION
+    type: CLEAR_TEMPORARY_ATTRIBUTE_RELATION,
   };
 }
 
 export function createTempContentType() {
   return {
-    type: CREATE_TEMP_CONTENT_TYPE
+    type: CREATE_TEMP_CONTENT_TYPE,
   };
 }
 
@@ -95,45 +92,39 @@ export function deleteModel(modelName, context) {
   return {
     type: DELETE_MODEL,
     modelName,
-    context
+    context,
   };
 }
 
 export function deleteModelAttribute(keys) {
   return {
     type: DELETE_MODEL_ATTRIBUTE,
-    keys
+    keys,
   };
 }
 
 export function deleteModelSucceeded(modelName) {
   return {
     type: DELETE_MODEL_SUCCEEDED,
-    modelName
+    modelName,
   };
 }
 
 export function deleteTemporaryModel() {
   return {
-    type: DELETE_TEMPORARY_MODEL
+    type: DELETE_TEMPORARY_MODEL,
   };
 }
 
 export function getData() {
   return {
-    type: GET_DATA
+    type: GET_DATA,
   };
 }
 
 export function getDataSucceeded({ allModels, models }, connections) {
   const initialData = allModels.reduce((acc, current) => {
-    acc[current.name] = pick(current, [
-      'name',
-      'collectionName',
-      'connection',
-      'description',
-      'mainField'
-    ]);
+    acc[current.name] = pick(current, ['name', 'collectionName', 'connection', 'description', 'mainField']);
     const attributes = OrderedMap(buildModelAttributes(current.attributes));
     set(acc, [current.name, 'attributes'], attributes);
 
@@ -144,56 +135,47 @@ export function getDataSucceeded({ allModels, models }, connections) {
     type: GET_DATA_SUCCEEDED,
     initialData,
     models,
-    connections
+    connections,
   };
 }
 
 export function onChangeExistingContentTypeMainInfos({ target }) {
-  const value =
-    target.name === 'name'
-      ? camelCase(target.value.trim()).toLowerCase()
-      : target.value;
+  const value = target.name === 'name' ? camelCase(target.value.trim()).toLowerCase() : target.value;
 
   return {
     type: ON_CHANGE_EXISTING_CONTENT_TYPE_MAIN_INFOS,
     keys: target.name.split('.'),
-    value
+    value,
   };
 }
 
 export function onChangeNewContentTypeMainInfos({ target }) {
-  const value =
-    target.name === 'name'
-      ? camelCase(target.value.trim()).toLowerCase()
-      : target.value;
+  const value = target.name === 'name' ? camelCase(target.value.trim()).toLowerCase() : target.value;
 
   return {
     type: ON_CHANGE_NEW_CONTENT_TYPE_MAIN_INFOS,
     keys: target.name.split('.'),
-    value
+    value,
   };
 }
 
 export function onChangeAttribute({ target }) {
-  const value = target.name.includes('name')
-    ? target.value.split(' ').join('')
-    : target.value;
+  const value = target.name.includes('name') ? target.value.split(' ').join('') : target.value;
 
   return {
     type: ON_CHANGE_ATTRIBUTE,
     keys: target.name.split('.'),
-    value: value
+    value: value,
   };
 }
 
 export function onChangeRelation({ target }) {
-  const value =
-    target.name === 'unique' ? target.value : target.value.split(' ').join('');
+  const value = target.name === 'unique' ? target.value : target.value.split(' ').join('');
 
   return {
     type: ON_CHANGE_RELATION,
     keys: target.name.split('.'),
-    value
+    value,
   };
 }
 
@@ -201,7 +183,7 @@ export function onChangeRelationNature(nature, currentModel) {
   return {
     type: ON_CHANGE_RELATION_NATURE,
     currentModel,
-    nature
+    nature,
   };
 }
 
@@ -210,95 +192,77 @@ export function onChangeRelationTarget(model, currentModel, isEditing = false) {
     type: ON_CHANGE_RELATION_TARGET,
     currentModel,
     model,
-    isEditing
+    isEditing,
   };
 }
 
 export function resetNewContentTypeMainInfos() {
   return {
-    type: RESET_NEW_CONTENT_TYPE_MAIN_INFOS
+    type: RESET_NEW_CONTENT_TYPE_MAIN_INFOS,
   };
 }
 
 export function resetEditExistingContentType(contentTypeName) {
   return {
     type: RESET_EDIT_EXISTING_CONTENT_TYPE,
-    contentTypeName
+    contentTypeName,
   };
 }
 
 export function resetExistingContentTypeMainInfos(contentTypeName) {
   return {
     type: RESET_EXISTING_CONTENT_TYPE_MAIN_INFOS,
-    contentTypeName
+    contentTypeName,
   };
 }
 
 export function resetEditTempContentType() {
   return {
-    type: RESET_EDIT_TEMP_CONTENT_TYPE
+    type: RESET_EDIT_TEMP_CONTENT_TYPE,
   };
 }
 
 export function resetProps() {
   return {
-    type: RESET_PROPS
+    type: RESET_PROPS,
   };
 }
 
-export function saveEditedAttribute(
-  attributeName,
-  isModelTemporary,
-  modelName
-) {
+export function saveEditedAttribute(attributeName, isModelTemporary, modelName) {
   return {
     type: SAVE_EDITED_ATTRIBUTE,
     attributeName,
     isModelTemporary,
-    modelName
+    modelName,
   };
 }
 
-export function saveEditedAttributeRelation(
-  attributeName,
-  isModelTemporary,
-  modelName
-) {
+export function saveEditedAttributeRelation(attributeName, isModelTemporary, modelName) {
   return {
     type: SAVE_EDITED_ATTRIBUTE_RELATION,
     attributeName,
     isModelTemporary,
-    modelName
+    modelName,
   };
 }
 
-export function setTemporaryAttribute(
-  attributeName,
-  isModelTemporary,
-  modelName
-) {
+export function setTemporaryAttribute(attributeName, isModelTemporary, modelName) {
   return {
     type: SET_TEMPORARY_ATTRIBUTE,
     attributeName,
     isModelTemporary,
-    modelName
+    modelName,
   };
 }
 
-export function setTemporaryAttributeRelation(
-  target,
-  isModelTemporary,
-  source,
-  attributeName,
-  isEditing
-) {
+export function setTemporaryAttributeRelation(target, isModelTemporary, source, attributeName, isEditing) {
   return {
     type: SET_TEMPORARY_ATTRIBUTE_RELATION,
     attributeName,
     isEditing,
     isModelTemporary,
     source,
-    target
+    target,
   };
 }
 
@@ -311,13 +275,13 @@ export function submitContentType(oldContentTypeName, data, context, source) {
     oldContentTypeName,
     body,
     source,
-    context
+    context,
   };
 }
 
 export function submitContentTypeSucceeded() {
   return {
-    type: SUBMIT_CONTENT_TYPE_SUCCEEDED
+    type: SUBMIT_CONTENT_TYPE_SUCCEEDED,
   };
 }
 
@@ -328,19 +292,19 @@ export function submitTempContentType(data, context) {
   return {
     type: SUBMIT_TEMP_CONTENT_TYPE,
     body,
-    context
+    context,
   };
 }
 
 export function submitTempContentTypeSucceeded() {
   return {
-    type: SUBMIT_TEMP_CONTENT_TYPE_SUCCEEDED
+    type: SUBMIT_TEMP_CONTENT_TYPE_SUCCEEDED,
   };
 }
 
 export function updateTempContentType() {
   return {
-    type: UPDATE_TEMP_CONTENT_TYPE
+    type: UPDATE_TEMP_CONTENT_TYPE,
   };
 }
 
@@ -348,9 +312,7 @@ export function updateTempContentType() {
 export const buildModelAttributes = attributes => {
   const formattedAttributes = attributes.reduce((acc, current) => {
     if (current.params.type === 'enumeration') {
-      acc[current.name] = Object.assign(current.params, {
-        enum: current.params.enum.join('\n')
-      });
+      acc[current.name] = Object.assign(current.params, { enum: current.params.enum.join('\n') });
     } else if (current.params.nature === 'oneWay') {
       acc[current.name] = Object.assign(current.params, { key: '-' });
     } else {
@@ -394,7 +356,7 @@ export const formatModelAttributes = attributes =>
 
         return acc2;
       },
-      { name: current, params: {} }
+      { name: current, params: {} },
     );
 
     return acc.concat(attribute);

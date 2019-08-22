@@ -21,7 +21,7 @@ const assets = {
   password,
   relation,
   string,
-  text
+  text,
 };
 
 export default assets;

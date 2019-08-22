@@ -13,7 +13,7 @@ import {
   ButtonDropdown,
   DropdownItem,
   DropdownMenu,
-  DropdownToggle
+  DropdownToggle,
 } from 'reactstrap';
 import { auth } from 'strapi-helper-plugin';
 
@@ -28,14 +28,14 @@ class Logout extends React.Component {
     this.props.history.push({
       pathname: `/plugins/content-manager/administrator/${id}`,
       search:
-        '?redirectUrl=/plugins/content-manager/administrator/?page=0&limit=0&sort=id&source=admin'
+        '?redirectUrl=/plugins/content-manager/administrator/?page=0&limit=0&sort=id&source=admin',
     });
   };
 
   handleGoToAdministrator = () => {
     this.props.history.push({
       pathname: '/plugins/content-manager/administrator',
-      search: '?source=admin'
+      search: '?source=admin',
     });
   };
 

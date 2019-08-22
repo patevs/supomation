@@ -12,7 +12,7 @@ import {
   isUndefined,
   map,
   mapKeys,
-  reject
+  reject,
 } from 'lodash';
 
 /* eslint-disable consistent-return */
@@ -36,7 +36,7 @@ export function getValidationsFromForm(form, formValidations) {
     if (value.name) {
       formValidations.push({
         name: value.name,
-        validations: value.validations
+        validations: value.validations,
       });
     }
   });

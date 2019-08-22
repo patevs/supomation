@@ -12,16 +12,7 @@ import SortableItem from './SortableItem';
 // CSS.
 import styles from './styles.scss';
 
-const SortableList = ({
-  items,
-  isDraggingSibling,
-  keys,
-  moveAttr,
-  moveAttrEnd,
-  name,
-  onClick,
-  onRemove
-}) => {
+const SortableList = ({ items, isDraggingSibling, keys, moveAttr, moveAttrEnd, name, onClick, onRemove }) => {
   return (
     <div className={cn(styles.sortableList)}>
       <ul id={`sortableListOf${name}`}>
@@ -52,7 +43,7 @@ SortableList.propTypes = {
   moveAttrEnd: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired
+  onRemove: PropTypes.func.isRequired,
 };
 
 export default SortableList;

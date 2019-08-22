@@ -16,7 +16,7 @@ class EditForm extends React.Component {
     get(
       this.props.settings,
       ['providers', this.props.selectedProviderIndex, 'auth'],
-      {}
+      {},
     );
 
   generateSelectOptions = () =>
@@ -24,12 +24,12 @@ class EditForm extends React.Component {
       (acc, current) => {
         const option = {
           id: get(this.props.settings, ['providers', current, 'name']),
-          value: get(this.props.settings, ['providers', current, 'provider'])
+          value: get(this.props.settings, ['providers', current, 'provider']),
         };
         acc.push(option);
         return acc;
       },
-      []
+      [],
     );
 
   render() {
@@ -39,7 +39,7 @@ class EditForm extends React.Component {
           <Input
             customBootstrapClass="col-md-6"
             inputDescription={{
-              id: 'email.EditForm.Input.select.inputDescription'
+              id: 'email.EditForm.Input.select.inputDescription',
             }}
             inputClassName={styles.inputStyle}
             label={{ id: 'email.EditForm.Input.select.label' }}
@@ -58,7 +58,7 @@ class EditForm extends React.Component {
                   didCheckErrors={this.props.didCheckErrors}
                   errors={get(this.props.formErrors, [
                     findIndex(this.props.formErrors, ['name', key]),
-                    'errors'
+                    'errors',
                   ])}
                   key={key}
                   label={{ id: value.label }}
@@ -80,8 +80,8 @@ class EditForm extends React.Component {
 
 EditForm.defaultProps = {
   settings: {
-    providers: []
-  }
+    providers: [],
+  },
 };
 
 EditForm.propTypes = {
@@ -90,7 +90,7 @@ EditForm.propTypes = {
   modifiedData: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   selectedProviderIndex: PropTypes.number.isRequired,
-  settings: PropTypes.object
+  settings: PropTypes.object,
 };
 
 export default EditForm;

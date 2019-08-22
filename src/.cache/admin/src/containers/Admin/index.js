@@ -16,7 +16,7 @@ import { Switch, Route } from 'react-router-dom';
 import {
   LoadingIndicatorPage,
   OverlayBlocker,
-  injectHooks
+  injectHooks,
 } from 'strapi-helper-plugin';
 // import OverlayBlocker from 'components/OverlayBlocker';
 
@@ -38,7 +38,7 @@ import PluginDispatcher from '../PluginDispatcher';
 import {
   disableGlobalOverlayBlocker,
   enableGlobalOverlayBlocker,
-  updatePlugin
+  updatePlugin,
 } from '../App/actions';
 import makeSelecApp from '../App/selectors';
 
@@ -48,7 +48,7 @@ import injectReducer from '../../utils/injectReducer';
 import localeToggleReducer from '../LocaleToggle/reducer';
 import {
   resetLocaleDefaultClassName,
-  setLocaleCustomClassName
+  setLocaleCustomClassName,
 } from '../LocaleToggle/actions';
 
 import {
@@ -61,7 +61,7 @@ import {
   setAppSecured,
   showLeftMenu,
   showLogout,
-  unsetAppSecured
+  unsetAppSecured,
 } from './actions';
 import makeSelectAdmin from './selectors';
 import reducer from './reducer';
@@ -81,7 +81,7 @@ export class Admin extends React.Component {
     disableGlobalOverlayBlocker: this.props.disableGlobalOverlayBlocker,
     enableGlobalOverlayBlocker: this.props.enableGlobalOverlayBlocker,
     plugins: this.props.global.plugins,
-    updatePlugin: this.props.updatePlugin
+    updatePlugin: this.props.updatePlugin,
   });
 
   componentDidMount() {
@@ -89,7 +89,7 @@ export class Admin extends React.Component {
     // Refer to ../../../doc/disable-tracking.md for more information
     /* istanbul ignore next */
     ReactGA.initialize('UA-54313258-9', {
-      testMode: process.env.NODE_ENV === 'test'
+      testMode: process.env.NODE_ENV === 'test',
     });
     // Retrieve the main settings of the application
     this.props.getInitData();
@@ -101,7 +101,7 @@ export class Admin extends React.Component {
       admin: { didGetSecuredData, isLoading, isSecured },
       getHook,
       getSecuredData,
-      location: { pathname }
+      location: { pathname },
     } = this.props;
 
     if (!isLoading && this.state.shouldSecureAfterAllPluginsAreMounted) {
@@ -116,7 +116,7 @@ export class Admin extends React.Component {
       /* istanbul ignore if */
       if (this.isAcceptingTracking()) {
         ReactGA.pageview(pathname, {
-          testMode: process.env.NODE_ENV === 'test'
+          testMode: process.env.NODE_ENV === 'test',
         });
       }
     }
@@ -146,7 +146,7 @@ export class Admin extends React.Component {
 
   getContentWrapperStyle = () => {
     const {
-      admin: { showMenu }
+      admin: { showMenu },
     } = this.props;
 
     return showMenu
@@ -156,11 +156,11 @@ export class Admin extends React.Component {
 
   hasApluginNotReady = props => {
     const {
-      global: { plugins }
+      global: { plugins },
     } = props;
 
     return !Object.keys(plugins).every(
-      plugin => plugins[plugin].isReady === true
+      plugin => plugins[plugin].isReady === true,
     );
   };
 
@@ -171,12 +171,12 @@ export class Admin extends React.Component {
     showLeftMenu: this.props.showLeftMenu,
     showLogout: this.props.showLogout,
     unsetAppSecured: this.props.unsetAppSecured,
-    updatePlugin: this.props.updatePlugin
+    updatePlugin: this.props.updatePlugin,
   };
 
   isAcceptingTracking = () => {
     const {
-      admin: { uuid }
+      admin: { uuid },
     } = this.props;
 
     return !!uuid;
@@ -188,7 +188,7 @@ export class Admin extends React.Component {
    */
   showLoader = () => {
     const {
-      global: { isAppLoading }
+      global: { isAppLoading },
     } = this.props;
 
     if (isAppLoading) {
@@ -200,7 +200,7 @@ export class Admin extends React.Component {
 
   renderInitializers = () => {
     const {
-      global: { plugins }
+      global: { plugins },
     } = this.props;
 
     return Object.keys(plugins).reduce((acc, current) => {
@@ -208,7 +208,7 @@ export class Admin extends React.Component {
       const key = plugins[current].id;
 
       acc.push(
-        <InitializerComponent key={key} {...this.props} {...this.helpers} />
+        <InitializerComponent key={key} {...this.props} {...this.helpers} />,
       );
 
       return acc;
@@ -226,7 +226,7 @@ export class Admin extends React.Component {
   render() {
     const {
       admin: { isLoading, showLogoutComponent, showMenu, strapiVersion },
-      global: { blockApp, overlayBlockerData, plugins, showGlobalAppBlocker }
+      global: { blockApp, overlayBlockerData, plugins, showGlobalAppBlocker },
     } = this.props;
 
     if (isLoading) {
@@ -293,7 +293,7 @@ Admin.childContextTypes = {
   disableGlobalOverlayBlocker: PropTypes.func,
   enableGlobalOverlayBlocker: PropTypes.func,
   plugins: PropTypes.object,
-  updatePlugin: PropTypes.func
+  updatePlugin: PropTypes.func,
 };
 
 Admin.propTypes = {
@@ -308,7 +308,7 @@ Admin.propTypes = {
     showLogoutComponent: PropTypes.bool,
     showMenu: PropTypes.bool,
     strapiVersion: PropTypes.string,
-    uuid: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
+    uuid: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   }).isRequired,
   disableGlobalOverlayBlocker: PropTypes.func.isRequired,
   emitEvent: PropTypes.func.isRequired,
@@ -322,7 +322,7 @@ Admin.propTypes = {
     overlayBlockerData: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     isAppLoading: PropTypes.bool,
     plugins: PropTypes.object,
-    showGlobalAppBlocker: PropTypes.bool
+    showGlobalAppBlocker: PropTypes.bool,
   }).isRequired,
   hideLeftMenu: PropTypes.func.isRequired,
   hideLogout: PropTypes.func.isRequired,
@@ -333,12 +333,12 @@ Admin.propTypes = {
   showLeftMenu: PropTypes.func.isRequired,
   showLogout: PropTypes.func.isRequired,
   unsetAppSecured: PropTypes.func.isRequired,
-  updatePlugin: PropTypes.func.isRequired
+  updatePlugin: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   admin: makeSelectAdmin(),
-  global: makeSelecApp()
+  global: makeSelecApp(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -358,21 +358,21 @@ export function mapDispatchToProps(dispatch) {
       showLeftMenu,
       showLogout,
       unsetAppSecured,
-      updatePlugin
+      updatePlugin,
     },
-    dispatch
+    dispatch,
   );
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 const withReducer = injectReducer({ key: 'admin', reducer });
 const withSaga = injectSaga({ key: 'admin', saga });
 const withLocaleToggleReducer = injectReducer({
   key: 'localeToggle',
-  reducer: localeToggleReducer
+  reducer: localeToggleReducer,
 });
 const withHooks = injectHooks({ key: 'admin' });
 
@@ -381,5 +381,5 @@ export default compose(
   withLocaleToggleReducer,
   withSaga,
   withConnect,
-  withHooks
+  withHooks,
 )(Admin);

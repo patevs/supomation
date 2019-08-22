@@ -9,45 +9,45 @@ describe('<AttributeLi />', () => {
     shallow(<AttributeLi name="test" />);
   });
 
-  it("should show the origin of the model if it's comming from a plugin", () => {
+  it('should show the origin of the model if it\'s comming from a plugin', () => {
     const props = {
       attributeInfos: {
         configurable: false,
         plugin: 'users-permissions',
         target: 'role',
-        type: 'string'
+        type: 'string',
       },
       name: 'role',
-      onClick: jest.fn()
+      onClick: jest.fn(),
     };
     const wrapper = shallow(<AttributeLi {...props} />);
     const insideCompo = shallow(
       wrapper
         .find(FormattedMessage)
         .last()
-        .prop('children')()
+        .prop('children')(),
     );
 
     expect(insideCompo.text()).toContain('users-permissions');
   });
 
-  it("should not show the origin of the model if it's not comming from a plugin", () => {
+  it('should not show the origin of the model if it\'s not comming from a plugin', () => {
     const props = {
       attributeInfos: {
         configurable: false,
         plugin: null,
         target: 'role',
-        type: 'string'
+        type: 'string',
       },
       name: 'role',
-      onClick: jest.fn()
+      onClick: jest.fn(),
     };
     const wrapper = shallow(<AttributeLi {...props} />);
     const insideCompo = shallow(
       wrapper
         .find(FormattedMessage)
         .last()
-        .prop('children')()
+        .prop('children')(),
     );
 
     expect(insideCompo.text().trim()).toEqual('Role');
@@ -58,10 +58,10 @@ describe('<AttributeLi />', () => {
       attributeInfos: {
         configurable: false,
         plugin: null,
-        type: 'biginteger'
+        type: 'biginteger',
       },
       name: 'role',
-      onClick: jest.fn()
+      onClick: jest.fn(),
     };
     const wrapper = shallow(<AttributeLi {...props} />);
     const img = wrapper.find('img').first();
@@ -73,10 +73,10 @@ describe('<AttributeLi />', () => {
   it('should call the onClick prop with the correct data if it is configurable', () => {
     const props = {
       attributeInfos: {
-        type: 'string'
+        type: 'string',
       },
       name: 'name',
-      onClick: jest.fn()
+      onClick: jest.fn(),
     };
     const wrapper = shallow(<AttributeLi {...props} />);
     const { onClick } = wrapper.find('li').props();
@@ -90,10 +90,10 @@ describe('<AttributeLi />', () => {
     const props = {
       attributeInfos: {
         configurable: false,
-        type: 'string'
+        type: 'string',
       },
       name: 'name',
-      onClick: jest.fn()
+      onClick: jest.fn(),
     };
     const wrapper = shallow(<AttributeLi {...props} />);
     const { onClick } = wrapper.find('li').props();
@@ -105,7 +105,7 @@ describe('<AttributeLi />', () => {
 
   it('should use the defaultProps', () => {
     const {
-      defaultProps: { onClick, onClickOnTrashIcon }
+      defaultProps: { onClick, onClickOnTrashIcon },
     } = AttributeLi;
 
     expect(onClick).toBeDefined();

@@ -20,15 +20,7 @@ function EditRelations(props) {
       {props.displayedRelations.map(relationName => {
         const relation = get(props.schema, ['relations', relationName], {});
 
-        if (
-          [
-            'oneWay',
-            'oneToOne',
-            'manyToOne',
-            'oneToManyMorph',
-            'oneToOneMorph'
-          ].includes(relation.nature)
-        ) {
+        if(['oneWay', 'oneToOne', 'manyToOne', 'oneToManyMorph', 'oneToOneMorph'].includes(relation.nature)) {
           return (
             <SelectOne
               currentModelName={props.currentModelName}
@@ -41,8 +33,8 @@ function EditRelations(props) {
               onRedirect={props.onRedirect}
             />
           );
-        }
-
+        } 
+        
         return (
           <SelectMany
             currentModelName={props.currentModelName}
@@ -70,7 +62,7 @@ EditRelations.defaultProps = {
   moveAttr: () => {},
   moveAttrEnd: () => {},
   record: {},
-  schema: {}
+  schema: {},
 };
 
 EditRelations.propTypes = {
@@ -85,7 +77,7 @@ EditRelations.propTypes = {
   onRedirect: PropTypes.func.isRequired,
   onRemoveRelationItem: PropTypes.func.isRequired,
   record: PropTypes.object,
-  schema: PropTypes.object
+  schema: PropTypes.object,
 };
 
 export default EditRelations;

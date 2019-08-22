@@ -9,7 +9,7 @@ import { INITIALIZE_SUCCEEDED, UPDATE_HAS_ADMIN } from './constants';
 
 const initialState = fromJS({
   hasAdminUser: false,
-  shouldUpdate: false
+  shouldUpdate: false,
 });
 
 function initializerReducer(state = initialState, action) {

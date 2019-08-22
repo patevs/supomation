@@ -6,7 +6,7 @@ import {
   PLUGIN_LOADED,
   UNFREEZE_APP,
   UNSET_HAS_USERS_PLUGIN,
-  UPDATE_PLUGIN
+  UPDATE_PLUGIN,
 } from '../constants';
 import {
   freezeApp,
@@ -16,7 +16,7 @@ import {
   pluginLoaded,
   unfreezeApp,
   unsetHasUserPlugin,
-  updatePlugin
+  updatePlugin,
 } from '../actions';
 
 describe('<App /> actions', () => {
@@ -25,7 +25,7 @@ describe('<App /> actions', () => {
       const data = { strapi: 'isCool' };
       const expected = {
         type: FREEZE_APP,
-        data
+        data,
       };
 
       expect(freezeApp(data)).toEqual(expected);
@@ -35,7 +35,7 @@ describe('<App /> actions', () => {
   describe('unfreezeApp', () => {
     it('should return the correct type', () => {
       const expected = {
-        type: UNFREEZE_APP
+        type: UNFREEZE_APP,
       };
 
       expect(unfreezeApp()).toEqual(expected);
@@ -50,21 +50,21 @@ describe('<App /> actions', () => {
           source: {
             development: '/content-manager/main.js',
             production: '/content-manager/main.js',
-            staging: '/content-manager/main.js'
-          }
+            staging: '/content-manager/main.js',
+          },
         },
         {
           id: 'content-type-builder',
           source: {
             development: '/content-type-builder/main.js',
             production: '/content-type-builder/main.js',
-            staging: '/content-type-builder/main.js'
-          }
-        }
+            staging: '/content-type-builder/main.js',
+          },
+        },
       ];
       const expected = {
         type: GET_APP_PLUGINS_SUCCEEDED,
-        appPlugins: ['content-manager', 'content-type-builder']
+        appPlugins: ['content-manager', 'content-type-builder'],
       };
 
       expect(getAppPluginsSucceeded(plugins)).toEqual(expected);
@@ -75,11 +75,11 @@ describe('<App /> actions', () => {
     it('should return the correct type and the passed data', () => {
       const plugin = {
         id: 'content-manager',
-        description: 'Manage your content'
+        description: 'Manage your content',
       };
       const expected = {
         type: LOAD_PLUGIN,
-        plugin
+        plugin,
       };
 
       expect(loadPlugin(plugin)).toEqual(expected);
@@ -90,11 +90,11 @@ describe('<App /> actions', () => {
     it('should return the correct type and the passed data', () => {
       const plugin = {
         id: 'content-manager',
-        description: 'Manage your content'
+        description: 'Manage your content',
       };
       const expected = {
         type: PLUGIN_LOADED,
-        plugin
+        plugin,
       };
 
       expect(pluginLoaded(plugin)).toEqual(expected);
@@ -106,7 +106,7 @@ describe('<App /> actions', () => {
       const plugin = 'content-manager';
       const expected = {
         type: PLUGIN_DELETED,
-        plugin
+        plugin,
       };
 
       expect(pluginDeleted(plugin)).toEqual(expected);
@@ -116,7 +116,7 @@ describe('<App /> actions', () => {
   describe('unsetHasUserPlugin', () => {
     it('should return the correct type', () => {
       const expected = {
-        type: UNSET_HAS_USERS_PLUGIN
+        type: UNSET_HAS_USERS_PLUGIN,
       };
 
       expect(unsetHasUserPlugin()).toEqual(expected);
@@ -132,11 +132,11 @@ describe('<App /> actions', () => {
         type: UPDATE_PLUGIN,
         pluginId,
         updatedKey,
-        updatedValue
+        updatedValue,
       };
 
       expect(updatePlugin(pluginId, updatedKey, updatedValue)).toEqual(
-        expected
+        expected,
       );
     });
   });

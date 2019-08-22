@@ -23,7 +23,7 @@ class RowDatabase extends React.Component {
     this.state = {
       modal: false,
       warning: false,
-      loader: false
+      loader: false,
     };
   }
 
@@ -64,7 +64,7 @@ class RowDatabase extends React.Component {
         : 'settings-manager.popUpWarning.databases.delete.message',
       confirm: this.props.data.isUsed
         ? 'settings-manager.popUpWarning.danger.ok.message'
-        : ''
+        : '',
     };
     const loader = this.state.loader ? (
       <Button
@@ -134,7 +134,9 @@ class RowDatabase extends React.Component {
           >
             <ModalHeader
               toggle={this.toggle}
-              className={`${styles.stmnoBorder} ${styles.stmpadded} ${styles.stmmHeader}`}
+              className={`${styles.stmnoBorder} ${styles.stmpadded} ${
+                styles.stmmHeader
+              }`}
             >
               Databases
             </ModalHeader>
@@ -185,7 +187,7 @@ RowDatabase.propTypes = {
   formErrors: PropTypes.array,
   getDatabase: PropTypes.func,
   onDeleteDatabase: PropTypes.func,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
 };
 
 export default RowDatabase;

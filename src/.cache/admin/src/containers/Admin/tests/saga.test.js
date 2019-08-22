@@ -19,7 +19,7 @@ describe('getData Saga', () => {
       { uuid: 'uuid' },
       { strapiVersion: 'beta' },
       { autoReload: true, currentEnvironment: 'test' },
-      { layout: {} }
+      { layout: {} },
     ];
     const callDescriptor = getDataGenerator.next(response).value;
 
@@ -31,14 +31,14 @@ describe('getData Saga', () => {
       { uuid: 'uuid' },
       { strapiVersion: 'beta' },
       { autoReload: true, currentEnvironment: 'test' },
-      { layout: {} }
+      { layout: {} },
     ];
     const putDescriptor = getDataGenerator.next(response).value;
     const [
       { uuid },
       { strapiVersion },
       { autoReload, currentEnvironment },
-      { layout }
+      { layout },
     ] = response;
 
     expect(putDescriptor).toEqual(
@@ -48,7 +48,7 @@ describe('getData Saga', () => {
           uuid,
           strapiVersion,
           currentEnvironment,
-          layout
+          layout,
         })
       )
     );
@@ -72,7 +72,7 @@ describe('defaultSaga Saga', () => {
       all([
         fork(takeLatest, EMIT_EVENT, emitter),
         fork(takeLatest, GET_INIT_DATA, getData),
-        fork(takeLatest, GET_SECURED_DATA, getSecuredData)
+        fork(takeLatest, GET_SECURED_DATA, getSecuredData),
       ])
     );
   });

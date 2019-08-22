@@ -1,5 +1,5 @@
 /**
- *
+ * 
  * CustomDragLayer
  */
 
@@ -23,11 +23,11 @@ function getItemStyles(props) {
   }
 
   const { x, y } = mouseOffset;
-  const transform = `translate(${x - 50}px, ${y - 5}px)`;
+  const transform = `translate(${x -50}px, ${y-5}px)`;
 
   return {
     transform,
-    WebkitTransform: transform
+    WebkitTransform: transform,
   };
 }
 
@@ -67,19 +67,19 @@ const withDragLayer = DragLayer(monitor => ({
   initialOffset: monitor.getInitialSourceClientOffset(),
   currentOffset: monitor.getSourceClientOffset(),
   isDragging: monitor.isDragging(),
-  mouseOffset: monitor.getClientOffset()
+  mouseOffset: monitor.getClientOffset(),
 }));
 
 CustomDragLayer.defaultProps = {
   isDragging: false,
   item: null,
-  itemType: ''
+  itemType: '',
 };
 
 CustomDragLayer.propTypes = {
   isDragging: PropTypes.bool,
   item: PropTypes.object,
-  itemType: PropTypes.string
+  itemType: PropTypes.string,
 };
 
 export default flow([withDragLayer])(CustomDragLayer);

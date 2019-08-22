@@ -20,7 +20,7 @@ function TableLoading({ colspan }) {
 }
 
 TableLoading.propTypes = {
-  colspan: PropTypes.number.isRequired
+  colspan: PropTypes.number.isRequired,
 };
 
 export default TableLoading;

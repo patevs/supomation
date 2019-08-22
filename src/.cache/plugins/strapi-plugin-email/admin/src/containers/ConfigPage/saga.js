@@ -10,7 +10,7 @@ export function* settingsGet(action) {
     const requestURL = `/email/settings/${action.env}`;
     const response = yield all([
       call(request, requestURL, { method: 'GET' }),
-      call(request, '/email/environments', { method: 'GET' })
+      call(request, '/email/environments', { method: 'GET' }),
     ]);
 
     yield put(getSettingsSucceeded(response[0], response[1].environments));
@@ -28,7 +28,7 @@ export function* submit() {
       body = {
         enabled: body.enabled,
         provider: 'local',
-        sizeLimit: body.sizeLimit
+        sizeLimit: body.sizeLimit,
       };
     }
     const requestURL = `/email/settings/${env}`;

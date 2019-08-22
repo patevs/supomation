@@ -35,7 +35,7 @@ function LeftMenuLink(props) {
       id={props.label}
       defaultMessage="{label}"
       values={{
-        label: `${props.label}`
+        label: `${props.label}`,
       }}
       className={styles.linkLabel}
     />
@@ -62,7 +62,7 @@ function LeftMenuLink(props) {
       className={`${styles.link} ${isLinkActive ? styles.linkActive : ''}`}
       to={{
         pathname: props.destination,
-        search: props.source ? `?source=${props.source}` : ''
+        search: props.source ? `?source=${props.source}` : '',
       }}
     >
       {icon}
@@ -83,13 +83,13 @@ LeftMenuLink.propTypes = {
   icon: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   location: PropTypes.shape({
-    pathname: PropTypes.string
+    pathname: PropTypes.string,
   }).isRequired,
-  source: PropTypes.string
+  source: PropTypes.string,
 };
 
 LeftMenuLink.defaultProps = {
-  source: ''
+  source: '',
 };
 
 export default LeftMenuLink;

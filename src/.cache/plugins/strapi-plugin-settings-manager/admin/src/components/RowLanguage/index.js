@@ -20,7 +20,7 @@ class RowLanguage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showWarning: false
+      showWarning: false,
     };
   }
 
@@ -52,7 +52,7 @@ class RowLanguage extends React.Component {
     // retrieve language name from i18n translation
     const languageObject = find(
       get(this.props.listLanguages, ['sections', '0', 'items', '0', 'items']),
-      ['value', join(defaultLanguageArray, '_')]
+      ['value', join(defaultLanguageArray, '_')],
     );
     // apply i18n
     const languageDisplay = isObject(languageObject) ? (
@@ -89,18 +89,26 @@ class RowLanguage extends React.Component {
         <div className={this.props.liStyles.stmhoveredLanguage} />
         <div className={this.props.liStyles.stmlanguage} />
         <div
-          className={`${this.props.liStyles.stmborderBottom} ${this.props.liStyles.stmflexLiLanguage}`}
+          className={`${this.props.liStyles.stmborderBottom} ${
+            this.props.liStyles.stmflexLiLanguage
+          }`}
         >
           <div
-            className={`${this.props.liStyles.stmflexed} ${this.props.liStyles.stmflagContainer}`}
+            className={`${this.props.liStyles.stmflexed} ${
+              this.props.liStyles.stmflagContainer
+            }`}
           >
             <div>
               <span
-                className={`${this.props.liStyles.stmflag} flag-icon flag-icon-${flag}`}
+                className={`${
+                  this.props.liStyles.stmflag
+                } flag-icon flag-icon-${flag}`}
               />
             </div>
             <div
-              className={`${this.props.liStyles.stmlabel} ${this.props.liStyles.stmcapitalized}`}
+              className={`${this.props.liStyles.stmlabel} ${
+                this.props.liStyles.stmcapitalized
+              }`}
             >
               {languageDisplay}
             </div>
@@ -123,7 +131,7 @@ class RowLanguage extends React.Component {
             toggleModal={this.toggleWarning}
             onConfirm={this.handleDeleteLanguage}
             content={{
-              message: 'settings-manager.popUpWarning.languages.delete.message'
+              message: 'settings-manager.popUpWarning.languages.delete.message',
             }}
             popUpWarningType="danger"
           />
@@ -139,7 +147,7 @@ RowLanguage.propTypes = {
   liStyles: PropTypes.object,
   name: PropTypes.string,
   onDefaultLanguageChange: PropTypes.func,
-  onDeleteLanguage: PropTypes.func
+  onDeleteLanguage: PropTypes.func,
 };
 
 export default RowLanguage;

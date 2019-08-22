@@ -22,7 +22,7 @@ class InputToggle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isChecked: false
+      isChecked: false,
     };
   }
 
@@ -49,7 +49,7 @@ class InputToggle extends React.Component {
     }
     const target = {
       name: this.props.target,
-      value: isChecked
+      value: isChecked,
     };
     this.setState({ isChecked });
     this.props.handleChange({ target });
@@ -113,7 +113,7 @@ InputToggle.propTypes = {
   hiddenLabel: PropTypes.bool,
   isChecked: PropTypes.bool,
   name: PropTypes.string,
-  target: PropTypes.string
+  target: PropTypes.string,
 };
 
 export default InputToggle;

@@ -28,7 +28,7 @@ const plugin = {
   mainComponent: Comp,
   name: pluginPkg.strapi.name,
   preventComponentRendering: false,
-  trads
+  trads,
 };
 
 export default plugin;

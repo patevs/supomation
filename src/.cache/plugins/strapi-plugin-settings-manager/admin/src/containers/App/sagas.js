@@ -7,13 +7,13 @@ import {
   MENU_FETCH,
   MENU_FETCH_SUCCEEDED,
   ENVIRONMENTS_FETCH,
-  ENVIRONMENTS_FETCH_SUCCEEDED
+  ENVIRONMENTS_FETCH_SUCCEEDED,
 } from './constants';
 
 export function* fetchMenu() {
   try {
     const opts = {
-      method: 'GET'
+      method: 'GET',
     };
 
     const requestUrl = '/settings-manager/menu';
@@ -28,7 +28,7 @@ export function* fetchMenu() {
 export function* fetchEnvironments() {
   try {
     const opts = {
-      method: 'GET'
+      method: 'GET',
     };
 
     const requestUrl = '/settings-manager/configurations/environments';

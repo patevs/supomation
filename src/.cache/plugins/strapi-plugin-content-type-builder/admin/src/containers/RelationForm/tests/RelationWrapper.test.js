@@ -14,7 +14,7 @@ describe('<RelationWrapper />', () => {
     const wrapper = shallow(
       <RelationWrapper>
         <Child />
-      </RelationWrapper>
+      </RelationWrapper>,
     );
 
     expect(wrapper.find(Child)).toHaveLength(1);

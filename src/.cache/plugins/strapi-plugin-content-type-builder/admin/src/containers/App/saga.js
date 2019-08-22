@@ -9,13 +9,13 @@ import {
   getDataSucceeded,
   deleteModelSucceeded,
   submitContentTypeSucceeded,
-  submitTempContentTypeSucceeded
+  submitTempContentTypeSucceeded,
 } from './actions';
 import {
   GET_DATA,
   DELETE_MODEL,
   SUBMIT_CONTENT_TYPE,
-  SUBMIT_TEMP_CONTENT_TYPE
+  SUBMIT_TEMP_CONTENT_TYPE,
 } from './constants';
 
 export function* getData() {
@@ -23,7 +23,7 @@ export function* getData() {
     const requestURL = `/${pluginId}/models`;
     const [data, { connections }] = yield all([
       call(request, requestURL, { method: 'GET' }),
-      call(request, '/content-type-builder/connections', { method: 'GET' })
+      call(request, '/content-type-builder/connections', { method: 'GET' }),
     ]);
 
     yield put(getDataSucceeded(data, connections));
@@ -34,7 +34,7 @@ export function* getData() {
 
 export function* deleteModel({
   context: { plugins, updatePlugin },
-  modelName
+  modelName,
 }) {
   try {
     const requestURL = `/${pluginId}/models/${modelName}`;
@@ -72,7 +72,7 @@ export function* submitCT({
   oldContentTypeName,
   body,
   source,
-  context: { emitEvent, plugins, history, updatePlugin }
+  context: { emitEvent, plugins, history, updatePlugin },
 }) {
   try {
     const requestURL = `/${pluginId}/models/${oldContentTypeName}`;
@@ -106,7 +106,7 @@ export function* submitCT({
       );
       const updatedLink = {
         destination: name.toLowerCase(),
-        label: capitalize(pluralize(name))
+        label: capitalize(pluralize(name)),
       };
       appMenu[0].links.splice(oldContentTypeNameIndex, 1, updatedLink);
       appMenu[0].links = sortBy(appMenu[0].links, 'label');
@@ -125,7 +125,7 @@ export function* submitCT({
 /* istanbul ignore-next */
 export function* submitTempCT({
   body,
-  context: { emitEvent, plugins, updatePlugin }
+  context: { emitEvent, plugins, updatePlugin },
 }) {
   try {
     emitEvent('willSaveContentType');
@@ -147,7 +147,7 @@ export function* submitTempCT({
     );
     const newLink = {
       destination: name.toLowerCase(),
-      label: capitalize(pluralize(name))
+      label: capitalize(pluralize(name)),
     };
     appMenu[0].links.push(newLink);
     appMenu[0].links = sortBy(appMenu[0].links, 'label');
@@ -170,7 +170,7 @@ export default function* defaultSaga() {
       fork(takeLatest, GET_DATA, getData),
       fork(takeLatest, DELETE_MODEL, deleteModel),
       fork(takeLatest, SUBMIT_CONTENT_TYPE, submitCT),
-      fork(takeLatest, SUBMIT_TEMP_CONTENT_TYPE, submitTempCT)
+      fork(takeLatest, SUBMIT_TEMP_CONTENT_TYPE, submitTempCT),
     ]);
   } catch (err) {
     console.log(err);

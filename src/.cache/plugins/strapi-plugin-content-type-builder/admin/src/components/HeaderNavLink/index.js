@@ -21,9 +21,7 @@ function HeaderNavLink({ custom, id, isActive, onClick }) {
       style={{ cursor: 'pointer' }}
       onClick={() => onClick(id)}
     >
-      <FormattedMessage
-        id={`${pluginId}.popUpForm.navContainer.${custom || id}`}
-      />
+      <FormattedMessage id={`${pluginId}.popUpForm.navContainer.${custom || id}`} />
     </div>
   );
 }
@@ -31,14 +29,14 @@ function HeaderNavLink({ custom, id, isActive, onClick }) {
 HeaderNavLink.defaultProps = {
   custom: null,
   id: 'base',
-  isActive: false
+  isActive: false,
 };
 
 HeaderNavLink.propTypes = {
   custom: PropTypes.string,
   id: PropTypes.string,
   isActive: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default HeaderNavLink;

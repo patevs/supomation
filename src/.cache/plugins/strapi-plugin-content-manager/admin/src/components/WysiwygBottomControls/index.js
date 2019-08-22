@@ -13,7 +13,7 @@ import styles from './styles.scss';
 const WysiwygBottomControls = ({ isPreviewMode, onChange, onClick }) => {
   const browse = (
     <FormattedMessage id="components.WysiwygBottomControls.uploadFiles.browse">
-      {message => <span className={styles.underline}>{message}</span>}
+      {(message) => <span className={styles.underline}>{message}</span>}
     </FormattedMessage>
   );
 
@@ -22,7 +22,7 @@ const WysiwygBottomControls = ({ isPreviewMode, onChange, onClick }) => {
       <div>
         <label
           className={styles.dropLabel}
-          onClick={e => {
+          onClick={(e) => {
             if (isPreviewMode) {
               e.preventDefault();
             }
@@ -45,13 +45,13 @@ const WysiwygBottomControls = ({ isPreviewMode, onChange, onClick }) => {
 WysiwygBottomControls.defaultProps = {
   isPreviewMode: false,
   onChange: () => {},
-  onClick: () => {}
+  onClick: () => {},
 };
 
 WysiwygBottomControls.propTypes = {
   isPreviewMode: PropTypes.bool,
   onChange: PropTypes.func,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default WysiwygBottomControls;

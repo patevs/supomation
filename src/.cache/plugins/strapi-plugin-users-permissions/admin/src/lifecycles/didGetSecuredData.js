@@ -3,7 +3,7 @@ import pluginId from '../pluginId';
 
 function didGetSecuredData() {
   const {
-    props: { updatePlugin }
+    props: { updatePlugin },
   } = this;
   const leftMenuSections = [
     {
@@ -11,11 +11,11 @@ function didGetSecuredData() {
         {
           label: 'Users',
           destination: 'user',
-          plugin: 'content-manager'
-        }
+          plugin: 'content-manager',
+        },
       ],
-      name: 'Content Types'
-    }
+      name: 'Content Types',
+    },
   ];
 
   updatePlugin(pluginId, 'leftMenuSections', leftMenuSections);

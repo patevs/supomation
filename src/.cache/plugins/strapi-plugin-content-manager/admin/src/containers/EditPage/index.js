@@ -18,7 +18,7 @@ import {
   toNumber,
   toString,
   truncate,
-  replace
+  replace,
 } from 'lodash';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
@@ -32,7 +32,7 @@ import {
   PopUpWarning,
   LiLink,
   getQueryParameters,
-  validateInput as inputValidations
+  validateInput as inputValidations,
 } from 'strapi-helper-plugin';
 
 import pluginId from '../../pluginId';
@@ -62,7 +62,7 @@ import {
   resetProps,
   setFileRelations,
   setFormErrors,
-  submit
+  submit,
 } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -90,17 +90,17 @@ export class EditPage extends React.Component {
         includes(this.props.location.search, '?redirectUrl')
       ) {
         const redirectUrl = this.props.location.search.split(
-          '?redirectUrl='
+          '?redirectUrl=',
         )[1];
 
         this.props.history.push({
           pathname: redirectUrl.split('?')[0],
-          search: redirectUrl.split('?')[1]
+          search: redirectUrl.split('?')[1],
         });
       } else {
         this.props.history.push({
           pathname: replace(this.props.location.pathname, '/create', ''),
-          search: `?source=${this.getSource()}`
+          search: `?source=${this.getSource()}`,
         });
       }
     }
@@ -125,7 +125,7 @@ export class EditPage extends React.Component {
   getLayout = () =>
     bindLayout.call(
       this,
-      get(this.props.schema, ['layout', this.getModelName()], {})
+      get(this.props.schema, ['layout', this.getModelName()], {}),
     );
 
   /**
@@ -138,9 +138,9 @@ export class EditPage extends React.Component {
       this.props.editPage.formValidations,
       [
         findIndex(this.props.editPage.formValidations, ['name', name]),
-        'validations'
+        'validations',
       ],
-      {}
+      {},
     );
 
   getDisplayedFields = () =>
@@ -156,7 +156,7 @@ export class EditPage extends React.Component {
       'models',
       'plugins',
       this.getSource(),
-      this.getModelName()
+      this.getModelName(),
     ]);
 
   /**
@@ -188,7 +188,7 @@ export class EditPage extends React.Component {
           'models',
           'plugins',
           this.getSource(),
-          this.getModelName()
+          this.getModelName(),
         ])
       : get(this.props.schema, ['models', this.getModelName()]);
   /* eslint-enable indent */
@@ -202,7 +202,7 @@ export class EditPage extends React.Component {
     const valueToDisplay = get(
       this.props.editPage,
       ['initialRecord', title],
-      null
+      null,
     );
 
     return isEmpty(toString(valueToDisplay))
@@ -245,7 +245,7 @@ export class EditPage extends React.Component {
       this.isCreating(),
       this.getSource(),
       this.getModelAttributes(),
-      this.getDisplayedFields()
+      this.getDisplayedFields(),
     );
 
     if (!this.isCreating()) {
@@ -256,7 +256,7 @@ export class EditPage extends React.Component {
 
     // Get all relations made with the upload plugin
     const fileRelations = Object.keys(
-      get(this.getSchema(), 'relations', {})
+      get(this.getSchema(), 'relations', {}),
     ).reduce((acc, current) => {
       const association = get(this.getSchema(), ['relations', current], {});
 
@@ -266,7 +266,7 @@ export class EditPage extends React.Component {
       ) {
         const relation = {
           name: current,
-          multiple: association.nature === 'manyToManyMorph'
+          multiple: association.nature === 'manyToManyMorph',
         };
 
         acc.push(relation);
@@ -281,7 +281,7 @@ export class EditPage extends React.Component {
   handleAddRelationItem = ({ key, value }) => {
     this.props.addRelationItem({
       key,
-      value
+      value,
     });
   };
 
@@ -292,19 +292,19 @@ export class EditPage extends React.Component {
       return this.props.changeData({
         target: {
           name: `record.${target.name}`,
-          value: defaultValue
-        }
+          value: defaultValue,
+        },
       });
     }
 
     const errorIndex = findIndex(this.props.editPage.formErrors, [
       'name',
-      target.name
+      target.name,
     ]);
     const errors = inputValidations(
       target.value,
       this.getAttributeValidations(target.name),
-      target.type
+      target.type,
     );
     const formErrors = cloneDeep(this.props.editPage.formErrors);
 
@@ -324,7 +324,7 @@ export class EditPage extends React.Component {
     // Check if date
     if (
       ['float', 'integer', 'biginteger', 'decimal'].indexOf(
-        get(this.getSchema(), ['fields', e.target.name, 'type'])
+        get(this.getSchema(), ['fields', e.target.name, 'type']),
       ) !== -1
     ) {
       value = toNumber(e.target.value);
@@ -332,7 +332,7 @@ export class EditPage extends React.Component {
 
     const target = {
       name: `record.${e.target.name}`,
-      value
+      value,
     };
 
     this.props.changeData({ target });
@@ -371,8 +371,8 @@ export class EditPage extends React.Component {
           pathname,
           search: `?source=${source}&redirectURI=${generateRedirectURI({
             model,
-            search: `?source=${source}`
-          })}`
+            search: `?source=${source}`,
+          })}`,
         });
     }
     /* eslint-enable */
@@ -382,7 +382,7 @@ export class EditPage extends React.Component {
     e.preventDefault();
     const formErrors = checkFormValidity(
       this.generateFormFromRecord(),
-      this.props.editPage.formValidations
+      this.props.editPage.formValidations,
     );
 
     if (isEmpty(formErrors)) {
@@ -415,7 +415,7 @@ export class EditPage extends React.Component {
         (!get(this.getSchema(), ['relations', relation, 'nature'], '')
           .toLowerCase()
           .includes('morph') ||
-          !get(this.getSchema(), ['relations', relation, relation]))
+          !get(this.getSchema(), ['relations', relation, relation])),
     ).length === 0;
 
   // NOTE: technical debt that needs to be redone
@@ -437,9 +437,9 @@ export class EditPage extends React.Component {
     // Link props to display
     const message = {
       message: {
-        id: `${pluginId}.containers.Edit.Link.Layout`
+        id: `${pluginId}.containers.Edit.Link.Layout`,
       },
-      icon: 'layout'
+      icon: 'layout',
     };
 
     return (
@@ -458,7 +458,7 @@ export class EditPage extends React.Component {
       kind: 'secondary',
       onClick: this.toggle,
       type: 'button',
-      disabled: this.showLoaders()
+      disabled: this.showLoaders(),
     },
     {
       kind: 'primary',
@@ -469,8 +469,8 @@ export class EditPage extends React.Component {
       style: this.props.editPage.showLoader
         ? { marginRight: '18px', flexGrow: 2 }
         : { flexGrow: 2 },
-      disabled: this.showLoaders()
-    }
+      disabled: this.showLoaders(),
+    },
   ];
 
   pluginHeaderSubActions = () => {
@@ -483,8 +483,8 @@ export class EditPage extends React.Component {
             kind: 'delete',
             onClick: this.toggleDelete,
             type: 'button',
-            disabled: this.showLoaders()
-          }
+            disabled: this.showLoaders(),
+          },
         ];
 
     return subActions;
@@ -548,7 +548,7 @@ export class EditPage extends React.Component {
   showLoaders = () => {
     const {
       editPage: { isLoading },
-      schema: { layout }
+      schema: { layout },
     } = this.props;
 
     return (
@@ -562,7 +562,7 @@ export class EditPage extends React.Component {
 
   toggleDelete = () =>
     this.setState(prevState => ({
-      showWarningDelete: !prevState.showWarningDelete
+      showWarningDelete: !prevState.showWarningDelete,
     }));
 
   /**
@@ -576,7 +576,7 @@ export class EditPage extends React.Component {
   renderEdit = () => {
     const {
       editPage,
-      location: { search }
+      location: { search },
     } = this.props;
     const source = getQueryParameters(search, 'source');
     const basePath = `/plugins/${pluginId}/ctm-configurations/edit-settings`;
@@ -663,7 +663,7 @@ export class EditPage extends React.Component {
                 title: `${pluginId}.popUpWarning.title`,
                 message: `${pluginId}.popUpWarning.warning.cancelAllSettings`,
                 cancel: `${pluginId}.popUpWarning.button.cancel`,
-                confirm: `${pluginId}.popUpWarning.button.confirm`
+                confirm: `${pluginId}.popUpWarning.button.confirm`,
               }}
               popUpWarningType="danger"
               onConfirm={this.handleConfirm}
@@ -675,7 +675,7 @@ export class EditPage extends React.Component {
                 title: `${pluginId}.popUpWarning.title`,
                 message: `${pluginId}.popUpWarning.bodyMessage.contentType.delete`,
                 cancel: `${pluginId}.popUpWarning.button.cancel`,
-                confirm: `${pluginId}.popUpWarning.button.confirm`
+                confirm: `${pluginId}.popUpWarning.button.confirm`,
               }}
               popUpWarningType="danger"
               onConfirm={this.handleConfirm}
@@ -721,11 +721,11 @@ export class EditPage extends React.Component {
 EditPage.contextTypes = {
   emitEvent: PropTypes.func,
   currentEnvironment: PropTypes.string,
-  plugins: PropTypes.object
+  plugins: PropTypes.object,
 };
 
 EditPage.defaultProps = {
-  schema: {}
+  schema: {},
 };
 
 EditPage.propTypes = {
@@ -746,7 +746,7 @@ EditPage.propTypes = {
   schema: PropTypes.object,
   setFileRelations: PropTypes.func.isRequired,
   setFormErrors: PropTypes.func.isRequired,
-  submit: PropTypes.func.isRequired
+  submit: PropTypes.func.isRequired,
 };
 
 function mapDispatchToProps(dispatch) {
@@ -764,31 +764,31 @@ function mapDispatchToProps(dispatch) {
       resetProps,
       setFileRelations,
       setFormErrors,
-      submit
+      submit,
     },
-    dispatch
+    dispatch,
   );
 }
 
 const mapStateToProps = createStructuredSelector({
   editPage: makeSelectEditPage(),
-  schema: makeSelectSchema()
+  schema: makeSelectSchema(),
 });
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 
 const withReducer = strapi.injectReducer({
   key: 'editPage',
   reducer,
-  pluginId
+  pluginId,
 });
 const withSaga = strapi.injectSaga({ key: 'editPage', saga, pluginId });
 
 export default compose(
   withReducer,
   withSaga,
-  withConnect
+  withConnect,
 )(DragDropContext(HTML5Backend)(EditPage));

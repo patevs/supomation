@@ -10,7 +10,7 @@ describe('<PluginDispatcher />', () => {
   it('Should return null if the params does not match the pluginId', () => {
     const props = {
       global: { plugins: {} },
-      match: { params: { pluginId: 'email' } }
+      match: { params: { pluginId: 'email' } },
     };
 
     const rendered = shallow(<PluginDispatcher {...props} />);
@@ -25,11 +25,11 @@ describe('<PluginDispatcher />', () => {
           email: {
             mainComponent: Email,
             preventComponentRendering: true,
-            blockerComponent: null
-          }
-        }
+            blockerComponent: null,
+          },
+        },
       },
-      match: { params: { pluginId: 'email' } }
+      match: { params: { pluginId: 'email' } },
     };
 
     const renderedComponent = shallow(<PluginDispatcher {...props} />);
@@ -44,11 +44,11 @@ describe('<PluginDispatcher />', () => {
           email: {
             mainComponent: Email,
             preventComponentRendering: true,
-            blockerComponent: BlockerComponent2
-          }
-        }
+            blockerComponent: BlockerComponent2,
+          },
+        },
       },
-      match: { params: { pluginId: 'email' } }
+      match: { params: { pluginId: 'email' } },
     };
 
     const renderedComponent = shallow(<PluginDispatcher {...props} />);
@@ -56,16 +56,16 @@ describe('<PluginDispatcher />', () => {
     expect(renderedComponent.find(BlockerComponent2)).toHaveLength(1);
   });
 
-  it("Should return the plugin's mainComponent if all conditions are met", () => {
+  it('Should return the plugin\'s mainComponent if all conditions are met', () => {
     const props = {
       global: {
         plugins: {
           email: {
-            mainComponent: Email
-          }
-        }
+            mainComponent: Email,
+          },
+        },
       },
-      match: { params: { pluginId: 'email' } }
+      match: { params: { pluginId: 'email' } },
     };
 
     const renderedComponent = shallow(<PluginDispatcher {...props} />);

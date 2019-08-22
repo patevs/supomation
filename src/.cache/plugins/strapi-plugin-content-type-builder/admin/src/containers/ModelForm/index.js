@@ -39,7 +39,7 @@ class ModelForm extends React.Component {
       modelToEditName,
       push,
       resetExistingContentTypeMainInfos,
-      resetNewContentTypeMainInfos
+      resetNewContentTypeMainInfos,
     } = this.props;
 
     if (actionType === 'create') {
@@ -63,7 +63,7 @@ class ModelForm extends React.Component {
     }
 
     push({
-      search: `modalType=model&settingType=${to}&actionType=${actionType}${model}`
+      search: `modalType=model&settingType=${to}&actionType=${actionType}${model}`,
     });
   };
 
@@ -82,7 +82,7 @@ class ModelForm extends React.Component {
       createTempContentType,
       modelToEditName,
       push,
-      updateTempContentType
+      updateTempContentType,
     } = this.props;
     const alreadyTakenContentTypeNames = Object.keys(currentData).filter(
       name => name !== modelToEditName
@@ -91,7 +91,7 @@ class ModelForm extends React.Component {
 
     if (alreadyTakenContentTypeNames.includes(modifiedData.name)) {
       formErrors = {
-        name: [{ id: `${pluginId}.error.contentTypeName.taken` }]
+        name: [{ id: `${pluginId}.error.contentTypeName.taken` }],
       };
     }
 
@@ -101,7 +101,7 @@ class ModelForm extends React.Component {
 
     this.setState(prevState => ({
       formErrors,
-      didCheckErrors: !prevState.didCheckErrors
+      didCheckErrors: !prevState.didCheckErrors,
     }));
     const pathname = `/plugins/${pluginId}/models/${modifiedData.name}`;
 
@@ -110,7 +110,7 @@ class ModelForm extends React.Component {
         createTempContentType();
         push({
           pathname,
-          search: 'modalType=chooseAttributes'
+          search: 'modalType=chooseAttributes',
         });
       } else if (isUpdatingTemporaryContentType) {
         updateTempContentType();
@@ -129,7 +129,7 @@ class ModelForm extends React.Component {
       modelToEditName,
       modifiedData,
       onChangeExistingContentTypeMainInfos,
-      onChangeNewContentTypeMainInfos
+      onChangeNewContentTypeMainInfos,
     } = this.props;
     const { didCheckErrors, formErrors, isVisible } = this.state;
 
@@ -154,8 +154,8 @@ class ModelForm extends React.Component {
                 </a>
               )}
             </FormattedMessage>
-          )
-        }
+          ),
+        },
       };
     }
 
@@ -236,7 +236,7 @@ class ModelForm extends React.Component {
 }
 
 ModelForm.contextTypes = {
-  emitEvent: PropTypes.func
+  emitEvent: PropTypes.func,
 };
 
 ModelForm.defaultProps = {
@@ -256,7 +256,7 @@ ModelForm.defaultProps = {
   },
   resetExistingContentTypeMainInfos: () => {},
   resetNewContentTypeMainInfos: () => {},
-  updateTempContentType: () => {}
+  updateTempContentType: () => {},
 };
 
 ModelForm.propTypes = {
@@ -276,7 +276,7 @@ ModelForm.propTypes = {
   push: PropTypes.func.isRequired,
   resetExistingContentTypeMainInfos: PropTypes.func,
   resetNewContentTypeMainInfos: PropTypes.func,
-  updateTempContentType: PropTypes.func
+  updateTempContentType: PropTypes.func,
 };
 
 export default ModelForm;

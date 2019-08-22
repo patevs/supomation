@@ -31,7 +31,9 @@ export function* submitForm(action) {
         set(
           body,
           'url',
-          `${strapi.backendURL}/admin/plugins/users-permissions/auth/reset-password`
+          `${
+            strapi.backendURL
+          }/admin/plugins/users-permissions/auth/reset-password`,
         );
         break;
       default:
@@ -39,7 +41,7 @@ export function* submitForm(action) {
 
     const response = yield call(request, requestURL, {
       method: 'POST',
-      body: omit(body, 'news')
+      body: omit(body, 'news'),
     });
 
     if (
@@ -59,7 +61,7 @@ export function* submitForm(action) {
         try {
           yield call(request, 'https://analytics.strapi.io/register', {
             method: 'POST',
-            body: omit(body, ['password', 'confirmPassword'])
+            body: omit(body, ['password', 'confirmPassword']),
           });
         } catch (e) {
           // Silent.
@@ -79,7 +81,7 @@ export function* submitForm(action) {
 
             return acc;
           },
-          { id: '' }
+          { id: '' },
         );
 
         acc.push(err);
@@ -96,7 +98,7 @@ export function* submitForm(action) {
         case 'login':
           formErrors = [
             { name: 'identifier', errors },
-            { name: 'password', errors }
+            { name: 'password', errors },
           ];
           yield put(hideLoginErrorsInput(true));
           break;

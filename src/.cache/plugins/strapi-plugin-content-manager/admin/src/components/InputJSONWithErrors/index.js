@@ -15,7 +15,7 @@ import {
   InputDescription,
   InputErrors,
   InputSpacer,
-  validateInput
+  validateInput,
 } from 'strapi-helper-plugin';
 
 import InputJSON from '../InputJSON';
@@ -99,7 +99,7 @@ class InputJSONWithErrors extends React.Component {
       resetProps,
       style,
       tabIndex,
-      value
+      value,
     } = this.props;
     const handleBlur = isFunction(onBlur) ? onBlur : this.handleBlur;
 
@@ -114,7 +114,7 @@ class InputJSONWithErrors extends React.Component {
         className={cn(
           styles.containerJSON,
           customBootstrapClass,
-          !isEmpty(className) && className
+          !isEmpty(className) && className,
         )}
         style={style}
       >
@@ -179,7 +179,7 @@ InputJSONWithErrors.defaultProps = {
   style: {},
   tabIndex: '0',
   validations: {},
-  value: null
+  value: null,
 };
 
 InputJSONWithErrors.propTypes = {
@@ -198,8 +198,8 @@ InputJSONWithErrors.propTypes = {
     PropTypes.func,
     PropTypes.shape({
       id: PropTypes.string,
-      params: PropTypes.object
-    })
+      params: PropTypes.object,
+    }),
   ]),
   inputDescriptionClassName: PropTypes.string,
   inputStyle: PropTypes.object,
@@ -208,8 +208,8 @@ InputJSONWithErrors.propTypes = {
     PropTypes.func,
     PropTypes.shape({
       id: PropTypes.string,
-      params: PropTypes.object
-    })
+      params: PropTypes.object,
+    }),
   ]),
   labelClassName: PropTypes.string,
   labelStyle: PropTypes.object,
@@ -222,7 +222,7 @@ InputJSONWithErrors.propTypes = {
   style: PropTypes.object,
   tabIndex: PropTypes.string,
   validations: PropTypes.object,
-  value: PropTypes.object
+  value: PropTypes.object,
 };
 
 export default InputJSONWithErrors;

@@ -14,7 +14,11 @@ function CommunityContent() {
   return (
     <React.Fragment>
       <FormattedMessage id="app.components.HomePage.community.content">
-        {message => <p className={styles.communityContentP}>{message}</p>}
+        {message => (
+          <p className={styles.communityContentP}>
+            {message}
+          </p>
+        )}
       </FormattedMessage>
     </React.Fragment>
   );

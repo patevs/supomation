@@ -19,7 +19,7 @@ class EditForm extends React.Component {
     Object.keys(get(this.props.values, 'roles', [])).reduce((acc, current) => {
       const option = {
         id: get(this.props.values.roles, [current, 'name']),
-        value: get(this.props.values.roles, [current, 'type'])
+        value: get(this.props.values.roles, [current, 'type']),
       };
       acc.push(option);
       return acc;
@@ -31,7 +31,7 @@ class EditForm extends React.Component {
         <div
           className={cn(
             styles.editForm,
-            this.props.showLoaders && styles.loadIndicatorContainer
+            this.props.showLoaders && styles.loadIndicatorContainer,
           )}
         >
           <LoadingIndicator />
@@ -44,7 +44,7 @@ class EditForm extends React.Component {
         <div className="row">
           <Input
             inputDescription={{
-              id: 'users-permissions.EditForm.inputSelect.description.role'
+              id: 'users-permissions.EditForm.inputSelect.description.role',
             }}
             inputClassName={styles.inputStyle}
             label={{ id: 'users-permissions.EditForm.inputSelect.label.role' }}
@@ -60,7 +60,7 @@ class EditForm extends React.Component {
           <Input
             label={{ id: 'users-permissions.EditForm.inputToggle.label.email' }}
             inputDescription={{
-              id: 'users-permissions.EditForm.inputToggle.description.email'
+              id: 'users-permissions.EditForm.inputToggle.description.email',
             }}
             name="advanced.settings.unique_email"
             onChange={this.props.onChange}
@@ -98,10 +98,10 @@ class EditForm extends React.Component {
         <div className="row">
           <Input
             label={{
-              id: 'users-permissions.EditForm.inputToggle.label.sign-up'
+              id: 'users-permissions.EditForm.inputToggle.label.sign-up',
             }}
             inputDescription={{
-              id: 'users-permissions.EditForm.inputToggle.description.sign-up'
+              id: 'users-permissions.EditForm.inputToggle.description.sign-up',
             }}
             name="advanced.settings.allow_register"
             onChange={this.props.onChange}
@@ -114,11 +114,11 @@ class EditForm extends React.Component {
           <Input
             label={{
               id:
-                'users-permissions.EditForm.inputToggle.label.email-confirmation'
+                'users-permissions.EditForm.inputToggle.label.email-confirmation',
             }}
             inputDescription={{
               id:
-                'users-permissions.EditForm.inputToggle.description.email-confirmation'
+                'users-permissions.EditForm.inputToggle.description.email-confirmation',
             }}
             name="advanced.settings.email_confirmation"
             onChange={this.props.onChange}
@@ -130,18 +130,18 @@ class EditForm extends React.Component {
           <Input
             label={{
               id:
-                'users-permissions.EditForm.inputToggle.label.email-confirmation-redirection'
+                'users-permissions.EditForm.inputToggle.label.email-confirmation-redirection',
             }}
             inputDescription={{
               id:
-                'users-permissions.EditForm.inputToggle.description.email-confirmation-redirection'
+                'users-permissions.EditForm.inputToggle.description.email-confirmation-redirection',
             }}
             name="advanced.settings.email_confirmation_redirection"
             onChange={this.props.onChange}
             type="text"
             value={get(
               this.props.values.settings,
-              'email_confirmation_redirection'
+              'email_confirmation_redirection',
             )}
           />
         </div>
@@ -153,7 +153,7 @@ class EditForm extends React.Component {
 EditForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   showLoaders: PropTypes.bool.isRequired,
-  values: PropTypes.object.isRequired
+  values: PropTypes.object.isRequired,
 };
 
 export default EditForm;

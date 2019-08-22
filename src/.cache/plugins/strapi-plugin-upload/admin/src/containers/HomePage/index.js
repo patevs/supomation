@@ -17,7 +17,7 @@ import {
   ContainerFluid,
   InputSearch,
   PageFooter,
-  PluginHeader
+  PluginHeader,
 } from 'strapi-helper-plugin';
 
 import pluginId from '../../pluginId';
@@ -34,7 +34,7 @@ import {
   getData,
   onDrop,
   onSearch,
-  setParams
+  setParams,
 } from './actions';
 
 // Selectors
@@ -48,7 +48,7 @@ import saga from './saga';
 
 export class HomePage extends React.Component {
   getChildContext = () => ({
-    deleteData: this.props.deleteData
+    deleteData: this.props.deleteData,
   });
 
   componentWillMount() {
@@ -77,18 +77,18 @@ export class HomePage extends React.Component {
 
   changeSort = name => {
     const {
-      params: { _limit, _page }
+      params: { _limit, _page },
     } = this.props;
     const target = {
       name: 'params._sort',
-      value: name
+      value: name,
     };
     const search = `_page=${_page}&_limit=${_limit}&_sort=${name}`;
 
     this.props.changeParams({ target });
     this.props.history.push({
       pathname: this.props.history.pathname,
-      search
+      search,
     });
   };
 
@@ -97,10 +97,12 @@ export class HomePage extends React.Component {
     const search =
       e.target.name === 'params._limit'
         ? `_page=${params._page}&_limit=${e.target.value}&_sort=${params._sort}`
-        : `_page=${e.target.value}&_limit=${params._limit}&_sort=${params._sort}`;
+        : `_page=${e.target.value}&_limit=${params._limit}&_sort=${
+          params._sort
+        }`;
     this.props.history.push({
       pathname: history.pathname,
-      search
+      search,
     });
 
     this.props.changeParams(e);
@@ -123,10 +125,10 @@ export class HomePage extends React.Component {
         <div className={styles.homePageUpload}>
           <PluginHeader
             title={{
-              id: 'upload.HomePage.title'
+              id: 'upload.HomePage.title',
             }}
             description={{
-              id: 'upload.HomePage.description'
+              id: 'upload.HomePage.description',
             }}
             overrideRendering={this.renderInputSearch}
           />
@@ -167,20 +169,20 @@ export class HomePage extends React.Component {
 }
 
 HomePage.childContextTypes = {
-  deleteData: PropTypes.func.isRequired
+  deleteData: PropTypes.func.isRequired,
 };
 
 HomePage.contextTypes = {
-  router: PropTypes.object
+  router: PropTypes.object,
 };
 
 HomePage.defaultProps = {
   params: {
     _limit: 10,
     _page: 1,
-    _sort: 'updatedAt'
+    _sort: 'updatedAt',
   },
-  uploadedFiles: []
+  uploadedFiles: [],
 };
 
 HomePage.propTypes = {
@@ -197,7 +199,7 @@ HomePage.propTypes = {
   search: PropTypes.string.isRequired,
   setParams: PropTypes.func.isRequired,
   uploadedFiles: PropTypes.arrayOf(PropTypes.object),
-  uploadFilesLoading: PropTypes.bool.isRequired
+  uploadFilesLoading: PropTypes.bool.isRequired,
 };
 
 function mapDispatchToProps(dispatch) {
@@ -208,9 +210,9 @@ function mapDispatchToProps(dispatch) {
       getData,
       onDrop,
       onSearch,
-      setParams
+      setParams,
     },
-    dispatch
+    dispatch,
   );
 }
 
@@ -218,18 +220,18 @@ const mapStateToProps = selectHomePage();
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 
 const withReducer = strapi.injectReducer({
   key: 'homePage',
   reducer,
-  pluginId
+  pluginId,
 });
 const withSaga = strapi.injectSaga({ key: 'homePage', saga, pluginId });
 
 export default compose(
   withReducer,
   withSaga,
-  withConnect
+  withConnect,
 )(injectIntl(HomePage));

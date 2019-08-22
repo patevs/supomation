@@ -71,7 +71,7 @@ ListPlugins.propTypes = {
   onDeleteClick: PropTypes.func.isRequired,
   onDeleteConfirm: PropTypes.func.isRequired,
   pluginActionSucceeded: PropTypes.bool.isRequired,
-  plugins: PropTypes.object.isRequired
+  plugins: PropTypes.object.isRequired,
 };
 
 export default ListPlugins;

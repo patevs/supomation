@@ -10,11 +10,11 @@ const InlineBlock = ({ children, ...rest }) => (
 );
 
 InlineBlock.defaultProps = {
-  children: null
+  children: null,
 };
 
 InlineBlock.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default InlineBlock;

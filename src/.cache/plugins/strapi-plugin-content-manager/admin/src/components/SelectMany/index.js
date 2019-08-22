@@ -17,7 +17,7 @@ import {
   isUndefined,
   get,
   findIndex,
-  isEmpty
+  isEmpty,
 } from 'lodash';
 
 // Utils.
@@ -32,7 +32,7 @@ class SelectMany extends React.PureComponent {
   state = {
     isLoading: true,
     options: [],
-    start: 0
+    start: 0,
   };
 
   componentDidMount() {
@@ -61,7 +61,7 @@ class SelectMany extends React.PureComponent {
     const params = {
       _limit: 20,
       _start: this.state.start,
-      source: this.props.relation.plugin || 'content-manager'
+      source: this.props.relation.plugin || 'content-manager',
     };
 
     // Set `query` parameter if necessary
@@ -77,7 +77,7 @@ class SelectMany extends React.PureComponent {
     // Call our request helper (see 'utils/request')
     return request(requestUrl, {
       method: 'GET',
-      params
+      params,
     })
       .then(response => {
         /* eslint-disable indent */
@@ -87,13 +87,13 @@ class SelectMany extends React.PureComponent {
               label: templateObject(
                 { mainField: this.props.relation.displayedAttribute },
                 item
-              ).mainField
+              ).mainField,
             }))
           : [
               {
                 value: response,
-                label: response[this.props.relation.displayedAttribute]
-              }
+                label: response[this.props.relation.displayedAttribute],
+              },
             ];
         /* eslint-enable indent */
         const newOptions = cloneDeep(this.state.options);
@@ -108,7 +108,7 @@ class SelectMany extends React.PureComponent {
 
         return this.setState({
           options: newOptions,
-          isLoading: false
+          isLoading: false,
         });
       })
       .catch(() => {
@@ -138,14 +138,14 @@ class SelectMany extends React.PureComponent {
 
     this.props.onAddRelationalItem({
       key: this.props.relation.alias,
-      value: value.value
+      value: value.value,
     });
   };
 
   handleBottomScroll = () => {
     this.setState(prevState => {
       return {
-        start: prevState.start + 1
+        start: prevState.start + 1,
       };
     });
   };
@@ -159,16 +159,16 @@ class SelectMany extends React.PureComponent {
       label: templateObject(
         { mainField: this.props.relation.displayedAttribute },
         values[index]
-      ).mainField
+      ).mainField,
     };
 
     this.setState(prevState => ({
-      options: prevState.options.concat([toAdd])
+      options: prevState.options.concat([toAdd]),
     }));
 
     this.props.onRemoveRelationItem({
       key: this.props.relation.alias,
-      index
+      index,
     });
   };
 
@@ -177,7 +177,7 @@ class SelectMany extends React.PureComponent {
     this.props.onRedirect({
       model: this.props.relation.collection || this.props.relation.model,
       id: item.value.id || item.value._id,
-      source: this.props.relation.plugin
+      source: this.props.relation.plugin,
     });
   };
 
@@ -226,7 +226,7 @@ class SelectMany extends React.PureComponent {
                           { mainField: this.props.relation.displayedAttribute },
                           item
                         ).mainField ||
-                        item.id
+                        item.id,
                     };
                   }
                 })
@@ -250,7 +250,7 @@ class SelectMany extends React.PureComponent {
 SelectMany.defaultProps = {
   isDraggingSibling: false,
   moveAttr: () => {},
-  moveAttrEnd: () => {}
+  moveAttrEnd: () => {},
 };
 
 SelectMany.propTypes = {
@@ -261,7 +261,7 @@ SelectMany.propTypes = {
   onRedirect: PropTypes.func.isRequired,
   onRemoveRelationItem: PropTypes.func.isRequired,
   record: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]).isRequired,
-  relation: PropTypes.object.isRequired
+  relation: PropTypes.object.isRequired,
 };
 
 export default SelectMany;

@@ -26,7 +26,7 @@ import {
   onChangeInput,
   setErrors,
   setForm,
-  submit
+  submit,
 } from './actions';
 import form from './form.json';
 import reducer from './reducer';
@@ -46,9 +46,9 @@ export class AuthPage extends React.Component {
     const {
       hideLoginErrorsInput,
       match: {
-        params: { authType }
+        params: { authType },
       },
-      submitSuccess
+      submitSuccess,
     } = this.props;
 
     if (authType !== prevProps.match.params.authType) {
@@ -87,9 +87,9 @@ export class AuthPage extends React.Component {
     const {
       location: { search },
       match: {
-        params: { authType, id }
+        params: { authType, id },
       },
-      setForm
+      setForm,
     } = this.props;
     const params = search ? replace(search, '?code=', '') : id;
 
@@ -99,8 +99,8 @@ export class AuthPage extends React.Component {
   isAuthType = type => {
     const {
       match: {
-        params: { authType }
-      }
+        params: { authType },
+      },
     } = this.props;
     return authType === type;
   };
@@ -115,7 +115,7 @@ export class AuthPage extends React.Component {
       ) {
         acc.push({
           name: key,
-          errors: [{ id: 'components.Input.error.validation.required' }]
+          errors: [{ id: 'components.Input.error.validation.required' }],
         });
       }
 
@@ -129,9 +129,9 @@ export class AuthPage extends React.Component {
             name: 'password',
             errors: [
               {
-                id: 'users-permissions.components.Input.error.password.length'
-              }
-            ]
+                id: 'users-permissions.components.Input.error.password.length',
+              },
+            ],
           });
         }
 
@@ -142,9 +142,9 @@ export class AuthPage extends React.Component {
             name: 'confirmPassword',
             errors: [
               {
-                id: 'users-permissions.components.Input.error.password.noMatch'
-              }
-            ]
+                id: 'users-permissions.components.Input.error.password.noMatch',
+              },
+            ],
           });
         }
       }
@@ -164,9 +164,9 @@ export class AuthPage extends React.Component {
   renderButton = () => {
     const {
       match: {
-        params: { authType }
+        params: { authType },
       },
-      submitSuccess
+      submitSuccess,
     } = this.props;
 
     if (this.isAuthType('login')) {
@@ -234,12 +234,12 @@ export class AuthPage extends React.Component {
       didCheckErrors,
       formErrors,
       match: {
-        params: { authType }
+        params: { authType },
       },
       modifiedData,
       noErrorsDescription,
       onChangeInput,
-      submitSuccess
+      submitSuccess,
     } = this.props;
 
     const inputs = get(form, ['form', authType]);
@@ -248,9 +248,9 @@ export class AuthPage extends React.Component {
     return map(inputs, (input, key) => {
       const label = isForgotEmailSent
         ? {
-            id:
-              'users-permissions.Auth.form.forgot-password.email.label.success'
-          }
+          id:
+              'users-permissions.Auth.form.forgot-password.email.label.success',
+        }
         : get(input, 'label');
 
       return (
@@ -260,7 +260,7 @@ export class AuthPage extends React.Component {
           didCheckErrors={didCheckErrors}
           errors={get(formErrors, [
             findIndex(formErrors, ['name', input.name]),
-            'errors'
+            'errors',
           ])}
           key={get(input, 'name')}
           label={label}
@@ -307,7 +307,7 @@ export class AuthPage extends React.Component {
               styles.formContainer,
               this.isAuthType('forgot-password') && submitSuccess
                 ? styles.borderedSuccess
-                : styles.bordered
+                : styles.bordered,
             )}
             style={divStyle}
           >
@@ -343,7 +343,7 @@ export class AuthPage extends React.Component {
 }
 
 AuthPage.contextTypes = {
-  updatePlugin: PropTypes.func
+  updatePlugin: PropTypes.func,
 };
 
 AuthPage.propTypes = {
@@ -359,7 +359,7 @@ AuthPage.propTypes = {
   setErrors: PropTypes.func.isRequired,
   setForm: PropTypes.func.isRequired,
   submit: PropTypes.func.isRequired,
-  submitSuccess: PropTypes.bool.isRequired
+  submitSuccess: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = makeSelectAuthPage();
@@ -371,25 +371,25 @@ function mapDispatchToProps(dispatch) {
       onChangeInput,
       setErrors,
       setForm,
-      submit
+      submit,
     },
-    dispatch
+    dispatch,
   );
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 const withReducer = window.strapi.injectReducer({
   key: 'authPage',
   reducer,
-  pluginId
+  pluginId,
 });
 const withSaga = window.strapi.injectSaga({ key: 'authPage', saga, pluginId });
 
 export default compose(
   withReducer,
   withSaga,
-  withConnect
+  withConnect,
 )(AuthPage);

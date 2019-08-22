@@ -46,7 +46,7 @@ class OnboardingVideo extends React.Component {
     this.props.getVideoCurrentTime(
       this.props.id,
       curr,
-      this.props.video.duration
+      this.props.video.duration,
     );
   };
 
@@ -103,8 +103,8 @@ class OnboardingVideo extends React.Component {
             {isNaN(video.duration)
               ? '\xA0'
               : `${Math.floor(video.duration / 60)}:${Math.floor(
-                  video.duration
-                ) % 60}`}
+                video.duration,
+              ) % 60}`}
           </p>
         </div>
 
@@ -161,7 +161,7 @@ OnboardingVideo.defaultProps = {
   id: 0,
   onClick: () => {},
   setVideoDuration: () => {},
-  video: {}
+  video: {},
 };
 
 OnboardingVideo.propTypes = {
@@ -171,7 +171,7 @@ OnboardingVideo.propTypes = {
   id: PropTypes.number,
   onClick: PropTypes.func,
   setVideoDuration: PropTypes.func,
-  video: PropTypes.object
+  video: PropTypes.object,
 };
 
 export default OnboardingVideo;

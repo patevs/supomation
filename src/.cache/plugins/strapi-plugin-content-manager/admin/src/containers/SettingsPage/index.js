@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 import {
   InputsIndex as Input,
   PluginHeader,
-  PopUpWarning
+  PopUpWarning,
 } from 'strapi-helper-plugin';
 
 import Block from '../../components/Block';
@@ -25,7 +25,7 @@ import pluginId from '../../pluginId';
 import { onChange, onSubmit, onReset } from '../App/actions';
 import {
   makeSelectModifiedSchema,
-  makeSelectSubmitSuccess
+  makeSelectSubmitSuccess,
 } from '../App/selectors';
 
 import reducer from './reducer';
@@ -56,7 +56,7 @@ class SettingsPage extends React.PureComponent {
         }
 
         return acc.concat([
-          { name: curr, destination: `${destination}${curr}` }
+          { name: curr, destination: `${destination}${curr}` },
         ]);
       }
 
@@ -64,7 +64,7 @@ class SettingsPage extends React.PureComponent {
     }, []);
 
     return sortBy(models.filter(obj => !!this.props.schema.layout[obj.name]), [
-      'name'
+      'name',
     ]);
   };
 
@@ -74,19 +74,19 @@ class SettingsPage extends React.PureComponent {
       label: 'content-manager.popUpWarning.button.cancel',
       kind: 'secondary',
       onClick: this.handleReset,
-      type: 'button'
+      type: 'button',
     },
     {
       kind: 'primary',
       label: 'content-manager.containers.Edit.submit',
       onClick: this.handleSubmit,
-      type: 'submit'
-    }
+      type: 'submit',
+    },
   ];
 
   getValue = input => {
     const {
-      schema: { generalSettings }
+      schema: { generalSettings },
     } = this.props;
     const value = get(
       generalSettings,
@@ -99,7 +99,7 @@ class SettingsPage extends React.PureComponent {
 
   handleClick = destination => {
     const {
-      location: { pathname }
+      location: { pathname },
     } = this.props;
 
     this.props.history.push(`${pathname}/list-settings${destination}`);
@@ -125,7 +125,7 @@ class SettingsPage extends React.PureComponent {
 
   toggleWarningCancel = () =>
     this.setState(prevState => ({
-      showWarningCancel: !prevState.showWarningCancel
+      showWarningCancel: !prevState.showWarningCancel,
     }));
 
   renderForm = input => (
@@ -152,7 +152,7 @@ class SettingsPage extends React.PureComponent {
           title="Content Manager"
           description={{
             id:
-              'content-manager.containers.SettingsPage.pluginHeaderDescription'
+              'content-manager.containers.SettingsPage.pluginHeaderDescription',
           }}
         />
         <PopUpWarning
@@ -162,7 +162,7 @@ class SettingsPage extends React.PureComponent {
             title: 'content-manager.popUpWarning.title',
             message: 'content-manager.popUpWarning.warning.updateAllSettings',
             cancel: 'content-manager.popUpWarning.button.cancel',
-            confirm: 'content-manager.popUpWarning.button.confirm'
+            confirm: 'content-manager.popUpWarning.button.confirm',
           }}
           popUpWarningType="danger"
           onConfirm={() => onSubmit(this.context)}
@@ -174,7 +174,7 @@ class SettingsPage extends React.PureComponent {
             title: 'content-manager.popUpWarning.title',
             message: 'content-manager.popUpWarning.warning.cancelAllSettings',
             cancel: 'content-manager.popUpWarning.button.cancel',
-            confirm: 'content-manager.popUpWarning.button.confirm'
+            confirm: 'content-manager.popUpWarning.button.confirm',
           }}
           popUpWarningType="danger"
           onConfirm={this.handleConfirmReset}
@@ -211,7 +211,7 @@ class SettingsPage extends React.PureComponent {
 SettingsPage.defaultProps = {};
 
 SettingsPage.contextTypes = {
-  emitEvent: PropTypes.func
+  emitEvent: PropTypes.func,
 };
 
 SettingsPage.propTypes = {
@@ -221,7 +221,7 @@ SettingsPage.propTypes = {
   onReset: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   schema: PropTypes.object.isRequired,
-  submitSuccess: PropTypes.bool.isRequired
+  submitSuccess: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = dispatch =>
@@ -229,13 +229,13 @@ const mapDispatchToProps = dispatch =>
     {
       onChange,
       onReset,
-      onSubmit
+      onSubmit,
     },
     dispatch
   );
 const mapStateToProps = createStructuredSelector({
   schema: makeSelectModifiedSchema(),
-  submitSuccess: makeSelectSubmitSuccess()
+  submitSuccess: makeSelectSubmitSuccess(),
 });
 const withConnect = connect(
   mapStateToProps,
@@ -244,7 +244,7 @@ const withConnect = connect(
 const withReducer = strapi.injectReducer({
   key: 'settingsPage',
   reducer,
-  pluginId
+  pluginId,
 });
 const withSaga = strapi.injectSaga({ key: 'settingsPage', saga, pluginId });
 

@@ -21,11 +21,11 @@ function EntriesNumber({ number }) {
 }
 
 EntriesNumber.defaultProps = {
-  number: 0
+  number: 0,
 };
 
 EntriesNumber.propTypes = {
-  number: PropTypes.number
+  number: PropTypes.number,
 };
 
 export default EntriesNumber;

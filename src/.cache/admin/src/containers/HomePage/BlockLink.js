@@ -33,7 +33,7 @@ BlockLink.propTypes = {
   content: PropTypes.object.isRequired,
   isDocumentation: PropTypes.bool.isRequired,
   link: PropTypes.string.isRequired,
-  title: PropTypes.object.isRequired
+  title: PropTypes.object.isRequired,
 };
 
 export default BlockLink;

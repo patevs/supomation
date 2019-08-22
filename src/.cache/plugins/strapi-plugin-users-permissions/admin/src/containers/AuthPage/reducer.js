@@ -11,7 +11,7 @@ import {
   SET_ERRORS,
   SET_FORM,
   SUBMIT_ERROR,
-  SUBMIT_SUCCEEDED
+  SUBMIT_SUCCEEDED,
 } from './constants';
 
 const initialState = fromJS({
@@ -20,7 +20,7 @@ const initialState = fromJS({
   formType: 'login',
   noErrorsDescription: false,
   modifiedData: Map({}),
-  submitSuccess: false
+  submitSuccess: false,
 });
 
 function authPageReducer(state = initialState, action) {
@@ -28,7 +28,8 @@ function authPageReducer(state = initialState, action) {
     case HIDE_LOGIN_ERRORS_INPUT:
       return state.set('noErrorsDescription', action.value);
     case ON_CHANGE_INPUT:
-      return state.updateIn(['modifiedData', action.key], () => action.value);
+      return state
+        .updateIn(['modifiedData', action.key], () => action.value);
     case SET_ERRORS:
     case SUBMIT_ERROR:
       return state
@@ -42,7 +43,9 @@ function authPageReducer(state = initialState, action) {
         .set('submitSuccess', false)
         .set('modifiedData', Map(action.data));
     case SUBMIT_SUCCEEDED:
-      return state.set('noErrorsDescription', false).set('submitSuccess', true);
+      return state
+        .set('noErrorsDescription', false)
+        .set('submitSuccess', true);
     default:
       return state;
   }

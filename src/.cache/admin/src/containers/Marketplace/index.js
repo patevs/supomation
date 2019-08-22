@@ -23,7 +23,7 @@ import injectReducer from '../../utils/injectReducer';
 import {
   downloadPlugin,
   getAvailableAndInstalledPlugins,
-  resetProps
+  resetProps,
 } from './actions';
 import makeSelectMarketplace from './selectors';
 
@@ -34,7 +34,7 @@ import styles from './styles.scss';
 
 class Marketplace extends React.Component {
   getChildContext = () => ({
-    downloadPlugin: this.props.downloadPlugin
+    downloadPlugin: this.props.downloadPlugin,
   });
 
   componentDidMount() {
@@ -59,7 +59,7 @@ class Marketplace extends React.Component {
       availablePlugins,
       downloadPlugin,
       history,
-      installedPlugins
+      installedPlugins,
     } = this.props;
     const currentPlugin = availablePlugins[plugin];
 
@@ -112,7 +112,7 @@ class Marketplace extends React.Component {
 }
 
 Marketplace.childContextTypes = {
-  downloadPlugin: PropTypes.func.isRequired
+  downloadPlugin: PropTypes.func.isRequired,
 };
 
 Marketplace.defaultProps = {};
@@ -125,7 +125,7 @@ Marketplace.propTypes = {
   history: PropTypes.object.isRequired,
   installedPlugins: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  resetProps: PropTypes.func.isRequired
+  resetProps: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = makeSelectMarketplace();
@@ -135,15 +135,15 @@ function mapDispatchToProps(dispatch) {
     {
       downloadPlugin,
       getAvailableAndInstalledPlugins,
-      resetProps
+      resetProps,
     },
-    dispatch
+    dispatch,
   );
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 
 /* Remove this line if the container doesn't have a route and
@@ -159,5 +159,5 @@ const withSaga = injectSaga({ key: 'marketplace', saga });
 export default compose(
   withReducer,
   withSaga,
-  withConnect
+  withConnect,
 )(Marketplace);

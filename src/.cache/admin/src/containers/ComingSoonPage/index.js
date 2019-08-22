@@ -22,10 +22,10 @@ export class ComingSoonPage extends React.Component {
           <div className={`container-fluid ${styles.containerFluid}`}>
             <PluginHeader
               title={{
-                id: 'app.components.ComingSoonPage.comingSoon'
+                id: 'app.components.ComingSoonPage.comingSoon',
               }}
               description={{
-                id: 'app.components.ComingSoonPage.featuresNotAvailable'
+                id: 'app.components.ComingSoonPage.featuresNotAvailable',
               }}
               actions={[]}
             />
@@ -38,7 +38,7 @@ export class ComingSoonPage extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
 }
 

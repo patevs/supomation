@@ -1,8 +1,8 @@
 /**
- *
- * BodyModal
- *
- */
+*
+* BodyModal
+*
+*/
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -14,7 +14,9 @@ function BodyModal({ children, ...rest }) {
   return (
     <ModalBody className={styles.bodyModal} {...rest}>
       <div className="container-fluid">
-        <div className="row">{children}</div>
+        <div className="row">
+          {children}
+        </div>
       </div>
     </ModalBody>
   );
@@ -22,11 +24,11 @@ function BodyModal({ children, ...rest }) {
 
 /* istanbul ignore next */
 BodyModal.defaultProps = {
-  children: null
+  children: null,
 };
 
 BodyModal.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default BodyModal;

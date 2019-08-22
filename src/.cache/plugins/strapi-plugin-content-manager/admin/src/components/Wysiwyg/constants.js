@@ -5,7 +5,7 @@ export const SELECT_OPTIONS = [
   { id: 'components.Wysiwyg.selectOptions.H3', value: '###' },
   { id: 'components.Wysiwyg.selectOptions.H4', value: '####' },
   { id: 'components.Wysiwyg.selectOptions.H5', value: '#####' },
-  { id: 'components.Wysiwyg.selectOptions.H6', value: '######' }
+  { id: 'components.Wysiwyg.selectOptions.H6', value: '######' },
 ];
 
 export const CONTROLS = [
@@ -16,7 +16,7 @@ export const CONTROLS = [
       className: 'styleButtonBold',
       hideLabel: true,
       handler: 'addContent',
-      text: '**textToReplace**'
+      text: '**textToReplace**',
     },
     {
       label: 'I',
@@ -24,7 +24,7 @@ export const CONTROLS = [
       className: 'styleButtonItalic',
       hideLabel: true,
       handler: 'addContent',
-      text: '*textToReplace*'
+      text: '*textToReplace*',
     },
     {
       label: 'U',
@@ -32,7 +32,7 @@ export const CONTROLS = [
       className: 'styleButtonUnderline',
       hideLabel: true,
       handler: 'addContent',
-      text: '__textToReplace__'
+      text: '__textToReplace__',
     },
     {
       label: 'S',
@@ -40,7 +40,7 @@ export const CONTROLS = [
       className: 'styleButtonStrikedOut',
       hideLabel: true,
       handler: 'addContent',
-      text: '~~textToReplace~~'
+      text: '~~textToReplace~~',
     },
     {
       label: 'UL',
@@ -48,7 +48,7 @@ export const CONTROLS = [
       className: 'styleButtonUL',
       hideLabel: true,
       handler: 'addUlBlock',
-      text: '- textToReplace'
+      text: '- textToReplace',
     },
     {
       label: 'OL',
@@ -56,8 +56,8 @@ export const CONTROLS = [
       className: 'styleButtonOL',
       hideLabel: true,
       handler: 'addOlBlock',
-      text: '1. textToReplace'
-    }
+      text: '1. textToReplace',
+    },
   ],
   [
     {
@@ -66,7 +66,7 @@ export const CONTROLS = [
       className: 'styleButtonCodeBlock',
       hideLabel: true,
       handler: 'addSimpleBlockWithSelection',
-      text: '```textToReplace```'
+      text: '```textToReplace```',
     },
     {
       label: 'img',
@@ -74,7 +74,7 @@ export const CONTROLS = [
       className: 'styleButtonImg',
       hideLabel: true,
       handler: 'addSimpleBlockWithSelection',
-      text: '![text](textToReplace)'
+      text: '![text](textToReplace)',
     },
     {
       label: 'Link',
@@ -82,7 +82,7 @@ export const CONTROLS = [
       className: 'styleButtonLink',
       hideLabel: true,
       handler: 'addContent',
-      text: '[text](textToReplace)'
+      text: '[text](textToReplace)',
     },
     {
       label: 'quotes',
@@ -90,9 +90,9 @@ export const CONTROLS = [
       className: 'styleButtonBlockQuote',
       hideLabel: true,
       handler: 'addSimpleBlockWithSelection',
-      text: '> textToReplace'
-    }
-  ]
+      text: '> textToReplace',
+    },
+  ],
 ];
 
 export const DEFAULT_INDENTATION = '  ';

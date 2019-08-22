@@ -10,45 +10,45 @@ import {
   GET_PLUGINS_SUCCEEDED,
   ON_DELETE_PLUGIN_CLICK,
   ON_DELETE_PLUGIN_CONFIRM,
-  DELETE_PLUGIN_SUCCEEDED
+  DELETE_PLUGIN_SUCCEEDED,
 } from './constants';
 
 export function getAppCurrentEnvSucceeded(currentEnvironment) {
   return {
     type: GET_APP_CURRENT_ENV_SUCCEEDED,
-    currentEnvironment
+    currentEnvironment,
   };
 }
 
 export function getPlugins() {
   return {
-    type: GET_PLUGINS
+    type: GET_PLUGINS,
   };
 }
 
 export function getPluginsSucceeded({ plugins }) {
   return {
     type: GET_PLUGINS_SUCCEEDED,
-    plugins
+    plugins,
   };
 }
 
 export function onDeletePluginClick({ target }) {
   return {
     type: ON_DELETE_PLUGIN_CLICK,
-    pluginToDelete: target.id
+    pluginToDelete: target.id,
   };
 }
 
 export function onDeletePluginConfirm() {
   return {
-    type: ON_DELETE_PLUGIN_CONFIRM
+    type: ON_DELETE_PLUGIN_CONFIRM,
   };
 }
 
 export function deletePluginSucceeded(plugin) {
   return {
     type: DELETE_PLUGIN_SUCCEEDED,
-    plugin
+    plugin,
   };
 }

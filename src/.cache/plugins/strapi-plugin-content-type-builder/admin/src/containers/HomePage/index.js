@@ -11,7 +11,7 @@ import { isEmpty } from 'lodash';
 import {
   PluginHeader,
   getQueryParameters,
-  routerPropTypes
+  routerPropTypes,
 } from 'strapi-helper-plugin';
 
 import EmptyContentTypeView from '../../components/EmptyContentTypeView';
@@ -28,18 +28,18 @@ class HomePage extends React.Component {
   handleClick = () => {
     const {
       canOpenModal,
-      history: { push }
+      history: { push },
     } = this.props;
     const { emitEvent } = this.context;
 
     if (canOpenModal) {
       emitEvent('willCreateContentType');
       push({
-        search: 'modalType=model&settingType=base&actionType=create'
+        search: 'modalType=model&settingType=base&actionType=create',
       });
     } else {
       strapi.notification.info(
-        `${pluginId}.notification.info.contentType.creating.notSaved`
+        `${pluginId}.notification.info.contentType.creating.notSaved`,
       );
     }
   };
@@ -57,7 +57,7 @@ class HomePage extends React.Component {
       models,
       modifiedData,
       newContentType,
-      onChangeNewContentTypeMainInfos
+      onChangeNewContentTypeMainInfos,
     } = this.props;
     const availableNumber = models.length;
     const title = `${pluginId}.table.contentType.title.${
@@ -84,10 +84,10 @@ class HomePage extends React.Component {
       <div className={styles.homePage}>
         <PluginHeader
           title={{
-            id: `${pluginId}.home.contentTypeBuilder.name`
+            id: `${pluginId}.home.contentTypeBuilder.name`,
           }}
           description={{
-            id: `${pluginId}.home.contentTypeBuilder.description`
+            id: `${pluginId}.home.contentTypeBuilder.description`,
           }}
           actions={[]}
         />
@@ -111,14 +111,14 @@ class HomePage extends React.Component {
 }
 
 HomePage.contextTypes = {
-  emitEvent: PropTypes.func.isRequired
+  emitEvent: PropTypes.func.isRequired,
 };
 
 HomePage.defaultProps = {
   canOpenModal: true,
   connections: ['default'],
   models: [],
-  modifiedData: {}
+  modifiedData: {},
 };
 
 HomePage.propTypes = {
@@ -135,10 +135,10 @@ HomePage.propTypes = {
     description: PropTypes.string,
     mainField: PropTypes.string,
     name: PropTypes.string,
-    attributes: PropTypes.object
+    attributes: PropTypes.object,
   }).isRequired,
   onChangeNewContentTypeMainInfos: PropTypes.func.isRequired,
-  ...routerPropTypes().history.isRequired
+  ...routerPropTypes().history.isRequired,
 };
 
 export default HomePage;

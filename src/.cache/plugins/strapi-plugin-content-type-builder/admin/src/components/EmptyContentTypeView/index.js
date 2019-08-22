@@ -38,7 +38,7 @@ function EmptyContentTypeView({ handleButtonClick }) {
 }
 
 EmptyContentTypeView.propTypes = {
-  handleButtonClick: PropTypes.func.isRequired
+  handleButtonClick: PropTypes.func.isRequired,
 };
 
 export default EmptyContentTypeView;

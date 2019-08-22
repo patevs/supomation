@@ -23,21 +23,21 @@ class InputSearchContainer extends React.Component {
     isAdding: false,
     isFocused: false,
     users: this.props.values,
-    value: ''
+    value: '',
   };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.didDeleteUser !== this.props.didDeleteUser) {
       this.setState({
         users: nextProps.values,
-        filteredUsers: nextProps.values
+        filteredUsers: nextProps.values,
       });
     }
 
     if (nextProps.didGetUsers !== this.props.didGetUsers) {
       this.setState({
         users: nextProps.values,
-        filteredUsers: nextProps.values
+        filteredUsers: nextProps.values,
       });
     }
 
@@ -52,8 +52,8 @@ class InputSearchContainer extends React.Component {
     const filteredUsers = isEmpty(target.value)
       ? this.state.users
       : this.state.users.filter(user =>
-          includes(toLower(user.name), toLower(target.value))
-        );
+        includes(toLower(user.name), toLower(target.value)),
+      );
 
     if (isEmpty(filteredUsers) && !isEmpty(target.value)) {
       this.props.getUser(target.value);
@@ -64,7 +64,7 @@ class InputSearchContainer extends React.Component {
         value: target.value,
         isAdding: false,
         users: this.props.values,
-        filteredUsers: this.props.values
+        filteredUsers: this.props.values,
       });
     }
 
@@ -90,7 +90,7 @@ class InputSearchContainer extends React.Component {
         value: '',
         isAdding: false,
         users,
-        filteredUsers: users
+        filteredUsers: users,
       });
     } else {
       this.props.onClickDelete(item);
@@ -106,7 +106,7 @@ class InputSearchContainer extends React.Component {
             className={cn(
               'input-group-addon',
               styles.addon,
-              this.state.isFocused && styles.addonFocus
+              this.state.isFocused && styles.addonFocus,
             )}
           />
           <FormattedMessage id="users-permissions.InputSearch.placeholder">
@@ -114,7 +114,7 @@ class InputSearchContainer extends React.Component {
               <input
                 className={cn(
                   'form-control',
-                  !isEmpty(this.state.errors) ? 'is-invalid' : ''
+                  !isEmpty(this.state.errors) ? 'is-invalid' : '',
                 )}
                 id={this.props.name}
                 name={this.props.name}
@@ -134,7 +134,7 @@ class InputSearchContainer extends React.Component {
         <div
           className={cn(
             styles.ulContainer,
-            this.state.isFocused && styles.ulFocused
+            this.state.isFocused && styles.ulFocused,
           )}
         >
           <ul>
@@ -155,7 +155,7 @@ class InputSearchContainer extends React.Component {
 
 InputSearchContainer.defaultProps = {
   users: [],
-  values: []
+  values: [],
 };
 
 InputSearchContainer.propTypes = {
@@ -165,13 +165,13 @@ InputSearchContainer.propTypes = {
   getUser: PropTypes.func.isRequired,
   label: PropTypes.shape({
     id: PropTypes.string,
-    params: PropTypes.object
+    params: PropTypes.object,
   }).isRequired,
   name: PropTypes.string.isRequired,
   onClickAdd: PropTypes.func.isRequired,
   onClickDelete: PropTypes.func.isRequired,
   users: PropTypes.array,
-  values: PropTypes.array
+  values: PropTypes.array,
 };
 
 export default InputSearchContainer;

@@ -26,7 +26,7 @@ import { loadModels } from './actions';
 import {
   makeSelectLoading,
   makeSelectModelEntries,
-  makeSelectSchema
+  makeSelectSchema,
 } from './selectors';
 
 import reducer from './reducer';
@@ -48,24 +48,24 @@ class App extends React.Component {
       source === 'content-manager'
         ? ['models', currentModelName, 'editDisplay', 'availableFields']
         : [
-            'models',
-            'plugins',
-            source,
-            currentModelName,
-            'editDisplay',
-            'availableFields'
-          ];
+          'models',
+          'plugins',
+          source,
+          currentModelName,
+          'editDisplay',
+          'availableFields',
+        ];
     const relationsPath =
       source === 'content-manager'
         ? ['models', currentModelName, 'editDisplay', 'relations']
         : [
-            'models',
-            'plugins',
-            source,
-            currentModelName,
-            'editDisplay',
-            'relations'
-          ];
+          'models',
+          'plugins',
+          source,
+          currentModelName,
+          'editDisplay',
+          'relations',
+        ];
 
     if (
       currentModelName &&
@@ -110,27 +110,27 @@ App.propTypes = {
   loadModels: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   modelEntries: PropTypes.number.isRequired,
-  schema: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]).isRequired
+  schema: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]).isRequired,
 };
 
 export function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      loadModels
+      loadModels,
     },
-    dispatch
+    dispatch,
   );
 }
 
 const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
   modelEntries: makeSelectModelEntries(),
-  schema: makeSelectSchema()
+  schema: makeSelectSchema(),
 });
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 const withReducer = strapi.injectReducer({ key: 'global', reducer, pluginId });
 const withSaga = strapi.injectSaga({ key: 'global', saga, pluginId });
@@ -138,5 +138,5 @@ const withSaga = strapi.injectSaga({ key: 'global', saga, pluginId });
 export default compose(
   withReducer,
   withSaga,
-  withConnect
+  withConnect,
 )(App);

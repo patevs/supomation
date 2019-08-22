@@ -19,7 +19,7 @@ export class LanguageProvider extends React.Component {
   render() {
     const messages = defaultsDeep(
       this.props.messages[this.props.locale],
-      this.props.messages.en
+      this.props.messages.en,
     );
     return (
       <IntlProvider
@@ -36,21 +36,21 @@ export class LanguageProvider extends React.Component {
 LanguageProvider.propTypes = {
   children: PropTypes.element.isRequired,
   locale: PropTypes.string.isRequired,
-  messages: PropTypes.object.isRequired
+  messages: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = createSelector(
   selectLocale(),
-  locale => ({ locale })
+  locale => ({ locale }),
 );
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(LanguageProvider);

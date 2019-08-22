@@ -13,8 +13,8 @@ function* getVideos() {
       {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       },
       false,
       true,
@@ -35,7 +35,7 @@ function* getVideos() {
           end,
           isOpen: false,
           key: video.order,
-          startTime
+          startTime,
         };
       })
       .sort((a, b) => a.order - b.order);

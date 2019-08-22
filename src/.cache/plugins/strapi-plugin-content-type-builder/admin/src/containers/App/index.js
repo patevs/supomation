@@ -39,7 +39,7 @@ import {
   saveEditedAttributeRelation,
   setTemporaryAttribute,
   setTemporaryAttributeRelation,
-  updateTempContentType
+  updateTempContentType,
 } from './actions';
 
 import reducer from './reducer';
@@ -51,12 +51,12 @@ import styles from './styles.scss';
 const ROUTES = [
   {
     component: HomePage,
-    to: `/plugins/${pluginId}`
+    to: `/plugins/${pluginId}`,
   },
   {
     component: ModelPage,
-    to: `/plugins/${pluginId}/models/:modelName`
-  }
+    to: `/plugins/${pluginId}/models/:modelName`,
+  },
 ];
 
 export class App extends React.Component {
@@ -121,7 +121,7 @@ export class App extends React.Component {
 }
 
 App.defaultProps = {
-  shouldRefetchData: false
+  shouldRefetchData: false,
 };
 
 App.propTypes = {
@@ -138,7 +138,7 @@ App.propTypes = {
   saveEditedAttributeRelation: PropTypes.func.isRequired,
   setTemporaryAttribute: PropTypes.func.isRequired,
   setTemporaryAttributeRelation: PropTypes.func.isRequired,
-  shouldRefetchData: PropTypes.bool
+  shouldRefetchData: PropTypes.bool,
 };
 
 const mapStateToProps = makeSelectApp();
@@ -165,15 +165,15 @@ export function mapDispatchToProps(dispatch) {
       saveEditedAttributeRelation,
       setTemporaryAttribute,
       setTemporaryAttributeRelation,
-      updateTempContentType
+      updateTempContentType,
     },
-    dispatch
+    dispatch,
   );
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 const withReducer = strapi.injectReducer({ key: 'app', reducer, pluginId });
 const withSaga = strapi.injectSaga({ key: 'app', saga, pluginId });
@@ -181,5 +181,5 @@ const withSaga = strapi.injectSaga({ key: 'app', saga, pluginId });
 export default compose(
   withReducer,
   withSaga,
-  withConnect
+  withConnect,
 )(App);

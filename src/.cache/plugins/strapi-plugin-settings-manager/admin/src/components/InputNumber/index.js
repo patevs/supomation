@@ -37,7 +37,7 @@ import {
   isObject,
   reject,
   union,
-  uniqBy
+  uniqBy,
 } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import WithInput from '../WithInput';
@@ -49,7 +49,7 @@ class InputNumber extends React.Component {
     super(props);
     this.state = {
       errors: [],
-      hasInitialValue: false
+      hasInitialValue: false,
     };
   }
 
@@ -62,7 +62,7 @@ class InputNumber extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.errors !== nextProps.errors) {
       this.setState({
-        errors: uniqBy(union(this.state.errors, nextProps.errors), 'id')
+        errors: uniqBy(union(this.state.errors, nextProps.errors), 'id'),
       });
     }
   }
@@ -81,14 +81,14 @@ class InputNumber extends React.Component {
     let errors = [];
 
     const requiredError = {
-      id: 'settings-manager.request.error.validation.required'
+      id: 'settings-manager.request.error.validation.required',
     };
     mapKeys(this.props.validations, (validationValue, validationKey) => {
       switch (validationKey) {
         case 'required':
           if (value.length === 0) {
             errors.push({
-              id: 'settings-manager.request.error.validation.required'
+              id: 'settings-manager.request.error.validation.required',
             });
           }
           break;
@@ -126,7 +126,7 @@ class InputNumber extends React.Component {
     handleBlur,
     inputValue,
     placeholder,
-    marginBottom
+    marginBottom,
   ) => (
     <FormattedMessage id={`settings-manager.${placeholder}`}>
       {message => (
@@ -168,7 +168,7 @@ class InputNumber extends React.Component {
         handleBlur,
         inputValue,
         placeholder,
-        marginBottomInput
+        marginBottomInput,
       )
     ) : (
       <input
@@ -197,7 +197,9 @@ class InputNumber extends React.Component {
       marginTopSmall = '-1.2rem';
     return (
       <div
-        className={`${this.props.styles.stminputNumber} ${requiredClass} ${bootStrapClass} ${bootStrapClassDanger}`}
+        className={`${
+          this.props.styles.stminputNumber
+        } ${requiredClass} ${bootStrapClass} ${bootStrapClassDanger}`}
       >
         <label htmlFor={this.props.name}>
           <FormattedMessage id={`settings-manager.${this.props.name}`} />
@@ -227,7 +229,7 @@ InputNumber.propTypes = {
   styles: PropTypes.object,
   target: PropTypes.string,
   validations: PropTypes.object,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default WithInput(InputNumber); // eslint-disable-line new-cap

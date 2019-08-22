@@ -16,6 +16,6 @@ export default function createReducer(injectedReducers) {
     app: globalReducer,
     language: languageProviderReducer,
     notification: notificationProviderReducer,
-    ...injectedReducers
+    ...injectedReducers,
   });
 }

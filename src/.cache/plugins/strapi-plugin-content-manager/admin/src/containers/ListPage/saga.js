@@ -5,7 +5,7 @@ import { request } from 'strapi-helper-plugin';
 import {
   deleteDataSuccess,
   deleteSeveralDataSuccess,
-  getDataSucceeded
+  getDataSucceeded,
 } from './actions';
 // Constants
 import { DELETE_DATA, DELETE_SEVERAL_DATA, GET_DATA } from './constants';
@@ -25,7 +25,7 @@ export function* dataGet(action) {
       const key =
         curr.filter === '=' ? curr.attr : `${curr.attr}${curr.filter}`;
       const filter = {
-        [key]: curr.value
+        [key]: curr.value,
       };
       acc = Object.assign(acc, filter);
 
@@ -40,7 +40,7 @@ export function* dataGet(action) {
       _limit,
       _start,
       _sort: sortValue,
-      source
+      source,
     });
 
     if (_q !== '') {
@@ -49,7 +49,7 @@ export function* dataGet(action) {
 
     const response = yield all([
       call(request, countURL, { method: 'GET', params }),
-      call(request, recordsURL, { method: 'GET', params })
+      call(request, recordsURL, { method: 'GET', params }),
     ]);
 
     yield put(getDataSucceeded(response));
@@ -71,7 +71,7 @@ export function* dataDelete({ id, modelName, source, context }) {
 
     yield call(request, requestUrl, {
       method: 'DELETE',
-      params
+      params,
     });
 
     strapi.notification.success('content-manager.success.record.delete');
@@ -88,12 +88,12 @@ export function* dataDeleteAll({ entriesToDelete, model, source }) {
   try {
     const params = Object.assign(
       entriesToDelete,
-      source !== undefined ? { source } : {}
+      source !== undefined ? { source } : {},
     );
 
     yield call(request, `/content-manager/explorer/deleteAll/${model}`, {
       method: 'DELETE',
-      params
+      params,
     });
 
     yield put(deleteSeveralDataSuccess());

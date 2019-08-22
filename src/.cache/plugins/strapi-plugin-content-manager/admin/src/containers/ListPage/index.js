@@ -16,13 +16,13 @@ import {
   isEmpty,
   isUndefined,
   toInteger,
-  upperFirst
+  upperFirst,
 } from 'lodash';
 import {
   ButtonDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
 } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import cn from 'classnames';
@@ -32,7 +32,7 @@ import {
   PluginHeader,
   PopUpWarning,
   storeData,
-  getQueryParameters
+  getQueryParameters,
 } from 'strapi-helper-plugin';
 
 import pluginId from '../../pluginId';
@@ -68,7 +68,7 @@ import {
   resetDisplayedFields,
   setDisplayedFields,
   setParams,
-  submit
+  submit,
 } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -77,7 +77,7 @@ import {
   generateFiltersFromSearch,
   generateSearchFromFilters,
   generateSearchFromParams,
-  generateRedirectURI
+  generateRedirectURI,
 } from './utils';
 import styles from './styles.scss';
 
@@ -91,15 +91,15 @@ export class ListPage extends React.Component {
 
   componentDidUpdate(prevProps) {
     const {
-      location: { pathname, search }
+      location: { pathname, search },
     } = prevProps;
     const {
       listPage: {
         didChangeDisplayedFields,
         filtersUpdated,
         displayedFields,
-        params: { _sort }
-      }
+        params: { _sort },
+      },
     } = this.props;
 
     if (pathname !== this.props.location.pathname) {
@@ -123,8 +123,8 @@ export class ListPage extends React.Component {
       const dataToStore = {
         [this.getCurrentModelName()]: {
           displayedFields,
-          _sort
-        }
+          _sort,
+        },
       };
       storeData.set(this.getCurrentModelName(), dataToStore);
     }
@@ -157,7 +157,7 @@ export class ListPage extends React.Component {
       'models',
       'plugins',
       this.getSource(),
-      this.getCurrentModelName()
+      this.getCurrentModelName(),
     ]);
 
   getCurrentModelAttributes = () => {
@@ -167,11 +167,11 @@ export class ListPage extends React.Component {
       label: 'Id',
       type: 'string',
       searchable: true,
-      sortable: true
+      sortable: true,
     };
     const attributes = Object.assign(
       { [primaryKey]: defaultAttr },
-      get(this.getCurrentModel(), ['attributes'], {})
+      get(this.getCurrentModel(), ['attributes'], {}),
     );
 
     return attributes;
@@ -216,7 +216,7 @@ export class ListPage extends React.Component {
   getDataFromStore = key => {
     return get(storeData.get(this.getCurrentModelName()), [
       this.getCurrentModelName(),
-      key
+      key,
     ]);
   };
 
@@ -239,7 +239,7 @@ export class ListPage extends React.Component {
       'plugins',
       this.getSource(),
       this.getCurrentModelName(),
-      'fields'
+      'fields',
     ]);
 
   getPopUpDeleteAllMsg = () =>
@@ -266,17 +266,17 @@ export class ListPage extends React.Component {
 
   generateSearch = () => {
     const {
-      listPage: { filters, params }
+      listPage: { filters, params },
     } = this.props;
 
     return `?${generateSearchFromParams(
-      params
+      params,
     )}&source=${this.getSource()}${generateSearchFromFilters(filters)}`;
   };
 
   areAllEntriesSelected = () => {
     const {
-      listPage: { entriesToDelete, records }
+      listPage: { entriesToDelete, records },
     } = this.props;
 
     return (
@@ -308,7 +308,7 @@ export class ListPage extends React.Component {
     const attrIndex = this.findAttrIndex(target.name);
     const defaultSettingsAttrIndex = findIndex(defaultSettingsDisplay, [
       'name',
-      target.name
+      target.name,
     ]);
 
     this.context.emitEvent('didChangeDisplayedFields');
@@ -316,7 +316,7 @@ export class ListPage extends React.Component {
     if (attrIndex !== -1) {
       if (get(this.props.listPage, 'displayedFields', []).length === 1) {
         strapi.notification.error(
-          'content-manager.notification.error.displayedFields'
+          'content-manager.notification.error.displayedFields',
         );
       } else {
         const isRemovingDefaultSort =
@@ -351,7 +351,7 @@ export class ListPage extends React.Component {
               name: target.name,
               label: upperFirst(target.name),
               searchable,
-              sortable: searchable
+              sortable: searchable,
             });
 
       /* eslint-enable indent */
@@ -362,7 +362,7 @@ export class ListPage extends React.Component {
   handleChangeParams = e => {
     const {
       history,
-      listPage: { filters, params }
+      listPage: { filters, params },
     } = this.props;
     const _q = params._q !== '' ? `&_q=${params._q}` : '';
     const searchEnd = `&_sort=${
@@ -375,7 +375,7 @@ export class ListPage extends React.Component {
 
     this.props.history.push({
       pathname: history.pathname,
-      search
+      search,
     });
 
     this.props.changeParams(e);
@@ -384,10 +384,10 @@ export class ListPage extends React.Component {
   handleChangeSort = sort => {
     const target = {
       name: 'params._sort',
-      value: sort
+      value: sort,
     };
     const {
-      listPage: { filters, params }
+      listPage: { filters, params },
     } = this.props;
     const _q = params._q !== '' ? `&_q=${params._q}` : '';
     this.props.history.push({
@@ -395,8 +395,8 @@ export class ListPage extends React.Component {
       search: `?_page=${params._page}&_limit=${
         params._limit
       }&_sort=${sort}${_q}&source=${this.getSource()}${generateSearchFromFilters(
-        filters
-      )}`
+        filters,
+      )}`,
     });
 
     this.props.changeParams({ target });
@@ -409,7 +409,7 @@ export class ListPage extends React.Component {
       this.state.target,
       this.getCurrentModelName(),
       this.getSource(),
-      this.context
+      this.context,
     );
     this.setState({ showWarning: false });
   };
@@ -417,7 +417,7 @@ export class ListPage extends React.Component {
   handleResetDisplayedFields = () => {
     storeData.clear(this.getCurrentModelName());
     this.props.resetDisplayedFields(
-      get(this.getCurrentModel(), ['listDisplay'], [])
+      get(this.getCurrentModel(), ['listDisplay'], []),
     );
   };
 
@@ -443,7 +443,7 @@ export class ListPage extends React.Component {
 
   showLoaders = () => {
     const {
-      listPage: { isLoading, records, updatingParams }
+      listPage: { isLoading, records, updatingParams },
     } = this.props;
 
     return (
@@ -479,7 +479,7 @@ export class ListPage extends React.Component {
       e.preventDefault();
       e.stopPropagation();
       this.setState({
-        target: e.target.id
+        target: e.target.id,
       });
     }
 
@@ -537,20 +537,20 @@ export class ListPage extends React.Component {
         id: 'addEntry',
         label: 'content-manager.containers.List.addAnEntry',
         labelValues: {
-          entity: capitalize(this.props.match.params.slug) || 'Content Manager'
+          entity: capitalize(this.props.match.params.slug) || 'Content Manager',
         },
         kind: 'primaryAddShape',
         onClick: () => {
           this.context.emitEvent('willCreateEntry');
           this.props.history.push({
             pathname: `${this.props.location.pathname}/create`,
-            search: this.generateRedirectURI()
+            search: this.generateRedirectURI(),
           });
-        }
-      }
+        },
+      },
     ];
     const {
-      listPage: { count }
+      listPage: { count },
     } = this.props;
 
     return (
@@ -562,11 +562,11 @@ export class ListPage extends React.Component {
               ? 'content-manager.containers.List.pluginHeaderDescription'
               : 'content-manager.containers.List.pluginHeaderDescription.singular',
           values: {
-            label: get(count, this.getCurrentModelName(), 0)
-          }
+            label: get(count, this.getCurrentModelName(), 0),
+          },
         }}
         title={{
-          id: this.getCurrentModelName() || 'Content Manager'
+          id: this.getCurrentModelName() || 'Content Manager',
         }}
         withDescriptionAnim={this.showLoaders()}
       />
@@ -577,7 +577,7 @@ export class ListPage extends React.Component {
     const {
       deleteSeveralData,
       listPage: { entriesToDelete, showWarningDeleteAll },
-      onToggleDeleteAll
+      onToggleDeleteAll,
     } = this.props;
 
     return (
@@ -588,14 +588,14 @@ export class ListPage extends React.Component {
           title: 'content-manager.popUpWarning.title',
           message: this.getPopUpDeleteAllMsg(),
           cancel: 'content-manager.popUpWarning.button.cancel',
-          confirm: 'content-manager.popUpWarning.button.confirm'
+          confirm: 'content-manager.popUpWarning.button.confirm',
         }}
         popUpWarningType="danger"
         onConfirm={() => {
           deleteSeveralData(
             entriesToDelete,
             this.getCurrentModelName(),
-            this.getSource()
+            this.getSource(),
           );
         }}
       />
@@ -614,7 +614,7 @@ export class ListPage extends React.Component {
         filterToFocus,
         records,
         params,
-        showFilter
+        showFilter,
       },
       onChange,
       onClickSelect,
@@ -622,7 +622,7 @@ export class ListPage extends React.Component {
       onToggleDeleteAll,
       onToggleFilters,
       removeAllFilters,
-      removeFilter
+      removeFilter,
     } = this.props;
     const { isOpen } = this.state;
 
@@ -679,7 +679,7 @@ export class ListPage extends React.Component {
                         isOpen
                           ? styles.listPageDropdownWrapperOpen
                           : styles.listPageDropdownWrapperClose,
-                        styles.listPageDropdownWrapper
+                        styles.listPageDropdownWrapper,
                       )}
                     >
                       <ButtonDropdown
@@ -731,7 +731,7 @@ export class ListPage extends React.Component {
                     message:
                       'content-manager.popUpWarning.bodyMessage.contentType.delete',
                     cancel: 'content-manager.popUpWarning.button.cancel',
-                    confirm: 'content-manager.popUpWarning.button.confirm'
+                    confirm: 'content-manager.popUpWarning.button.confirm',
                   }}
                   popUpWarningType="danger"
                   onConfirm={this.handleDelete}
@@ -754,7 +754,7 @@ export class ListPage extends React.Component {
 }
 
 ListPage.contextTypes = {
-  emitEvent: PropTypes.func
+  emitEvent: PropTypes.func,
 };
 
 ListPage.propTypes = {
@@ -782,7 +782,7 @@ ListPage.propTypes = {
   schema: PropTypes.object.isRequired,
   setDisplayedFields: PropTypes.func.isRequired,
   setParams: PropTypes.func.isRequired,
-  submit: PropTypes.func.isRequired
+  submit: PropTypes.func.isRequired,
 };
 
 function mapDispatchToProps(dispatch) {
@@ -807,31 +807,31 @@ function mapDispatchToProps(dispatch) {
       resetDisplayedFields,
       setDisplayedFields,
       setParams,
-      submit
+      submit,
     },
-    dispatch
+    dispatch,
   );
 }
 
 const mapStateToProps = createStructuredSelector({
   listPage: makeSelectListPage(),
-  schema: makeSelectSchema()
+  schema: makeSelectSchema(),
 });
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 
 const withReducer = strapi.injectReducer({
   key: 'listPage',
   reducer,
-  pluginId
+  pluginId,
 });
 const withSaga = strapi.injectSaga({ key: 'listPage', saga, pluginId });
 
 export default compose(
   withReducer,
   withSaga,
-  withConnect
+  withConnect,
 )(ListPage);

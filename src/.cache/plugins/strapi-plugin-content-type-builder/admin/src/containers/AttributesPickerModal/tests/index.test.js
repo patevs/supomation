@@ -16,9 +16,9 @@ const renderComponent = (
   context = {
     emitEvent: jest.fn(),
     plugins: {
-      'content-type-builder': {}
-    }
-  }
+      'content-type-builder': {},
+    },
+  },
 ) => mountWithIntl(<AttributesPickerModal {...props} />, messages, context);
 
 describe('<AttributesPickerModal />', () => {
@@ -27,7 +27,7 @@ describe('<AttributesPickerModal />', () => {
   beforeEach(() => {
     props = {
       isOpen: false,
-      push: jest.fn()
+      push: jest.fn(),
     };
   });
 
@@ -41,10 +41,7 @@ describe('<AttributesPickerModal />', () => {
     props.isOpen = true;
 
     const wrapper = renderComponent(props);
-    const spyOnAddEventListener = jest.spyOn(
-      wrapper.instance(),
-      'addEventListener'
-    );
+    const spyOnAddEventListener = jest.spyOn(wrapper.instance(), 'addEventListener');
 
     wrapper.instance().componentDidMount();
 
@@ -55,14 +52,8 @@ describe('<AttributesPickerModal />', () => {
 
   it('should update the nodeToFocus state when the isOpen prop changes', () => {
     const wrapper = renderComponent(props);
-    const spyOnUpdateNodeToFocus = jest.spyOn(
-      wrapper.instance(),
-      'updateNodeToFocus'
-    );
-    const spyOnAddEventListener = jest.spyOn(
-      wrapper.instance(),
-      'addEventListener'
-    );
+    const spyOnUpdateNodeToFocus = jest.spyOn(wrapper.instance(), 'updateNodeToFocus');
+    const spyOnAddEventListener = jest.spyOn(wrapper.instance(), 'addEventListener');
 
     wrapper.setState({ nodeToFocus: 1 });
     wrapper.setProps({ isOpen: true });
@@ -78,10 +69,7 @@ describe('<AttributesPickerModal />', () => {
     props.isOpen = true;
 
     const wrapper = renderComponent(props);
-    const removeEventListener = jest.spyOn(
-      wrapper.instance(),
-      'removeEventListener'
-    );
+    const removeEventListener = jest.spyOn(wrapper.instance(), 'removeEventListener');
 
     wrapper.setProps({ isOpen: false });
 
@@ -94,15 +82,15 @@ describe('<AttributesPickerModal />', () => {
     const context = {
       emitEvent: jest.fn(),
       plugins: {
-        'content-type-builder': {}
-      }
+        'content-type-builder': {},
+      },
     };
     const wrapper = renderComponent(props, context);
     const { getAttributes } = wrapper.instance();
 
     expect(getAttributes()).not.toContain({
       type: 'media',
-      description: 'content-type-builder.popUpForm.attributes.media.description'
+      description: 'content-type-builder.popUpForm.attributes.media.description',
     });
   });
 
@@ -111,15 +99,15 @@ describe('<AttributesPickerModal />', () => {
       emitEvent: jest.fn(),
       plugins: {
         'content-type-builder': {},
-        upload: {}
-      }
+        upload: {},
+      },
     };
     const wrapper = renderComponent(props, context);
     const { getAttributes } = wrapper.instance();
 
     expect(getAttributes()).toContainEqual({
       type: 'media',
-      description: 'content-type-builder.popUpForm.attributes.media.description'
+      description: 'content-type-builder.popUpForm.attributes.media.description',
     });
 
     wrapper.unmount();
@@ -130,8 +118,8 @@ describe('<AttributesPickerModal />', () => {
       emitEvent: jest.fn(),
       plugins: fromJS({
         'content-type-builder': {},
-        upload: {}
-      })
+        upload: {},
+      }),
     };
     const wrapper = renderComponent(props, context);
     const { getAttributes } = wrapper.instance();
@@ -178,8 +166,8 @@ describe('<AttributesPickerModal />', () => {
       emitEvent: jest.fn(),
       plugins: fromJS({
         'content-type-builder': {},
-        upload: {}
-      })
+        upload: {},
+      }),
     };
     const wrapper = renderComponent(props, context);
     const spyOnHandleKeyDown = jest.spyOn(wrapper.instance(), 'handleKeyDown');
@@ -200,8 +188,7 @@ describe('<AttributesPickerModal />', () => {
         handleClick('test');
 
         expect(props.push).toHaveBeenCalledWith({
-          search:
-            'modalType=attributeForm&attributeType=test&settingType=base&actionType=create'
+          search: 'modalType=attributeForm&attributeType=test&settingType=base&actionType=create',
         });
       });
     });

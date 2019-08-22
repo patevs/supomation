@@ -1,8 +1,8 @@
 /**
- *
- * InputCheckboxPlugin
- *
- */
+*
+* InputCheckboxPlugin
+*
+*/
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -10,16 +10,12 @@ import cn from 'classnames';
 
 import styles from './styles.scss';
 
-class InputCheckboxPlugin extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
+class InputCheckboxPlugin extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = { showBackground: false, showCog: false };
 
   componentWillReceiveProps(nextProps) {
     // Remove background if another input is selected
-    if (
-      nextProps.inputSelected !== this.props.inputSelected &&
-      nextProps.inputSelected !== this.props.name
-    ) {
+    if (nextProps.inputSelected !== this.props.inputSelected && nextProps.inputSelected !== this.props.name) {
       this.setState({ showBackground: false });
     }
 
@@ -32,7 +28,7 @@ class InputCheckboxPlugin extends React.Component {
     const target = {
       type: 'checkbox',
       name: this.props.name,
-      value: !this.props.value
+      value: !this.props.value,
     };
 
     // Don't show the label background if the user unselects the input
@@ -49,7 +45,7 @@ class InputCheckboxPlugin extends React.Component {
     }
 
     this.context.onChange({ target });
-  };
+  }
 
   handleClick = () => {
     this.setState({ showBackground: !this.state.showBackground });
@@ -61,7 +57,7 @@ class InputCheckboxPlugin extends React.Component {
     } else {
       this.context.setShouldDisplayPolicieshint();
     }
-  };
+  }
 
   render() {
     return (
@@ -74,20 +70,8 @@ class InputCheckboxPlugin extends React.Component {
         }}
         onMouseLeave={() => this.setState({ showCog: false })}
       >
-        <div
-          className={cn(
-            'form-check',
-            this.state.showBackground ? styles.highlighted : ''
-          )}
-        >
-          <label
-            className={cn(
-              'form-check-label',
-              styles.label,
-              this.props.value ? styles.checked : ''
-            )}
-            htmlFor={this.props.name}
-          >
+        <div className={cn('form-check', this.state.showBackground ? styles.highlighted : '')}>
+          <label className={cn('form-check-label', styles.label, this.props.value ? styles.checked : '')} htmlFor={this.props.name}>
             <input
               className="form-check-input"
               defaultChecked={this.props.value}
@@ -100,9 +84,7 @@ class InputCheckboxPlugin extends React.Component {
           </label>
           {this.state.showCog || this.state.showBackground ? (
             <i className="fa fa-cog" onClick={this.handleClick} />
-          ) : (
-            ''
-          )}
+          ) : ''}
         </div>
       </div>
     );
@@ -113,12 +95,12 @@ InputCheckboxPlugin.contextTypes = {
   onChange: PropTypes.func.isRequired,
   resetShouldDisplayPoliciesHint: PropTypes.func.isRequired,
   setInputPoliciesPath: PropTypes.func.isRequired,
-  setShouldDisplayPolicieshint: PropTypes.func.isRequired
+  setShouldDisplayPolicieshint: PropTypes.func.isRequired,
 };
 
 InputCheckboxPlugin.defaultProps = {
   label: '',
-  value: false
+  value: false,
 };
 
 InputCheckboxPlugin.propTypes = {
@@ -127,7 +109,7 @@ InputCheckboxPlugin.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   setNewInputSelected: PropTypes.func.isRequired,
-  value: PropTypes.bool
+  value: PropTypes.bool,
 };
 
 export default InputCheckboxPlugin;

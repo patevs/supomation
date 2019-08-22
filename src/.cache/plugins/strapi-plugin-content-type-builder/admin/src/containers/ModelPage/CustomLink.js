@@ -8,22 +8,17 @@ import styles from './styles.scss';
 
 const CustomLink = ({ onClick }) => (
   <li style={{ color: '#2D3138' }}>
-    <div
-      className={cn(styles.linkContainer, styles.iconPlus)}
-      onClick={onClick}
-    >
+    <div className={cn(styles.linkContainer, styles.iconPlus)} onClick={onClick}>
       <div>
         <i className="fa fa-plus" />
       </div>
-      <span>
-        <FormattedMessage id={`${pluginId}.button.contentType.add`} />
-      </span>
+      <span><FormattedMessage id={`${pluginId}.button.contentType.add`} /></span>
     </div>
   </li>
 );
 
 CustomLink.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default CustomLink;

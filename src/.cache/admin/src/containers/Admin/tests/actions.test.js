@@ -6,7 +6,7 @@ import {
   setAppError,
   setAppSecured,
   showLeftMenu,
-  unsetAppSecured
+  unsetAppSecured,
 } from '../actions';
 import {
   EMIT_EVENT,
@@ -16,7 +16,7 @@ import {
   SET_APP_ERROR,
   SET_APP_SECURED,
   SHOW_LEFT_MENU,
-  UNSET_APP_SECURED
+  UNSET_APP_SECURED,
 } from '../constants';
 
 describe('<Admin /> actions', () => {
@@ -25,7 +25,7 @@ describe('<Admin /> actions', () => {
       const expected = {
         type: EMIT_EVENT,
         event: 'test',
-        properties: {}
+        properties: {},
       };
 
       expect(emitEvent('test', {})).toEqual(expected);
@@ -35,7 +35,7 @@ describe('<Admin /> actions', () => {
   describe('GetInitData Action', () => {
     it('has a type of GET_INIT_DATA', () => {
       const expected = {
-        type: GET_INIT_DATA
+        type: GET_INIT_DATA,
       };
 
       expect(getInitData()).toEqual(expected);
@@ -47,7 +47,7 @@ describe('<Admin /> actions', () => {
       const data = { autoReload: true };
       const expected = {
         type: GET_INIT_DATA_SUCCEEDED,
-        data
+        data,
       };
 
       expect(getInitDataSucceeded(data)).toEqual(expected);
@@ -57,7 +57,7 @@ describe('<Admin /> actions', () => {
   describe('HideLeftMenu Action', () => {
     it('has a type of HIDE_LEFT_MENU', () => {
       const expected = {
-        type: HIDE_LEFT_MENU
+        type: HIDE_LEFT_MENU,
       };
 
       expect(hideLeftMenu()).toEqual(expected);
@@ -67,7 +67,7 @@ describe('<Admin /> actions', () => {
   describe('SetAppError Action', () => {
     it('has a type of SET_APP_ERROR', () => {
       const expected = {
-        type: SET_APP_ERROR
+        type: SET_APP_ERROR,
       };
 
       expect(setAppError()).toEqual(expected);
@@ -77,7 +77,7 @@ describe('<Admin /> actions', () => {
   describe('SetAppSecured Action', () => {
     it('has a type of SET_APP_SECURED', () => {
       const expected = {
-        type: SET_APP_SECURED
+        type: SET_APP_SECURED,
       };
 
       expect(setAppSecured()).toEqual(expected);
@@ -87,7 +87,7 @@ describe('<Admin /> actions', () => {
   describe('ShowLeftMenu Action', () => {
     it('has a type of SHOW_LEFT_MENU', () => {
       const expected = {
-        type: SHOW_LEFT_MENU
+        type: SHOW_LEFT_MENU,
       };
 
       expect(showLeftMenu()).toEqual(expected);
@@ -97,7 +97,7 @@ describe('<Admin /> actions', () => {
   describe('UnsetAppSecured Action', () => {
     it('has a type of UNSET_APP_SECURED', () => {
       const expected = {
-        type: UNSET_APP_SECURED
+        type: UNSET_APP_SECURED,
       };
 
       expect(unsetAppSecured()).toEqual(expected);

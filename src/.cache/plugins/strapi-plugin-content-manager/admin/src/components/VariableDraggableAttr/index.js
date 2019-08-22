@@ -1,5 +1,5 @@
 /**
- *
+ * 
  * VariableDraggableAttr
  */
 
@@ -7,7 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
-import { DragSource, DropTarget } from 'react-dnd';
+import {
+  DragSource,
+  DropTarget,
+} from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { get, flow } from 'lodash';
 import cn from 'classnames';
@@ -18,14 +21,14 @@ import GrabIcon from '../../assets/images/icon_grab.svg';
 import ItemTypes from '../../utils/ItemTypes';
 
 import ClickOverHint from '../ClickOverHint';
-import DraggedRemovedIcon from '../DraggedRemovedIcon';
+import DraggedRemovedIcon  from '../DraggedRemovedIcon';
 import VariableEditIcon from '../VariableEditIcon';
 
 import Carret from './Carret';
 import styles from './styles.scss';
 
 const getBootstrapClass = attrType => {
-  switch (attrType) {
+  switch(attrType) {
     case 'checkbox':
     case 'boolean':
     case 'toggle':
@@ -38,28 +41,28 @@ const getBootstrapClass = attrType => {
       return {
         bootstrap: 'col-md-4',
         wrapper: cn(styles.attrWrapper),
-        withLongerHeight: false
+        withLongerHeight: false,
       };
     case 'json':
     case 'wysiwyg':
     case 'WYSIWYG':
       return {
-        bootstrap: 'col-md-12',
+        bootstrap: 'col-md-12', 
         wrapper: cn(styles.attrWrapper, styles.customHeight),
-        withLongerHeight: true
+        withLongerHeight: true,
       };
     case 'file':
     case 'text':
       return {
         bootstrap: 'col-md-6',
         wrapper: cn(styles.attrWrapper, styles.customHeight),
-        withLongerHeight: true
+        withLongerHeight: true,
       };
     default:
       return {
         bootstrap: 'col-md-6',
         wrapper: cn(styles.attrWrapper),
-        withLongerHeight: false
+        withLongerHeight: false,
       };
   }
 };
@@ -70,13 +73,13 @@ const variableDraggableAttrSource = {
     return {
       component,
       id: props.id,
-      index: props.index
+      index: props.index,
     };
   },
   endDrag: props => {
     props.endMove(props.keys);
     return {};
-  }
+  },
 };
 const variableDraggableAttrTarget = {
   hover: (props, monitor, component) => {
@@ -122,7 +125,7 @@ const variableDraggableAttrTarget = {
     // but it's good here for the sake of performance
     // to avoid expensive index searches.
     monitor.getItem().index = hoverIndex;
-  }
+  },
 };
 
 class VariableDraggableAttr extends React.Component {
@@ -130,7 +133,7 @@ class VariableDraggableAttr extends React.Component {
     super(props);
     const { data, layout, name } = this.props;
     const appearance = get(layout, [name, 'appearance'], '');
-    const type = appearance !== '' ? appearance : data.type;
+    const type = appearance !== '' ? appearance : data.type;    
     let classNames = getBootstrapClass(type);
     let style = {};
 
@@ -139,14 +142,14 @@ class VariableDraggableAttr extends React.Component {
       classNames = {
         bootstrap: name.split('__')[1],
         wrapper: cn(styles.attrWrapper),
-        withLongerHeight: false
+        withLongerHeight: false,
       };
     }
     this.state = {
       classNames,
       dragStart: false,
       isOver: false,
-      style
+      style,
     };
   }
 
@@ -165,10 +168,7 @@ class VariableDraggableAttr extends React.Component {
       this.handleDragEffect();
     }
 
-    if (
-      prevProps.isDragging !== this.props.isDragging &&
-      this.props.isDragging
-    ) {
+    if (prevProps.isDragging !== this.props.isDragging && this.props.isDragging) {
       this.handleClickEdit();
     }
 
@@ -182,39 +182,28 @@ class VariableDraggableAttr extends React.Component {
 
   handleClickEdit = () => {
     this.props.onClickEdit(this.props.index);
-  };
+  }
 
-  handleDragEffect = () =>
-    this.setState(prevState => ({ dragStart: !prevState.dragStart }));
+  handleDragEffect = () => this.setState(prevState => ({ dragStart: !prevState.dragStart }));
 
-  handleMouseEnter = () => {
+  handleMouseEnter= () => {
     this.setState({ isOver: true });
-  };
+  }
 
   handleMouseLeave = () => this.setState({ isOver: false });
 
-  handleRemove = e => {
+  handleRemove = (e) => {
     e.preventDefault();
     e.stopPropagation();
     const { index, keys, onRemove } = this.props;
     onRemove(index, keys);
-  };
+  }
 
-  updateClassNames = newClassName =>
-    this.setState({ classNames: newClassName });
+  updateClassNames = newClassName => this.setState({ classNames: newClassName });
 
   renderContent = () => {
     let { classNames, isOver, style, dragStart } = this.state;
-    const {
-      data,
-      draggedItemName,
-      grid,
-      hoverIndex,
-      index,
-      initDragLine,
-      isEditing,
-      name
-    } = this.props;
+    const { data, draggedItemName, grid, hoverIndex, index, initDragLine, isEditing, name } = this.props;
     const isFullSize = classNames.bootstrap === 'col-md-12';
     let itemLine = -1;
     let itemLineEls = [];
@@ -228,28 +217,18 @@ class VariableDraggableAttr extends React.Component {
     // Retrieve from the grid the attr's x coordinate
     const itemPosition = get(grid, itemLine, []).indexOf(name);
     // Retrieve the draggedItem's y coordinate in order to display a custom dropTarget (the blue caret).
-    const draggedItemLineIndex = get(grid, itemLine, []).indexOf(
-      draggedItemName
-    );
+    const draggedItemLineIndex = get(grid, itemLine, []).indexOf(draggedItemName);
     // The source target can either located on the left or right of an attr
     let showLeftCarret = hoverIndex === index && initDragLine !== itemLine;
     let showRightCarret = hoverIndex === index && initDragLine === itemLine;
 
-    if (
-      hoverIndex === index &&
-      initDragLine === itemLine &&
-      (itemPosition === 0 || (itemPosition === 1 && itemLineEls.length > 2))
-    ) {
-      if (
-        itemLineEls.length < 3 ||
-        itemPosition === 0 ||
-        draggedItemLineIndex > itemPosition
-      ) {
+    if (hoverIndex === index && initDragLine === itemLine && (itemPosition === 0 || itemPosition === 1 && itemLineEls.length > 2)) {
+      if (itemLineEls.length < 3 || itemPosition === 0 || draggedItemLineIndex > itemPosition) {
         showLeftCarret = true;
         showRightCarret = false;
       }
     }
-
+    
     /**
      * Retrieve the blue Caret custom style depending on its position and attr's height
      */
@@ -278,63 +257,48 @@ class VariableDraggableAttr extends React.Component {
 
     return (
       <div style={{ display: 'flex' }}>
-        {showLeftCarret && <Carret style={carretStyle} />}
-        <div
-          className={cn(
-            classNames.wrapper,
-            isEditing && styles.editingVariableAttr
-          )}
-          style={style}
-        >
-          <img src={isEditing ? GrabIconBlue : GrabIcon} alt="Grab Icon" />
+        { showLeftCarret && <Carret style={carretStyle} />}
+        <div className={cn(classNames.wrapper, isEditing && styles.editingVariableAttr)} style={style}>
+          <img src={(isEditing ? GrabIconBlue : GrabIcon)} alt="Grab Icon" />
           <span className={cn(isEditing && styles.editing, styles.truncated)}>
             {name}
           </span>
           <ClickOverHint show={isOver && !isEditing} />
-          {(!isOver || isEditing) &&
-            get(data, 'name', '').toLowerCase() !==
-              get(data, 'label', '').toLowerCase() && (
-              <div
-                className={cn(
-                  styles.infoLabel,
-                  isEditing && styles.infoLabelHover
-                )}
-              >
-                {data.label}
-              </div>
-            )}
+          {(!isOver || isEditing) && get(data, 'name', '').toLowerCase() !== get(data, 'label', '').toLowerCase() && (
+            <div className={cn(styles.infoLabel, isEditing && styles.infoLabelHover)}>
+              {data.label}
+            </div>
+          )}
           {isEditing && !isOver ? (
-            <VariableEditIcon
-              withLongerHeight={classNames.withLongerHeight}
-              onClick={this.handleClickEdit}
-            />
+            <VariableEditIcon withLongerHeight={classNames.withLongerHeight} onClick={this.handleClickEdit} />
           ) : (
-            <DraggedRemovedIcon
-              isDragging={isEditing}
-              withLongerHeight={classNames.withLongerHeight}
-              onRemove={this.handleRemove}
-            />
+            <DraggedRemovedIcon isDragging={isEditing} withLongerHeight={classNames.withLongerHeight} onRemove={this.handleRemove} />
           )}
         </div>
-        {showRightCarret && <Carret style={carretStyle} />}
+        { showRightCarret && <Carret style={carretStyle} />}
       </div>
     );
-  };
+  }
 
   render() {
     const { classNames } = this.state;
-    const { connectDragSource, connectDropTarget } = this.props;
+    const {
+      connectDragSource,
+      connectDropTarget,
+    } = this.props;
 
-    return connectDragSource(
-      connectDropTarget(
-        <div
-          className={cn(classNames.bootstrap)}
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-          onClick={this.handleClickEdit}
-        >
-          {this.renderContent()}
-        </div>
+    return (
+      connectDragSource(
+        connectDropTarget(
+          <div
+            className={cn(classNames.bootstrap)}
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
+            onClick={this.handleClickEdit}
+          >
+            {this.renderContent()}
+          </div>
+        ),
       )
     );
   }
@@ -342,7 +306,7 @@ class VariableDraggableAttr extends React.Component {
 
 VariableDraggableAttr.defaultProps = {
   data: {
-    type: 'text'
+    type: 'text',
   },
   draggedItemName: null,
   grid: [],
@@ -355,7 +319,7 @@ VariableDraggableAttr.defaultProps = {
   layout: {},
   name: '',
   onClickEdit: () => {},
-  onRemove: () => {}
+  onRemove: () => {},
 };
 
 VariableDraggableAttr.propTypes = {
@@ -374,24 +338,16 @@ VariableDraggableAttr.propTypes = {
   layout: PropTypes.object,
   name: PropTypes.string,
   onClickEdit: PropTypes.func,
-  onRemove: PropTypes.func
+  onRemove: PropTypes.func,
 };
 
-const withDropTarget = DropTarget(
-  ItemTypes.VARIABLE,
-  variableDraggableAttrTarget,
-  connect => ({
-    connectDropTarget: connect.dropTarget()
-  })
-);
-const withDragSource = DragSource(
-  ItemTypes.VARIABLE,
-  variableDraggableAttrSource,
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging()
-  })
-);
+const withDropTarget = DropTarget(ItemTypes.VARIABLE, variableDraggableAttrTarget, (connect) => ({
+  connectDropTarget: connect.dropTarget(),
+}));
+const withDragSource = DragSource(ItemTypes.VARIABLE, variableDraggableAttrSource, (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  connectDragPreview: connect.dragPreview(),
+  isDragging: monitor.isDragging(),
+}));
 
 export default flow([withDropTarget, withDragSource])(VariableDraggableAttr);

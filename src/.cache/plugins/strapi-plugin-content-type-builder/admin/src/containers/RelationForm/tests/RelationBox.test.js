@@ -7,14 +7,14 @@ describe('<RelationBox />', () => {
   it('should not crash', () => {
     const props = {
       onChange: jest.fn(),
-      value: ''
+      value: '',
     };
     shallow(<RelationBox {...props} />);
   });
 
   it('should use the defaultProps', () => {
     const {
-      defaultProps: { onClick }
+      defaultProps: { onClick },
     } = RelationBox;
 
     expect(onClick).toBeDefined();
