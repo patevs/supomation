@@ -1,7 +1,7 @@
 {
-	"name": "supomation-dash",
+	"name": "supomation-ui",
 	"version": "0.0.1",
-	"description": "Supomation Dashboard based on Material Dashboard by Creative Tim",
+	"description": "Supomation UI Dashboard based on Material Dashboard by Creative Tim",
 	"author": "PatEvs",
 	"license": "MIT",
 	"repository": {
