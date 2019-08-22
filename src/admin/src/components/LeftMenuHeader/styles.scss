@@ -22,8 +22,10 @@
   background-image: url('../../assets/images/logo.png');
   background-repeat: no-repeat;
   background-position: center center;
-  // background-size: 240px 60px;
-  background-size: auto 2rem;
+  // background-size: width height;
+  // values: auto, cover, contain
+  background-size: auto;
+  // background-size: auto 3rem;
 }
 
 .leftMenuHeaderLink {
