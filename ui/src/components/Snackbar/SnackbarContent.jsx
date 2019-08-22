@@ -15,17 +15,17 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import Snack from "@material-ui/core/SnackbarContent";
-import IconButton from "@material-ui/core/IconButton";
+import withStyles from '@material-ui/core/styles/withStyles';
+import Snack from '@material-ui/core/SnackbarContent';
+import IconButton from '@material-ui/core/IconButton';
 // @material-ui/icons
-import Close from "@material-ui/icons/Close";
+import Close from '@material-ui/icons/Close';
 // core components
-import snackbarContentStyle from "assets/jss/material-dashboard-react/components/snackbarContentStyle.jsx";
+import snackbarContentStyle from 'assets/jss/material-dashboard-react/components/snackbarContentStyle.jsx';
 
 function SnackbarContent({ ...props }) {
   const { classes, message, color, close, icon, rtlActive } = props;
@@ -54,7 +54,7 @@ function SnackbarContent({ ...props }) {
         </div>
       }
       classes={{
-        root: classes.root + " " + classes[color],
+        root: classes.root + ' ' + classes[color],
         message: classes.message,
         action: classNames({ [classes.actionRTL]: rtlActive })
       }}
@@ -66,7 +66,7 @@ function SnackbarContent({ ...props }) {
 SnackbarContent.propTypes = {
   classes: PropTypes.object.isRequired,
   message: PropTypes.node.isRequired,
-  color: PropTypes.oneOf(["info", "success", "warning", "danger", "primary"]),
+  color: PropTypes.oneOf(['info', 'success', 'warning', 'danger', 'primary']),
   close: PropTypes.bool,
   icon: PropTypes.object,
   rtlActive: PropTypes.bool

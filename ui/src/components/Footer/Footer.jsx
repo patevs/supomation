@@ -16,14 +16,14 @@
 
 */
 /*eslint-disable*/
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
+import withStyles from '@material-ui/core/styles/withStyles';
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
 // core components
-import footerStyle from "assets/jss/material-dashboard-react/components/footerStyle.jsx";
+import footerStyle from 'assets/jss/material-dashboard-react/components/footerStyle.jsx';
 
 function Footer({ ...props }) {
   const { classes } = props;
@@ -56,8 +56,12 @@ function Footer({ ...props }) {
         </div>
         <p className={classes.right}>
           <span>
-            &copy; {1900 + new Date().getYear()}{" "}
-            <a href="https://www.creative-tim.com?ref=mdr-footer" target="_blank" className={classes.a}>
+            &copy; {1900 + new Date().getYear()}{' '}
+            <a
+              href="https://www.creative-tim.com?ref=mdr-footer"
+              target="_blank"
+              className={classes.a}
+            >
               Creative Tim
             </a>
             , made with love for a better web

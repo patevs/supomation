@@ -15,33 +15,33 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import PropTypes from "prop-types";
-import { Switch, Route, Redirect } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Switch, Route, Redirect } from 'react-router-dom';
 // creates a beautiful scrollbar
-import PerfectScrollbar from "perfect-scrollbar";
-import "perfect-scrollbar/css/perfect-scrollbar.css";
+import PerfectScrollbar from 'perfect-scrollbar';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+import withStyles from '@material-ui/core/styles/withStyles';
 // core components
-import Navbar from "components/Navbars/Navbar.jsx";
-import Footer from "components/Footer/Footer.jsx";
-import Sidebar from "components/Sidebar/Sidebar.jsx";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
+import Navbar from 'components/Navbars/Navbar.jsx';
+import Footer from 'components/Footer/Footer.jsx';
+import Sidebar from 'components/Sidebar/Sidebar.jsx';
+import FixedPlugin from 'components/FixedPlugin/FixedPlugin.jsx';
 
-import routes from "routes.js";
+import routes from 'routes.js';
 
-import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
+import dashboardStyle from 'assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx';
 
-import image from "assets/img/sidebar-2.jpg";
-import logo from "assets/img/reactlogo.png";
+import image from 'assets/img/sidebar-2.jpg';
+import logo from 'assets/img/reactlogo.png';
 
 let ps;
 
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === '/admin') {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -59,9 +59,9 @@ const switchRoutes = (
 class Dashboard extends React.Component {
   state = {
     image: image,
-    color: "blue",
+    color: 'blue',
     hasImage: true,
-    fixedClasses: "dropdown show",
+    fixedClasses: 'dropdown show',
     mobileOpen: false
   };
   mainPanel = React.createRef();
@@ -72,17 +72,17 @@ class Dashboard extends React.Component {
     this.setState({ color: color });
   };
   handleFixedClick = () => {
-    if (this.state.fixedClasses === "dropdown") {
-      this.setState({ fixedClasses: "dropdown show" });
+    if (this.state.fixedClasses === 'dropdown') {
+      this.setState({ fixedClasses: 'dropdown show' });
     } else {
-      this.setState({ fixedClasses: "dropdown" });
+      this.setState({ fixedClasses: 'dropdown' });
     }
   };
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   };
   getRoute() {
-    return window.location.pathname !== "/admin/maps";
+    return window.location.pathname !== '/admin/maps';
   }
   resizeFunction = () => {
     if (window.innerWidth >= 960) {
@@ -90,10 +90,10 @@ class Dashboard extends React.Component {
     }
   };
   componentDidMount() {
-    if (navigator.platform.indexOf("Win") > -1) {
+    if (navigator.platform.indexOf('Win') > -1) {
       ps = new PerfectScrollbar(this.mainPanel.current);
     }
-    window.addEventListener("resize", this.resizeFunction);
+    window.addEventListener('resize', this.resizeFunction);
   }
   componentDidUpdate(e) {
     if (e.history.location.pathname !== e.location.pathname) {
@@ -104,10 +104,10 @@ class Dashboard extends React.Component {
     }
   }
   componentWillUnmount() {
-    if (navigator.platform.indexOf("Win") > -1) {
+    if (navigator.platform.indexOf('Win') > -1) {
       ps.destroy();
     }
-    window.removeEventListener("resize", this.resizeFunction);
+    window.removeEventListener('resize', this.resizeFunction);
   }
   render() {
     const { classes, ...rest } = this.props;
@@ -115,7 +115,7 @@ class Dashboard extends React.Component {
       <div className={classes.wrapper}>
         <Sidebar
           routes={routes}
-          logoText={"Creative Tim"}
+          logoText={'Creative Tim'}
           logo={logo}
           image={this.state.image}
           handleDrawerToggle={this.handleDrawerToggle}
@@ -141,8 +141,8 @@ class Dashboard extends React.Component {
           <FixedPlugin
             handleImageClick={this.handleImageClick}
             handleColorClick={this.handleColorClick}
-            bgColor={this.state["color"]}
-            bgImage={this.state["image"]}
+            bgColor={this.state['color']}
+            bgImage={this.state['image']}
             handleFixedClick={this.handleFixedClick}
             fixedClasses={this.state.fixedClasses}
           />

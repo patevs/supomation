@@ -15,29 +15,29 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React from 'react';
 // nodejs library to set properties for components
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
-import Grow from "@material-ui/core/Grow";
-import Paper from "@material-ui/core/Paper";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import Hidden from "@material-ui/core/Hidden";
-import Poppers from "@material-ui/core/Popper";
+import withStyles from '@material-ui/core/styles/withStyles';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Hidden from '@material-ui/core/Hidden';
+import Poppers from '@material-ui/core/Popper';
 // @material-ui/icons
-import Person from "@material-ui/icons/Person";
-import Notifications from "@material-ui/icons/Notifications";
-import Dashboard from "@material-ui/icons/Dashboard";
-import Search from "@material-ui/icons/Search";
+import Person from '@material-ui/icons/Person';
+import Notifications from '@material-ui/icons/Notifications';
+import Dashboard from '@material-ui/icons/Dashboard';
+import Search from '@material-ui/icons/Search';
 // core components
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Button from "components/CustomButtons/Button.jsx";
+import CustomInput from 'components/CustomInput/CustomInput.jsx';
+import Button from 'components/CustomButtons/Button.jsx';
 
-import rtlHeaderLinksStyle from "assets/jss/material-dashboard-react/components/rtlHeaderLinksStyle.jsx";
+import rtlHeaderLinksStyle from 'assets/jss/material-dashboard-react/components/rtlHeaderLinksStyle.jsx';
 
 class RTLNavbarLinks extends React.Component {
   state = {
@@ -63,12 +63,12 @@ class RTLNavbarLinks extends React.Component {
         <div className={classes.searchWrapper}>
           <CustomInput
             formControlProps={{
-              className: classes.margin + " " + classes.search
+              className: classes.margin + ' ' + classes.search
             }}
             inputProps={{
-              placeholder: "جستجو...",
+              placeholder: 'جستجو...',
               inputProps: {
-                "aria-label": "Search"
+                'aria-label': 'Search'
               }
             }}
           />
@@ -77,7 +77,7 @@ class RTLNavbarLinks extends React.Component {
           </Button>
         </div>
         <Button
-          color={window.innerWidth > 959 ? "transparent" : "white"}
+          color={window.innerWidth > 959 ? 'transparent' : 'white'}
           justIcon={window.innerWidth > 959}
           simple={!(window.innerWidth > 959)}
           aria-label="Dashboard"
@@ -93,10 +93,10 @@ class RTLNavbarLinks extends React.Component {
             buttonRef={node => {
               this.anchorEl = node;
             }}
-            color={window.innerWidth > 959 ? "transparent" : "white"}
+            color={window.innerWidth > 959 ? 'transparent' : 'white'}
             justIcon={window.innerWidth > 959}
             simple={!(window.innerWidth > 959)}
-            aria-owns={open ? "menu-list-grow" : null}
+            aria-owns={open ? 'menu-list-grow' : null}
             aria-haspopup="true"
             onClick={this.handleToggle}
             className={classes.buttonLink}
@@ -116,7 +116,7 @@ class RTLNavbarLinks extends React.Component {
             disablePortal
             className={
               classNames({ [classes.popperClose]: !open }) +
-              " " +
+              ' ' +
               classes.popperNav
             }
           >
@@ -126,7 +126,7 @@ class RTLNavbarLinks extends React.Component {
                 id="menu-list-grow"
                 style={{
                   transformOrigin:
-                    placement === "bottom" ? "center top" : "center bottom"
+                    placement === 'bottom' ? 'center top' : 'center bottom'
                 }}
               >
                 <Paper>
@@ -170,7 +170,7 @@ class RTLNavbarLinks extends React.Component {
           </Poppers>
         </div>
         <Button
-          color={window.innerWidth > 959 ? "transparent" : "white"}
+          color={window.innerWidth > 959 ? 'transparent' : 'white'}
           justIcon={window.innerWidth > 959}
           simple={!(window.innerWidth > 959)}
           aria-label="Person"
