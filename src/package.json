@@ -43,7 +43,9 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.0",
-    "prettier": "^1.18.2"
+    "ncp": "^2.0.0",
+    "prettier": "^1.18.2",
+    "trash": "^6.0.0"
   },
   "strapi": {
     "uuid": "99dd530e-ffc4-4002-8a9a-3de772f3a2ea"
