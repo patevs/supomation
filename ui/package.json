@@ -2,6 +2,8 @@
   "name": "supomation-ui",
   "description": "Supomation UI Dashboard",
   "version": "0.0.1",
+  "author": "PatEvs <ppevans11@gmail.com> (https://github.com/patevs)",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/patevs/supomation.git"
@@ -9,6 +11,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "prettier": "prettier --check --write **/*.js && echo. && echo Prettier Completed!",
+    "lint": "npm run prettier && eslint --fix **/*.js && echo. && echo Lint Completed!",
     "test": "react-scripts test"
   },
   "dependencies": {
