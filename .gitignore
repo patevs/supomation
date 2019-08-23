@@ -14,12 +14,22 @@ yarn-error.log*
 # Dependency directories
 node_modules/
 
+# production
+/build
+
+# npmjs
+/dist
+
 # Compiled files
 lib/
 
 # dotenv environment variables file
 .env
 .env.test
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Database store
 data/
