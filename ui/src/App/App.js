@@ -1,3 +1,8 @@
+/**
+ *  `ui/src/App/App.js`
+ *  Main React App Component
+ */
+
 import React from 'react';
 import './App.css';
 
@@ -23,3 +28,5 @@ function App() {
 }
 
 export default App;
+
+// EOF //

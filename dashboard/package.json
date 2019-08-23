@@ -1,17 +1,17 @@
 {
-  "name": "supomation-ui",
+  "name": "supomation-dashboard",
   "version": "0.0.1",
   "description": "Supomation UI Dashboard based on Material Dashboard by Creative Tim",
   "author": "PatEvs",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/patevs/supomation-dash.git"
+    "url": "git+https://github.com/patevs/supomation.git"
   },
   "bugs": {
-    "url": "https://github.com/patevs/supomation-dash/issues"
+    "url": "https://github.com/patevs/supomation/issues"
   },
-  "homepage": "https://github.com/patevs/supomation-dash",
+  "homepage": "https://github.com/patevs/supomation",
   "main": "dist/index.js",
   "scripts": {
     "start": "react-scripts start",

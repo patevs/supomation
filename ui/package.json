@@ -2,12 +2,14 @@
   "name": "supomation-ui",
   "description": "Supomation UI Dashboard",
   "version": "0.0.1",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patevs/supomation.git"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "dependencies": {
     "react": "^16.9.0",

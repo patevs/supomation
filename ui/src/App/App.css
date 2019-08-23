@@ -1,3 +1,8 @@
+/*
+ *  ui/src/App/App.css
+ *  App styles
+ */
+
 .App {
   text-align: center;
 }
@@ -16,3 +21,5 @@
 .App-link {
   color: #61dafb;
 }
+
+/* EOF */
