@@ -17,9 +17,7 @@ Within the download you'll find the following directories and files:
 ```md
 supomation/ui
 .
-├── LICENSE.md
 ├── README.md
-├── bower.json
 ├── package.json
 ├── public
 │   ├── favicon.ico
