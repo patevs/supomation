@@ -16,8 +16,44 @@
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
   },
+  "devDependencies": {
+    "eslint": "^6.2.1",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2"
+  },
   "eslintConfig": {
-    "extends": "react-app"
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:node/recommended",
+      "prettier",
+      "react-app"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2018
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": true
   },
   "browserslist": {
     "production": [
@@ -30,9 +66,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint": "^6.2.1",
-    "prettier": "^1.18.2"
   }
 }
