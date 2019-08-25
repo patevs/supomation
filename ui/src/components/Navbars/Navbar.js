@@ -25,7 +25,6 @@ import Menu from '@material-ui/icons/Menu';
 import AdminNavbarLinks from './AdminNavbarLinks.js';
 import Button from 'components/CustomButtons/Button.js';
 
-// import headerStyle from 'assets/jss/material-dashboard-react/components/headerStyle.jsx';
 import headerStyle from 'assets/js/components/headerStyle.js';
 
 /***************
