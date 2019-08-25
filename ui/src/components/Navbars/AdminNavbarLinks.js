@@ -1,6 +1,6 @@
 /**
  *  `ui/components/Navbars/AdminNavbarLinks.js`
- *  Application admin navbar
+ *  Admin Navbar Links Component
  */
 
 /*************

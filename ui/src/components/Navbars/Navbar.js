@@ -1,6 +1,6 @@
 /**
  *  `ui/components/Navbars/Navbar.js`
- *  Application navbar
+ *  Navbar Component
  */
 
 /*************
@@ -22,11 +22,15 @@ import Hidden from '@material-ui/core/Hidden';
 import Menu from '@material-ui/icons/Menu';
 
 // Components
-import AdminNavbarLinks from './AdminNavbarLinks.jsx';
+import AdminNavbarLinks from './AdminNavbarLinks.js';
 // import RTLNavbarLinks from './RTLNavbarLinks.jsx';
-import Button from 'components/CustomButtons/Button.jsx';
+import Button from 'components/CustomButtons/Button.js';
 
 // import headerStyle from 'assets/jss/material-dashboard-react/components/headerStyle.jsx';
+
+/***************
+ * * FUNCTIONS *
+ ***************/
 
 function Header({ ...props }) {
   function makeBrand() {
@@ -77,4 +81,11 @@ Header.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object)
 };
 
+
+/*************
+ * * EXPORTS *
+ *************/
+
 export default withStyles(headerStyle)(Header);
+
+// EOF //
