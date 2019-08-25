@@ -9,7 +9,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom'; // Redirect
 
 // Creates a beautiful scrollbar
 import PerfectScrollbar from 'perfect-scrollbar';
@@ -24,7 +24,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 // import FixedPlugin from 'components/FixedPlugin/FixedPlugin.jsx';
 
 // import routes from 'routes.js';
-
 
 let ps;
 
@@ -49,16 +48,12 @@ const switchRoutes = (
 
 class Dashboard extends React.Component {
   state = {
-    image: image,
     color: 'blue',
     hasImage: true,
     fixedClasses: 'dropdown show',
     mobileOpen: false
   };
   mainPanel = React.createRef();
-  handleImageClick = image => {
-    this.setState({ image: image });
-  };
   handleColorClick = color => {
     this.setState({ color: color });
   };
@@ -106,7 +101,7 @@ class Dashboard extends React.Component {
       <div className={classes.wrapper}>
         <Sidebar
           routes={routes}
-          logoText={'Creative Tim'}
+          logoText={'Supomation'}
           logo={logo}
           image={this.state.image}
           handleDrawerToggle={this.handleDrawerToggle}
@@ -126,8 +121,8 @@ class Dashboard extends React.Component {
               <div className={classes.container}>{switchRoutes}</div>
             </div>
           ) : (
-              <div className={classes.map}>{switchRoutes}</div>
-            )}
+            <div className={classes.map}>{switchRoutes}</div>
+          )}
           {this.getRoute() ? <Footer /> : null}
           <FixedPlugin
             handleImageClick={this.handleImageClick}
