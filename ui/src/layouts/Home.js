@@ -31,7 +31,7 @@ let ps;
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
-      if (prop.layout === '/admin') {
+      if (prop.layout === '/home') {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -42,9 +42,10 @@ const switchRoutes = (
       }
       return null;
     })}
-    <Redirect from="/admin" to="/admin/dashboard" />
   </Switch>
 );
+
+// <Redirect from="/admin" to="/admin/dashboard" />
 
 class Dashboard extends React.Component {
   state = {
