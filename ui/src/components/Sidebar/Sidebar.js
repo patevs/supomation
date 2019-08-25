@@ -25,7 +25,7 @@ import Icon from '@material-ui/core/Icon';
 import AdminNavbarLinks from 'components/Navbars/AdminNavbarLinks.js';
 // import RTLNavbarLinks from 'components/Navbars/RTLNavbarLinks.jsx';
 
-import sidebarStyle from 'assets/jss/material-dashboard-react/components/sidebarStyle.jsx';
+// import sidebarStyle from 'assets/jss/material-dashboard-react/components/sidebarStyle.jsx';
 
 /***************
  * * FUNCTIONS *
