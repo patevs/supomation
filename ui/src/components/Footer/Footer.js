@@ -16,7 +16,7 @@ import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 
 // Components
-// import footerStyle from 'assets/jss/material-dashboard-react/components/footerStyle.jsx';
+import footerStyle from '../../assets/js/components/footerStyle.js';
 
 /***************
  * * FUNCTIONS *
