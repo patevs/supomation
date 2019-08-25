@@ -11,6 +11,7 @@ import React from 'react';
 // nodejs library to set properties for components
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -21,6 +22,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Hidden from '@material-ui/core/Hidden';
 import Poppers from '@material-ui/core/Popper';
 import Divider from '@material-ui/core/Divider';
+
 // @material-ui/icons
 import Person from '@material-ui/icons/Person';
 import Notifications from '@material-ui/icons/Notifications';
@@ -28,8 +30,8 @@ import Dashboard from '@material-ui/icons/Dashboard';
 import Search from '@material-ui/icons/Search';
 
 // Components
-// import CustomInput from 'components/CustomInput/CustomInput.jsx';
-// import Button from 'components/CustomButtons/Button.jsx';
+import CustomInput from 'components/CustomInput/CustomInput.js';
+import Button from 'components/CustomButtons/Button.js';
 
 // import headerLinksStyle from 'assets/jss/material-dashboard-react/components/headerLinksStyle.jsx';
 
