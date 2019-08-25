@@ -22,7 +22,10 @@ REM 256x256
 REM :: CALL magick mogrify -resize 256x256 -write icon-256.png icon-512.png
 
 REM 192x192
-CALL magick mogrify -resize 192x192 -write icon-192.png icon-512.png
+ECHO [92m 192x192... [0m & ECHO.
+CALL magick mogrify -resize 192x192 -write icon-192.png icon-512.png -monitor
+
+GOTO :EOF
 
 REM 128x128
 CALL magick mogrify -resize 128x128 -write icon-128.png icon-512.png
@@ -33,11 +36,11 @@ CALL magick mogrify -resize 32x32 -write icon-32.png icon-512.png
 REM 16x16
 CALL magick mogrify -resize 16x16 -write icon-16.png icon-512.png
 
-ECHO [92m Finished Resizing Images! [0m & ECHO.
+ECHO [42m Finished Resizing Images! [0m & ECHO.
 
 REM Generate a favicon
 
-ECHO  [92m Generating a favicon... [0m & ECHO.
+ECHO [92m Generating a favicon... [0m & ECHO.
 
 CALL magick convert icon-16.png icon-32.png icon-128.png favicon.ico
 
