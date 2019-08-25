@@ -130,7 +130,7 @@ class AdminNavbarLinks extends React.Component {
             {({ TransitionProps, placement }) => (
               <Grow
                 {...TransitionProps}
-                id="notification-menu-list-grow"
+                id='notification-menu-list-grow'
                 style={{
                   transformOrigin:
                     placement === 'bottom' ? 'center top' : 'center bottom'
@@ -155,7 +155,7 @@ class AdminNavbarLinks extends React.Component {
                         onClick={this.handleCloseNotification}
                         className={classes.dropdownItem}
                       >
-                        You{"'"}re now friend with Andrew
+                        You{'\''}re now friend with Andrew
                       </MenuItem>
                       <MenuItem
                         onClick={this.handleCloseNotification}
