@@ -33,11 +33,11 @@ CALL magick mogrify -resize 32x32 -write icon-32.png icon-512.png
 REM 16x16
 CALL magick mogrify -resize 16x16 -write icon-16.png icon-512.png
 
-ECHO. & ECHO [92m Finished Resizing Images! [0m & ECHO.
+ECHO [92m Finished Resizing Images! [0m & ECHO.
 
 REM Generate a favicon
 
-ECHO  [44m Generating a favicon: [0m & ECHO.
+ECHO  [92m Generating a favicon... [0m & ECHO.
 
 CALL magick convert icon-16.png icon-32.png icon-128.png favicon.ico
 
