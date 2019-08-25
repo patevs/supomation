@@ -33,7 +33,7 @@ import Search from '@material-ui/icons/Search';
 import CustomInput from 'components/CustomInput/CustomInput.js';
 import Button from 'components/CustomButtons/Button.js';
 
-// import headerLinksStyle from 'assets/jss/material-dashboard-react/components/headerLinksStyle.jsx';
+import headerLinksStyle from 'assets/js/components/headerLinksStyle.js';
 
 /***************
  * * FUNCTIONS *
