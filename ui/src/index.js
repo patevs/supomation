@@ -14,6 +14,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 // Styles
 // import './index.css';
 // import 'assets/css/material-dashboard-react.css?v=1.7.0';
+import 'assets/css/styles.css';
 
 // Components
 // import App from './App';
