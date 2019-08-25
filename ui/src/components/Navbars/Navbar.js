@@ -81,7 +81,6 @@ Header.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object)
 };
 
-
 /*************
  * * EXPORTS *
  *************/

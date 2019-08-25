@@ -13,12 +13,12 @@ import { Switch, Route } from 'react-router-dom'; // Redirect
 
 // Creates a beautiful scrollbar
 import PerfectScrollbar from 'perfect-scrollbar';
-// import 'perfect-scrollbar/css/perfect-scrollbar.css';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // Components
-// import Navbar from 'components/Navbars/Navbar.jsx';
+import Navbar from 'components/Navbars/Navbar.js';
 // import Footer from 'components/Footer/Footer.jsx';
 // import Sidebar from 'components/Sidebar/Sidebar.jsx';
 // import FixedPlugin from 'components/FixedPlugin/FixedPlugin.jsx';
@@ -121,8 +121,8 @@ class Dashboard extends React.Component {
               <div className={classes.container}>{switchRoutes}</div>
             </div>
           ) : (
-            <div className={classes.map}>{switchRoutes}</div>
-          )}
+              <div className={classes.map}>{switchRoutes}</div>
+            )}
           {this.getRoute() ? <Footer /> : null}
           <FixedPlugin
             handleImageClick={this.handleImageClick}
