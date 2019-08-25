@@ -21,9 +21,10 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Navbar from 'components/Navbars/Navbar.js';
 import Footer from 'components/Footer/Footer.js';
 import Sidebar from 'components/Sidebar/Sidebar.js';
+
 // import FixedPlugin from 'components/FixedPlugin/FixedPlugin.jsx';
 
-// import routes from 'routes.js';
+import routes from 'routes.js';
 
 let ps;
 
@@ -128,19 +129,22 @@ class Dashboard extends React.Component {
               <div className={classes.map}>{switchRoutes}</div>
             )}
           {this.getRoute() ? <Footer /> : null}
-          <FixedPlugin
-            handleImageClick={this.handleImageClick}
-            handleColorClick={this.handleColorClick}
-            bgColor={this.state['color']}
-            bgImage={this.state['image']}
-            handleFixedClick={this.handleFixedClick}
-            fixedClasses={this.state.fixedClasses}
-          />
         </div>
       </div>
     );
   }
 }
+
+/*
+  <FixedPlugin
+    handleImageClick={this.handleImageClick}
+    handleColorClick={this.handleColorClick}
+    bgColor={this.state['color']}
+    bgImage={this.state['image']}
+    handleFixedClick={this.handleFixedClick}
+    fixedClasses={this.state.fixedClasses}
+  />
+ */
 
 Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
