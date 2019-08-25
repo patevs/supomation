@@ -1,6 +1,6 @@
 /**
  *  `ui/layouts/Home.js`
- *  Application home page
+ *  Application Home Page
  */
 
 /*************
@@ -19,7 +19,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 // Components
 import Navbar from 'components/Navbars/Navbar.js';
-// import Footer from 'components/Footer/Footer.jsx';
+import Footer from 'components/Footer/Footer.js';
 // import Sidebar from 'components/Sidebar/Sidebar.jsx';
 // import FixedPlugin from 'components/FixedPlugin/FixedPlugin.jsx';
 
@@ -45,6 +45,10 @@ const switchRoutes = (
 );
 
 // <Redirect from="/admin" to="/admin/dashboard" />
+
+/***************
+ * * FUNCTIONS *
+ ***************/
 
 class Dashboard extends React.Component {
   state = {
@@ -141,6 +145,10 @@ class Dashboard extends React.Component {
 Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
+
+/*************
+ * * EXPORTS *
+ *************/
 
 export default withStyles(dashboardStyle)(Dashboard);
 
