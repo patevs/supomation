@@ -20,7 +20,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 // Components
 import Navbar from 'components/Navbars/Navbar.js';
 import Footer from 'components/Footer/Footer.js';
-// import Sidebar from 'components/Sidebar/Sidebar.jsx';
+import Sidebar from 'components/Sidebar/Sidebar.js';
 // import FixedPlugin from 'components/FixedPlugin/FixedPlugin.jsx';
 
 // import routes from 'routes.js';
@@ -125,8 +125,8 @@ class Dashboard extends React.Component {
               <div className={classes.container}>{switchRoutes}</div>
             </div>
           ) : (
-            <div className={classes.map}>{switchRoutes}</div>
-          )}
+              <div className={classes.map}>{switchRoutes}</div>
+            )}
           {this.getRoute() ? <Footer /> : null}
           <FixedPlugin
             handleImageClick={this.handleImageClick}
