@@ -22,8 +22,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
 
 // Components
-import AdminNavbarLinks from 'components/Navbars/AdminNavbarLinks.js';
-// import RTLNavbarLinks from 'components/Navbars/RTLNavbarLinks.jsx';
+import AdminNavbarLinks from '../Navbars/AdminNavbarLinks.js';
 
 // import sidebarStyle from 'assets/jss/material-dashboard-react/components/sidebarStyle.jsx';
 
@@ -72,12 +71,12 @@ const Sidebar = ({ ...props }) => {
                   {prop.icon}
                 </Icon>
               ) : (
-                <prop.icon
-                  className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive
-                  })}
-                />
-              )}
+                  <prop.icon
+                    className={classNames(classes.itemIcon, whiteFontClasses, {
+                      [classes.itemIconRTL]: props.rtlActive
+                    })}
+                  />
+                )}
               <ListItemText
                 primary={props.rtlActive ? prop.rtlName : prop.name}
                 className={classNames(classes.itemText, whiteFontClasses, {

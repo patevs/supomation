@@ -18,17 +18,17 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // Components
-import Navbar from 'components/Navbars/Navbar.js';
-import Footer from 'components/Footer/Footer.js';
-import Sidebar from 'components/Sidebar/Sidebar.js';
+import Navbar from '../components/Navbars/Navbar.js';
+import Footer from '../components/Footer/Footer.js';
+import Sidebar from '../components/Sidebar/Sidebar.js';
 
 // import FixedPlugin from 'components/FixedPlugin/FixedPlugin.jsx';
 
-import routes from 'routes.js';
+import routes from '../routes.js';
 
-import dashboardStyle from 'assets/js/layouts/dashboardStyle.js';
+import dashboardStyle from '../assets/js/layouts/dashboardStyle.js';
 
-import logo from 'assets/img/logo.png';
+import logo from '../assets/img/logo.png';
 
 let ps;
 
@@ -130,8 +130,8 @@ class Dashboard extends React.Component {
               <div className={classes.container}>{switchRoutes}</div>
             </div>
           ) : (
-            <div className={classes.map}>{switchRoutes}</div>
-          )}
+              <div className={classes.map}>{switchRoutes}</div>
+            )}
           {this.getRoute() ? <Footer /> : null}
         </div>
       </div>

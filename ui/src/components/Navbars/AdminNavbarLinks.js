@@ -30,10 +30,10 @@ import Dashboard from '@material-ui/icons/Dashboard';
 import Search from '@material-ui/icons/Search';
 
 // Components
-import CustomInput from 'components/CustomInput/CustomInput.js';
-import Button from 'components/CustomButtons/Button.js';
+import CustomInput from '../CustomInput/CustomInput.js';
+import Button from '../CustomButtons/Button.js';
 
-import headerLinksStyle from 'assets/js/components/headerLinksStyle.js';
+import headerLinksStyle from '../../assets/js/components/headerLinksStyle.js';
 
 /***************
  * * FUNCTIONS *

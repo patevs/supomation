@@ -22,7 +22,7 @@ import Clear from '@material-ui/icons/Clear';
 import Check from '@material-ui/icons/Check';
 
 // Components
-import customInputStyle from 'assets/js/components/customInputStyle.js';
+import customInputStyle from '../../assets/js/components/customInputStyle.js';
 
 /***************
  * * FUNCTIONS *

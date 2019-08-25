@@ -11,9 +11,9 @@ import {
   defaultFont,
   dangerColor,
   whiteColor
-} from 'assets/js/material-dashboard-react.js';
+} from '../material-dashboard-react.js';
 
-import dropdownStyle from 'assets/js/dropdownStyle.js';
+import dropdownStyle from '../dropdownStyle.js';
 
 const headerLinksStyle = theme => ({
   ...dropdownStyle(theme),
