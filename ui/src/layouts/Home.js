@@ -26,6 +26,10 @@ import Sidebar from 'components/Sidebar/Sidebar.js';
 
 import routes from 'routes.js';
 
+import dashboardStyle from 'assets/js/layouts/dashboardStyle.js';
+
+import logo from 'assets/img/logo.png';
+
 let ps;
 
 const switchRoutes = (
