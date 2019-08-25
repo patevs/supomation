@@ -58,7 +58,6 @@
       }
     },
     "plugins": [
-      "react-app",
       "prettier"
     ],
     "settings": {
