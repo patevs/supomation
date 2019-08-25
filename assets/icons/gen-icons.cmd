@@ -22,28 +22,29 @@ REM 256x256
 REM :: CALL magick mogrify -resize 256x256 -write icon-256.png icon-512.png
 
 REM 192x192
-ECHO [92m 192x192... [0m & ECHO.
-CALL magick mogrify -resize 192x192 -write icon-192.png icon-512.png -monitor
-
-GOTO :EOF
+ECHO [92m 192x192: [0m & ECHO.
+CALL magick mogrify -monitor -resize 192x192 -write icon-192.png icon-512.png
 
 REM 128x128
-CALL magick mogrify -resize 128x128 -write icon-128.png icon-512.png
+ECHO. & ECHO [92m 128x128: [0m & ECHO.
+CALL magick mogrify -monitor -resize 128x128 -write icon-128.png icon-512.png
 
 REM 32x32
-CALL magick mogrify -resize 32x32 -write icon-32.png icon-512.png
+ECHO. & ECHO [92m 32x32: [0m & ECHO.
+CALL magick mogrify -monitor -resize 32x32 -write icon-32.png icon-512.png
 
 REM 16x16
-CALL magick mogrify -resize 16x16 -write icon-16.png icon-512.png
+ECHO. & ECHO [92m 16x16: [0m & ECHO.
+CALL magick mogrify -monitor -resize 16x16 -write icon-16.png icon-512.png
 
-ECHO [42m Finished Resizing Images! [0m & ECHO.
+ECHO. & ECHO [42m Finished Resizing Images! [0m & ECHO.
 
 REM Generate a favicon
 
 ECHO [92m Generating a favicon... [0m & ECHO.
 
-CALL magick convert icon-16.png icon-32.png icon-128.png favicon.ico
+CALL magick convert -monitor icon-16.png icon-32.png icon-128.png favicon.ico
 
-ECHO  [42m Done! [0m & ECHO.
+ECHO. & ECHO  [42m Done! [0m & ECHO.
 
 GOTO :EOF
