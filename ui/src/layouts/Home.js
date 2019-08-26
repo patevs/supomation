@@ -1,5 +1,5 @@
 /**
- *  `ui/layouts/Home.js`
+ *  `ui/src/layouts/Home.js`
  *  Application Home Page
  */
 
@@ -130,8 +130,8 @@ class Dashboard extends React.Component {
               <div className={classes.container}>{switchRoutes}</div>
             </div>
           ) : (
-            <div className={classes.map}>{switchRoutes}</div>
-          )}
+              <div className={classes.map}>{switchRoutes}</div>
+            )}
           {this.getRoute() ? <Footer /> : null}
         </div>
       </div>

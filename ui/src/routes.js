@@ -1,6 +1,6 @@
 /**
- *  `ui/layouts/Home.js`
- *  Application Home Page
+ *  `ui/src/routes.js`
+ *  Application Routes
  */
 
 /*************
