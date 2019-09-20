@@ -9,14 +9,14 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "xo && ava"
+    "test": "jest && echo Test Complete!"
   },
-  "files": [
-    "index.js"
-  ],
   "dependencies": {},
   "devDependencies": {
-    "ava": "^2.4.0",
-    "xo": "^0.24.0"
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2"
   }
 }
