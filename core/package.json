@@ -1,0 +1,22 @@
+{
+  "name": "supomation-core",
+  "version": "0.0.0",
+  "description": "supomation core",
+  "license": "MIT",
+  "repository": "patevs/supomation",
+  "author": "PatEvs",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^2.1.0",
+    "xo": "^0.24.0"
+  }
+}
