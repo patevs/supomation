@@ -1,9 +1,29 @@
+/**
+ *  `src/index.js`
+ *
+ *  * Supomation Core
+ */
+
 'use strict';
 
-module.exports = (input, { postfix = 'rainbows' } = {}) => {
-  if (typeof input !== 'string') {
-    throw new TypeError(`Expected a string, got ${typeof input}`);
-  }
+/*************
+ * * IMPORTS *
+ *************/
 
-  return `${input} & ${postfix}`;
-};
+//
+
+/***************
+* * FUNCTIONS *
+***************/
+
+//
+
+/*****************************
+ * * APPLICATION ENTRY POINT *
+ *****************************/
+
+(() => {
+  console.log('Starting Supomation...');
+})();
+
+// EOF //
