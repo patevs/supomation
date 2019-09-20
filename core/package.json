@@ -12,8 +12,8 @@
   "scripts": {
     "start": "node src/index.js",
     "prelint": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
-    "lint": "eslint --fix src/**/*.js && echo. && echo Lint Completed!",
-    "test": "jest && echo Test Complete!"
+    "lint": "eslint --fix src/**/*.js && echo Lint Completed!",
+    "test": "jest && echo. && echo Test Complete!"
   },
   "dependencies": {},
   "devDependencies": {
@@ -26,7 +26,8 @@
   "eslintConfig": {
     "env": {
       "es6": true,
-      "node": true
+      "node": true,
+      "jest": true
     },
     "extends": [
       "eslint:recommended",
