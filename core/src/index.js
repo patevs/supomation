@@ -30,11 +30,11 @@ const scrapSpecials = async () => {
         return new Observable(observer => {
           observer.next('Scraping Product Data');
           axios.get(targetUrl).then(response => {
-            /*
             const productData = scraper.scrapProductsFromPage(
               response.data
             );
             observer.next('Saving Product Data');
+            /*
             data.saveProductData(
               utils.getDate(),
               'specials',
