@@ -11,15 +11,35 @@
  *************/
 
 const globals = require('./globals');
-
+const scraper = require('./scraper');
 const axios = require('axios');
 const Listr = require('listr');
 
-const { Observable } = require('rxjs')
+const { Observable } = require('rxjs');
 
 /***************
  * * FUNCTIONS *
  ***************/
+
+const getSpecialsPage = () => {
+  const targetUrl = globals.SPECIALS_BASE_URL;
+  axios.get(targetUrl).then(response => {
+    return response.data;
+    // grab product data from page
+    // const productData = scraper.scrapProductsFromPage(response.data);
+    // observer.next('Saving Product Data');
+    // console.log(productData);
+    /*
+    data.saveProductData(
+      utils.getDate(),
+      'specials',
+      productData
+    );
+    */
+    //  observer.complete();
+    // return productData;
+  });
+}
 
 const scrapSpecials = async () => {
   const targetUrl = globals.SPECIALS_BASE_URL;
@@ -30,10 +50,11 @@ const scrapSpecials = async () => {
         return new Observable(observer => {
           observer.next('Scraping Product Data');
           axios.get(targetUrl).then(response => {
-            const productData = scraper.scrapProductsFromPage(
-              response.data
-            );
+            // return response.data;
+            // grab product data from page
+            const productData = scraper.scrapProductsFromPage(response.data);
             observer.next('Saving Product Data');
+            console.log(productData);
             /*
             data.saveProductData(
               utils.getDate(),
@@ -58,7 +79,9 @@ const scrapSpecials = async () => {
 (() => {
   console.log('Starting Supomation...');
   console.log('Version: ' + globals.PROJECT_VERSION);
+  // const specialsData =
   scrapSpecials();
+  // console.log(specialsData);
 })();
 
 // EOF //

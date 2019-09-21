@@ -123,11 +123,7 @@ const scrapProductsFromPage = pageHtmlContent => {
     // Get the data for the current product
     const productData = getProductData(productElem);
     // Process the current product
-    const product = processProduct(
-      productName,
-      productQuantity,
-      productData
-    );
+    const product = processProduct(productName, productQuantity, productData);
     // Push product object into products array
     allProducts.push(product);
   }
