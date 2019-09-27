@@ -12,7 +12,7 @@
 const axios = require('axios');
 // import axios from "axios";
 // JQuery implementation
-const cheerio = require('cheerio');
+// const cheerio = require('cheerio');
 // import cheerio from "cheerio";
 
 // const Listr = require('listr');
@@ -21,44 +21,25 @@ const cheerio = require('cheerio');
 
 // const scraper = require('./scraper');
 
-const globals = require('./globals');
+// const globals = require('./globals');
 
 
 /***************
  * * FUNCTIONS *
  ***************/
 
+async function getVirtualMailer() {
+  try {
+    const response = await axios.get(
+      'https://app.redpepperdigital.net/app/redpepper/home/91'
+    );
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 /*
-async function getMailer() {
-    try {
-        const response = await axios.get(
-            "https://app.redpepperdigital.net/app/redpepper/home/91"
-        );
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-    }
-}
-*/
-
-function getVirtualMailer() {
-  const instance = createSupomationApiInstance();
-  instance.get(globals.VIRTUAL_MAILER_URL).then(function (response) {
-    const data = response.data;
-    const $ = cheerio.load(data);
-    let catelogScript = $('#__red-pepper-catalog')
-      .next()
-      .html();
-    // Ensure catelogScript is not null
-    if (catelogScript !== null) {
-      catelogScript = catelogScript.trim();
-      const len = catelogScript.length;
-      let catelogId = catelogScript.substr(len - 4, 2);
-      // . logging.log(catelogId);
-    }
-  });
-}
-
 function createSupomationApiInstance() {
   const instance = axios.create({
     baseURL: globals.VIRTUAL_MAILER_URL,
@@ -67,15 +48,8 @@ function createSupomationApiInstance() {
   });
   return instance;
 }
-
-/*
-function getVirtualMailer() {
-    // TODO: Enumerate all store id's
-    logging.log("\n TO BE IMPLEMENTED: GET VIRTUAL MAILER...\n");
-    // Navigate to virtual mailer page
-    // . createAxiosInstance();
-}
 */
+
 
 /* axios async example
 async function getUser() {
