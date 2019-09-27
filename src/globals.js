@@ -16,8 +16,7 @@ const pjson = require('../package.json');
  * * CONSTANTS *
  ***************/
 
-// const VIRTUAL_MAILER_URL: string =
-//    "https://www.newworld.co.nz/savings/virtualmailer/";
+const VIRTUAL_MAILER_URL = 'https://www.newworld.co.nz/savings/virtualmailer/';
 
 // https://app.redpepperdigital.net/app/redpepper/home/91
 
@@ -42,6 +41,7 @@ const ALL_CATEGORIES = [
 module.exports = {
   PROJECT_NAME: pjson.name,
   PROJECT_VERSION: pjson.version,
+  VIRTUAL_MAILER_URL,
   SPECIALS_BASE_URL,
   CATEGORY_BASE_URL,
   ALL_CATEGORIES
