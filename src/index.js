@@ -23,7 +23,7 @@ const globals = require('./globals');
  *****************************/
 
 (() => {
-  console.log('Starting Supomation...');
+  console.log('Starting ' + globals.PROJECT_NAME + '...');
   console.log('Version: ' + globals.PROJECT_VERSION);
 })();
 

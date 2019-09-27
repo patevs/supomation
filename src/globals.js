@@ -35,6 +35,7 @@ const ALL_CATEGORIES = [
  *************/
 
 module.exports = {
+  PROJECT_NAME: pjson.name,
   PROJECT_VERSION: pjson.version,
   SPECIALS_BASE_URL,
   CATEGORY_BASE_URL,
