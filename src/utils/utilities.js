@@ -22,8 +22,8 @@ const logging = require('./logging');
  *  @returns { string } date string
  */
 const getDate = () => {
-    const d = new Date();
-    return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+  const d = new Date();
+  return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
 };
 
 // -------------------------------------------------------- //
@@ -34,7 +34,7 @@ const getDate = () => {
  *  @returns { string } date string
  */
 const getDateFull = () => {
-    return new Date().toDateString();
+  return new Date().toDateString();
 };
 
 // -------------------------------------------------------- //
@@ -46,7 +46,7 @@ const getDateFull = () => {
  *  @returns { void }
  */
 const welcome = projectVersion => {
-    logging.logWelcome(projectVersion, getDateFull());
+  logging.logWelcome(projectVersion, getDateFull());
 };
 
 // -------------------------------------------------------- //
@@ -58,10 +58,10 @@ const welcome = projectVersion => {
  *  @returns { void }
  */
 const version = projectVersion => {
-    logging.log(); // new line
-    const msg = 'Supomation CLI version: ' + logging.magenta(projectVersion);
-    logging.logInfo(msg);
-    logging.log(); // new line
+  logging.log(); // new line
+  const msg = 'Supomation CLI version: ' + logging.magenta(projectVersion);
+  logging.logInfo(msg);
+  logging.log(); // new line
 };
 
 // -------------------------------------------------------- //
@@ -73,9 +73,9 @@ const version = projectVersion => {
  */
 // TODO: Complete help message
 const help = () => {
-    logging.log(); // new line
-    logging.logInfo(' ---- ' + logging.magenta('HELP MESSAGE') + ' ---- ');
-    logging.log(); // new line
+  logging.log(); // new line
+  logging.logInfo(' ---- ' + logging.magenta('HELP MESSAGE') + ' ---- ');
+  logging.log(); // new line
 };
 
 // -------------------------------------------------------- //
@@ -86,11 +86,11 @@ const help = () => {
  *  @returns { void }
  */
 const quit = () => {
-    logging.log(); // new line
-    logging.logError('Quitting Supomation CLI...');
-    // throw new Error('Quitting Supomation CLI...');
-    const exit = process.exit;
-    exit(0);
+  logging.log(); // new line
+  logging.logError('Quitting Supomation CLI...');
+  // throw new Error('Quitting Supomation CLI...');
+  const exit = process.exit;
+  exit(0);
 };
 
 /*************
@@ -98,12 +98,12 @@ const quit = () => {
  *************/
 
 module.exports = {
-    getDate,
-    getDateFull,
-    welcome,
-    version,
-    help,
-    quit
+  getDate,
+  getDateFull,
+  welcome,
+  version,
+  help,
+  quit
 };
 
 // EOF //

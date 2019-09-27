@@ -164,7 +164,7 @@ const mainMenu = () => {
  *****************************/
 
 (() => {
-    utils.welcome(globals.PROJECT_VERSION);
+  utils.welcome(globals.PROJECT_VERSION);
 })();
 
 // EOF //

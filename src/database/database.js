@@ -29,7 +29,7 @@ const DATA_DIR = 'data/';
  *  @returns { void }
  */
 const setupDataDir = date => {
-    helpers.ensureDateDirExists(DATA_DIR, date);
+  helpers.ensureDateDirExists(DATA_DIR, date);
 };
 
 // -------------------------------------------------------- //
@@ -43,12 +43,12 @@ const setupDataDir = date => {
  *  @returns { boolean }
  */
 const saveProductData = (date, fileName, productData) => {
-    // Construct file path
-    const filePath = DATA_DIR + date + '/' + fileName + '.json';
-    // Convert JSON data to string
-    const data = JSON.stringify(productData, null, 4);
-    // Write data to file
-    return helpers.writeProductDataFile(filePath, data);
+  // Construct file path
+  const filePath = DATA_DIR + date + '/' + fileName + '.json';
+  // Convert JSON data to string
+  const data = JSON.stringify(productData, null, 4);
+  // Write data to file
+  return helpers.writeProductDataFile(filePath, data);
 };
 
 // -------------------------------------------------------- //
@@ -62,16 +62,16 @@ const saveProductData = (date, fileName, productData) => {
  */
 // TODO: Allow for the selection of which data to load
 const loadProductData = (date, fileName) => {
-    // Path to data/date directory
-    let dataDirPath = DATA_DIR + date;
-    // Path to products data file
-    const dataFilePath = dataDirPath + '/' + fileName + '.json';
-    // Read product data file
-    const dataFile = helpers.readProductDataFile(dataFilePath);
-    // Parse product data to JSON
-    const productData = JSON.parse(dataFile);
-    // Display product data in table
-    helpers.displayProductDataTable(productData);
+  // Path to data/date directory
+  let dataDirPath = DATA_DIR + date;
+  // Path to products data file
+  const dataFilePath = dataDirPath + '/' + fileName + '.json';
+  // Read product data file
+  const dataFile = helpers.readProductDataFile(dataFilePath);
+  // Parse product data to JSON
+  const productData = JSON.parse(dataFile);
+  // Display product data in table
+  helpers.displayProductDataTable(productData);
 };
 
 /*************
@@ -79,9 +79,9 @@ const loadProductData = (date, fileName) => {
  *************/
 
 module.exports = {
-    setupDataDir,
-    saveProductData,
-    loadProductData
+  setupDataDir,
+  saveProductData,
+  loadProductData
 };
 
 // EOF //

@@ -21,26 +21,6 @@ const { Observable } = require('rxjs');
  * * FUNCTIONS *
  ***************/
 
-const getSpecialsPage = () => {
-  const targetUrl = globals.SPECIALS_BASE_URL;
-  axios.get(targetUrl).then(response => {
-    return response.data;
-    // grab product data from page
-    // const productData = scraper.scrapProductsFromPage(response.data);
-    // observer.next('Saving Product Data');
-    // console.log(productData);
-    /*
-    data.saveProductData(
-      utils.getDate(),
-      'specials',
-      productData
-    );
-    */
-    //  observer.complete();
-    // return productData;
-  });
-}
-
 const scrapSpecials = async () => {
   const targetUrl = globals.SPECIALS_BASE_URL;
   const specialTasks = new Listr([

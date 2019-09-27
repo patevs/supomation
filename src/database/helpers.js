@@ -25,7 +25,7 @@ const fs = require('fs');
  *  @returns { boolean }
  */
 const dataDirExists = dataDir => {
-    return fs.existsSync(dataDir);
+  return fs.existsSync(dataDir);
 };
 
 // -------------------------------------------------------- //
@@ -38,7 +38,7 @@ const dataDirExists = dataDir => {
  *  @returns { boolean }
  */
 const dateDirExists = (dataDir, date) => {
-    return fs.existsSync(dataDir + date);
+  return fs.existsSync(dataDir + date);
 };
 
 // -------------------------------------------------------- //
@@ -50,9 +50,9 @@ const dateDirExists = (dataDir, date) => {
  *  @returns { void }
  */
 const ensureDataDirExists = dataDir => {
-    if (!dataDirExists(dataDir)) {
-        fs.mkdirSync(dataDir);
-    }
+  if (!dataDirExists(dataDir)) {
+    fs.mkdirSync(dataDir);
+  }
 };
 
 /***************
@@ -67,10 +67,10 @@ const ensureDataDirExists = dataDir => {
  *  @returns { void }
  */
 const ensureDateDirExists = (dataDir, date) => {
-    ensureDataDirExists(dataDir);
-    if (!dateDirExists(dataDir, date)) {
-        fs.mkdirSync(dataDir + date);
-    }
+  ensureDataDirExists(dataDir);
+  if (!dateDirExists(dataDir, date)) {
+    fs.mkdirSync(dataDir + date);
+  }
 };
 
 // -------------------------------------------------------- //
@@ -83,13 +83,13 @@ const ensureDateDirExists = (dataDir, date) => {
  *  @returns { boolean }
  */
 const writeProductDataFile = (filePath, data) => {
-    // Write data to file
-    fs.writeFile(filePath, data, err => {
-        if (err) {
-            return false;
-        }
-        return true;
-    });
+  // Write data to file
+  fs.writeFile(filePath, data, err => {
+    if (err) {
+      return false;
+    }
+    return true;
+  });
 };
 
 // -------------------------------------------------------- //
@@ -101,7 +101,7 @@ const writeProductDataFile = (filePath, data) => {
  *  @returns { dataFile }
  */
 const readProductDataFile = filePath => {
-    return fs.readFileSync(filePath);
+  return fs.readFileSync(filePath);
 };
 
 // -------------------------------------------------------- //
@@ -127,10 +127,10 @@ const displayProductDataTable = productData => {
  *************/
 
 module.exports = {
-    ensureDateDirExists,
-    writeProductDataFile,
-    readProductDataFile
-    // displayProductDataTable
+  ensureDateDirExists,
+  writeProductDataFile,
+  readProductDataFile
+  // displayProductDataTable
 };
 
 // EOF //

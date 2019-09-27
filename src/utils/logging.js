@@ -48,7 +48,7 @@ const title = blue.bold.underline;
  * @returns { void }
  */
 function logSuccess(msg) {
-    log(logSymbols.success, msg);
+  log(logSymbols.success, msg);
 }
 
 // -------------------------------------------------------- //
@@ -60,7 +60,7 @@ function logSuccess(msg) {
  * @returns { void }
  */
 function logInfo(msg) {
-    log(logSymbols.info, msg);
+  log(logSymbols.info, msg);
 }
 
 // -------------------------------------------------------- //
@@ -72,7 +72,7 @@ function logInfo(msg) {
  * @returns { void }
  */
 function logError(msg) {
-    log(logSymbols.error, msg);
+  log(logSymbols.error, msg);
 }
 
 // -------------------------------------------------------- //
@@ -84,18 +84,18 @@ function logError(msg) {
  * @returns { void }
  */
 function logTitle(msg) {
-    // Construct title message
-    const titleMsg = title(msg);
-    // Box padding
-    const pad = {
-        top: 1,
-        right: 11,
-        bottom: 1,
-        left: 11
-    };
-    // Log title message
-    log(boxen(titleMsg, { padding: pad }));
-    log(); // new line
+  // Construct title message
+  const titleMsg = title(msg);
+  // Box padding
+  const pad = {
+    top: 1,
+    right: 11,
+    bottom: 1,
+    left: 11
+  };
+  // Log title message
+  log(boxen(titleMsg, { padding: pad }));
+  log(); // new line
 }
 
 // -------------------------------------------------------- //
@@ -108,18 +108,18 @@ function logTitle(msg) {
  *  @returns { void }
  */
 function logWelcome(projectVersion, date) {
-    require('clear')(); // Clear the terminal
-    const heading = header('WELCOME TO SUPOMATION CLI\n');
-    // Construct welcome message
-    const msg =
-        heading +
-        '\nVersion: ' +
-        magenta(projectVersion) +
-        '\n\n' +
-        magentaBright(date);
-    // Log welcome message
-    log(boxen(msg, { padding: 1, align: 'center' }));
-    log(); // new line
+  require('clear')(); // Clear the terminal
+  const heading = header('WELCOME TO SUPOMATION CLI\n');
+  // Construct welcome message
+  const msg =
+    heading +
+    '\nVersion: ' +
+    magenta(projectVersion) +
+    '\n\n' +
+    magentaBright(date);
+  // Log welcome message
+  log(boxen(msg, { padding: 1, align: 'center' }));
+  log(); // new line
 }
 
 /*************
@@ -127,15 +127,15 @@ function logWelcome(projectVersion, date) {
  *************/
 
 module.exports = {
-    log,
-    green,
-    blue,
-    magenta,
-    logError,
-    logInfo,
-    logSuccess,
-    logTitle,
-    logWelcome
+  log,
+  green,
+  blue,
+  magenta,
+  logError,
+  logInfo,
+  logSuccess,
+  logTitle,
+  logWelcome
 };
 
 // EOF //
