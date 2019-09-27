@@ -16,6 +16,11 @@ const pjson = require('../package.json');
  * * CONSTANTS *
  ***************/
 
+// const VIRTUAL_MAILER_URL: string =
+//    "https://www.newworld.co.nz/savings/virtualmailer/";
+
+// https://app.redpepperdigital.net/app/redpepper/home/91
+
 // Base URL target
 const BASE_URL = 'https://www.ishopnewworld.co.nz';
 const SPECIALS_BASE_URL = BASE_URL + '/specials';
