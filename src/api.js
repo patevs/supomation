@@ -12,6 +12,7 @@
 const axios = require('axios');
 // import axios from "axios";
 // JQuery implementation
+const cheerio = require('cheerio');
 // import cheerio from "cheerio";
 
 // const Listr = require('listr');
@@ -45,7 +46,7 @@ function getVirtualMailer() {
   instance.get(globals.VIRTUAL_MAILER_URL).then(function (response) {
     const data = response.data;
     const $ = cheerio.load(data);
-    let catelogScript = $("#__red-pepper-catalog")
+    let catelogScript = $('#__red-pepper-catalog')
       .next()
       .html();
     // Ensure catelogScript is not null
