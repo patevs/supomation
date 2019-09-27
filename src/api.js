@@ -9,7 +9,8 @@
  *************/
 
 // HTTP client
-import axios from "axios";
+const axios = require('axios');
+// import axios from "axios";
 // JQuery implementation
 // import cheerio from "cheerio";
 
@@ -21,16 +22,6 @@ import axios from "axios";
 
 const globals = require('./globals');
 
-
-
-/***************
- * * CONSTANTS *
- ***************/
-
-// const VIRTUAL_MAILER_URL: string =
-//    "https://www.newworld.co.nz/savings/virtualmailer/";
-
-// https://app.redpepperdigital.net/app/redpepper/home/91
 
 /***************
  * * FUNCTIONS *
@@ -51,7 +42,7 @@ async function getMailer() {
 
 function getVirtualMailer() {
   const instance = createSupomationApiInstance();
-  instance.get(VIRTUAL_MAILER_URL).then(function (response) {
+  instance.get(globals.VIRTUAL_MAILER_URL).then(function (response) {
     const data = response.data;
     const $ = cheerio.load(data);
     let catelogScript = $("#__red-pepper-catalog")
@@ -187,3 +178,9 @@ const scrapAllCategories = allCategories => {
 
 // -------------------------------------------------------- //
 
+
+module.exports = {
+  getVirtualMailer
+};
+
+// EOF //
