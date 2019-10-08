@@ -12,7 +12,9 @@
 
 const globals = require('./globals');
 
-const api = require('./api');
+// const api = require('./api');
+
+const cli = require('./cli');
 
 /***************
  * * FUNCTIONS *
@@ -27,7 +29,8 @@ const api = require('./api');
 (() => {
   console.log('Starting ' + globals.PROJECT_NAME + '...');
   console.log('Version: ' + globals.PROJECT_VERSION);
-  api.getVirtualMailer();
+  // api.getVirtualMailer();
+  cli.mainMenu();
 })();
 
 // EOF //
