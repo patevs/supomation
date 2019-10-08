@@ -15,8 +15,8 @@ const axios = require('axios');
 // const cheerio = require('cheerio');
 // import cheerio from "cheerio";
 
-// const Listr = require('listr');
-// const { Observable } = require('rxjs');
+const Listr = require('listr');
+const { Observable } = require('rxjs');
 // const Multispinner = require('multispinner');
 
 // const scraper = require('./scraper');
@@ -66,37 +66,6 @@ async function getUser() {
         console.error(error);
     }
 }
-*/
-
-/*
-const scrapSpecials = async () => {
-  const targetUrl = globals.SPECIALS_BASE_URL;
-  const specialTasks = new Listr([
-    {
-      title: 'Scraping Category: Specials', // + logging.green('Specials'),
-      task: () => {
-        return new Observable(observer => {
-          observer.next('Scraping Product Data');
-          axios.get(targetUrl).then(response => {
-            // return response.data;
-            // grab product data from page
-            const productData = scraper.scrapProductsFromPage(response.data);
-            observer.next('Saving Product Data');
-            console.log(productData);
-            // data.saveProductData(
-            //   utils.getDate(),
-            //   'specials',
-            //   productData
-            // );
-            observer.complete();
-            // return productData;
-          });
-        });
-      }
-    }
-  ]);
-await specialTasks.run();
-};
 */
 
 /**
@@ -155,6 +124,35 @@ const scrapAllCategories = allCategories => {
         });
 };
 */
+
+const scrapSpecials = async () => {
+  const targetUrl = globals.SPECIALS_BASE_URL;
+  const specialTasks = new Listr([
+    {
+      title: 'Scraping Category: Specials', // + logging.green('Specials'),
+      task: () => {
+        return new Observable(observer => {
+          observer.next('Scraping Product Data');
+          axios.get(targetUrl).then(response => {
+            // return response.data;
+            // grab product data from page
+            const productData = scraper.scrapProductsFromPage(response.data);
+            observer.next('Saving Product Data');
+            console.log(productData);
+            // data.saveProductData(
+            //   utils.getDate(),
+            //   'specials',
+            //   productData
+            // );
+            observer.complete();
+            // return productData;
+          });
+        });
+      }
+    }
+  ]);
+  await specialTasks.run();
+};
 
 // -------------------------------------------------------- //
 

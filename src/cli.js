@@ -11,6 +11,7 @@
  *************/
 
 const globals = require('./globals');
+// const api = require('./api');
 // const scraper = require('./scraper');
 
 const utils = require('./utils/utilities');
@@ -66,6 +67,7 @@ const runSupomationScraper = async () => {
   // data.setupDataDir(utils.getDate());
   logging.log(); // new line
   logging.logInfo('Starting Supomation WebScraper...\n');
+  // api.getVirtualMailer();
   // await scrapSpecials();
   // scrapAllCategories(constants.ALL_CATEGORIES);
   logging.log(); // new line
