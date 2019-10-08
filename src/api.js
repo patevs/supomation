@@ -28,6 +28,14 @@ const axios = require('axios');
  * * FUNCTIONS *
  ***************/
 
+/*
+const instance = axios.create({
+  baseURL: 'https://some-domain.com/api/',
+  timeout: 1000,
+  headers: { 'X-Custom-Header': 'foobar' }
+});
+*/
+
 async function getVirtualMailer() {
   try {
     const response = await axios.get(
