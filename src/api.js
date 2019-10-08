@@ -19,9 +19,9 @@ const Listr = require('listr');
 const { Observable } = require('rxjs');
 // const Multispinner = require('multispinner');
 
-// const scraper = require('./scraper');
+const scraper = require('./scraper/scraper');
 
-// const globals = require('./globals');
+const globals = require('./globals');
 
 /***************
  * * FUNCTIONS *
@@ -35,6 +35,7 @@ const instance = axios.create({
 });
 */
 
+// eslint-disable-next-line no-unused-vars
 async function getVirtualMailer() {
   try {
     const response = await axios.get(
@@ -125,7 +126,7 @@ const scrapAllCategories = allCategories => {
 };
 */
 
-const scrapSpecials = async () => {
+const getSpecials = async () => {
   const targetUrl = globals.SPECIALS_BASE_URL;
   const specialTasks = new Listr([
     {
@@ -157,7 +158,8 @@ const scrapSpecials = async () => {
 // -------------------------------------------------------- //
 
 module.exports = {
-  getVirtualMailer
+  // getVirtualMailer,
+  getSpecials
 };
 
 // EOF //
