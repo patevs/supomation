@@ -23,7 +23,6 @@ const axios = require('axios');
 
 // const globals = require('./globals');
 
-
 /***************
  * * FUNCTIONS *
  ***************/
@@ -57,7 +56,6 @@ function createSupomationApiInstance() {
   return instance;
 }
 */
-
 
 /* axios async example
 async function getUser() {
@@ -100,7 +98,6 @@ const scrapSpecials = async () => {
 await specialTasks.run();
 };
 */
-
 
 /**
  * @function scrapCategory
@@ -160,7 +157,6 @@ const scrapAllCategories = allCategories => {
 */
 
 // -------------------------------------------------------- //
-
 
 module.exports = {
   getVirtualMailer
