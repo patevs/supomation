@@ -31,7 +31,7 @@ const ALL_CATEGORIES = [
   'chilled-frozen-and-desserts',
   'pantry',
   'personal-care',
-  'kitchen-dining-and-household'
+  'kitchen-dining-and-household',
 ];
 
 /*************
@@ -44,7 +44,7 @@ module.exports = {
   VIRTUAL_MAILER_URL,
   SPECIALS_BASE_URL,
   CATEGORY_BASE_URL,
-  ALL_CATEGORIES
+  ALL_CATEGORIES,
 };
 
 // EOF //

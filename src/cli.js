@@ -85,7 +85,7 @@ const runSupomationScraper = async () => {
  * @param { string } answer - user selected option
  * @returns { void }
  */
-const processMainMenuOption = answer => {
+const processMainMenuOption = (answer) => {
   // Format answer
   answer = answer.split(' ')[0].toLowerCase();
   // Process all options
@@ -129,7 +129,7 @@ const getMainMenuChoices = () => {
     'Run WebScraper',
     'Display Help',
     'Print Version',
-    'Quit'
+    'Quit',
   ];
   // if (scraperHasRun) {
   //   mainMenuChoices.splice(1, 0, 'View Scraped Products');
@@ -149,11 +149,11 @@ const mainMenu = () => {
   const mainMenuPrompt = new Select({
     name: 'option',
     message: 'Select an option:',
-    choices: getMainMenuChoices()
+    choices: getMainMenuChoices(),
   });
   mainMenuPrompt
     .run()
-    .then(answer => processMainMenuOption(answer))
+    .then((answer) => processMainMenuOption(answer))
     .catch(console.error);
 };
 

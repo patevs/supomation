@@ -28,7 +28,7 @@ const DATA_DIR = 'data/';
  *  @param { string } date - todays date formatted as: yyyy-mm-dd
  *  @returns { void }
  */
-const setupDataDir = date => {
+const setupDataDir = (date) => {
   helpers.ensureDateDirExists(DATA_DIR, date);
 };
 
@@ -81,7 +81,7 @@ const loadProductData = (date, fileName) => {
 module.exports = {
   setupDataDir,
   saveProductData,
-  loadProductData
+  loadProductData,
 };
 
 // EOF //

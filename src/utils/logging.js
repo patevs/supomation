@@ -91,7 +91,7 @@ function logTitle(msg) {
     top: 1,
     right: 11,
     bottom: 1,
-    left: 11
+    left: 11,
   };
   // Log title message
   log(boxen(titleMsg, { padding: pad }));
@@ -135,7 +135,7 @@ module.exports = {
   logInfo,
   logSuccess,
   logTitle,
-  logWelcome
+  logWelcome,
 };
 
 // EOF //

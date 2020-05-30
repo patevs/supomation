@@ -132,9 +132,9 @@ const getSpecials = async () => {
     {
       title: 'Scraping Category: Specials', // + logging.green('Specials'),
       task: () => {
-        return new Observable(observer => {
+        return new Observable((observer) => {
           observer.next('Scraping Product Data');
-          axios.get(targetUrl).then(response => {
+          axios.get(targetUrl).then((response) => {
             // return response.data;
             // grab product data from page
             const productData = scraper.scrapProductsFromPage(response.data);
@@ -149,8 +149,8 @@ const getSpecials = async () => {
             // return productData;
           });
         });
-      }
-    }
+      },
+    },
   ]);
   await specialTasks.run();
 };
@@ -159,7 +159,7 @@ const getSpecials = async () => {
 
 module.exports = {
   // getVirtualMailer,
-  getSpecials
+  getSpecials,
 };
 
 // EOF //

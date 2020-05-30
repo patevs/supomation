@@ -45,7 +45,7 @@ const getDateFull = () => {
  *  @param { string } projectVersion
  *  @returns { void }
  */
-const welcome = projectVersion => {
+const welcome = (projectVersion) => {
   logging.logWelcome(projectVersion, getDateFull());
 };
 
@@ -57,7 +57,7 @@ const welcome = projectVersion => {
  *  @param { string } projectVersion
  *  @returns { void }
  */
-const version = projectVersion => {
+const version = (projectVersion) => {
   logging.log(); // new line
   const msg = 'Supomation CLI version: ' + logging.magenta(projectVersion);
   logging.logInfo(msg);
@@ -103,7 +103,7 @@ module.exports = {
   welcome,
   version,
   help,
-  quit
+  quit,
 };
 
 // EOF //

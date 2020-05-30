@@ -24,7 +24,7 @@ const fs = require('fs');
  *  @param { string } dataDir - path to data directory
  *  @returns { boolean }
  */
-const dataDirExists = dataDir => {
+const dataDirExists = (dataDir) => {
   return fs.existsSync(dataDir);
 };
 
@@ -49,7 +49,7 @@ const dateDirExists = (dataDir, date) => {
  *  @param { string } dataDir - path to data directory
  *  @returns { void }
  */
-const ensureDataDirExists = dataDir => {
+const ensureDataDirExists = (dataDir) => {
   if (!dataDirExists(dataDir)) {
     fs.mkdirSync(dataDir);
   }
@@ -84,7 +84,7 @@ const ensureDateDirExists = (dataDir, date) => {
  */
 const writeProductDataFile = (filePath, data) => {
   // Write data to file
-  fs.writeFile(filePath, data, err => {
+  fs.writeFile(filePath, data, (err) => {
     if (err) {
       return false;
     }
@@ -100,7 +100,7 @@ const writeProductDataFile = (filePath, data) => {
  *  @param { string } filePath
  *  @returns { dataFile }
  */
-const readProductDataFile = filePath => {
+const readProductDataFile = (filePath) => {
   return fs.readFileSync(filePath);
 };
 
@@ -129,7 +129,7 @@ const displayProductDataTable = productData => {
 module.exports = {
   ensureDateDirExists,
   writeProductDataFile,
-  readProductDataFile
+  readProductDataFile,
   // displayProductDataTable
 };
 
