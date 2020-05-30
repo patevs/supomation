@@ -111,9 +111,7 @@ const processMainMenuOption = answer => {
       break;
     default:
       // Base case - if all else fails which should never happen
-      logging.logError(
-        'Main menu option: ' + answer + ' is not recognised'
-      );
+      logging.logError('Main menu option: ' + answer + ' is not recognised');
       mainMenu();
       break;
   }
