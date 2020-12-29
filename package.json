@@ -33,7 +33,7 @@
     "clear": "^0.1.0",
     "enquirer": "^2.3.6",
     "listr": "^0.14.3",
-    "rxjs": "^6.6.2"
+    "rxjs": "^6.6.3"
   },
   "devDependencies": {
     "eslint": "^7.16.0",
