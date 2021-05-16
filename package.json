@@ -14,7 +14,8 @@
     "prelint": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
     "lint": "eslint --fix src/**/*.js && echo Lint Completed!",
     "test": "jest && echo. && echo Test Complete!",
-    "updates": "npx ncu"
+    "updates": "npx ncu",
+    "release": "npx np"
   },
   "ntl": {
     "descriptions": {
@@ -24,7 +25,8 @@
       "lint": "Run eslint check style linting",
       "test": "Run Supomation tests",
       "docs": "Generate project documentation",
-      "updates": "Check for outdated dependencies"
+      "updates": "Check for outdated dependencies",
+      "release": "Deploy using node publish"
     }
   },
   "dependencies": {
