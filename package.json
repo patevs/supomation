@@ -1,7 +1,7 @@
 {
-  "name": "supomation-core",
+  "name": "supomation",
   "version": "0.1.0",
-  "description": "supomation core",
+  "description": "supomation - Supomarket Price Scrapper",
   "license": "MIT",
   "repository": "patevs/supomation",
   "author": "PatEvs",
