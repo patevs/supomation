@@ -13,7 +13,8 @@
     "start": "node src/index.js",
     "prelint": "prettier --check --write src/**/*.js && echo. && echo Prettier Completed!",
     "lint": "eslint --fix src/**/*.js && echo Lint Completed!",
-    "test": "jest && echo. && echo Test Complete!"
+    "test": "jest && echo. && echo Test Complete!",
+    "updates": "npx ncu"
   },
   "ntl": {
     "descriptions": {
@@ -22,7 +23,8 @@
       "prettier": "Run prettier check style linting",
       "lint": "Run eslint check style linting",
       "test": "Run Supomation tests",
-      "docs": "Generate project documentation"
+      "docs": "Generate project documentation",
+      "updates": "Check for outdated dependencies"
     }
   },
   "dependencies": {
