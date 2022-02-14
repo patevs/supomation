@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
-    "boxen": "^5.1.2",
+    "boxen": "^6.2.1",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.10",
     "clear": "^0.1.0",
