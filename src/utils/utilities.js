@@ -10,7 +10,8 @@
  * * IMPORTS *
  *************/
 
-const logging = require('./logging');
+// const logging = require('./logging');
+import * as logging from './logging.js';
 
 /***************
  * * FUNCTIONS *
@@ -97,7 +98,7 @@ const quit = () => {
  * * EXPORTS *
  *************/
 
-module.exports = {
+export default {
   getDate,
   getDateFull,
   welcome,
@@ -105,5 +106,14 @@ module.exports = {
   help,
   quit,
 };
+
+// module.exports = {
+//   getDate,
+//   getDateFull,
+//   welcome,
+//   version,
+//   help,
+//   quit,
+// };
 
 // EOF //

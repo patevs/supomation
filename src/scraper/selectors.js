@@ -18,11 +18,18 @@ const PRODUCT_DATA_SELECTOR = PRODUCT_SELECTOR + '__footer-container';
  * * EXPORTS *
  *************/
 
-module.exports = {
+export default {
   PRODUCT_SELECTOR,
   PRODUCT_DATA_SELECTOR,
   PRODUCT_NAME_SELECTOR: '.u-p2',
   PRODUCT_QUANTITY_SELECTOR: '.u-p3',
-};
+}
+
+// module.exports = {
+//   PRODUCT_SELECTOR,
+//   PRODUCT_DATA_SELECTOR,
+//   PRODUCT_NAME_SELECTOR: '.u-p2',
+//   PRODUCT_QUANTITY_SELECTOR: '.u-p3',
+// };
 
 // EOF //

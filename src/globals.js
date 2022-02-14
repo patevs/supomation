@@ -10,11 +10,20 @@
  * * IMPORTS *
  *************/
 
-const pjson = require('../package.json');
+// const pjson = require('../package.json');
+import { readFile } from 'fs/promises';
+const pjson = JSON.parse(
+  await readFile(
+    new URL('../package.json', import.meta.url)
+  )
+);
 
 /***************
  * * CONSTANTS *
  ***************/
+
+const PROJECT_NAME = pjson.name;
+const PROJECT_VERSION = pjson.version;
 
 const VIRTUAL_MAILER_URL = 'https://www.newworld.co.nz/savings/virtualmailer/';
 
@@ -38,13 +47,22 @@ const ALL_CATEGORIES = [
  * * EXPORTS *
  *************/
 
-module.exports = {
-  PROJECT_NAME: pjson.name,
-  PROJECT_VERSION: pjson.version,
+export { PROJECT_NAME, PROJECT_VERSION };
+
+export default {
   VIRTUAL_MAILER_URL,
   SPECIALS_BASE_URL,
   CATEGORY_BASE_URL,
   ALL_CATEGORIES,
 };
+
+// module.exports = {
+//   PROJECT_NAME: pjson.name,
+//   PROJECT_VERSION: pjson.version,
+//   VIRTUAL_MAILER_URL,
+//   SPECIALS_BASE_URL,
+//   CATEGORY_BASE_URL,
+//   ALL_CATEGORIES,
+// };
 
 // EOF //

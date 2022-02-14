@@ -10,11 +10,15 @@
  * * IMPORTS *
  *************/
 
-const globals = require('./globals');
+// import PROJECT_NAME from './globals.js';
+// import PROJECT_VERSION from './globals.js';
+
+import { PROJECT_NAME, PROJECT_VERSION } from './globals.js'
 
 // const api = require('./api');
+// import { api } from './api.js';
 
-const cli = require('./cli');
+import mainMenu from './cli.js';
 
 /***************
  * * FUNCTIONS *
@@ -27,10 +31,10 @@ const cli = require('./cli');
  *****************************/
 
 (() => {
-  console.log('Starting ' + globals.PROJECT_NAME + '...');
-  console.log('Version: ' + globals.PROJECT_VERSION);
+  console.log('Starting ' + PROJECT_NAME + '...');
+  console.log('Version: ' + PROJECT_VERSION);
   // api.getVirtualMailer();
-  cli.mainMenu();
+  mainMenu();
 })();
 
 // EOF //

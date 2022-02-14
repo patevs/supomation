@@ -10,9 +10,12 @@
  * * IMPORTS *
  *************/
 
-const chalk = require('chalk');
-const logSymbols = require('log-symbols');
-const boxen = require('boxen');
+// const chalk = require('chalk');
+import chalk from 'chalk';
+// const logSymbols = require('log-symbols');
+import 'log-symbols';
+// const boxen = require('boxen');
+import boxen from 'boxen';
 
 /***************
  * * CONSTANTS *
@@ -126,7 +129,7 @@ function logWelcome(projectVersion, date) {
  * * EXPORTS *
  *************/
 
-module.exports = {
+export default {
   log,
   green,
   blue,
@@ -137,5 +140,17 @@ module.exports = {
   logTitle,
   logWelcome,
 };
+
+// module.exports = {
+//   log,
+//   green,
+//   blue,
+//   magenta,
+//   logError,
+//   logInfo,
+//   logSuccess,
+//   logTitle,
+//   logWelcome,
+// };
 
 // EOF //

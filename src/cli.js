@@ -10,14 +10,19 @@
  * * IMPORTS *
  *************/
 
-const globals = require('./globals');
-const api = require('./api');
+// const globals = require('./globals');
+import * as globals from './globals.js';
+// const api = require('./api');
+import * as api from './api.js';
 // const scraper = require('./scraper');
 
-const utils = require('./utils/utilities');
-const logging = require('./utils/logging');
+// const utils = require('./utils/utilities');
+import * as utils from './utils/utilities.js';
+// const logging = require('./utils/logging');
+import logging from './utils/logging.js';
 
-const { Select } = require('enquirer');
+// const { Select } = require('enquirer');
+import Select from 'enquirer';
 // const Listr = require('listr');
 
 /***************
@@ -171,6 +176,8 @@ const mainMenu = () => {
  * * EXPORTS *
  *************/
 
-module.exports = { mainMenu };
+// module.exports = { mainMenu };
+
+export default mainMenu
 
 // EOF //

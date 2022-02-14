@@ -9,19 +9,26 @@
  *************/
 
 // HTTP client
-const axios = require('axios');
+// const axios = require('axios');
+import axios from 'axios';
+const { get } = axios;
 // import axios from "axios";
 // JQuery implementation
 // const cheerio = require('cheerio');
 // import cheerio from "cheerio";
 
-const Listr = require('listr');
-const { Observable } = require('rxjs');
+//const Listr = require('listr');
+import * as Listr from 'listr';
+// const { Observable } = require('rxjs');
+import { Observable } from 'rxjs';
+
 // const Multispinner = require('multispinner');
 
-const scraper = require('./scraper/scraper');
+// const scraper = require('./scraper/scraper');
+import * as scraper from './scraper/scraper.js';
 
-const globals = require('./globals');
+// const globals = require('./globals');
+import * as globals from './globals.js'
 
 /***************
  * * FUNCTIONS *
@@ -157,9 +164,11 @@ const getSpecials = async () => {
 
 // -------------------------------------------------------- //
 
-module.exports = {
-  // getVirtualMailer,
-  getSpecials,
-};
+export default getSpecials;
+
+// module.exports = {
+//   // getVirtualMailer,
+//   getSpecials,
+// };
 
 // EOF //

@@ -10,9 +10,11 @@
  * * IMPORTS *
  *************/
 
-const selectors = require('./selectors');
+// const selectors = require('./selectors');
+import * as selectors from './selectors.js';
 
-const cheerio = require('cheerio');
+// const cheerio = require('cheerio');
+import * as cheerio from 'cheerio';
 
 /**********************
  * * HELPER FUNCTIONS *
@@ -136,8 +138,10 @@ const scrapProductsFromPage = (pageHtmlContent) => {
  * * EXPORTS *
  *************/
 
-module.exports = {
-  scrapProductsFromPage,
-};
+export default scrapProductsFromPage;
+
+// module.exports = {
+//   scrapProductsFromPage,
+// };
 
 // EOF //
