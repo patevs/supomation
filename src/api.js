@@ -134,7 +134,9 @@ const getSpecials = async () => {
       task: () => {
         return new Observable((observer) => {
           observer.next('Scraping Product Data');
-          axios.get(targetUrl).then((response) => {
+          axios.get(targetUrl,
+            // { headers: { 'User-Agent': 'Mozilla/5.0' } }
+          ).then((response) => {
             // return response.data;
             // grab product data from page
             const productData = scraper.scrapProductsFromPage(response.data);
