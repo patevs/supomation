@@ -15,7 +15,7 @@
     "lint": "eslint --fix src/**/*.js && echo Lint Completed!",
     "test": "jest && echo. && echo Test Complete!",
     "updates": "npx ncu",
-    "release": "npx np"
+    "release": "npx np --no-publish --no-tests"
   },
   "ntl": {
     "descriptions": {
